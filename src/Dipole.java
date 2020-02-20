@@ -1,4 +1,14 @@
-public class Dipole extends Composant {
+public abstract class Dipole extends Composant {
     private Complexe z;
-    private String nom;
+    private double tension;
+    private double courrant;
+
+    public Dipole(){
+
+    }
+
+    public Dipole(Complexe a, String s){
+        super(s);
+        this.z = a;
+    }
 }

@@ -97,7 +97,7 @@ public class Impedance {
 		return new Impedance (p, q);
 	}
 
-	//test égalité
+	//test égalite
 	public boolean equals (Impedance x){
 		boolean w = false;
 		if (this.re == x.getRe() && this.im == x.getIm()){

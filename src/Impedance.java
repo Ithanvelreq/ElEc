@@ -45,7 +45,7 @@ public class Impedance {
 		majPolaire();
 	}
 
-
+	//maj des coordonnées
 	private void majPolaire (){
 		this.Rho = Math.sqrt(Math.pow(this.re, 2) + Math.pow(this.im, 2));
 		this.Theta = Math.atan2(this.im, this.re);
@@ -65,29 +65,39 @@ public class Impedance {
 		return this.re+" "+signe(this.im)+" i*"+Math.abs(this.im);
 	}
 
+	//méthode calculatoire
 
+	//somme sans retour
 	public void sommeV1(Impedance x){
 		double p = this.re + x.getRe();
 		double q = this.im + x.getIm();
 		setRe(p);
 		setIm (q);
 	}
+
+	//somme avec Z en retour
 	public Impedance sommeV2(Impedance x){
 		double p = this.re + x.getRe();
 		double q = this.im + x.getIm();
 		return new Impedance (p, q);
 	}
+
+	//multiplication sans retour
 	public void multiplicationV1(Impedance x){
 		double p = this.Rho*x.getRho();
 		double q = this.Theta + x.getTheta();
 		setRho(p);
 		setTheta(q);
 	}
+
+	//multiplication avec Z en retour
 	public Impedance multiplicationV2 (Impedance x){
 		double p = this.Rho*x.getRho();
 		double q = this.Theta + x.getTheta();
 		return new Impedance (p, q);
 	}
+
+	//test égalité
 	public boolean equals (Impedance x){
 		boolean w = false;
 		if (this.re == x.getRe() && this.im == x.getIm()){

@@ -1,9 +1,9 @@
 public class Complexe {
-	private String typeEntre = "cartesien";
-	private double re;
-	private double im;
-	private double Rho;
-	private double Theta;
+	public String typeEntre = "cartesien";
+	public double re;
+	public double im;
+	public double Rho;
+	public double Theta;
 	public Complexe (double a, double b){
 		this.re = a;
 		this.im = b;

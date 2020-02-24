@@ -8,6 +8,7 @@ public class FenetreMain extends JFrame {
 
 
     //constructeur
+
     public FenetreMain(){
 
         setSize(600,600);			// taille de la fenêtre

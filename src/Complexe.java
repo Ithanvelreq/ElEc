@@ -1,34 +1,18 @@
-public class Complexe {
-	private String typeEntre = "cartesien";
+public class Impedance {
+
+	//attributs
 	private double re;
 	private double im;
 	private double Rho;
 	private double Theta;
-	public Complexe (double a, double b){
+
+	//constructeurt
+	public Impedance (double a, double b){
 		this.re = a;
 		this.im = b;
 		majPolaire();
 	}
 
-	public Complexe(String s, double rh, double th){
-		this.typeEntre = s;
-		this.Rho = rh;
-		this.Theta = th;
-		majCart();
-	}
-	public boolean estDansCadrant(int x){
-		boolean w = false;
-		if (x==1 && this.re>= 0 && this.im>= 0){
-			w = true;
-		}else if(x==2 && this.re<= 0 && this.im>=0){
-			w = true;
-		}else if (x==3 && this.re<= 0 && this.im<= 0){
-			w = true;
-		}else if (x==4 && this.re>= 0 && this.im<= 0){
-			w = true;
-		}
-		return w;
-	}
 	private void setRho(double x){
 		this.Rho = x;
 		majCart();

@@ -15,6 +15,8 @@ public class Main {
 
         Circuit circuitA = new CircuitA(composants);
 
+        FenetreMain FenetrePrincipale = new FenetreMain();
+
 
 
 

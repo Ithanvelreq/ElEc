@@ -104,6 +104,10 @@ public class Impedance {
 			w = true;
 		}
 		return w;
-	}		
+	}
+
+	public double module(){
+		return Math.sqrt(Math.pow(re,2)+ Math.pow(im,2));
+	}
 }
 

@@ -1,5 +1,5 @@
 public abstract class Dipole extends Composant {
-    private Complexe z;
+    private Impedance z;
     private double tension;
     private double courrant;
 
@@ -7,7 +7,7 @@ public abstract class Dipole extends Composant {
 
     }
 
-    public Dipole(Complexe a, String s){
+    public Dipole(Impedance a, String s){
         super(s);
         this.z = a;
     }

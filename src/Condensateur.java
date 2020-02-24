@@ -1,6 +1,6 @@
 public class Condensateur extends Dipole{
 
-    public Condensateur(Complexe a, String s) {
+    public Condensateur(Impedance a, String s) {
         super(a, s);
     }
 }

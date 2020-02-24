@@ -6,13 +6,28 @@ public class Impedance {
 	private double Rho;
 	private double Theta;
 
-	//constructeurt
+	//constructeur
 	public Impedance (double a, double b){
 		this.re = a;
 		this.im = b;
 		majPolaire();
 	}
 
+	//getter
+	public double getRe(){
+		return this.re;
+	}
+	public double getIm(){
+		return this.im;
+	}
+	public double getRho(){
+		return this.Rho;
+	}
+	public double getTheta() {
+		return this.Theta;
+	}
+
+	//setter
 	private void setRho(double x){
 		this.Rho = x;
 		majCart();
@@ -29,6 +44,8 @@ public class Impedance {
 		this.im = x;
 		majPolaire();
 	}
+
+
 	private void majPolaire (){
 		this.Rho = Math.sqrt(Math.pow(this.re, 2) + Math.pow(this.im, 2));
 		this.Theta = Math.atan2(this.im, this.re);
@@ -47,41 +64,31 @@ public class Impedance {
 	public String toString(){
 		return this.re+" "+signe(this.im)+" i*"+Math.abs(this.im);
 	}
-	public double getRe(){
-		return this.re;
-	}
-	public double getIm(){
-		return this.im;
-	}
-	public double getRho(){
-		return this.Rho;
-	}
-	public double getTheta(){
-		return this.Theta;
-	}
-	public void sommeV1(Complexe x){
+
+
+	public void sommeV1(Impedance x){
 		double p = this.re + x.getRe();
 		double q = this.im + x.getIm();
 		setRe(p);
 		setIm (q);
 	}
-	public Complexe sommeV2(Complexe x){
+	public Impedance sommeV2(Impedance x){
 		double p = this.re + x.getRe();
 		double q = this.im + x.getIm();
-		return new Complexe (p, q); 
+		return new Impedance (p, q);
 	}
-	public void multiplicationV1(Complexe x){
+	public void multiplicationV1(Impedance x){
 		double p = this.Rho*x.getRho();
 		double q = this.Theta + x.getTheta();
 		setRho(p);
 		setTheta(q);
 	}
-	public Complexe multiplicationV2 (Complexe x){
+	public Impedance multiplicationV2 (Impedance x){
 		double p = this.Rho*x.getRho();
 		double q = this.Theta + x.getTheta();
-		return new Complexe ("polaire", p, q);
+		return new Impedance (p, q);
 	}
-	public boolean equals (Complexe x){
+	public boolean equals (Impedance x){
 		boolean w = false;
 		if (this.re == x.getRe() && this.im == x.getIm()){
 			w = true;

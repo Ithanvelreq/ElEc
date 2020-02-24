@@ -1,6 +1,6 @@
 public class Resistance extends Dipole {
 
-    public Resistance(Complexe a, String s) {
+    public Resistance(Impedance a, String s) {
         super(a, s);
     }
 }

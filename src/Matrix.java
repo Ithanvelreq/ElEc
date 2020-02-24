@@ -1,5 +1,5 @@
 public class Matrix {
-    private Complexe [][] mat;
+    private Impedance [][] mat;
 
     public void inverse(){
   //test

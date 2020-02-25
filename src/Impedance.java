@@ -1,34 +1,33 @@
-public class Complexe {
-	private String typeEntre = "cartesien";
+public class Impedance {
+
+	//attributs
 	private double re;
 	private double im;
 	private double Rho;
 	private double Theta;
-	public Complexe (double a, double b){
+
+	//constructeur
+	public Impedance (double a, double b){
 		this.re = a;
 		this.im = b;
 		majPolaire();
 	}
 
-	public Complexe(String s, double rh, double th){
-		this.typeEntre = s;
-		this.Rho = rh;
-		this.Theta = th;
-		majCart();
+	//getter
+	public double getRe(){
+		return this.re;
 	}
-	public boolean estDansCadrant(int x){
-		boolean w = false;
-		if (x==1 && this.re>= 0 && this.im>= 0){
-			w = true;
-		}else if(x==2 && this.re<= 0 && this.im>=0){
-			w = true;
-		}else if (x==3 && this.re<= 0 && this.im<= 0){
-			w = true;
-		}else if (x==4 && this.re>= 0 && this.im<= 0){
-			w = true;
-		}
-		return w;
+	public double getIm(){
+		return this.im;
 	}
+	public double getRho(){
+		return this.Rho;
+	}
+	public double getTheta() {
+		return this.Theta;
+	}
+
+	//setter
 	private void setRho(double x){
 		this.Rho = x;
 		majCart();
@@ -45,6 +44,8 @@ public class Complexe {
 		this.im = x;
 		majPolaire();
 	}
+
+	//maj des coordonnées
 	private void majPolaire (){
 		this.Rho = Math.sqrt(Math.pow(this.re, 2) + Math.pow(this.im, 2));
 		this.Theta = Math.atan2(this.im, this.re);
@@ -63,46 +64,50 @@ public class Complexe {
 	public String toString(){
 		return this.re+" "+signe(this.im)+" i*"+Math.abs(this.im);
 	}
-	public double getRe(){
-		return this.re;
-	}
-	public double getIm(){
-		return this.im;
-	}
-	public double getRho(){
-		return this.Rho;
-	}
-	public double getTheta(){
-		return this.Theta;
-	}
-	public void sommeV1(Complexe x){
+
+	//méthode calculatoire
+
+	//somme sans retour
+	public void sommeV1(Impedance x){
 		double p = this.re + x.getRe();
 		double q = this.im + x.getIm();
 		setRe(p);
 		setIm (q);
 	}
-	public Complexe sommeV2(Complexe x){
+
+	//somme avec Z en retour
+	public Impedance sommeV2(Impedance x){
 		double p = this.re + x.getRe();
 		double q = this.im + x.getIm();
-		return new Complexe (p, q); 
+		return new Impedance (p, q);
 	}
-	public void multiplicationV1(Complexe x){
+
+	//multiplication sans retour
+	public void multiplicationV1(Impedance x){
 		double p = this.Rho*x.getRho();
 		double q = this.Theta + x.getTheta();
 		setRho(p);
 		setTheta(q);
 	}
-	public Complexe multiplicationV2 (Complexe x){
+
+	//multiplication avec Z en retour
+	public Impedance multiplicationV2 (Impedance x){
 		double p = this.Rho*x.getRho();
 		double q = this.Theta + x.getTheta();
-		return new Complexe ("polaire", p, q);
+		return new Impedance (p, q);
 	}
-	public boolean equals (Complexe x){
+
+	//test égalite
+	public boolean equals (Impedance x){
 		boolean w = false;
 		if (this.re == x.getRe() && this.im == x.getIm()){
 			w = true;
 		}
 		return w;
-	}		
+	}
+
+	public double module(){
+		return Math.sqrt(Math.pow(re,2)+ Math.pow(im,2));
+	}
 }
 

@@ -1,6 +1,6 @@
 public abstract class Composant {
-    private double caracteristique = 0;
-    private String nom;
+    protected double caracteristique = 0;
+    protected String nom;
 
     public Composant(){
 

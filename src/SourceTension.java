@@ -1,8 +1,12 @@
 public class SourceTension extends Composant {
-    private double w;
+    private double omega;
 
     public SourceTension(double gamma, String n, double w){
         super(gamma, n);
-        this.w = w;
+        this.omega = w;
+    }
+
+    public double getOmega() {
+        return omega;
     }
 }

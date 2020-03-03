@@ -1,5 +1,5 @@
 public class Matrix {
-    private Complexe [][] mat;
+   // private Complexe [][] mat;
 
     public void inverse(){
   //test

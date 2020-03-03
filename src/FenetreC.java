@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class FenetreA extends JFrame implements ActionListener{
+public class FenetreC extends JFrame implements ActionListener{
 
     //obtient les caractéristiques de l'écran pour que la fenetre occupe tout l'espace
 
@@ -20,7 +20,7 @@ public class FenetreA extends JFrame implements ActionListener{
     public JButton boutonvalider;
     public JButton boutonaffichage;
 
-    public FenetreA() {
+    public FenetreC() {
 
         this.setSize(largeur,hauteur);			// taille de la fenêtre
         this.setLocation(0,0);		//position de la fenêtre

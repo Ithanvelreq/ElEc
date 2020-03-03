@@ -1,7 +1,7 @@
 public abstract class Dipole extends Composant {
     private Impedance z;
     private double tension;
-    private double courrant;
+    private double courant;
 
     public Dipole(){
 

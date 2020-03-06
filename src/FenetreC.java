@@ -19,13 +19,16 @@ public class FenetreC extends JFrame implements ActionListener{
 
     public JButton boutonvalider;
     public JButton boutonaffichage;
+    String[] sourcestension = {"source de 5V", "source de 12 V"};
+    String[] autrescomposants = {"Résistance", "Bobine", "Condensateur"};
+    JComboBox[] tableaumenu = new JComboBox[4]; // tableau de menu déroulants
 
     public FenetreC() {
 
         this.setSize(largeur,hauteur);			// taille de la fenêtre
         this.setLocation(0,0);		//position de la fenêtre
         this.setVisible(false);			//visibilité de la fenêtre
-        this.setTitle("circuit 1");     //titre
+        this.setTitle("circuit 3");     //titre
 
         // permet d'afficher la fenêtre en plein écran
 
@@ -37,10 +40,29 @@ public class FenetreC extends JFrame implements ActionListener{
 
         //création du panneau où l'on fait son système
 
-        JPanel Panneausysteme = new JPanel();
+        JPanel Panneausysteme = new Panneaudessin(3);
         Panneausysteme.setBounds(0,0,(int) l,hauteur);
         Panneausysteme.setLayout(null);
-        Panneausysteme.setBackground(new Color(226, 228, 227));
+
+        for (int i=0;i<4;i++){
+
+            if(i==0){
+                tableaumenu[i] = new JComboBox(sourcestension);
+                tableaumenu[i].setBounds(40,Panneausysteme.getHeight()/2-50,100,50);
+            }else{
+                tableaumenu[i]= new JComboBox(autrescomposants);
+                if(i==1) {
+                    tableaumenu[i].setBounds(Panneausysteme.getWidth()/4,45,100,50); //composant d'en haut à gauche
+                }
+                if(i==2){
+                    tableaumenu[i].setBounds((int)(Panneausysteme.getWidth()*0.6),45,100,50); //composant de d'en haut à droite
+                }
+                if(i==3){
+                    tableaumenu[i].setBounds(Panneausysteme.getWidth()/2-50,Panneausysteme.getHeight()/2-50,100,50); // composant de la branche parallèle du milieu
+                }
+            }
+            Panneausysteme.add(tableaumenu[i]);
+        }
 
         //création du panneau avec les boutons de configuration
 

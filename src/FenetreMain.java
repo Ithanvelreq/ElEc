@@ -13,7 +13,6 @@ public class FenetreMain extends JFrame implements ActionListener{
     //declaration de tous les widgets ci-dessous
 
     public JButton[] tableaubouton;
-    public JButton boutoncircuiti;
 
     //constructeur
 

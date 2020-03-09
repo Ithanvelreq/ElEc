@@ -33,6 +33,10 @@ public class Main {
             System.out.println();
         }
 
+        for(int i = 0; i<d.length; i++){
+            System.out.println(d[i][0]);
+        }
+
 
 
 

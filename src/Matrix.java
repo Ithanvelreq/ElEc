@@ -9,6 +9,12 @@ public class Matrix {
     }
 
     public void resolSys(){
+        this.triangulation();
+        this.diagonalisation();
+        this.simplification();
+    }
+
+    public void triangulation(){
         for(int i = 0; i<(matrix.length-1); i++){
            imax = imaxFinder(i);
            if(matrix[imax][i].getRho() == 0){
@@ -44,5 +50,31 @@ public class Matrix {
             }
         }
         return j;
+    }
+
+    public void diagonalisation(){
+        int j = matrix[0].length-1;
+        for(int i = (matrix.length-1); i>0; i--) {
+            for (int k = i - 1; k >= 0; k--) {
+                Impedance f = matrix[k][j].multiplicationV2(matrix[i][j].inverseV2());
+                f.minus();
+                matrix[k][j] = matrix[k][j].sommeV2(matrix[i][j].multiplicationV2(f));
+                vecteur[k][0] = vecteur[k][0].sommeV2(vecteur[i][0].multiplicationV2(f));
+            }
+            j--;
+        }
+    }
+
+    public void simplification(){
+        for(int i =0; i<matrix.length; i++) {
+            for (int j = 0; j < matrix.length; j++) {
+                if(i==j){
+                    vecteur[i][0] = vecteur[i][0].multiplicationV2(matrix[i][j].inverseV2());
+                    matrix[i][j] = new Impedance(1, 0);
+                }else{
+                    matrix[i][j] = new Impedance(0, 0);
+                }
+            }
+        }
     }
 }

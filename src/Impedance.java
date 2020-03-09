@@ -109,5 +109,11 @@ public class Impedance {
 	public double module(){
 		return Math.sqrt(Math.pow(re,2)+ Math.pow(im,2));
 	}
+
+	public void minus(){
+		this.im = -this.im;
+		this.re = -this.re;
+		majPolaire();
+	}
 }
 

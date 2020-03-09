@@ -22,7 +22,7 @@ public class Matrix {
            vecteur[i] = temvec;
 
            for(int l = i+1; l<matrix.length; l++){
-               Impedance facteur = matrix[l][i].multiplicationV2(matrix[i][i].inverseV2);
+               Impedance facteur = matrix[l][i].multiplicationV2(matrix[i][i].inverseV2());
                facteur.minus();
                matrix[l][i] = new Impedance(0, 0);
                for(int col = i+1; col<matrix.length; col++){

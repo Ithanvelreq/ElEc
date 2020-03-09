@@ -13,6 +13,11 @@ public class Impedance {
 		majPolaire();
 	}
 
+	public Impedance(double module, double argument, String s){
+		this.Rho = module;
+		this.Theta = argument;
+	}
+
 	//getter
 	public double getRe(){
 		return this.re;
@@ -108,6 +113,24 @@ public class Impedance {
 
 	public double module(){
 		return Math.sqrt(Math.pow(re,2)+ Math.pow(im,2));
+	}
+
+	public void minus(){
+		this.re = -this.re;
+		this.im = -this.im;
+		majPolaire();
+	}
+
+	public void inverseV1(){
+		this.Rho = 1 / this.Rho;
+		this.Theta = -this.Theta;
+		majCart();
+	}
+	public Impedance inverseV2(){
+		double r = 1 / this.Rho;
+		double t = -this.Theta;
+		Impedance w = new Impedance(r, t, "s");
+		return w;
 	}
 }
 

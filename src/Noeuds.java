@@ -1,11 +1,20 @@
 import java.util.LinkedList;
 
 public class Noeuds {
-    private LinkedList<Maille> mailles = new LinkedList<>();
 
-    public Noeuds(LinkedList<Maille> mail){
-        for (Maille m : mail){
-            this.mailles.add(m);
-        }
+    public Noeuds (Composant a,Composant b, Composant c){
+        LinkedList<Composant> compN = new LinkedList<>();
+        compN.add(a);
+        compN.add(b);
+        compN.add(c);
+    }
+
+    public Noeuds (Composant a,Composant b,Composant c,Composant d){
+        LinkedList<Composant> compN = new LinkedList<>();
+        compN.add(a);
+        compN.add(b);
+        compN.add(c);
+        compN.add(d);
     }
 }
+

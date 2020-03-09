@@ -22,6 +22,7 @@ public class Panneaudessin extends JPanel {
                 g2.setColor(Color.black);
                 g2.setStroke(new BasicStroke(3));   //on change l'épaisseur du trait à tracer
                 g2.drawRect(75, 75, (int) (getWidth() * 0.8), (int) (getHeight() * 0.75)); //rectangle
+
             }
 
             // on dessine l'allure de chaque circuit
@@ -69,6 +70,7 @@ public class Panneaudessin extends JPanel {
 
             }
         }
+
 
 
 

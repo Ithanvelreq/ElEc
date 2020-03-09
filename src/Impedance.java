@@ -16,6 +16,7 @@ public class Impedance {
 	public Impedance(double module, double argument, String s){
 		this.Rho = module;
 		this.Theta = argument;
+		majCart();
 	}
 
 	//getter

@@ -109,21 +109,5 @@ public class Impedance {
 	public double module(){
 		return Math.sqrt(Math.pow(re,2)+ Math.pow(im,2));
 	}
-
-	//inverser un complexe
-	public void inverseV1(Impedance z){
-		z.Rho=1/z.Rho;
-		z.Theta=-z.Theta;
-		majCart();
-	}
-
-	public Impedance inverseV2(Impedance z){
-		Impedance r= new Impedance(0,0);
-		majPolaire();
-		r.Theta=1/z.Theta;
-		r.Rho=-z.Rho;
-		majCart();
-		return r;
-	}
 }
 

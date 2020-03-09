@@ -100,7 +100,7 @@ public class Impedance {
 	public Impedance multiplicationV2 (Impedance x){
 		double p = this.Rho*x.getRho();
 		double q = this.Theta + x.getTheta();
-		return new Impedance (p, q);
+		return new Impedance (p, q, "s");
 	}
 
 	//test égalite

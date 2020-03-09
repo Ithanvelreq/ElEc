@@ -17,6 +17,22 @@ public class Main {
 
         FenetreMain FenetrePrincipale = new FenetreMain();
 
+        Impedance [][] c = {{new Impedance(3,0), new Impedance(2,0), new Impedance(1,0), new Impedance(1,0)},
+                {new Impedance(2,0), new Impedance(1,0), new Impedance(0,0), new Impedance(0,0)},
+                {new Impedance(0,0), new Impedance(0,0), new Impedance(2,0), new Impedance(-1,0)},
+                {new Impedance(1,0), new Impedance(2,0), new Impedance(1,0), new Impedance(0,0)}};
+        Impedance [][] d = {{new Impedance(2,0)}, {new Impedance(9,0)}, {new Impedance(0,0)}, {new Impedance(5,0)}};
+        Matrix m = new Matrix(c, d);
+        m.resolSys();
+        for(int i = 0; i<c.length; i++){
+            for(int k = 0; k<c[0].length; k++){
+                //if(c[i][k].getRho() != 0){
+                    System.out.print(c[i][k]+"    ");
+                //}
+            }
+            System.out.println();
+        }
+
 
 
 

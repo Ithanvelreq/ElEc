@@ -37,7 +37,7 @@ public class Matrix {
     public int imaxFinder(int i){
         int j = 0;
         double m = 0;
-        for(int p = i; i<(matrix.length-1); p++){
+        for(int p = i; p<(matrix.length-1); p++){
             if (matrix[p][i].getRho()>m){
                 j = p;
                 m = matrix[p][i].getRho();

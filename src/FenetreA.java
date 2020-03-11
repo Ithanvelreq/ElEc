@@ -1,6 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.geom.AffineTransform;
+import java.awt.image.BufferedImage;
 
 public class FenetreA extends JFrame implements ActionListener{
 
@@ -24,9 +26,11 @@ public class FenetreA extends JFrame implements ActionListener{
     String[] autrescomposants = {"Résistance", "Bobine", "Condensateur"};  //tableau permettant la selection des elements des menus deroulants
     JComboBox[] tableaumenu = new JComboBox[4]; // tableau de menu déroulants
     boolean[] estvertical = new boolean[4]; // tableau pour savoir si les menus sont sur un segment vertical ou non
-    public Panneaudessin Panneausysteme;
+    public JPanel Panneausysteme;
     public ImageIcon icone;  // image qui doit s'afficher à la place des menus déroulants
     public JLabel jlabel;   //jlabel contenant l'image qui doit s'afficher
+    public JLabel zonedessin;
+    public ImageIcon imagefond;
 
     public FenetreA() {
 
@@ -45,9 +49,17 @@ public class FenetreA extends JFrame implements ActionListener{
 
         //création du panneau où l'on fait son système
 
-        Panneausysteme = new Panneaudessin(1);
+        Panneausysteme = new JPanel();
         Panneausysteme.setBounds(0,0,(int) l,hauteur);
         Panneausysteme.setLayout(null);
+        Panneausysteme.setBackground(new Color(228,229,230));
+
+        imagefond = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("circuitnumero1.png")));
+        zonedessin = new JLabel(imagefond);
+        zonedessin.setLayout(null);
+        zonedessin.setBounds(0,0,(int) l,hauteur);
+        zonedessin.setVisible(true);
+        Panneausysteme.add(zonedessin);
 
         //création du panneau avec les boutons de configuration
 
@@ -89,7 +101,7 @@ public class FenetreA extends JFrame implements ActionListener{
             }else{
                 tableaumenu[i]= new JComboBox(autrescomposants);
                 if(i==1) {
-                    tableaumenu[i].setBounds(Panneausysteme.getWidth() / 2 - 50, 45, 100, 50); //composant d'en haut
+                    tableaumenu[i].setBounds(Panneausysteme.getWidth() / 2 - 50, 80, 100, 50); //composant d'en haut
                     estvertical[i]=false;
                 }
                 if(i==2){
@@ -97,11 +109,11 @@ public class FenetreA extends JFrame implements ActionListener{
                     estvertical[i]=true;
                 }
                 if(i==3){
-                    tableaumenu[i].setBounds(Panneausysteme.getWidth()/2-50,Panneausysteme.getHeight()/2+245,100,50); // composant d'en bas
+                    tableaumenu[i].setBounds(Panneausysteme.getWidth()/2-50,Panneausysteme.getHeight()/2+270,100,50); // composant d'en bas
                     estvertical[i]=false;
                 }
             }
-            Panneausysteme.add(tableaumenu[i]);
+            zonedessin.add(tableaumenu[i]);
         }
 
         //création panneau principal
@@ -143,33 +155,93 @@ public class FenetreA extends JFrame implements ActionListener{
 
             if(tab[j].getSelectedItem().toString()=="Résistance"){
 
-                //ne fonctionne pas
-
-                icone= new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("circuitenparallele.png")));
+                icone= new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("résistance.png")));
                 jlabel = new JLabel(icone);
                 jlabel.setLayout(null);
-                jlabel.setBounds(200,200,400,400);
+                jlabel.setBounds(tab[j].getX(),tab[j].getY(),300,50);
                 jlabel.setVisible(true);
-                Panneausysteme.add(jlabel);
-                Panneausysteme.validate();
-                Panneausysteme.updateUI();
-                repaint();
+                tab[j].setVisible(false);
+                zonedessin.add(jlabel);
+
+                if(tab1[j]==true){
+                    tourneimage(90,jlabel,icone);
+                    jlabel.setBounds(tab[j].getX(),tab[j].getY(),50,300);
+                }
 
             }
+
             if(tab[j].getSelectedItem().toString()=="Bobine"){
 
+                icone= new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("bobines.png")));
+                jlabel = new JLabel(icone);
+                jlabel.setLayout(null);
+                jlabel.setBounds(tab[j].getX(),tab[j].getY(),300,50);
+                jlabel.setVisible(true);
+                tab[j].setVisible(false);
+                zonedessin.add(jlabel);
+
+                if(tab1[j]==true){
+                    tourneimage(90,jlabel,icone);
+                    jlabel.setBounds(tab[j].getX(),tab[j].getY(),50,300);
+                }
+
+
             }
+
             if(tab[j].getSelectedItem().toString()=="Condensateur"){
 
-            }
-            if(tab[j].getSelectedItem().toString()=="source de 5V"){
+                icone= new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("condo.png")));
+                jlabel = new JLabel(icone);
+                jlabel.setLayout(null);
+                jlabel.setBounds(tab[j].getX(),tab[j].getY(),300,50);
+                jlabel.setVisible(true);
+                tab[j].setVisible(false);
+                zonedessin.add(jlabel);
+
+                if(tab1[j]==true){
+                    tourneimage(90,jlabel,icone);
+                    jlabel.setBounds(tab[j].getX(),tab[j].getY(),50,300);
+                }
 
             }
-            if(tab[j].getSelectedItem().toString()=="source de 12 V"){
 
+            if(tab[j].getSelectedItem().toString()=="source de 5V" || tab[j].getSelectedItem().toString()=="source de 12 V"){
+
+                icone= new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("sourceU.png")));
+                jlabel = new JLabel(icone);
+                jlabel.setLayout(null);
+                jlabel.setBounds(tab[j].getX(),tab[j].getY(),300,50);
+                jlabel.setVisible(true);
+                tab[j].setVisible(false);
+                zonedessin.add(jlabel);
+
+                if(tab1[j]==true){
+                    tourneimage(90,jlabel,icone);
+                    jlabel.setBounds(tab[j].getX(),tab[j].getY(),50,300);
+                }
 
             }
         }
     }
+
+    public void tourneimage(int angle, JLabel lelabel, ImageIcon imageselectionnee) {
+        int w = lelabel.getIcon().getIconWidth();
+        int h = lelabel.getIcon().getIconHeight();
+        int type = BufferedImage.TYPE_INT_RGB;  // other options, see api
+
+        BufferedImage DaImage = new BufferedImage(h, w, type);
+        Graphics2D g2 = DaImage.createGraphics();
+
+        double x = (h - w)/2.0;
+        double y = (w - h)/2.0;
+        AffineTransform at = AffineTransform.getTranslateInstance(x, y);
+
+        at.rotate(Math.toRadians(angle), w/2.0, h/2.0);
+        g2.drawImage(imageselectionnee.getImage(), at, lelabel);
+        g2.dispose();
+
+        lelabel.setIcon(new ImageIcon(DaImage));
+    }
+
 
 }

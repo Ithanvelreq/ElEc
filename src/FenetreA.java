@@ -24,7 +24,7 @@ public class FenetreA extends JFrame implements ActionListener{
     public JButton boutonaffichage1;
     String[] sourcestension = {"source de 5V", "source de 12 V"};  //tableau permettant la selection des elements des menus deroulants
     String[] autrescomposants = {"Résistance", "Bobine", "Condensateur"};  //tableau permettant la selection des elements des menus deroulants
-    JComboBox[] tableaumenu = new JComboBox[4]; // tableau de menu déroulants
+    ItemComposant[] tableaumenu = new ItemComposant[4]; // tableau de menu déroulants
     boolean[] estvertical = new boolean[4]; // tableau pour savoir si les menus sont sur un segment vertical ou non
     public JPanel Panneausysteme;
     public JPanel Panneaubouton;
@@ -98,30 +98,26 @@ public class FenetreA extends JFrame implements ActionListener{
         for (int i=0;i<4;i++){
 
             if(i==0){
-                tableaumenu[i] = new JComboBox(sourcestension);
-                tableaumenu[i].setBounds(40,Panneausysteme.getHeight()/2-50,100,50);
+                tableaumenu[i] = new ItemComposant(sourcestension);
+                tableaumenu[i].setLocation(40,Panneausysteme.getHeight()/2-50);
                 estvertical[i]=true;
             }else{
-                tableaumenu[i]= new JComboBox(autrescomposants);
+                tableaumenu[i]= new ItemComposant(autrescomposants);
                 if(i==1) {
-                    tableaumenu[i].setBounds(Panneausysteme.getWidth() / 2 - 50, 80, 110, 30); //composant d'en haut
+                    tableaumenu[i].setLocation(Panneausysteme.getWidth() / 2 - 50, 80); //composant d'en haut
                     estvertical[i]=false;
                 }
                 if(i==2){
-                    tableaumenu[i].setBounds(Panneausysteme.getWidth()/2+350,Panneausysteme.getHeight()/2-50,100,50); //composant de droite
+                    tableaumenu[i].setLocation(Panneausysteme.getWidth()/2+350,Panneausysteme.getHeight()/2-50); //composant de droite
                     estvertical[i]=true;
                 }
                 if(i==3){
-                    tableaumenu[i].setBounds(Panneausysteme.getWidth()/2-50,Panneausysteme.getHeight()/2+270,100,50); // composant d'en bas
+                    tableaumenu[i].setLocation(Panneausysteme.getWidth()/2-50,Panneausysteme.getHeight()/2+270); // composant d'en bas
                     estvertical[i]=false;
                 }
             }
             zonedessin.add(tableaumenu[i]);
         }
-
-        item = new ItemComposant(sourcestension);
-        item.setLocation(300,300);
-        zonedessin.add(item);
 
         //création panneau principal
 
@@ -155,12 +151,12 @@ public class FenetreA extends JFrame implements ActionListener{
 
     //methode qui remplace les menus deroulants par des dessins correspondants aux composants selectionnes
 
-    public void remplacemenu(JComboBox[] tab, boolean[]tab1){
+    public void remplacemenu(ItemComposant[] tab, boolean[]tab1){
 
 
         for (int j=0;j<tab.length;j++) {
 
-            if(tab[j].getSelectedItem().toString()=="Résistance"){
+            if(tab[j].getItem()=="Résistance"){
 
                 icone= new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("résistance.png")));
                 jlabel = new JLabel(icone);
@@ -177,7 +173,7 @@ public class FenetreA extends JFrame implements ActionListener{
 
             }
 
-            if(tab[j].getSelectedItem().toString()=="Bobine"){
+            if(tab[j].getItem()=="Bobine"){
 
                 icone= new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("bobines.png")));
                 jlabel = new JLabel(icone);
@@ -195,7 +191,7 @@ public class FenetreA extends JFrame implements ActionListener{
 
             }
 
-            if(tab[j].getSelectedItem().toString()=="Condensateur"){
+            if(tab[j].getItem()=="Condensateur"){
 
                 icone= new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("condo.png")));
                 jlabel = new JLabel(icone);
@@ -212,7 +208,7 @@ public class FenetreA extends JFrame implements ActionListener{
 
             }
 
-            if(tab[j].getSelectedItem().toString()=="source de 5V" || tab[j].getSelectedItem().toString()=="source de 12 V"){
+            if(tab[j].getItem()=="source de 5V" || tab[j].getItem()=="source de 12 V"){
 
                 icone= new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("sourceU.png")));
                 jlabel = new JLabel(icone);

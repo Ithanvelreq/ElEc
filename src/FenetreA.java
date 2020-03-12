@@ -27,10 +27,13 @@ public class FenetreA extends JFrame implements ActionListener{
     JComboBox[] tableaumenu = new JComboBox[4]; // tableau de menu déroulants
     boolean[] estvertical = new boolean[4]; // tableau pour savoir si les menus sont sur un segment vertical ou non
     public JPanel Panneausysteme;
+    public JPanel Panneaubouton;
     public ImageIcon icone;  // image qui doit s'afficher à la place des menus déroulants
     public JLabel jlabel;   //jlabel contenant l'image qui doit s'afficher
     public JLabel zonedessin;
     public ImageIcon imagefond;
+
+    public ItemComposant item;
 
     public FenetreA() {
 
@@ -63,7 +66,7 @@ public class FenetreA extends JFrame implements ActionListener{
 
         //création du panneau avec les boutons de configuration
 
-        JPanel Panneaubouton = new JPanel();
+        Panneaubouton = new JPanel();
         Panneaubouton.setBounds((int) l,0,(int) l1,hauteur);
         Panneaubouton.setLayout(null);
         Panneaubouton.setBackground(new Color(72, 79, 81));
@@ -101,7 +104,7 @@ public class FenetreA extends JFrame implements ActionListener{
             }else{
                 tableaumenu[i]= new JComboBox(autrescomposants);
                 if(i==1) {
-                    tableaumenu[i].setBounds(Panneausysteme.getWidth() / 2 - 50, 80, 100, 50); //composant d'en haut
+                    tableaumenu[i].setBounds(Panneausysteme.getWidth() / 2 - 50, 80, 110, 30); //composant d'en haut
                     estvertical[i]=false;
                 }
                 if(i==2){
@@ -115,6 +118,10 @@ public class FenetreA extends JFrame implements ActionListener{
             }
             zonedessin.add(tableaumenu[i]);
         }
+
+        item = new ItemComposant(sourcestension);
+        item.setLocation(300,300);
+        zonedessin.add(item);
 
         //création panneau principal
 

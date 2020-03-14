@@ -18,14 +18,16 @@ public class FenetreA extends JFrame implements ActionListener{
     double l= (double) 0.75*largeur;
     double l1= (double) 0.25*largeur;
 
+
+
     // declaration des widgets
 
     public JButton boutonvalider;
     public JButton boutonaffichage;
     public JButton boutonaffichage1;
-    String[] sourcestension = {"source de tension"};  //tableau permettant la selection des elements des menus deroulants
+    //String[] sourcestension = {"source de tension"};  //tableau permettant la selection des elements des menus deroulants
     String[] autrescomposants = {"Résistance", "Bobine", "Condensateur"};  //tableau permettant la selection des elements des menus deroulants
-    ItemComposant[] tableaumenu = new ItemComposant[4]; // tableau de menu déroulants
+    ItemElement[] tableaumenu = new ItemElement[4]; // tableau de menu déroulants
     boolean[] estvertical = new boolean[4]; // tableau pour savoir si les menus sont sur un segment vertical ou non
     public JPanel Panneausysteme; // JPanel dans lequel on insère les JCombobox, les JTextField et l'image du circuit
     public JPanel Panneaubouton;
@@ -33,7 +35,7 @@ public class FenetreA extends JFrame implements ActionListener{
     public JLabel jlabel;   //jlabel contenant l'image qui doit s'afficher
     public JLabel zonedessin;
     public ImageIcon imagefond; //image du circuit que l'on met en fond de Panneausysteme
-    JTextField[] tableauzonetexte = new JTextField[4];
+    JTextField[] tableauzonetexte = new JTextField[5];
 
     public FenetreA() {
 
@@ -93,70 +95,72 @@ public class FenetreA extends JFrame implements ActionListener{
         boutonaffichage1.addActionListener(this);
         Panneaubouton.add(boutonaffichage1);
 
+
         //affichage des menus déroulants
 
-        for (int i=0;i<4;i++){
-
-            if(i==0){
-                tableaumenu[i] = new ItemComposant(sourcestension);
-                tableaumenu[i].setLocation(50,Panneausysteme.getHeight()/2-50);
-                estvertical[i]=true;
-                tableauzonetexte[i]=tableaumenu[i].saisie; //on met le Jtext field du itemcomposant dans un tableau
-                tableauzonetexte[i].addKeyListener(new KeyAdapter() {
-                    public void keyTyped(KeyEvent e) { //on n'autorise que l'ecriture des chiffres
-                            if (e.getKeyChar()==VK_0 || e.getKeyChar()==VK_1 || e.getKeyChar()==VK_2 || e.getKeyChar()==VK_3 || e.getKeyChar()==VK_4 || e.getKeyChar()==VK_5 || e.getKeyChar()==VK_6|| e.getKeyChar()==VK_7|| e.getKeyChar()==VK_8|| e.getKeyChar()==VK_9 ) {
-                            }else{
-                                e.consume();
-                            }
-                    }
-
-                });
-
-            }else{
-                tableaumenu[i]= new ItemComposant(autrescomposants);
-                if(i==1) {
-                    tableaumenu[i].setLocation(Panneausysteme.getWidth() / 2 - 50, 81); //composant d'en haut
-                    estvertical[i]=false;
-                    tableauzonetexte[i]=tableaumenu[i].saisie; //on met le Jtext field du itemcomposant dans un tableau
-                    tableauzonetexte[i].addKeyListener(new KeyAdapter() {
-
-                        public void keyTyped(KeyEvent e) { //on n'autorise que l'ecriture des chiffres
-                                if (e.getKeyChar()==VK_0 || e.getKeyChar()==VK_1 || e.getKeyChar()==VK_2 || e.getKeyChar()==VK_3 || e.getKeyChar()==VK_4 || e.getKeyChar()==VK_5 || e.getKeyChar()==VK_6|| e.getKeyChar()==VK_7|| e.getKeyChar()==VK_8|| e.getKeyChar()==VK_9 ) {
-                                }else{
-                                    e.consume();
-                                }
-                        }
-                    });
-                }
-                if(i==2){
-                    tableaumenu[i].setLocation(Panneausysteme.getWidth()/2+358,Panneausysteme.getHeight()/2-50); //composant de droite
-                    estvertical[i]=true;
-                    tableauzonetexte[i]=tableaumenu[i].saisie; //on met le Jtext field du itemcomposant dans un tableau
-                    tableauzonetexte[i].addKeyListener(new KeyAdapter() {
-                        public void keyTyped(KeyEvent e) { //on n'autorise que l'ecriture des chiffres
-                            if (e.getKeyChar()==VK_0 || e.getKeyChar()==VK_1 || e.getKeyChar()==VK_2 || e.getKeyChar()==VK_3 || e.getKeyChar()==VK_4 || e.getKeyChar()==VK_5 || e.getKeyChar()==VK_6|| e.getKeyChar()==VK_7|| e.getKeyChar()==VK_8|| e.getKeyChar()==VK_9 ) {
-                            }else{
-                                e.consume();
-                            }
-                        }
-                    });
-                }
-                if(i==3){
-                    tableaumenu[i].setLocation(Panneausysteme.getWidth()/2-50,Panneausysteme.getHeight()/2+273); // composant d'en bas
-                    estvertical[i]=false;
-                    tableauzonetexte[i]=tableaumenu[i].saisie; //on met le Jtext field du itemcomposant dans un tableau
-                    tableauzonetexte[i].addKeyListener(new KeyAdapter() {
-                        public void keyTyped(KeyEvent e) { //on n'autorise que l'ecriture des chiffres
-                            if (e.getKeyChar()==VK_0 || e.getKeyChar()==VK_1 || e.getKeyChar()==VK_2 || e.getKeyChar()==VK_3 || e.getKeyChar()==VK_4 || e.getKeyChar()==VK_5 || e.getKeyChar()==VK_6|| e.getKeyChar()==VK_7|| e.getKeyChar()==VK_8|| e.getKeyChar()==VK_9 ) {
-                            }else{
-                                e.consume();
-                            }
-                        }
-                    });
+        tableaumenu[0] = new ItemGenerateur();
+        tableaumenu[0].setLocation(Panneausysteme.getWidth()/20,Panneausysteme.getHeight()/2-50);
+        estvertical[0]=true;
+        tableauzonetexte[0]=tableaumenu[0].getSaisieFreq(); //on met le Jtext field du itemcomposant dans un tableau
+        tableauzonetexte[1]=tableaumenu[0].getSaisieAmpl();
+        tableauzonetexte[0].addKeyListener(new KeyAdapter(){
+            public void keyTyped(KeyEvent e) { //on n'autorise que l'ecriture des chiffres
+                if (e.getKeyChar()==VK_0 || e.getKeyChar()==VK_1 || e.getKeyChar()==VK_2 || e.getKeyChar()==VK_3 || e.getKeyChar()==VK_4 || e.getKeyChar()==VK_5 || e.getKeyChar()==VK_6|| e.getKeyChar()==VK_7|| e.getKeyChar()==VK_8|| e.getKeyChar()==VK_9 ) {
+                }else{
+                    e.consume();
                 }
             }
+        });
+        tableauzonetexte[1].addKeyListener(new KeyAdapter(){
+            public void keyTyped(KeyEvent e) { //on n'autorise que l'ecriture des chiffres
+                if (e.getKeyChar()==VK_0 || e.getKeyChar()==VK_1 || e.getKeyChar()==VK_2 || e.getKeyChar()==VK_3 || e.getKeyChar()==VK_4 || e.getKeyChar()==VK_5 || e.getKeyChar()==VK_6|| e.getKeyChar()==VK_7|| e.getKeyChar()==VK_8|| e.getKeyChar()==VK_9 ) {
+                }else{
+                    e.consume();
+                }
+            }
+        });
+
+        tableaumenu[1]= new ItemComposant(autrescomposants);
+        tableaumenu[1].setLocation(Panneausysteme.getWidth() / 2 - 50, (int)(Panneausysteme.getHeight()/9.5)); //composant d'en haut
+        estvertical[1]=false;
+        tableauzonetexte[2]=tableaumenu[1].getSaisie(); //on met le Jtext field du itemcomposant dans un tableau
+        tableauzonetexte[2].addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) { //on n'autorise que l'ecriture des chiffres
+                if (e.getKeyChar()==VK_0 || e.getKeyChar()==VK_1 || e.getKeyChar()==VK_2 || e.getKeyChar()==VK_3 || e.getKeyChar()==VK_4 || e.getKeyChar()==VK_5 || e.getKeyChar()==VK_6|| e.getKeyChar()==VK_7|| e.getKeyChar()==VK_8|| e.getKeyChar()==VK_9 ) {
+                }else{
+                    e.consume();
+                }
+            }
+        });
+
+        tableaumenu[2].setLocation(Panneausysteme.getWidth()/2+358,Panneausysteme.getHeight()/2-50); //composant de droite
+        estvertical[2]=true;
+        tableauzonetexte[3]=tableaumenu[2].getSaisie(); //on met le Jtext field du itemcomposant dans un tableau
+        tableauzonetexte[3].addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) { //on n'autorise que l'ecriture des chiffres
+                if (e.getKeyChar()==VK_0 || e.getKeyChar()==VK_1 || e.getKeyChar()==VK_2 || e.getKeyChar()==VK_3 || e.getKeyChar()==VK_4 || e.getKeyChar()==VK_5 || e.getKeyChar()==VK_6|| e.getKeyChar()==VK_7|| e.getKeyChar()==VK_8|| e.getKeyChar()==VK_9 ) {
+                }else{
+                    e.consume();
+                }
+            }
+        });
+
+        tableaumenu[3].setLocation(Panneausysteme.getWidth()/2-50,Panneausysteme.getHeight()/2+273); // composant d'en bas
+        estvertical[3]=false;
+        tableauzonetexte[4]=tableaumenu[3].getSaisie(); //on met le Jtext field du itemcomposant dans un tableau
+        tableauzonetexte[4].addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) { //on n'autorise que l'ecriture des chiffres
+                if (e.getKeyChar()==VK_0 || e.getKeyChar()==VK_1 || e.getKeyChar()==VK_2 || e.getKeyChar()==VK_3 || e.getKeyChar()==VK_4 || e.getKeyChar()==VK_5 || e.getKeyChar()==VK_6|| e.getKeyChar()==VK_7|| e.getKeyChar()==VK_8|| e.getKeyChar()==VK_9 ) {
+                }else{
+                    e.consume();
+                }
+            }
+        });
+
+        for (int i=0;i<4;i++){
             zonedessin.add(tableaumenu[i]); //on ajoute l'ItemComposant' a la zone de dessin
         }
+
 
         //création panneau principal
 
@@ -188,7 +192,7 @@ public class FenetreA extends JFrame implements ActionListener{
             }
 
             boutonvalider.setVisible(true);
-            remplacemenu(tableaumenu, estvertical);
+            //remplacemenu(tableaumenu, estvertical);
             Panneausysteme.repaint();
 
         }

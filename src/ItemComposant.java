@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class ItemComposant extends JPanel implements MouseListener{
+public class ItemComposant extends ItemElement implements MouseListener{
 
     //attributs
     JLabel unite;
@@ -35,9 +35,13 @@ public class ItemComposant extends JPanel implements MouseListener{
     }
 
     //méthode
-    public String getItem(){
-        return menuComposant.getSelectedItem().toString();
-    }
+    public String getItem(){ return menuComposant.getSelectedItem().toString(); }
+    public JTextField getSaisie() { return saisie;}
+    public  JTextField getSaisieFreq(){void};
+
+    public JTextField getSaisieAmpl(){void};
+
+
 
     //méthode interface
     public void mouseClicked(MouseEvent e){

@@ -45,7 +45,7 @@ public class FenetreMain extends JFrame implements ActionListener{
 
             if (i<2) {
 
-                // on selectionne les images que l'on met dans les boutons (on mettra nos images plus tard)
+                // on selectionne les images que l'on met dans les boutons
 
                 if (i==0) {
                     tableaubouton[i] = new Boutonmodif("",(new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("imagecircuitRLC.png")))));
@@ -62,10 +62,10 @@ public class FenetreMain extends JFrame implements ActionListener{
                 // on selectionne les images que l'on met dans les boutons (on mettra nos images plus tard)
 
                 if (i==2) {
-                    tableaubouton[i] = new Boutonmodif("",(new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("imagecircuitRLC.png")))));
+                    tableaubouton[i] = new Boutonmodif("",(new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("circuitenparallele2.png")))));
                 }
                 if(i==3){
-                    tableaubouton[i] = new Boutonmodif("",(new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("circuitenparallele.png")))));
+                    tableaubouton[i] = new Boutonmodif("",(new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("circuitenparallele3.png")))));
                 }
                 tableaubouton[i].setBounds(10+((largeur/2)-10)*(i-2), ((hauteur/2)-10), (largeur/2)-20+((i-2)*10), (hauteur/2)-30);
                 tableaubouton[i].addActionListener(this);

@@ -50,6 +50,9 @@ public class ItemComposant extends JPanel implements MouseListener{
         if(menuComposant.getSelectedItem().toString()=="Condensateur"){
             unite.setText("micro F");
         }
+        if(menuComposant.getSelectedItem().toString()=="source de tension"){
+            unite.setText("V");
+        }
     }
     public void mouseExited(MouseEvent e){
         if(menuComposant.getSelectedItem().toString()=="Bobine"){
@@ -60,6 +63,9 @@ public class ItemComposant extends JPanel implements MouseListener{
         }
         if(menuComposant.getSelectedItem().toString()=="Condensateur"){
             unite.setText("micro F");
+        }
+        if(menuComposant.getSelectedItem().toString()=="source de tension"){
+            unite.setText("V");
         }
     }
     public void mouseReleased(MouseEvent e){}

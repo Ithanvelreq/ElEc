@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
+
 import static java.awt.event.KeyEvent.*;
 
 public class FenetreA extends JFrame implements ActionListener{
@@ -42,6 +43,7 @@ public class FenetreA extends JFrame implements ActionListener{
         this.setLocation(0,0);		//position de la fenêtre
         this.setVisible(false);			//visibilité de la fenêtre
         this.setTitle("circuit 1");     //titre
+        this.setBackground(new Color(228,229,230));
 
         // permet d'afficher la fenêtre en plein écran
 
@@ -59,13 +61,20 @@ public class FenetreA extends JFrame implements ActionListener{
         Panneausysteme.setBackground(new Color(228,229,230));
 
         imagefond = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("circuitnumero1.png")));
+
+        //code ajoute ci-dessous
+
+        Image image = imagefond.getImage().getScaledInstance((int) l, hauteur, Image.SCALE_SMOOTH);
+        imagefond = new ImageIcon(image, imagefond.getDescription());
+
+        // il reste a modifier les emplacements dapparition des composants en bas
+
         zonedessin = new JLabel(imagefond);
         zonedessin.setLayout(null);
-        System.out.println(imagefond.getIconHeight());
-        System.out.println(imagefond.getIconWidth());
         zonedessin.setBounds(0,0,(int) l,hauteur);
         zonedessin.setVisible(true);
         Panneausysteme.add(zonedessin);
+
 
         //création du panneau avec les boutons de configuration
 
@@ -102,7 +111,7 @@ public class FenetreA extends JFrame implements ActionListener{
 
             if(i==0){
                 tableaumenu[i] = new ItemComposant(sourcestension);
-                tableaumenu[i].setLocation(50,Panneausysteme.getHeight()/2-50);
+                tableaumenu[i].setLocation(Panneausysteme.getWidth()/20,Panneausysteme.getHeight()/2-50);
                 estvertical[i]=true;
                 tableauzonetexte[i]=tableaumenu[i].saisie; //on met le Jtext field du itemcomposant dans un tableau
                 tableauzonetexte[i].addKeyListener(new KeyAdapter() {
@@ -118,7 +127,7 @@ public class FenetreA extends JFrame implements ActionListener{
             }else{
                 tableaumenu[i]= new ItemComposant(autrescomposants);
                 if(i==1) {
-                    tableaumenu[i].setLocation(Panneausysteme.getWidth() / 2 - 50, 81); //composant d'en haut
+                    tableaumenu[i].setLocation(Panneausysteme.getWidth() / 2 - 50, (int)(Panneausysteme.getHeight()/13.5)); //composant d'en haut
                     estvertical[i]=false;
                     tableauzonetexte[i]=tableaumenu[i].saisie; //on met le Jtext field du itemcomposant dans un tableau
                     tableauzonetexte[i].addKeyListener(new KeyAdapter() {
@@ -145,7 +154,7 @@ public class FenetreA extends JFrame implements ActionListener{
                     });
                 }
                 if(i==3){
-                    tableaumenu[i].setLocation(Panneausysteme.getWidth()/2-50,Panneausysteme.getHeight()/2+273); // composant d'en bas
+                    tableaumenu[i].setLocation(Panneausysteme.getWidth()/2-50,(int)(Panneausysteme.getHeight()-84)); // composant d'en bas
                     estvertical[i]=false;
                     tableauzonetexte[i]=tableaumenu[i].saisie; //on met le Jtext field du itemcomposant dans un tableau
                     tableauzonetexte[i].addKeyListener(new KeyAdapter() {
@@ -216,7 +225,7 @@ public class FenetreA extends JFrame implements ActionListener{
                 icone= new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("résistance.png")));
                 jlabel = new JLabel(icone);
                 jlabel.setLayout(null);
-                jlabel.setBounds(tab[j].getX(),tab[j].getY(),300,50);
+                jlabel.setBounds(tab[j].getX(),tab[j].getY()-1,300,50);
                 jlabel.setVisible(true);
                 tab[j].setVisible(false);
                 zonedessin.add(jlabel);
@@ -302,5 +311,6 @@ public class FenetreA extends JFrame implements ActionListener{
         lelabel.setIcon(new ImageIcon(DaImage));
     }
 
-
 }
+
+

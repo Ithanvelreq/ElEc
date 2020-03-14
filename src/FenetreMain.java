@@ -18,6 +18,7 @@ public class FenetreMain extends JFrame implements ActionListener{
 
     public FenetreMain(){
 
+        setTitle("Sélectionnez la disposition de circuit à étudier");
         setSize(largeur,hauteur);			// taille de la fenêtre
         setLocation(0,0);		//position de la fenêtre
         setVisible(true);			//visibilité de la fenêtre

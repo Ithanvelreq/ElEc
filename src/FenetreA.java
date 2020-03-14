@@ -17,12 +17,13 @@ public class FenetreA extends JFrame implements ActionListener{
 
     double l= (double) 0.75*largeur;
     double l1= (double) 0.25*largeur;
+    double h1= (double) 0.75*hauteur;
 
     // declaration des widgets
 
     public JButton boutonvalider;
-    public JButton boutonaffichage;
     public JButton boutonaffichage1;
+    public JButton boutonareinit;
     String[] sourcestension = {"source de tension"};  //tableau permettant la selection des elements des menus deroulants
     String[] autrescomposants = {"Résistance", "Bobine", "Condensateur"};  //tableau permettant la selection des elements des menus deroulants
     ItemComposant[] tableaumenu = new ItemComposant[4]; // tableau de menu déroulants
@@ -30,7 +31,7 @@ public class FenetreA extends JFrame implements ActionListener{
     public JPanel Panneausysteme; // JPanel dans lequel on insère les JCombobox, les JTextField et l'image du circuit
     public JPanel Panneaubouton;
     public ImageIcon icone;  // image qui doit s'afficher à la place des menus déroulants
-    public JLabel jlabel;   //jlabel contenant l'image qui doit s'afficher
+    public JLabel jlabel;   // jlabel contenant l'image qui doit s'afficher
     public JLabel zonedessin;
     public ImageIcon imagefond; //image du circuit que l'on met en fond de Panneausysteme
     JTextField[] tableauzonetexte = new JTextField[4];
@@ -60,6 +61,8 @@ public class FenetreA extends JFrame implements ActionListener{
         imagefond = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("circuitnumero1.png")));
         zonedessin = new JLabel(imagefond);
         zonedessin.setLayout(null);
+        System.out.println(imagefond.getIconHeight());
+        System.out.println(imagefond.getIconWidth());
         zonedessin.setBounds(0,0,(int) l,hauteur);
         zonedessin.setVisible(true);
         Panneausysteme.add(zonedessin);
@@ -71,27 +74,27 @@ public class FenetreA extends JFrame implements ActionListener{
         Panneaubouton.setLayout(null);
         Panneaubouton.setBackground(new Color(72, 79, 81));
 
-        boutonvalider = new JButton("Valider");
-        boutonvalider.setBounds(Panneaubouton.getWidth()/4,10,200,50);
+        boutonvalider = new JButton("Afficher les résultats");
+        boutonvalider.setBounds(70,(int)(h1)-150,200,50);
         boutonvalider.setBackground(Color.gray);
         boutonvalider.setForeground(Color.white);
         boutonvalider.addActionListener(this);
         Panneaubouton.add(boutonvalider);
         boutonvalider.setVisible(false);
 
-        boutonaffichage = new JButton("Afficher les résultats");
-        boutonaffichage.setBounds(Panneaubouton.getWidth()/4,100,200,50);
-        boutonaffichage.setBackground(Color.gray);
-        boutonaffichage.setForeground(Color.white);
-        boutonaffichage.addActionListener(this);
-        Panneaubouton.add(boutonaffichage);
-
         boutonaffichage1 = new JButton("Valider les composants");
-        boutonaffichage1.setBounds(Panneaubouton.getWidth()/4,200,200,50);
+        boutonaffichage1.setBounds(70,(int)(h1)+50,200,50);
         boutonaffichage1.setBackground(Color.gray);
         boutonaffichage1.setForeground(Color.white);
         boutonaffichage1.addActionListener(this);
         Panneaubouton.add(boutonaffichage1);
+
+        boutonareinit = new JButton("Réinitialiser");
+        boutonareinit.setBounds(70,(int)(h1)-50,200,50);
+        boutonareinit.setBackground(Color.gray);
+        boutonareinit.setForeground(Color.white);
+        boutonareinit.addActionListener(this);
+        Panneaubouton.add(boutonareinit);
 
         //affichage des menus déroulants
 
@@ -190,6 +193,12 @@ public class FenetreA extends JFrame implements ActionListener{
             boutonvalider.setVisible(true);
             remplacemenu(tableaumenu, estvertical);
             Panneausysteme.repaint();
+
+        }
+
+        if (e.getSource()==boutonvalider) {
+
+            // aficher une fenetre avec les resultats
 
         }
 

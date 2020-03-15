@@ -27,7 +27,7 @@ public class FenetreA extends JFrame implements ActionListener{
     public JButton boutonreinit;
     String[] sourcestension = {"source de tension"};  //tableau permettant la selection des elements des menus deroulants
     String[] autrescomposants = {"Résistance", "Bobine", "Condensateur"};  //tableau permettant la selection des elements des menus deroulants
-    ItemComposant[] tableaumenu = new ItemComposant[4]; // tableau de menu déroulants
+    public static ItemComposant[] tableaumenu = new ItemComposant[4]; // tableau de menu déroulants
     JLabel[] tabjlab = new JLabel[4]; // tableau de JLabel
     boolean[] estvertical = new boolean[4]; // tableau pour savoir si les menus sont sur un segment vertical ou non
     public JPanel Panneausysteme; // JPanel dans lequel on insère les JCombobox, les JTextField et l'image du circuit

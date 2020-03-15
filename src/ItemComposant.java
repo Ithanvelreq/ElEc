@@ -68,6 +68,30 @@ public class ItemComposant extends JPanel implements MouseListener{
             unite.setText("V");
         }
     }
+
+
+    // permet de récupérer les caractéristiques du composant choisi
+    /*public Dipole RenvoiComposant(String item){
+        if (item == "Resistance"){
+            Impedance z = new Impedance(Double.parseDouble(-saisie.getText()),0.0);
+            Resistance r =new Resistance(z,"r");
+            return r;
+        }
+        if (item == "Condensateur"){
+            Impedance z = new Impedance(0,1/(saisie.getText()));
+            Condensateur c = new Condensateur(z,"c");
+            return c;
+        }
+        if (item == "Bobine") {
+            Impedance z = new Impedance(0,-saisie.getText());
+            Bobine b = new Bobine(z, "b");
+            return b;
+        }
+
+
+    }*/
+
+
     public void mouseReleased(MouseEvent e){}
     public void mouseEntered(MouseEvent e){}
     public void mousePressed(MouseEvent e){}

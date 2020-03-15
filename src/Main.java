@@ -13,7 +13,6 @@ public class Main {
         composants.add(C1);
         composants.add(e);
 
-        Circuit circuitA = new CircuitA(composants);
 
         FenetreMain FenetrePrincipale = new FenetreMain();
 

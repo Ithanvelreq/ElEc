@@ -1,11 +1,11 @@
 import java.util.LinkedList;
 
 public class Maille {
-    private LinkedList<Composant> composants = new LinkedList<>();
+    public LinkedList<ItemComposant> Icomposants = new LinkedList<>();
 
-    public Maille(LinkedList<Composant> comp) {
-        for (Composant c : comp) {
-            composants.add(c);
+    public Maille(LinkedList<ItemComposant> comp) {
+        for (ItemComposant c : comp) {
+            Icomposants.add(c);
         }
     }
 }

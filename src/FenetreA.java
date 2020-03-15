@@ -18,6 +18,7 @@ public class FenetreA extends JFrame implements ActionListener{
     double l= (double) 0.75*largeur;
     double l1= (double) 0.25*largeur;
     double h1= (double) 0.75*hauteur;
+    double h=(double) 0.25*hauteur;
 
     // declaration des widgets
 

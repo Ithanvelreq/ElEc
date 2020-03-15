@@ -200,8 +200,8 @@ public class FenetreB extends JFrame implements ActionListener{
 
         if (e.getSource()==boutonvalider) {
 
-            Fenetreoscillo oscillo = new Fenetreoscillo();
-            oscillo.setVisible(true);
+            //Fenetreoscillo oscillo = new Fenetreoscillo();
+            //oscillo.setVisible(true);
 
         }
 

@@ -3,7 +3,6 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
-
 import static java.awt.event.KeyEvent.*;
 
 public class FenetreA extends JFrame implements ActionListener{
@@ -24,18 +23,19 @@ public class FenetreA extends JFrame implements ActionListener{
 
     public JButton boutonvalider;
     public JButton boutonaffichage1;
-    public JButton boutonareinit;
+    public JButton boutonreinit;
     String[] sourcestension = {"source de tension"};  //tableau permettant la selection des elements des menus deroulants
     String[] autrescomposants = {"Résistance", "Bobine", "Condensateur"};  //tableau permettant la selection des elements des menus deroulants
     ItemComposant[] tableaumenu = new ItemComposant[4]; // tableau de menu déroulants
+    JLabel[] tabjlab = new JLabel[4]; // tableau de JLabel
     boolean[] estvertical = new boolean[4]; // tableau pour savoir si les menus sont sur un segment vertical ou non
     public JPanel Panneausysteme; // JPanel dans lequel on insère les JCombobox, les JTextField et l'image du circuit
     public JPanel Panneaubouton;
     public ImageIcon icone;  // image qui doit s'afficher à la place des menus déroulants
-    public JLabel jlabel;   // jlabel contenant l'image qui doit s'afficher
     public JLabel zonedessin;
     public ImageIcon imagefond; //image du circuit que l'on met en fond de Panneausysteme
     JTextField[] tableauzonetexte = new JTextField[4];
+    boolean composantvalide=false;
 
     public FenetreA() {
 
@@ -67,7 +67,7 @@ public class FenetreA extends JFrame implements ActionListener{
         Image image = imagefond.getImage().getScaledInstance((int) l, hauteur, Image.SCALE_SMOOTH);
         imagefond = new ImageIcon(image, imagefond.getDescription());
 
-        // il reste a modifier les emplacements dapparition des composants en bas
+        // il reste a modifier les emplacements dapparition des composants en bas pour les fenetres B C et D
 
         zonedessin = new JLabel(imagefond);
         zonedessin.setLayout(null);
@@ -98,12 +98,12 @@ public class FenetreA extends JFrame implements ActionListener{
         boutonaffichage1.addActionListener(this);
         Panneaubouton.add(boutonaffichage1);
 
-        boutonareinit = new JButton("Réinitialiser");
-        boutonareinit.setBounds(70,(int)(h1)-50,200,50);
-        boutonareinit.setBackground(Color.gray);
-        boutonareinit.setForeground(Color.white);
-        boutonareinit.addActionListener(this);
-        Panneaubouton.add(boutonareinit);
+        boutonreinit = new JButton("Réinitialiser");
+        boutonreinit.setBounds(70,(int)(h1)-50,200,50);
+        boutonreinit.setBackground(Color.gray);
+        boutonreinit.setForeground(Color.white);
+        boutonreinit.addActionListener(this);
+        Panneaubouton.add(boutonreinit);
 
         //affichage des menus déroulants
 
@@ -111,7 +111,7 @@ public class FenetreA extends JFrame implements ActionListener{
 
             if(i==0){
                 tableaumenu[i] = new ItemComposant(sourcestension);
-                tableaumenu[i].setLocation(Panneausysteme.getWidth()/20,Panneausysteme.getHeight()/2-50);
+                tableaumenu[i].setLocation(Panneausysteme.getWidth()/20,(int)(Panneausysteme.getHeight()*0.435));
                 estvertical[i]=true;
                 tableauzonetexte[i]=tableaumenu[i].saisie; //on met le Jtext field du itemcomposant dans un tableau
                 tableauzonetexte[i].addKeyListener(new KeyAdapter() {
@@ -127,7 +127,7 @@ public class FenetreA extends JFrame implements ActionListener{
             }else{
                 tableaumenu[i]= new ItemComposant(autrescomposants);
                 if(i==1) {
-                    tableaumenu[i].setLocation(Panneausysteme.getWidth() / 2 - 50, (int)(Panneausysteme.getHeight()/13.5)); //composant d'en haut
+                    tableaumenu[i].setLocation((int)(Panneausysteme.getWidth()*0.452), (int)(Panneausysteme.getHeight()/13.5)); //composant d'en haut
                     estvertical[i]=false;
                     tableauzonetexte[i]=tableaumenu[i].saisie; //on met le Jtext field du itemcomposant dans un tableau
                     tableauzonetexte[i].addKeyListener(new KeyAdapter() {
@@ -141,7 +141,7 @@ public class FenetreA extends JFrame implements ActionListener{
                     });
                 }
                 if(i==2){
-                    tableaumenu[i].setLocation(Panneausysteme.getWidth()/2+358,Panneausysteme.getHeight()/2-50); //composant de droite
+                    tableaumenu[i].setLocation((int)(Panneausysteme.getWidth()*0.85),(int)(Panneausysteme.getHeight()*0.435)); //composant de droite
                     estvertical[i]=true;
                     tableauzonetexte[i]=tableaumenu[i].saisie; //on met le Jtext field du itemcomposant dans un tableau
                     tableauzonetexte[i].addKeyListener(new KeyAdapter() {
@@ -154,7 +154,7 @@ public class FenetreA extends JFrame implements ActionListener{
                     });
                 }
                 if(i==3){
-                    tableaumenu[i].setLocation(Panneausysteme.getWidth()/2-50,(int)(Panneausysteme.getHeight()-84)); // composant d'en bas
+                    tableaumenu[i].setLocation((int)(Panneausysteme.getWidth()*0.452),(int)(Panneausysteme.getHeight()-84)); // composant d'en bas
                     estvertical[i]=false;
                     tableauzonetexte[i]=tableaumenu[i].saisie; //on met le Jtext field du itemcomposant dans un tableau
                     tableauzonetexte[i].addKeyListener(new KeyAdapter() {
@@ -200,6 +200,7 @@ public class FenetreA extends JFrame implements ActionListener{
             }
 
             boutonvalider.setVisible(true);
+            composantvalide=true;
             remplacemenu(tableaumenu, estvertical);
             Panneausysteme.repaint();
 
@@ -207,8 +208,23 @@ public class FenetreA extends JFrame implements ActionListener{
 
         if (e.getSource()==boutonvalider) {
 
-            // aficher une fenetre avec les resultats
+            Fenetreoscillo oscillo = new Fenetreoscillo();
+            oscillo.setVisible(true);
 
+        }
+
+        if (e.getSource()==boutonreinit) {
+
+            if (composantvalide==true){
+                boutonvalider.setVisible(false);
+                for (int k = 0; k < 4; k++) {
+
+                    tabjlab[k].setVisible(false);
+                    tableaumenu[k].setVisible(true);
+
+                }
+            }
+            composantvalide=false;
         }
 
     }
@@ -223,16 +239,16 @@ public class FenetreA extends JFrame implements ActionListener{
             if(tab[j].getItem()=="Résistance"){
 
                 icone= new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("résistance.png")));
-                jlabel = new JLabel(icone);
-                jlabel.setLayout(null);
-                jlabel.setBounds(tab[j].getX(),tab[j].getY()-1,300,50);
-                jlabel.setVisible(true);
+                tabjlab[j] = new JLabel(icone);
+                tabjlab[j].setLayout(null);
+                tabjlab[j].setBounds(tab[j].getX(),tab[j].getY()-1,300,50);
+                tabjlab[j].setVisible(true);
                 tab[j].setVisible(false);
-                zonedessin.add(jlabel);
+                zonedessin.add(tabjlab[j]);
 
                 if(tab1[j]==true){
-                    tourneimage(90,jlabel,icone);
-                    jlabel.setBounds(tab[j].getX(),tab[j].getY(),50,300);
+                    tourneimage(90,tabjlab[j],icone);
+                    tabjlab[j].setBounds(tab[j].getX(),tab[j].getY(),50,300);
                 }
 
             }
@@ -240,34 +256,33 @@ public class FenetreA extends JFrame implements ActionListener{
             if(tab[j].getItem()=="Bobine"){
 
                 icone= new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("bobines.png")));
-                jlabel = new JLabel(icone);
-                jlabel.setLayout(null);
-                jlabel.setBounds(tab[j].getX(),tab[j].getY()-5,300,50);
-                jlabel.setVisible(true);
+                tabjlab[j] = new JLabel(icone);
+                tabjlab[j].setLayout(null);
+                tabjlab[j].setBounds(tab[j].getX(),tab[j].getY()-5,300,50);
+                tabjlab[j].setVisible(true);
                 tab[j].setVisible(false);
-                zonedessin.add(jlabel);
+                zonedessin.add(tabjlab[j]);
 
                 if(tab1[j]==true){
-                    tourneimage(90,jlabel,icone);
-                    jlabel.setBounds(tab[j].getX()+6,tab[j].getY(),50,300);
+                    tourneimage(90,tabjlab[j],icone);
+                    tabjlab[j].setBounds(tab[j].getX()+6,tab[j].getY(),50,300);
                 }
-
 
             }
 
             if(tab[j].getItem()=="Condensateur"){
 
                 icone= new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("condo.png")));
-                jlabel = new JLabel(icone);
-                jlabel.setLayout(null);
-                jlabel.setBounds(tab[j].getX(),tab[j].getY()+1,300,50);
-                jlabel.setVisible(true);
+                tabjlab[j] = new JLabel(icone);
+                tabjlab[j].setLayout(null);
+                tabjlab[j].setBounds(tab[j].getX(),tab[j].getY()+1,300,50);
+                tabjlab[j].setVisible(true);
                 tab[j].setVisible(false);
-                zonedessin.add(jlabel);
+                zonedessin.add(tabjlab[j]);
 
                 if(tab1[j]==true){
-                    tourneimage(90,jlabel,icone);
-                    jlabel.setBounds(tab[j].getX(),tab[j].getY(),50,300);
+                    tourneimage(90,tabjlab[j],icone);
+                    tabjlab[j].setBounds(tab[j].getX(),tab[j].getY(),50,300);
                 }
 
             }
@@ -275,16 +290,16 @@ public class FenetreA extends JFrame implements ActionListener{
             if(tab[j].getItem()=="source de tension"){
 
                 icone= new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("sourceU.png")));
-                jlabel = new JLabel(icone);
-                jlabel.setLayout(null);
-                jlabel.setBounds(tab[j].getX()+1,tab[j].getY(),300,50);
-                jlabel.setVisible(true);
+                tabjlab[j] = new JLabel(icone);
+                tabjlab[j].setLayout(null);
+                tabjlab[j].setBounds(tab[j].getX()+1,tab[j].getY(),300,50);
+                tabjlab[j].setVisible(true);
                 tab[j].setVisible(false);
-                zonedessin.add(jlabel);
+                zonedessin.add(tabjlab[j]);
 
                 if(tab1[j]==true){
-                    tourneimage(90,jlabel,icone);
-                    jlabel.setBounds(tab[j].getX(),tab[j].getY(),50,300);
+                    tourneimage(90,tabjlab[j],icone);
+                    tabjlab[j].setBounds(tab[j].getX(),tab[j].getY(),50,300);
                 }
 
             }

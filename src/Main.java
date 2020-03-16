@@ -13,7 +13,6 @@ public class Main {
         composants.add(C1);
         composants.add(e);
 
-        Circuit circuitA = new CircuitA(composants);
 
         FenetreMain FenetrePrincipale = new FenetreMain();
 
@@ -36,8 +35,6 @@ public class Main {
         for(int i = 0; i<d.length; i++){
             System.out.println(d[i][0]);
         }
-
-
 
 
 

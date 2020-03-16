@@ -34,19 +34,19 @@ public class Impedance {
 	}
 
 	//setter
-	private void setRho(double x){
+	public void setRho(double x){
 		this.Rho = x;
 		majCart();
 	}
-	private void setTheta(double x){
+	public void setTheta(double x){
 		this.Theta = x;
 		majCart();
 	}
-	private void setRe (double x){
+	public void setRe (double x){
 		this.re = x;
 		majPolaire();
 	}
-	private void setIm (double x){
+	public void setIm (double x){
 		this.im = x;
 		majPolaire();
 	}

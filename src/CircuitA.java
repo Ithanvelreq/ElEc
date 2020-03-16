@@ -3,22 +3,18 @@ import java.util.LinkedList;
 public class CircuitA extends Circuit {
 
     //ajout de tableaux pour stocker les équations
-    /*public String[] eq1 = new String[4];
-    LinkedList<ItemComposant> compA = new LinkedList<>();
+    public String[] eq1 = new String[4];
+    Dipole a = new Dipole();
 
-
-    public CircuitA() {
-
-        for(int i;i<4;i++){
-            compA.add(FenetreA.tableaumenu[i]);
-
-        }
+    public CircuitA(ItemComposant[] compA) {
         super(compA);
         mailles.add(new Maille(compA));
+        eq1[0]= String.valueOf(compA[0].saisie);
         for(int i=1;i<4;i++){
-            eq1[i]=mailles.get(0).Icomposants.get(i).RenvoiComposant((String[])(mailles.get(0).Icomposants.get(i).menuComposant.getSelectedItem()));
+            a=compA[i].RenvoiComposant(compA[i].getItem());
+            eq1[i]= String.valueOf(a.z.module());
         }
-    }*/
+    }
 
 
 

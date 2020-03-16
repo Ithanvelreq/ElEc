@@ -46,7 +46,7 @@ public class ItemComposant extends ItemElement implements MouseListener{
     }
 
     //méthode
-    public String getItem(){ return menuComposant.getSelectedItem().toString(); }
+    public String getComposant(){ return menuComposant.getSelectedItem().toString(); }
 
     //méthode interface
     public void mouseClicked(MouseEvent e){

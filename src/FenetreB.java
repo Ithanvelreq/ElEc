@@ -25,14 +25,14 @@ public class FenetreB extends JFrame implements ActionListener{
     public JButton boutonaffichage1;
     String[] sourcestension = {"source de tension"};  //tableau permettant la selection des elements des menus deroulants
     String[] autrescomposants = {"Résistance", "Bobine", "Condensateur"};  //tableau permettant la selection des elements des menus deroulants
-    ItemComposant[] tableaumenu = new ItemComposant[4]; // tableau de menu déroulants
+    ItemElement[] tableaumenu = new ItemElement[4]; // tableau de menu déroulants
     boolean[] estvertical = new boolean[4]; // tableau pour savoir si les menus sont sur un segment vertical ou non
     public JPanel Panneausysteme; // JPanel dans lequel on insère les JCombobox, les JTextField et l'image du circuit
     public ImageIcon icone;  // image qui doit s'afficher à la place des menus déroulants
     public JLabel jlabel;   //jlabel contenant l'image qui doit s'afficher
     public JLabel zonedessin;
     public ImageIcon imagefond; //image du circuit que l'on met en fond de Panneausysteme
-    JTextField[] tableauzonetexte = new JTextField[4];
+    JTextField[] tableauzonetexte;
 
     public FenetreB() {
 
@@ -94,68 +94,28 @@ public class FenetreB extends JFrame implements ActionListener{
 
         //affichage des menus déroulants
 
-        for (int i=0;i<4;i++){
+        tableaumenu[0] = new ItemGenerateur();
+        tableaumenu[0].setLocation(40,Panneausysteme.getHeight()/2-50);
+        estvertical[0]=true;
 
-            if(i==0){
-                tableaumenu[i] = new ItemComposant(sourcestension);
-                tableaumenu[i].setLocation(40,Panneausysteme.getHeight()/2-50);
-                estvertical[i]=true;
-                tableauzonetexte[i]=tableaumenu[i].saisie; //on met le Jtext field du itemcomposant dans un tableau
-                tableauzonetexte[i].addKeyListener(new KeyAdapter() {
-                    public void keyTyped(KeyEvent e) { //on n'autorise que l'ecriture des chiffres
-                        if (e.getKeyChar()==VK_0 || e.getKeyChar()==VK_1 || e.getKeyChar()==VK_2 || e.getKeyChar()==VK_3 || e.getKeyChar()==VK_4 || e.getKeyChar()==VK_5 || e.getKeyChar()==VK_6|| e.getKeyChar()==VK_7|| e.getKeyChar()==VK_8|| e.getKeyChar()==VK_9 ) {
-                        }else{
-                            e.consume();
-                        }
-                    }
+        tableaumenu[1]= new ItemComposant(autrescomposants);
+        tableaumenu[1].setLocation(Panneausysteme.getWidth() / 2 - 250, 81); //composant d'en haut
+        estvertical[1]=false;
 
-                });
+        tableaumenu[2]= new ItemComposant(autrescomposants);
+        tableaumenu[2].setLocation(Panneausysteme.getWidth()/2+334,Panneausysteme.getHeight()/2-50); //composant de droite
+        estvertical[2]=true;
 
-            }else{
-                tableaumenu[i]= new ItemComposant(autrescomposants);
-                if(i==1) {
-                    tableaumenu[i].setLocation(Panneausysteme.getWidth() / 2 - 250, 81); //composant d'en haut
-                    estvertical[i]=false;
-                    tableauzonetexte[i]=tableaumenu[i].saisie; //on met le Jtext field du itemcomposant dans un tableau
-                    tableauzonetexte[i].addKeyListener(new KeyAdapter() {
+        tableaumenu[3]= new ItemComposant(autrescomposants);
+        tableaumenu[3].setLocation(Panneausysteme.getWidth()/2-49,Panneausysteme.getHeight()/2-50); // composant du milieu
+        estvertical[3]=true;
 
-                        public void keyTyped(KeyEvent e) { //on n'autorise que l'ecriture des chiffres
-                            if (e.getKeyChar()==VK_0 || e.getKeyChar()==VK_1 || e.getKeyChar()==VK_2 || e.getKeyChar()==VK_3 || e.getKeyChar()==VK_4 || e.getKeyChar()==VK_5 || e.getKeyChar()==VK_6|| e.getKeyChar()==VK_7|| e.getKeyChar()==VK_8|| e.getKeyChar()==VK_9 ) {
-                            }else{
-                                e.consume();
-                            }
-                        }
-                    });
-                }
-                if(i==2){
-                    tableaumenu[i].setLocation(Panneausysteme.getWidth()/2+334,Panneausysteme.getHeight()/2-50); //composant de droite
-                    estvertical[i]=true;
-                    tableauzonetexte[i]=tableaumenu[i].saisie; //on met le Jtext field du itemcomposant dans un tableau
-                    tableauzonetexte[i].addKeyListener(new KeyAdapter() {
-                        public void keyTyped(KeyEvent e) { //on n'autorise que l'ecriture des chiffres
-                            if (e.getKeyChar()==VK_0 || e.getKeyChar()==VK_1 || e.getKeyChar()==VK_2 || e.getKeyChar()==VK_3 || e.getKeyChar()==VK_4 || e.getKeyChar()==VK_5 || e.getKeyChar()==VK_6|| e.getKeyChar()==VK_7|| e.getKeyChar()==VK_8|| e.getKeyChar()==VK_9 ) {
-                            }else{
-                                e.consume();
-                            }
-                        }
-                    });
-                }
-                if(i==3){
-                    tableaumenu[i].setLocation(Panneausysteme.getWidth()/2-49,Panneausysteme.getHeight()/2-50); // composant du milieu
-                    estvertical[i]=true;
-                    tableauzonetexte[i]=tableaumenu[i].saisie; //on met le Jtext field du itemcomposant dans un tableau
-                    tableauzonetexte[i].addKeyListener(new KeyAdapter() {
-                        public void keyTyped(KeyEvent e) { //on n'autorise que l'ecriture des chiffres
-                            if (e.getKeyChar()==VK_0 || e.getKeyChar()==VK_1 || e.getKeyChar()==VK_2 || e.getKeyChar()==VK_3 || e.getKeyChar()==VK_4 || e.getKeyChar()==VK_5 || e.getKeyChar()==VK_6|| e.getKeyChar()==VK_7|| e.getKeyChar()==VK_8|| e.getKeyChar()==VK_9 ) {
-                            }else{
-                                e.consume();
-                            }
-                        }
-                    });
-                }
-            }
-            zonedessin.add(tableaumenu[i]); //on ajoute l'ItemComposant' a la zone de dessin
+        for (ItemElement i : tableaumenu){
+            zonedessin.add(i); //on ajoute l'ItemComposant à la zone de dessin
         }
+
+        //on regroupe tous les JTextFields dans un tableau pour faciliter la manipulation
+        tableauzonetexte = this.regrouperJTextField(tableaumenu.length+1);
 
         //création panneau principal
 
@@ -196,63 +156,62 @@ public class FenetreB extends JFrame implements ActionListener{
 
     //methode qui remplace les menus deroulants par des dessins correspondants aux composants selectionnes
 
-    public void remplacemenu(ItemComposant[] tab, boolean[]tab1){
+    public void remplacemenu(ItemElement[] tab, boolean[]tab1){
 
 
         for (int j=0;j<tab.length;j++) {
+            if(tab[j] instanceof ItemComposant) {
+                ItemComposant x = (ItemComposant) tab[j];
+                if (x.getComposant() == "Résistance") {
 
-            if(tab[j].getItem()=="Résistance"){
+                    icone = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("résistance.png")));
+                    jlabel = new JLabel(icone);
+                    jlabel.setLayout(null);
+                    jlabel.setBounds(tab[j].getX(), tab[j].getY() - 1, 300, 50);
+                    jlabel.setVisible(true);
+                    tab[j].setVisible(false);
+                    zonedessin.add(jlabel);
 
-                icone= new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("résistance.png")));
-                jlabel = new JLabel(icone);
-                jlabel.setLayout(null);
-                jlabel.setBounds(tab[j].getX(),tab[j].getY()-1,300,50);
-                jlabel.setVisible(true);
-                tab[j].setVisible(false);
-                zonedessin.add(jlabel);
-
-                if(tab1[j]==true){
-                    tourneimage(90,jlabel,icone);
-                    jlabel.setBounds(tab[j].getX()+25,tab[j].getY(),50,300);
+                    if (tab1[j] == true) {
+                        tourneimage(90, jlabel, icone);
+                        jlabel.setBounds(tab[j].getX() + 25, tab[j].getY(), 50, 300);
+                    }
                 }
 
-            }
+                if (x.getComposant() == "Bobine") {
 
-            if(tab[j].getItem()=="Bobine"){
+                    icone = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("bobines.png")));
+                    jlabel = new JLabel(icone);
+                    jlabel.setLayout(null);
+                    jlabel.setBounds(tab[j].getX(), tab[j].getY() - 6, 300, 50);
+                    jlabel.setVisible(true);
+                    tab[j].setVisible(false);
+                    zonedessin.add(jlabel);
 
-                icone= new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("bobines.png")));
-                jlabel = new JLabel(icone);
-                jlabel.setLayout(null);
-                jlabel.setBounds(tab[j].getX(),tab[j].getY()-6,300,50);
-                jlabel.setVisible(true);
-                tab[j].setVisible(false);
-                zonedessin.add(jlabel);
-
-                if(tab1[j]==true){
-                    tourneimage(90,jlabel,icone);
-                    jlabel.setBounds(tab[j].getX()+31,tab[j].getY(),50,300);
+                    if (tab1[j] == true) {
+                        tourneimage(90, jlabel, icone);
+                        jlabel.setBounds(tab[j].getX() + 31, tab[j].getY(), 50, 300);
+                    }
                 }
 
-            }
+                if (x.getComposant() == "Condensateur") {
 
-            if(tab[j].getItem()=="Condensateur"){
+                    icone = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("condo.png")));
+                    jlabel = new JLabel(icone);
+                    jlabel.setLayout(null);
+                    jlabel.setBounds(tab[j].getX(), tab[j].getY(), 300, 50);
+                    jlabel.setVisible(true);
+                    tab[j].setVisible(false);
+                    zonedessin.add(jlabel);
 
-                icone= new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("condo.png")));
-                jlabel = new JLabel(icone);
-                jlabel.setLayout(null);
-                jlabel.setBounds(tab[j].getX(),tab[j].getY(),300,50);
-                jlabel.setVisible(true);
-                tab[j].setVisible(false);
-                zonedessin.add(jlabel);
-
-                if(tab1[j]==true){
-                    tourneimage(90,jlabel,icone);
-                    jlabel.setBounds(tab[j].getX()+25,tab[j].getY(),50,300);
+                    if (tab1[j] == true) {
+                        tourneimage(90, jlabel, icone);
+                        jlabel.setBounds(tab[j].getX() + 25, tab[j].getY(), 50, 300);
+                    }
                 }
-
             }
-
-            if(tab[j].getItem()=="source de tension"){
+            //s'il s'agit du générateur
+            if(tab[j] instanceof ItemGenerateur){
 
                 icone= new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("sourceU.png")));
                 jlabel = new JLabel(icone);
@@ -266,7 +225,6 @@ public class FenetreB extends JFrame implements ActionListener{
                     tourneimage(90,jlabel,icone);
                     jlabel.setBounds(tab[j].getX()+10,tab[j].getY(),50,300);
                 }
-
             }
         }
     }
@@ -288,6 +246,23 @@ public class FenetreB extends JFrame implements ActionListener{
         g2.dispose();
 
         lelabel.setIcon(new ImageIcon(DaImage));
+    }
+
+    public JTextField[] regrouperJTextField(int taille){
+        JTextField[] r = new JTextField[taille];
+
+        for (int i=0;i<tableaumenu.length;i++){
+            if(tableaumenu[i] instanceof ItemGenerateur){
+                ItemGenerateur x = (ItemGenerateur) tableaumenu[i];
+                r[i]=x.saisieAmpl;
+                r[i+1]=x.saisieFreq;
+            }
+            if(tableaumenu[i] instanceof ItemComposant){
+                ItemComposant x = (ItemComposant)tableaumenu[i];
+                r[i+1]=x.saisie;
+            }
+        }
+        return r;
     }
 
 }

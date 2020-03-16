@@ -114,7 +114,7 @@ public class FenetreA extends JFrame implements ActionListener{
         estvertical[3]=false;
 
         for (ItemElement i : tableaumenu){
-            zonedessin.add(i); //on ajoute l'ItemComposant' a la zone de dessin
+            zonedessin.add(i); //on ajoute l'ItemComposant à la zone de dessin
         }
 
         //on regroupe tous les JTextFields dans un tableau pour faciliter la manipulation
@@ -145,89 +145,86 @@ public class FenetreA extends JFrame implements ActionListener{
             for(int i=0; i<4;i++) {
                 while (tableauzonetexte[i].getText().equals("") ||Integer.parseInt(tableauzonetexte[i].getText()) > 10000 || Integer.parseInt(tableauzonetexte[i].getText()) < 1) {
                     JOptionPane.showMessageDialog(this, "Veuillez rentrer une valeur de R, L ou C correcte (entre 1 et 10000 USI) !");
-                    tableauzonetexte[i].setText("Changer"); // le fait de faire apparaitre changer fait apparaitre des messages d'erreur dans la console mais ce n'est pas grave, c'est parce que le TextField n'est pas censé pouvoir contenir du texte
+                    tableauzonetexte[i].setText("Changer");
                 }
             }
             boutonvalider.setVisible(true);
-            //remplacemenu(tableaumenu, estvertical);
+            remplacemenu(tableaumenu, estvertical);
             Panneausysteme.repaint();
         }
     }
 
     //methode qui remplace les menus deroulants par des dessins correspondants aux composants selectionnes
 
-    public void remplacemenu(ItemComposant[] tab, boolean[]tab1){
-
+    public void remplacemenu(ItemElement[] tab, boolean[]tab1){
 
         for (int j=0;j<tab.length;j++) {
+            //s'il s'agit d'un composant
+            if(tab[j] instanceof ItemComposant){
+                ItemComposant x = (ItemComposant) tab[j];
+                if(x.getComposant()=="Résistance"){
 
-            if(tab[j].getItem()=="Résistance"){
+                    icone= new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("résistance.png")));
+                    jlabel = new JLabel(icone);
+                    jlabel.setLayout(null);
+                    jlabel.setBounds(tab[j].getX(),tab[j].getY(),300,50);
+                    jlabel.setVisible(true);
+                    tab[j].setVisible(false);
+                    zonedessin.add(jlabel);
 
-                icone= new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("résistance.png")));
-                jlabel = new JLabel(icone);
-                jlabel.setLayout(null);
-                jlabel.setBounds(tab[j].getX(),tab[j].getY(),300,50);
-                jlabel.setVisible(true);
-                tab[j].setVisible(false);
-                zonedessin.add(jlabel);
+                    if(tab1[j]==true){
+                        tourneimage(90,jlabel,icone);
+                        jlabel.setBounds(tab[j].getX(),tab[j].getY(),50,300);
+                    }
 
-                if(tab1[j]==true){
-                    tourneimage(90,jlabel,icone);
-                    jlabel.setBounds(tab[j].getX(),tab[j].getY(),50,300);
                 }
 
+                if(x.getComposant()=="Bobine"){
+
+                    icone= new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("bobines.png")));
+                    jlabel = new JLabel(icone);
+                    jlabel.setLayout(null);
+                    jlabel.setBounds(tab[j].getX(),tab[j].getY()-5,300,50);
+                    jlabel.setVisible(true);
+                    tab[j].setVisible(false);
+                    zonedessin.add(jlabel);
+
+                    if(tab1[j]==true){
+                        tourneimage(90,jlabel,icone);
+                        jlabel.setBounds(tab[j].getX()+6,tab[j].getY(),50,300);
+                    }
+                }
+
+                if(x.getComposant()=="Condensateur"){
+
+                    icone= new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("condo.png")));
+                    jlabel = new JLabel(icone);
+                    jlabel.setLayout(null);
+                    jlabel.setBounds(tab[j].getX(),tab[j].getY()+1,300,50);
+                    jlabel.setVisible(true);
+                    tab[j].setVisible(false);
+                    zonedessin.add(jlabel);
+
+                    if(tab1[j]==true){
+                        tourneimage(90,jlabel,icone);
+                        jlabel.setBounds(tab[j].getX(),tab[j].getY(),50,300);
+                    }
+                }
             }
-
-            if(tab[j].getItem()=="Bobine"){
-
-                icone= new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("bobines.png")));
+            //s'il s'agit du générateur
+            if(tab[j] instanceof ItemGenerateur) {
+                icone = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("sourceU.png")));
                 jlabel = new JLabel(icone);
                 jlabel.setLayout(null);
-                jlabel.setBounds(tab[j].getX(),tab[j].getY()-5,300,50);
+                jlabel.setBounds(tab[j].getX() + 1, tab[j].getY(), 300, 50);
                 jlabel.setVisible(true);
                 tab[j].setVisible(false);
                 zonedessin.add(jlabel);
 
-                if(tab1[j]==true){
-                    tourneimage(90,jlabel,icone);
-                    jlabel.setBounds(tab[j].getX()+6,tab[j].getY(),50,300);
+                if (tab1[j] == true) {
+                    tourneimage(90, jlabel, icone);
+                    jlabel.setBounds(tab[j].getX(), tab[j].getY(), 50, 300);
                 }
-
-
-            }
-
-            if(tab[j].getItem()=="Condensateur"){
-
-                icone= new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("condo.png")));
-                jlabel = new JLabel(icone);
-                jlabel.setLayout(null);
-                jlabel.setBounds(tab[j].getX(),tab[j].getY()+1,300,50);
-                jlabel.setVisible(true);
-                tab[j].setVisible(false);
-                zonedessin.add(jlabel);
-
-                if(tab1[j]==true){
-                    tourneimage(90,jlabel,icone);
-                    jlabel.setBounds(tab[j].getX(),tab[j].getY(),50,300);
-                }
-
-            }
-
-            if(tab[j].getItem()=="source de tension"){
-
-                icone= new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("sourceU.png")));
-                jlabel = new JLabel(icone);
-                jlabel.setLayout(null);
-                jlabel.setBounds(tab[j].getX()+1,tab[j].getY(),300,50);
-                jlabel.setVisible(true);
-                tab[j].setVisible(false);
-                zonedessin.add(jlabel);
-
-                if(tab1[j]==true){
-                    tourneimage(90,jlabel,icone);
-                    jlabel.setBounds(tab[j].getX(),tab[j].getY(),50,300);
-                }
-
             }
         }
     }

@@ -34,6 +34,7 @@ public class FenetreA extends JFrame implements ActionListener{
     public JLabel jlabel;   //jlabel contenant l'image qui doit s'afficher
     public JLabel zonedessin;
     public ImageIcon imagefond; //image du circuit que l'on met en fond de Panneausysteme
+    public JTextField[] tableauzonetexte;
 
     //constructeur Fenêtre A
     public FenetreA() {
@@ -94,7 +95,7 @@ public class FenetreA extends JFrame implements ActionListener{
         boutonaffichage1.addActionListener(this);
         Panneaubouton.add(boutonaffichage1);
 
-        //affichage des menus déroulants
+        //création et affichage des menus déroulants
 
         tableaumenu[0] = new ItemGenerateur();
         tableaumenu[0].setLocation(Panneausysteme.getWidth()/20,Panneausysteme.getHeight()/2-50);
@@ -115,6 +116,9 @@ public class FenetreA extends JFrame implements ActionListener{
         for (ItemElement i : tableaumenu){
             zonedessin.add(i); //on ajoute l'ItemComposant' a la zone de dessin
         }
+
+        //on regroupe tous les JTextFields dans un tableau pour faciliter la manipulation
+        tableauzonetexte = this.regrouperJTextField(tableaumenu.length+1);
 
         //création panneau principal
 
@@ -144,13 +148,10 @@ public class FenetreA extends JFrame implements ActionListener{
                     tableauzonetexte[i].setText("Changer"); // le fait de faire apparaitre changer fait apparaitre des messages d'erreur dans la console mais ce n'est pas grave, c'est parce que le TextField n'est pas censé pouvoir contenir du texte
                 }
             }
-
             boutonvalider.setVisible(true);
             //remplacemenu(tableaumenu, estvertical);
             Panneausysteme.repaint();
-
         }
-
     }
 
     //methode qui remplace les menus deroulants par des dessins correspondants aux composants selectionnes
@@ -249,6 +250,23 @@ public class FenetreA extends JFrame implements ActionListener{
         g2.dispose();
 
         lelabel.setIcon(new ImageIcon(DaImage));
+    }
+
+    public JTextField[] regrouperJTextField(int taille){
+        JTextField[] r = new JTextField[taille];
+
+        for (int i=0;i<tableaumenu.length;i++){
+            if(tableaumenu[i] instanceof ItemGenerateur){
+                ItemGenerateur x = (ItemGenerateur) tableaumenu[i];
+                r[i]=x.saisieAmpl;
+                r[i+1]=x.saisieFreq;
+            }
+            if(tableaumenu[i] instanceof ItemComposant){
+                ItemComposant x = (ItemComposant)tableaumenu[i];
+                r[i+1]=x.saisie;
+            }
+        }
+        return r;
     }
 
 

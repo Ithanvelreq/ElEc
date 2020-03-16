@@ -10,8 +10,9 @@ public class ItemGenerateur extends ItemElement {
     JLabel source;
     JLabel freq;
     JLabel ampl;
-    public JTextField saisieFreq;
-    public JTextField saisieAmpl;
+    JTextField saisieFreq;
+    JTextField saisieAmpl;
+
 
     //constructeur
     public ItemGenerateur(){

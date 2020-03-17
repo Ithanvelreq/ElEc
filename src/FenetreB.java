@@ -97,25 +97,7 @@ public class FenetreB extends JFrame implements ActionListener{
         boutonreinit.addActionListener(this);
         Panneaubouton.add(boutonreinit);
 
-        //affichage des menus déroulants
-
-        //affichage des menus déroulants
-
-        tableaumenu[0] = new ItemGenerateur();
-        tableaumenu[0].setLocation(40,Panneausysteme.getHeight()/2-50);
-        estvertical[0]=true;
-
-        tableaumenu[1]= new ItemComposant(autrescomposants);
-        tableaumenu[1].setLocation(Panneausysteme.getWidth() / 2 - 250, 81); //composant d'en haut
-        estvertical[1]=false;
-
-        tableaumenu[2]= new ItemComposant(autrescomposants);
-        tableaumenu[2].setLocation(Panneausysteme.getWidth()/2+334,Panneausysteme.getHeight()/2-50); //composant de droite
-        estvertical[2]=true;
-
-        tableaumenu[3]= new ItemComposant(autrescomposants);
-        tableaumenu[3].setLocation(Panneausysteme.getWidth()/2-49,Panneausysteme.getHeight()/2-50); // composant du milieu
-        estvertical[3]=true;
+        affichemenu(); //création et affichage des menus déroulants via la méthode affichemenu
 
         for (ItemElement i : tableaumenu){
             zonedessin.add(i); //on ajoute l'ItemComposant à la zone de dessin
@@ -187,72 +169,72 @@ public class FenetreB extends JFrame implements ActionListener{
 
     public void remplacemenu(ItemElement[] tab, boolean[]tab1){
 
-
         for (int j=0;j<tab.length;j++) {
-            if(tab[j] instanceof ItemComposant) {
+            //s'il s'agit d'un composant
+            if(tab[j] instanceof ItemComposant){
                 ItemComposant x = (ItemComposant) tab[j];
-                if (x.getComposant() == "Résistance") {
+                if(x.getComposant()=="Résistance"){
 
-                    icone = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("résistance.png")));
+                    icone= new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("résistance.png")));
                     tabjlab[j] = new JLabel(icone);
                     tabjlab[j].setLayout(null);
-                    tabjlab[j].setBounds(tab[j].getX(), tab[j].getY() - 1, 300, 50);
+                    tabjlab[j].setBounds(tab[j].getX(),tab[j].getY(),300,50);
                     tabjlab[j].setVisible(true);
                     tab[j].setVisible(false);
                     zonedessin.add(tabjlab[j]);
 
-                    if (tab1[j] == true) {
-                        tourneimage(90, tabjlab[j], icone);
-                        tabjlab[j].setBounds(tab[j].getX() + 25, tab[j].getY(), 50, 300);
+                    if(tab1[j]==true){
+                        tourneimage(90,tabjlab[j],icone);
+                        tabjlab[j].setBounds(tab[j].getX(),tab[j].getY(),50,300);
+                    }
+
+                }
+
+                if(x.getComposant()=="Bobine"){
+
+                    icone= new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("bobines.png")));
+                    tabjlab[j] = new JLabel(icone);
+                    tabjlab[j].setLayout(null);
+                    tabjlab[j].setBounds(tab[j].getX(),tab[j].getY()-5,300,50);
+                    tabjlab[j].setVisible(true);
+                    tab[j].setVisible(false);
+                    zonedessin.add(tabjlab[j]);
+
+                    if(tab1[j]==true){
+                        tourneimage(90,tabjlab[j],icone);
+                        tabjlab[j].setBounds(tab[j].getX()+6,tab[j].getY(),50,300);
                     }
                 }
 
-                if (x.getComposant() == "Bobine") {
+                if(x.getComposant()=="Condensateur"){
 
-                    icone = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("bobines.png")));
+                    icone= new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("condo.png")));
                     tabjlab[j] = new JLabel(icone);
                     tabjlab[j].setLayout(null);
-                    tabjlab[j].setBounds(tab[j].getX(), tab[j].getY() - 6, 300, 50);
+                    tabjlab[j].setBounds(tab[j].getX(),tab[j].getY()+1,300,50);
                     tabjlab[j].setVisible(true);
                     tab[j].setVisible(false);
                     zonedessin.add(tabjlab[j]);
 
-                    if (tab1[j] == true) {
-                        tourneimage(90, tabjlab[j], icone);
-                        tabjlab[j].setBounds(tab[j].getX() + 31, tab[j].getY(), 50, 300);
-                    }
-                }
-
-                if (x.getComposant() == "Condensateur") {
-
-                    icone = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("condo.png")));
-                    tabjlab[j] = new JLabel(icone);
-                    tabjlab[j].setLayout(null);
-                    tabjlab[j].setBounds(tab[j].getX(), tab[j].getY(), 300, 50);
-                    tabjlab[j].setVisible(true);
-                    tab[j].setVisible(false);
-                    zonedessin.add(tabjlab[j]);
-
-                    if (tab1[j] == true) {
-                        tourneimage(90, tabjlab[j], icone);
-                        tabjlab[j].setBounds(tab[j].getX() + 25, tab[j].getY(), 50, 300);
+                    if(tab1[j]==true){
+                        tourneimage(90,tabjlab[j],icone);
+                        tabjlab[j].setBounds(tab[j].getX(),tab[j].getY(),50,300);
                     }
                 }
             }
             //s'il s'agit du générateur
-            if(tab[j] instanceof ItemGenerateur){
-
-                icone= new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("sourceU.png")));
+            if(tab[j] instanceof ItemGenerateur) {
+                icone = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("sourceU.png")));
                 tabjlab[j] = new JLabel(icone);
                 tabjlab[j].setLayout(null);
-                tabjlab[j].setBounds(tab[j].getX(),tab[j].getY(),300,50);
+                tabjlab[j].setBounds(tab[j].getX() + 1, tab[j].getY(), 300, 50);
                 tabjlab[j].setVisible(true);
                 tab[j].setVisible(false);
                 zonedessin.add(tabjlab[j]);
 
-                if(tab1[j]==true){
-                    tourneimage(90,tabjlab[j],icone);
-                    tabjlab[j].setBounds(tab[j].getX()+10,tab[j].getY(),50,300);
+                if (tab1[j] == true) {
+                    tourneimage(90, tabjlab[j], icone);
+                    tabjlab[j].setBounds(tab[j].getX(), tab[j].getY(), 50, 300);
                 }
             }
         }
@@ -292,6 +274,48 @@ public class FenetreB extends JFrame implements ActionListener{
             }
         }
         return r;
+    }
+
+    public void affichemenu(){  // permet d'afficher les combobox au bon endroit suivant notre résolution d'écran
+
+        if (largeur>1300 && largeur<=1600 && hauteur>600 && hauteur <=900) {  //ordi 15 pouces
+            tableaumenu[0] = new ItemGenerateur();
+            tableaumenu[0].setLocation(Panneausysteme.getWidth()/20,(int)(Panneausysteme.getHeight()*0.435));
+            estvertical[0]=true;
+
+            tableaumenu[1] = new ItemComposant(autrescomposants);
+            tableaumenu[1].setLocation((int)(Panneausysteme.getWidth()*0.256), (int)(Panneausysteme.getHeight()/13.5)); //composant d'en haut
+            estvertical[1]=false;
+
+            tableaumenu[2] = new ItemComposant(autrescomposants);
+            tableaumenu[2].setLocation((int)(Panneausysteme.getWidth()*0.85),(int)(Panneausysteme.getHeight()*0.435)); //composant de droite
+            estvertical[2]=true;
+
+            tableaumenu[3] = new ItemComposant(autrescomposants);
+            tableaumenu[3].setLocation((int)(Panneausysteme.getWidth()*0.478),(int)(Panneausysteme.getHeight()*0.435)); // composant du milieu
+            estvertical[3]=true;
+        }
+
+        if (largeur>1600 && largeur<2100 && hauteur>900 && hauteur < 1300) {  //ordi veloso et ithan (avec resolution 1920*1080)
+
+            tableaumenu[0] = new ItemGenerateur();
+            tableaumenu[0].setLocation(Panneausysteme.getWidth()/20,(int)(Panneausysteme.getHeight()*0.435));
+            estvertical[0]=true;
+
+            tableaumenu[1] = new ItemComposant(autrescomposants);
+            tableaumenu[1].setLocation((int)(Panneausysteme.getWidth()*0.256), (int)(Panneausysteme.getHeight()/13.5)); //composant d'en haut
+            estvertical[1]=false;
+
+            tableaumenu[2] = new ItemComposant(autrescomposants);
+            tableaumenu[2].setLocation((int)(Panneausysteme.getWidth()*0.85),(int)(Panneausysteme.getHeight()*0.435)); //composant de droite
+            estvertical[2]=true;
+
+            tableaumenu[3] = new ItemComposant(autrescomposants);
+            tableaumenu[3].setLocation((int)(Panneausysteme.getWidth()*0.478),(int)(Panneausysteme.getHeight()*0.435)); // composant du milieu
+            estvertical[3]=true;
+        }
+
+        //rajouter des resolutions suivant les écrans que l'on a
     }
 
 }

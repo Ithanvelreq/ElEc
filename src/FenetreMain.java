@@ -13,6 +13,11 @@ public class FenetreMain extends JFrame implements ActionListener{
     //declaration de tous les widgets ci-dessous
 
     public JButton[] tableaubouton;
+    FenetreA Fenetrecircuit1;
+    FenetreB Fenetrecircuit2;
+    FenetreC Fenetrecircuit3;
+    FenetreD Fenetrecircuit4;
+
 
     //constructeur
 
@@ -85,22 +90,22 @@ public class FenetreMain extends JFrame implements ActionListener{
 
         if (e.getSource()== tableaubouton[0]){
 
-            FenetreA Fenetrecircuit1 = new FenetreA();
+            Fenetrecircuit1 = new FenetreA();
             Fenetrecircuit1.setVisible(true);
         }
         if (e.getSource()== tableaubouton[1]){
 
-            FenetreB Fenetrecircuit2 = new FenetreB();
+            Fenetrecircuit2 = new FenetreB();
             Fenetrecircuit2.setVisible(true);
         }
         if (e.getSource()== tableaubouton[2]){
 
-            FenetreC Fenetrecircuit3 = new FenetreC();
+            Fenetrecircuit3 = new FenetreC();
             Fenetrecircuit3.setVisible(true);
         }
         if (e.getSource()== tableaubouton[3]){
 
-            FenetreD Fenetrecircuit4 = new FenetreD();
+            Fenetrecircuit4 = new FenetreD();
             Fenetrecircuit4.setVisible(true);
         }
 

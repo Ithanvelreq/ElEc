@@ -48,6 +48,26 @@ public class ItemComposant extends ItemElement implements MouseListener{
     //méthode
     public String getComposant(){ return menuComposant.getSelectedItem().toString(); }
 
+    // permet de récupérer les caractéristiques du composant choisi
+    public Dipole RenvoieComposant(String item){
+        Impedance a= new Impedance(0,0);
+        Dipole r= new Dipole(a,"r");
+        if (item.equals("Resistance")){
+            a.setRe(-1*Double.parseDouble(saisie.getText()));
+            a.setIm(0);
+        }
+        if (item.equals("Condensateur")){
+            a.setRe(0);
+            a.setIm(1/Double.parseDouble(saisie.getText()));
+        }
+        if (item.equals("Bobine")) {
+            a.setRe(0);
+            a.setIm(-1*Double.parseDouble(saisie.getText()));
+        }
+        r.z=a;
+        return r;
+    }
+
     //méthode interface
     public void mouseClicked(MouseEvent e){
         if(menuComposant.getSelectedItem().toString()=="Bobine"){
@@ -77,30 +97,10 @@ public class ItemComposant extends ItemElement implements MouseListener{
             unite.setText("V");
         }
     }
-
-
-    // permet de récupérer les caractéristiques du composant choisi
-    public Dipole RenvoiComposant(String item){
-        Impedance a= new Impedance(0,0);
-        Dipole r= new Dipole(a,"r");
-        if (item == "Resistance"){
-            a.setRe(-1*Double.parseDouble(saisie.getText()));
-            a.setIm(0);
-        }
-        if (item == "Condensateur"){
-            a.setRe(0);
-            a.setIm(1/Double.parseDouble(saisie.getText()));
-        }
-        if (item == "Bobine") {
-            a.setRe(0);
-            a.setIm(-1*Double.parseDouble(saisie.getText()));
-        }
-        r.z=a;
-        return r;
-    }
-
-
     public void mouseReleased(MouseEvent e){}
     public void mouseEntered(MouseEvent e){}
     public void mousePressed(MouseEvent e){}
+
+
+
 }

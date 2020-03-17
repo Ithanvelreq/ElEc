@@ -1,10 +1,10 @@
 import java.util.LinkedList;
 
 public class Maille {
-    public LinkedList<ItemElement> Icomposants = new LinkedList<>();
+    public LinkedList<ItemComposant> Icomposants = new LinkedList<>();
 
-    public Maille(ItemElement[] comp) {
-        for (ItemElement c : comp) {
+    public Maille(ItemComposant[] comp) {
+        for (ItemComposant c : comp) {
             Icomposants.add(c);
         }
     }

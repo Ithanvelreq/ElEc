@@ -11,7 +11,6 @@ public class ItemComposant extends ItemElement implements MouseListener{
     JTextField saisie;
     JComboBox menuComposant;
 
-
     //constructeur
     public ItemComposant(String[] listeCompo) {
 
@@ -49,7 +48,7 @@ public class ItemComposant extends ItemElement implements MouseListener{
     public String getComposant(){ return menuComposant.getSelectedItem().toString(); }
 
     // permet de récupérer les caractéristiques du composant choisi
-    public Dipole RenvoiComposant(String item,ItemGenerateur g){
+    public Dipole RenvoieComposant(String item){
         Impedance a= new Impedance(0,0);
         Dipole r= new Dipole(a,"r");
         if (item.equals("Resistance")){
@@ -58,11 +57,11 @@ public class ItemComposant extends ItemElement implements MouseListener{
         }
         if (item.equals("Condensateur")){
             a.setRe(0);
-            a.setIm(1/(Double.parseDouble(saisie.getText())*Double.parseDouble(g.saisieFreq.getText())*2*Math.PI));
+            a.setIm(1/Double.parseDouble(saisie.getText()));
         }
         if (item.equals("Bobine")) {
             a.setRe(0);
-            a.setIm(-1*Double.parseDouble(saisie.getText())*Double.parseDouble(g.saisieFreq.getToolTipText())*2*Math.PI);
+            a.setIm(-1*Double.parseDouble(saisie.getText()));
         }
         r.z=a;
         return r;

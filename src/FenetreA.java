@@ -46,18 +46,21 @@ public class FenetreA extends JFrame implements ActionListener{
         this.setTitle("circuit 1");     //titre
         this.setBackground(new Color(228,229,230));
 
-        // permet d'afficher la fenêtre en plein écran
+
+        /*// permet d'afficher la fenêtre en plein écran
 
         this.pack();
         this.setDefaultLookAndFeelDecorated(true);
         this.setExtendedState(this.MAXIMIZED_BOTH);
+
+         */
 
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);   // permet de fermer la fenêtre sans fermer tout le programme
 
         //création du panneau où l'on fait son système
 
         Panneausysteme = new JPanel();
-        Panneausysteme.setBounds(0,0,(int) l,hauteur);
+        Panneausysteme.setBounds(0,0,(int) l,hauteur-50);
         Panneausysteme.setLayout(null);
         Panneausysteme.setBackground(new Color(228,229,230));
 
@@ -155,6 +158,7 @@ public class FenetreA extends JFrame implements ActionListener{
 
             Fenetreoscillo oscillo = new Fenetreoscillo();
             oscillo.setVisible(true);
+            //CircuitA circuitCalcul = new CircuitA(tableaumenu);
 
         }
 

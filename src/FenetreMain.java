@@ -29,10 +29,12 @@ public class FenetreMain extends JFrame implements ActionListener{
         setVisible(true);			//visibilité de la fenêtre
 
         // permet d'afficher la fenêtre en plein écran
-
+        /*
         this.pack();
         this.setDefaultLookAndFeelDecorated(true);
         this.setExtendedState(this.MAXIMIZED_BOTH);
+
+        */
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);   // permet de fermer la fenêtre
 

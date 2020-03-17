@@ -56,4 +56,8 @@ public class ItemGenerateur extends ItemElement {
         this.add(saisieFreq);
         this.add(saisieAmpl);
     }
+
+    public double getFrequence (){
+        return  Double.parseDouble(saisieFreq.getText());
+    }
 }

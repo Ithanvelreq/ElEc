@@ -18,9 +18,9 @@ public class Fenetreoscillo extends JFrame {
     public Fenetreoscillo() {
         super( "Oscilloscope" );
         this.setDefaultCloseOperation( HIDE_ON_CLOSE );
-        this.pack();
-        this.setDefaultLookAndFeelDecorated(true);
-        this.setExtendedState(this.MAXIMIZED_BOTH);
+        //this.pack();
+        //this.setDefaultLookAndFeelDecorated(true);
+        //this.setExtendedState(this.MAXIMIZED_BOTH);
         this.setSize(largeur,hauteur);			// taille de la fenêtre
         this.setLocation(0,0);		//position de la fenêtre
         this.setVisible(false);			//visibilité de la fenêtre

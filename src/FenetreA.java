@@ -75,6 +75,8 @@ public class FenetreA extends JFrame implements ActionListener{
         zonedessin.setBounds(0,0,(int) l,hauteur);
         zonedessin.setVisible(true);
         Panneausysteme.add(zonedessin);
+        System.out.println(largeur);
+        System.out.println(hauteur);
 
         //création du panneau avec les boutons de configuration
 
@@ -105,7 +107,23 @@ public class FenetreA extends JFrame implements ActionListener{
         boutonreinit.addActionListener(this);
         Panneaubouton.add(boutonreinit);
 
-        affichemenu(); //création et affichage des menus déroulants via la méthode affichemenu
+        //création et affichage des menus déroulants
+
+        tableaumenu[0] = new ItemGenerateur();
+        tableaumenu[0].setLocation(Panneausysteme.getWidth()/20,Panneausysteme.getHeight()/2-50);
+        estvertical[0]=true;
+
+        tableaumenu[1]= new ItemComposant(autrescomposants);
+        tableaumenu[1].setLocation(Panneausysteme.getWidth() / 2 - 50, (int)(Panneausysteme.getHeight()/9.5)); //composant d'en haut
+        estvertical[1]=false;
+
+        tableaumenu[2]= new ItemComposant(autrescomposants);
+        tableaumenu[2].setLocation(Panneausysteme.getWidth()/2+358,Panneausysteme.getHeight()/2-50); //composant de droite
+        estvertical[2]=true;
+
+        tableaumenu[3]= new ItemComposant(autrescomposants);
+        tableaumenu[3].setLocation(Panneausysteme.getWidth()/2-50,Panneausysteme.getHeight()/2+273); // composant d'en bas
+        estvertical[3]=false;
 
         for (ItemElement i : tableaumenu){
             zonedessin.add(i); //on ajoute l'ItemComposant à la zone de dessin
@@ -286,47 +304,7 @@ public class FenetreA extends JFrame implements ActionListener{
         return r;
     }
 
-    public void affichemenu(){  // permet d'afficher les combobox au bon endroit suivant notre résolution d'écran
 
-        if (largeur>1300 && largeur<=1600 && hauteur>600 && hauteur <=900) {  //ordi 15 pouces
-            tableaumenu[0] = new ItemGenerateur();
-            tableaumenu[0].setLocation(Panneausysteme.getWidth() / 20, (int) (Panneausysteme.getHeight() * 0.435));
-            estvertical[0] = true;
-
-            tableaumenu[1] = new ItemComposant(autrescomposants);
-            tableaumenu[1].setLocation((int) (Panneausysteme.getWidth() * 0.452), (int) (Panneausysteme.getHeight() / 13.5)); //composant d'en haut
-            estvertical[1] = false;
-
-            tableaumenu[2] = new ItemComposant(autrescomposants);
-            tableaumenu[2].setLocation((int) (Panneausysteme.getWidth() * 0.85), (int) (Panneausysteme.getHeight() * 0.435)); //composant de droite
-            estvertical[2] = true;
-
-            tableaumenu[3] = new ItemComposant(autrescomposants);
-            tableaumenu[3].setLocation((int) (Panneausysteme.getWidth() * 0.452), (int) (Panneausysteme.getHeight() * 0.891)); // composant d'en bas
-            estvertical[3] = false;
-        }
-
-        if (largeur>1600 && largeur<2100 && hauteur>900 && hauteur < 1300) {  //ordi veloso et ithan (avec resolution 1920*1080)
-
-            tableaumenu[0] = new ItemGenerateur();
-            tableaumenu[0].setLocation(Panneausysteme.getWidth() / 20, (int) (Panneausysteme.getHeight() * 0.435));
-            estvertical[0] = true;
-
-            tableaumenu[1] = new ItemComposant(autrescomposants);
-            tableaumenu[1].setLocation((int) (Panneausysteme.getWidth() * 0.452), (int) (Panneausysteme.getHeight() / 13.5)); //composant d'en haut
-            estvertical[1] = false;
-
-            tableaumenu[2] = new ItemComposant(autrescomposants);
-            tableaumenu[2].setLocation((int) (Panneausysteme.getWidth() * 0.85), (int) (Panneausysteme.getHeight() * 0.435)); //composant de droite
-            estvertical[2] = true;
-
-            tableaumenu[3] = new ItemComposant(autrescomposants);
-            tableaumenu[3].setLocation((int) (Panneausysteme.getWidth() * 0.452), (int) (Panneausysteme.getHeight() * 0.891)); // composant d'en bas
-            estvertical[3] = false;
-        }
-
-        //rajouter des resolutions suivant les écrans que l'on a
-    }
 
 }
 

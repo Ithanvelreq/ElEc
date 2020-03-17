@@ -75,7 +75,8 @@ public class FenetreA extends JFrame implements ActionListener{
         zonedessin.setBounds(0,0,(int) l,hauteur);
         zonedessin.setVisible(true);
         Panneausysteme.add(zonedessin);
-
+        System.out.println(largeur);
+        System.out.println(hauteur);
 
         //création du panneau avec les boutons de configuration
 
@@ -302,6 +303,8 @@ public class FenetreA extends JFrame implements ActionListener{
         }
         return r;
     }
+
+
 
 }
 

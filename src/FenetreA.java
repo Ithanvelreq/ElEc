@@ -22,21 +22,21 @@ public class FenetreA extends JFrame implements ActionListener{
 
     // declaration des widgets
 
-    public JButton boutonvalider;
-    public JButton boutonaffichage1;
-    public JButton boutonreinit;
-    String[] sourcestension = {"source de tension"};  //tableau permettant la selection des elements des menus deroulants
+    JButton boutonvalider;
+    JButton boutonaffichage1;
+    JButton boutonreinit;
     String[] autrescomposants = {"Résistance", "Bobine", "Condensateur"};  //tableau permettant la selection des elements des menus deroulants
-    public ItemElement[] tableaumenu = new ItemElement[4]; // tableau de menu déroulants
+    ItemElement[] tableaumenu = new ItemElement[4]; // tableau de menu déroulants
     JLabel[] tabjlab = new JLabel[4]; // tableau de JLabel
     boolean[] estvertical = new boolean[4]; // tableau pour savoir si les menus sont sur un segment vertical ou non
-    public JPanel Panneausysteme; // JPanel dans lequel on insère les JCombobox, les JTextField et l'image du circuit
-    public JPanel Panneaubouton;
-    public ImageIcon icone;  // image qui doit s'afficher à la place des menus déroulants
-    public JLabel zonedessin;
-    public ImageIcon imagefond; //image du circuit que l'on met en fond de Panneausysteme
+    JPanel Panneausysteme; // JPanel dans lequel on insère les JCombobox, les JTextField et l'image du circuit
+    JPanel Panneaubouton;
+    ImageIcon icone;  // image qui doit s'afficher à la place des menus déroulants
+    JLabel zonedessin;
+    ImageIcon imagefond; //image du circuit que l'on met en fond de Panneausysteme
     JTextField[] tableauzonetexte = new JTextField[4];
     boolean composantvalide=false;
+    Fenetreoscillo oscillo;
 
     public FenetreA() {
 
@@ -156,7 +156,7 @@ public class FenetreA extends JFrame implements ActionListener{
 
         if (e.getSource()==boutonvalider) {
 
-            Fenetreoscillo oscillo = new Fenetreoscillo();
+            oscillo = new Fenetreoscillo();
             oscillo.setVisible(true);
             //CircuitA circuitCalcul = new CircuitA(tableaumenu);
 

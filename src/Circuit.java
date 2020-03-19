@@ -3,7 +3,7 @@ import java.util.LinkedList;
 
 public abstract class Circuit extends JFrame {
     LinkedList<Maille> mailles = new LinkedList<>();
-    LinkedList<Noeuds> noeuds = new LinkedList<>();
+    LinkedList<Noeud> noeuds = new LinkedList<>();
     LinkedList<ItemElement> composants = new LinkedList<>();
 
     public Circuit(){

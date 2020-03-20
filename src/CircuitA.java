@@ -9,7 +9,7 @@ public class CircuitA extends Circuit {
 
     public CircuitA(ItemElement[] compA) {
         super(compA);
-        mailles.add(new Maille(compA));
+        //mailles.add(new Maille(compA));
 
         ItemGenerateur x =(ItemGenerateur) compA[0];
         frequence = x.getFrequence();

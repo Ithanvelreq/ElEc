@@ -1,19 +1,21 @@
 import java.util.LinkedList;
 
 public class Noeud {
-    private LinkedList<Fil> sorties;
-    private LinkedList<Composant> composants;
+    private LinkedList<Fil> sorties = new LinkedList<>();
+    private LinkedList<Composant> composants = new LinkedList<>();
 
     public Noeud(){
 
     }
 
-    public void addSortie(Fil f){
+    public void link(Fil f){
         sorties.add(f);
-        addComposant(f);
+        f.link(this);
     }
 
-    private void addComposant(Fil f){
-        composants.add((Composant) f.autreBout(this));
+    public void addComposant(){
+        for(Fil f : sorties){
+            composants.add((Composant) f.autreBout(this));
+        }
     }
 }

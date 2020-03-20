@@ -8,9 +8,9 @@ public class Fil {
     }
 
     public Object autreBout(Noeud n){
-        if(amont instanceof Noeud && !(aval instanceof Noeud)) {
+        if(amont instanceof Noeud) {
             return aval;
-        }else if (aval instanceof Noeud && !(amont instanceof Noeud)){
+        }else if (aval instanceof Noeud){
             return amont;
         }else{
             return null;

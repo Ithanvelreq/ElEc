@@ -1,9 +1,10 @@
 import java.util.LinkedList;
 
-public abstract class Composant {
+public abstract class Composant implements Comparable<Composant>{
     protected double caracteristique = 0;
     public LinkedList<Composant> voisins = new LinkedList();
     protected String nom;
+    protected String type;
 
     public Composant(){
 
@@ -21,6 +22,16 @@ public abstract class Composant {
         voisins.add(o);
         if(!o.voisins.contains(this)){
             o.link(this);
+        }
+    }
+
+    public int compareTo(Composant c){
+        if(nom.compareTo(c.nom) < 0){
+            return -1;
+        }else if(nom.compareTo(c.nom) > 0){
+            return 1;
+        }else{
+            return 1;
         }
     }
 }

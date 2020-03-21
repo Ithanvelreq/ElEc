@@ -1,3 +1,5 @@
+import java.util.LinkedList;
+
 public class Dipole extends Composant {
     public Impedance z;
     private double tension;
@@ -12,4 +14,6 @@ public class Dipole extends Composant {
         super(s);
         this.z = a;
     }
+
+
 }

@@ -53,16 +53,16 @@ public class ItemComposant extends ItemElement implements MouseListener{
         Impedance a= new Impedance(0,0);
         Dipole r= new Dipole(a,"r");
         if (item.equals("Resistance")){
-            a.setRe(-1*Double.parseDouble(saisie.getText()));
+            a.setRe(Double.parseDouble(saisie.getText()));
             a.setIm(0);
         }
         if (item.equals("Condensateur")){
             a.setRe(0);
-            a.setIm(1/(Double.parseDouble(saisie.getText())*(f*2*Math.PI)));
+            a.setIm(-1/(Double.parseDouble(saisie.getText())*(f*2*Math.PI)));
         }
         if (item.equals("Bobine")) {
             a.setRe(0);
-            a.setIm(-1*Double.parseDouble(saisie.getText())*(f*2*Math.PI));
+            a.setIm(Double.parseDouble(saisie.getText())*(f*2*Math.PI));
         }
         r.z=a;
         return r;

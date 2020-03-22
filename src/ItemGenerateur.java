@@ -60,4 +60,8 @@ public class ItemGenerateur extends ItemElement {
     public double getFrequence (){
         return  Double.parseDouble(saisieFreq.getText());
     }
+
+    public double getAmpl (){
+        return  Double.parseDouble(saisieAmpl.getText());
+    }
 }

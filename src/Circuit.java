@@ -3,9 +3,9 @@ import java.util.LinkedList;
 import java.util.Set;
 
 public abstract class Circuit extends JFrame {
-    LinkedList<LinkedList> mailles = new LinkedList<>();
+    LinkedList<Maille> mailles = new LinkedList<>();
     LinkedList<Noeud> noeuds = new LinkedList<>();
-    LinkedList<Composant> composants = new LinkedList<>();
+    LinkedList<ItemElement> composants = new LinkedList<>();
 
     public Circuit(){
 

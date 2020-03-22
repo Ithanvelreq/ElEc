@@ -1,4 +1,4 @@
-import java.awt.desktop.SystemSleepEvent;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
@@ -10,7 +10,7 @@ public class Main {
         Impedance a = new Impedance(55, 2);
 
 
-        Dipole [] d = {new Dipole(a, "d1"), new Dipole(a, "d2"), new Dipole(a, "d3"), new Dipole(a, "d4"), new Dipole(a, "d5"), new Dipole(a, "d6")};
+        /*Dipole [] d = {new Dipole(a, "d1"), new Dipole(a, "d2"), new Dipole(a, "d3"), new Dipole(a, "d4"), new Dipole(a, "d5"), new Dipole(a, "d6")};
         Noeud [] n = {new Noeud("n1"), new Noeud("n2")};
         d[0].link(n[0]);
         d[1].link(n[0]);
@@ -26,7 +26,7 @@ public class Main {
             w.add(d[i]);
         }
 
-        w.sort(Composant::compareTo);
+        w.sort(Composant::compareTo);*/
 
     }
 }

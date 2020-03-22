@@ -10,7 +10,7 @@ public abstract class Composant implements Comparable<Composant>{
 
     }
 
-    public Composant( double gamma, String n){
+    public Composant(double gamma, String n){
         this.caracteristique = gamma;
         this.nom = n;
     }

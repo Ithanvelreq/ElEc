@@ -20,5 +20,6 @@ public class CircuitA extends Circuit {
             a=y.RenvoiComposant(y.getComposant(),frequence);
             eq1[i]= String.valueOf(a.z.module());
         }
-    }
+    }*/
+
 }

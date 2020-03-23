@@ -3,22 +3,58 @@ import java.util.LinkedList;
 public class CircuitA extends Circuit {
 
     //ajout de tableaux pour stocker les équations
-    public String[] eq1 = new String[4];
-    Dipole a = new Dipole();
-    double frequence;
+
+    public double frequence;
+    public double amplitude;
+    public Impedance[][] m1 = new Impedance[4][7];
+    public Impedance[][] m2 = new Impedance[4][1];
 
     public CircuitA(ItemElement[] compA) {
+        //création du circuit
         super(compA);
         mailles.add(new Maille(compA));
 
+        //récupération de la fréquence et de la tension du générareur
         ItemGenerateur x =(ItemGenerateur) compA[0];
         frequence = x.getFrequence();
+        amplitude = x.getAmpl();
 
-        eq1[0]= String.valueOf(1);
-        for(int i=1;i<compA.length;i++){
-            ItemComposant y = (ItemComposant) compA[i];
-            a=y.RenvoiComposant(y.getComposant(),frequence);
-            eq1[i]= String.valueOf(a.z.module());
+        //remplissage de la matrice m1 qu'avec des 0
+        for(int i1=0;i1<m1.length;i1++){
+            for(int j1=0;j1<m1[0].length;j1++){
+                m1[i1][j1] = new Impedance(0,0);
+            }
+
         }
+
+        //remplissage de la matrice m2 qu'avec des 0
+        for(int i2=0;i2<m2.length;i2++){
+            for(int j2=0;j2<m2[0].length;j2++){
+                m1[i2][j2] = new Impedance(0,0);
+            }
+
+        }
+
+
+        //remplissage de chaque ligne de m1 avec les coefficients gauches de chaque équation
+        Dipole a = new Dipole();
+        m1[0][0]= new Impedance(1,0);
+        m1[1][0]= new Impedance(1,0);
+        m1[1][1]=new Impedance(1,0);
+        m1[1][2]=new Impedance(-1,0);
+        m1[2][1]=new Impedance(1,0);
+        m1[2][2]=new Impedance(-1,0);
+        for(int l1=1;l1<4;l1++){
+            ItemComposant y = (ItemComposant) compA[l1];
+            a=y.RenvoiComposant(y.getComposant(),frequence);
+            m1[0][l1] = a.z.multiplicationV2(new Impedance(-1,0));
+        }
+
+       //remplissage de m2 avec les coefficients droits de chaque équation
+       m2[1][0]= new Impedance(amplitude,0);
+
     }
+
+
+
 }

@@ -61,7 +61,7 @@ public class ItemGenerateur extends ItemElement {
         return  Double.parseDouble(saisieFreq.getText());
     }
 
-    public double getAmplitude(){
+    public double getAmpl (){
         return  Double.parseDouble(saisieAmpl.getText());
     }
 }

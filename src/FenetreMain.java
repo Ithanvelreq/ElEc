@@ -10,7 +10,7 @@ public class FenetreMain extends JFrame implements ActionListener{
     int hauteur = (int)tailleEcran.getHeight();
     int largeur = (int)tailleEcran.getWidth();
 
-    //declaration de tous les widgets ci-dessous
+    //declaration de tous les widgets et des 4 fenêtres
 
     public JButton[] tableaubouton;
     FenetreA Fenetrecircuit1;
@@ -23,19 +23,14 @@ public class FenetreMain extends JFrame implements ActionListener{
 
     public FenetreMain(){
 
-        setTitle("Sélectionnez la disposition de circuit à étudier");
+        setTitle("SIMULATEUR DE CIRCUIT ELECTRIQUE");
         setSize(largeur,hauteur);			// taille de la fenêtre
         setLocation(0,0);		//position de la fenêtre
         setVisible(true);			//visibilité de la fenêtre
 
-        // permet d'afficher la fenêtre en plein écran
-        /*
-        this.pack();
-        this.setDefaultLookAndFeelDecorated(true);
-        this.setExtendedState(this.MAXIMIZED_BOTH);
-
-        */
-
+        //this.pack();
+        //this.setDefaultLookAndFeelDecorated(true);
+        this.setExtendedState(this.MAXIMIZED_BOTH);    //fenêtre en plein écran
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);   // permet de fermer la fenêtre
 
         //création panneau principal
@@ -46,42 +41,36 @@ public class FenetreMain extends JFrame implements ActionListener{
         Panneauprincipal.setBackground(new Color(228,229,230));
 
         //création et placement des boutons adaptatif en fonction de la taille de l'écran
-
         tableaubouton = new JButton[4];
 
-        for (int i=0; i<4;i++) {
+        tableaubouton[0]=new Boutonmodif("",(new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("imagecircuitRLC.png")))));
+        tableaubouton[0].setBounds((int)(0.25*largeur/4), hauteur/6,(int)((largeur/2)*0.7), (int)((hauteur/2)*0.7));
 
-            if (i<2) {
+        tableaubouton[1] = new Boutonmodif("",(new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("circuitenparallele.png")))));
+        tableaubouton[1].setBounds((int)(2.25*largeur/4), hauteur/6,(int)((largeur/2)*0.7), (int)((hauteur/2)*0.7));
 
-                // on selectionne les images que l'on met dans les boutons
+        tableaubouton[2] = new Boutonmodif("",(new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("circuitenparallele2.png")))));
+        tableaubouton[2].setBounds((int)(0.25*largeur/4), tableaubouton[0].getY()+tableaubouton[0].getHeight()+50,(int)((largeur/2)*0.7), (int)((hauteur/2)*0.7));
 
-                if (i==0) {
-                    tableaubouton[i] = new Boutonmodif("",(new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("imagecircuitRLC.png")))));
-                }
-                if(i==1){
-                    tableaubouton[i] = new Boutonmodif("",(new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("circuitenparallele.png")))));
-                }
-                tableaubouton[i].setBounds(10+((largeur/2)-10)*i, 10, (largeur/2)-20+(i*10), (hauteur/2)-30);
-                tableaubouton[i].addActionListener(this);
-                Panneauprincipal.add(tableaubouton[i]);
+        tableaubouton[3]= new Boutonmodif("",(new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("circuitenparallele3.png")))));
+        tableaubouton[3].setBounds((int)(2.25*largeur/4), tableaubouton[0].getY()+tableaubouton[0].getHeight()+50,(int)((largeur/2)*0.7), (int)((hauteur/2)*0.7));
 
-            }else{
-
-                // on selectionne les images que l'on met dans les boutons (on mettra nos images plus tard)
-
-                if (i==2) {
-                    tableaubouton[i] = new Boutonmodif("",(new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("circuitenparallele2.png")))));
-                }
-                if(i==3){
-                    tableaubouton[i] = new Boutonmodif("",(new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("circuitenparallele3.png")))));
-                }
-                tableaubouton[i].setBounds(10+((largeur/2)-10)*(i-2), ((hauteur/2)-10), (largeur/2)-20+((i-2)*10), (hauteur/2)-30);
-                tableaubouton[i].addActionListener(this);
-                Panneauprincipal.add(tableaubouton[i]);
-
-            }
-
+        for(JButton b :tableaubouton){
+            b.addActionListener(this);
+            Panneauprincipal.add(b);
         }
+
+        JLabel titre = new JLabel("Simulateur de circuits électriques");
+        titre.setFont(new Font("Arial", Font.BOLD,60));
+        titre.setBounds(largeur/2-500,20,1000,70);
+
+        JLabel sousTitre = new JLabel("Il y a 4 circuits disponibles. Veuillez cliquer sur le circuit de votre choix pour lancer sa configuration.");
+        sousTitre.setFont(new Font("Arial", Font.ITALIC,30));
+        sousTitre.setBounds(largeur/2-675,titre.getY()+titre.getHeight()+20,1350,40);
+
+        Panneauprincipal.add(titre);
+        Panneauprincipal.add(sousTitre);
+
 
         add(Panneauprincipal);  //ajout du panneau à la fenêtre
         this.validate();   // permet à tous les boutons d'apparaitre, sinon il fallait passer la souris dessus pour qu'ils apparaissent(je sais pas pk)

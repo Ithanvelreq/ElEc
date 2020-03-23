@@ -42,13 +42,11 @@ public class FenetreD extends JFrame implements ActionListener{
         this.setSize(largeur,hauteur);			// taille de la fenêtre
         this.setLocation(0,0);		//position de la fenêtre
         this.setVisible(false);			//visibilité de la fenêtre
-        this.setTitle("circuit 4");     //titre
+        this.setTitle("circuit D");     //titre
 
-        // permet d'afficher la fenêtre en plein écran
-
-        this.pack();
-        this.setDefaultLookAndFeelDecorated(true);
-        this.setExtendedState(this.MAXIMIZED_BOTH);
+        //this.pack();
+        //this.setDefaultLookAndFeelDecorated(true);
+        this.setExtendedState(this.MAXIMIZED_BOTH);  //plein écran
 
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);   // permet de fermer la fenêtre sans fermer tout le programme
 

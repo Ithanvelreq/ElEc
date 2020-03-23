@@ -6,8 +6,8 @@ public class CircuitA extends Circuit {
 
     public double frequence;
     public double amplitude;
-    public Impedance[][] m1 = new Impedance[4][7];
-    public Impedance[][] m2 = new Impedance[4][1];
+    public Impedance[][] m1 = new Impedance[7][7];
+    public Impedance[][] m2 = new Impedance[7][1];
 
     public CircuitA(ItemElement[] compA) {
         //création du circuit
@@ -40,21 +40,24 @@ public class CircuitA extends Circuit {
         Dipole a = new Dipole();
         m1[0][0]= new Impedance(1,0);
         m1[1][0]= new Impedance(1,0);
-        m1[1][1]=new Impedance(1,0);
-        m1[1][2]=new Impedance(-1,0);
         m1[2][1]=new Impedance(1,0);
         m1[2][2]=new Impedance(-1,0);
-        for(int l1=1;l1<4;l1++){
-            ItemComposant y = (ItemComposant) compA[l1];
+        m1[3][2]=new Impedance(1,0);
+        m1[3][3]=new Impedance(-1,0);
+        for(int l=1;l<mailles.get(0).Icomposants.size();l++){
+            ItemComposant y = (ItemComposant) mailles.get(0).Icomposants.get(l);
             a=y.RenvoiComposant(y.getComposant(),frequence);
-            m1[0][l1] = a.z.multiplicationV2(new Impedance(-1,0));
+            m1[1][l] = a.z.multiplicationV2(new Impedance(-1,0));
+            m1[l+3][l] = a.z.multiplicationV2(new Impedance(-1,0));
+        }
+        for(int j=0;j<3;j++){
+            m1[j+4][j+4]=new Impedance(1,0);
         }
 
        //remplissage de m2 avec les coefficients droits de chaque équation
-       m2[1][0]= new Impedance(amplitude,0);
+       m2[0][0]= new Impedance(amplitude,0);
 
     }
-
 
 
 }

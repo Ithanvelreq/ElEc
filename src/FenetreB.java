@@ -306,13 +306,13 @@ public class FenetreB extends JFrame implements ActionListener{
             tableaumenu[1].setLocation((int)(Panneausysteme.getWidth()*0.256), (int)(Panneausysteme.getHeight()/13.5)); //composant d'en haut
             estvertical[1]=false;
 
-            tableaumenu[2] = new ItemComposant(autrescomposants);
-            tableaumenu[2].setLocation((int)(Panneausysteme.getWidth()*0.85),(int)(Panneausysteme.getHeight()*0.435)); //composant de droite
-            estvertical[2]=true;
-
             tableaumenu[3] = new ItemComposant(autrescomposants);
-            tableaumenu[3].setLocation((int)(Panneausysteme.getWidth()*0.478),(int)(Panneausysteme.getHeight()*0.435)); // composant du milieu
+            tableaumenu[3].setLocation((int)(Panneausysteme.getWidth()*0.85),(int)(Panneausysteme.getHeight()*0.435)); //composant de droite
             estvertical[3]=true;
+
+            tableaumenu[2] = new ItemComposant(autrescomposants);
+            tableaumenu[2].setLocation((int)(Panneausysteme.getWidth()*0.478),(int)(Panneausysteme.getHeight()*0.435)); // composant du milieu
+            estvertical[2]=true;
         }
 
         //rajouter des resolutions suivant les écrans que l'on a

@@ -3,14 +3,13 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
-import static java.awt.event.KeyEvent.*;
 
 public class FenetreC extends JFrame implements ActionListener{
 
     //obtient les caractéristiques de l'écran pour que la fenetre occupe tout l'espace
 
     Dimension tailleEcran = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-    int hauteur = (int)tailleEcran.getHeight();
+    int hauteur = (int)tailleEcran.getHeight()-40;
     int largeur = (int)tailleEcran.getWidth();
 
     // obtention de 3/4 et de 1/4 de la longueur de l'écran

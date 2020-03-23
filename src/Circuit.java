@@ -12,9 +12,11 @@ public abstract class Circuit extends JFrame {
     }
 
     public Circuit(ItemElement[] Icomp){
-        for (ItemElement c : Icomp){
+
+        //a modifier
+        /*for (ItemElement c : Icomp){
             composants.add(c);
-        }
+        }*/
     }
 
     public void findMailles(){

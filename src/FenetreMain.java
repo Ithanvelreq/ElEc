@@ -7,7 +7,7 @@ public class FenetreMain extends JFrame implements ActionListener{
     //obtient les caractéristiques de l'écran pour que la fenetre occupe tout l'espace
 
     Dimension tailleEcran = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-    int hauteur = (int)tailleEcran.getHeight();
+    int hauteur = (int)tailleEcran.getHeight()-40;
     int largeur = (int)tailleEcran.getWidth();
 
     //declaration de tous les widgets et des 4 fenêtres
@@ -20,6 +20,10 @@ public class FenetreMain extends JFrame implements ActionListener{
     FenetreB Fenetrecircuit2;
     FenetreC Fenetrecircuit3;
     FenetreD Fenetrecircuit4;
+    public ImageIcon imagebouton1;
+    public ImageIcon imagebouton2;
+    public ImageIcon imagebouton3;
+    public ImageIcon imagebouton4;
 
 
     //constructeur
@@ -46,17 +50,34 @@ public class FenetreMain extends JFrame implements ActionListener{
         //création et placement des boutons adaptatif en fonction de la taille de l'écran
         tableaubouton = new JButton[4];
 
-        tableaubouton[0]=new Boutonmodif("",(new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("imagecircuitRLC.png")))));
-        tableaubouton[0].setBounds((int)(0.25*largeur/4), hauteur/6,(int)((largeur/2)*0.7), (int)((hauteur/2)*0.7));
+        //adaptation des tailles des images
+        imagebouton1 = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("imagecircuitRLC.png")));
+        Image image = imagebouton1.getImage().getScaledInstance(350,200, Image.SCALE_SMOOTH);
+        imagebouton1 = new ImageIcon(image, imagebouton1.getDescription());
 
-        tableaubouton[1] = new Boutonmodif("",(new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("circuitenparallele.png")))));
-        tableaubouton[1].setBounds((int)(2.25*largeur/4), hauteur/6,(int)((largeur/2)*0.7), (int)((hauteur/2)*0.7));
+        imagebouton2 = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("circuitenparallele.png")));
+        Image image1 = imagebouton2.getImage().getScaledInstance(350,200, Image.SCALE_SMOOTH);
+        imagebouton2 = new ImageIcon(image1, imagebouton2.getDescription());
 
-        tableaubouton[2] = new Boutonmodif("",(new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("circuitenparallele2.png")))));
-        tableaubouton[2].setBounds((int)(0.25*largeur/4), tableaubouton[0].getY()+tableaubouton[0].getHeight()+50,(int)((largeur/2)*0.7), (int)((hauteur/2)*0.7));
+        imagebouton3 = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("circuitenparallele2.png")));
+        Image image2 = imagebouton3.getImage().getScaledInstance(350,200, Image.SCALE_SMOOTH);
+        imagebouton3 = new ImageIcon(image2, imagebouton3.getDescription());
 
-        tableaubouton[3]= new Boutonmodif("",(new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("circuitenparallele3.png")))));
-        tableaubouton[3].setBounds((int)(2.25*largeur/4), tableaubouton[0].getY()+tableaubouton[0].getHeight()+50,(int)((largeur/2)*0.7), (int)((hauteur/2)*0.7));
+        imagebouton4 = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getClassLoader().getResource("circuitenparallele3.png")));
+        Image image3 = imagebouton4.getImage().getScaledInstance(350,200, Image.SCALE_SMOOTH);
+        imagebouton4 = new ImageIcon(image3, imagebouton4.getDescription());
+
+        tableaubouton[0]=new Boutonmodif("",imagebouton1);
+        tableaubouton[0].setBounds((int)(0.25*largeur/4), hauteur/5,(int)((largeur/2)*0.7), (int)((hauteur/2)*0.7));
+
+        tableaubouton[1] = new Boutonmodif("",imagebouton2);
+        tableaubouton[1].setBounds((int)(2.25*largeur/4), hauteur/5,(int)((largeur/2)*0.7), (int)((hauteur/2)*0.7));
+
+        tableaubouton[2] = new Boutonmodif("",imagebouton3);
+        tableaubouton[2].setBounds((int)(0.25*largeur/4), tableaubouton[0].getY()+tableaubouton[0].getHeight(),(int)((largeur/2)*0.7), (int)((hauteur/2)*0.7));
+
+        tableaubouton[3]= new Boutonmodif("",imagebouton4);
+        tableaubouton[3].setBounds((int)(2.25*largeur/4), tableaubouton[0].getY()+tableaubouton[0].getHeight(),(int)((largeur/2)*0.7), (int)((hauteur/2)*0.7));
 
         for(JButton b :tableaubouton){
             b.addActionListener(this);

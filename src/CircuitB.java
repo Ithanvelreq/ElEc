@@ -4,8 +4,8 @@ public class CircuitB extends Circuit{
 
     public double frequence;
     public double amplitude;
-    public Impedance[][] m1 = new Impedance[4][7];
-    public Impedance[][] m2 = new Impedance[4][1];
+    public Impedance[][] m1 = new Impedance[7][7];
+    public Impedance[][] m2 = new Impedance[7][1];
 
     public CircuitB(ItemElement[] compB) {
         //création du circuit

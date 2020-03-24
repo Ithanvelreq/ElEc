@@ -54,7 +54,7 @@ public class CircuitB extends Circuit{
             ItemComposant y = (ItemComposant) mailles.get(1).Icomposants.get(j);
             a=y.RenvoiComposant(y.getComposant(),frequence);
             m1[2][j+2] = a.z;
-            m1[j+5][j+2] = a.z.multiplicationV2(new Impedance(-1,0));
+            m1[j+5][j+2]=a.z.multiplicationV2(new Impedance(-1,0));
         }
         m1[2][3]=m1[0][3].multiplicationV2(new Impedance(-1,0));
         for(int k=0;k<3;k++){

@@ -281,15 +281,15 @@ public class FenetreC extends JFrame implements ActionListener{
             tableaumenu[0].setLocation(Panneausysteme.getWidth()/20,(int)(Panneausysteme.getHeight()*0.435));
             estvertical[0]=true;
 
-            tableaumenu[1] = new ItemComposant(autrescomposants);
+            tableaumenu[1] = new ItemComposant(autrescomposants, 1);
             tableaumenu[1].setLocation((int)(Panneausysteme.getWidth()*0.598), (int)(Panneausysteme.getHeight()/13.5)); //composant d'en haut
             estvertical[1]=false;
 
-            tableaumenu[2] = new ItemComposant(autrescomposants);
+            tableaumenu[2] = new ItemComposant(autrescomposants, 2);
             tableaumenu[2].setLocation((int)(Panneausysteme.getWidth()*0.85),(int)(Panneausysteme.getHeight()*0.435)); //composant de droite
             estvertical[2]=true;
 
-            tableaumenu[3] = new ItemComposant(autrescomposants);
+            tableaumenu[3] = new ItemComposant(autrescomposants, 3);
             tableaumenu[3].setLocation((int)(Panneausysteme.getWidth()*0.478),(int)(Panneausysteme.getHeight()*0.435)); // composant du milieu
             estvertical[3]=true;
         }
@@ -300,15 +300,15 @@ public class FenetreC extends JFrame implements ActionListener{
             tableaumenu[0].setLocation(Panneausysteme.getWidth()/20,(int)(Panneausysteme.getHeight()*0.435));
             estvertical[0]=true;
 
-            tableaumenu[1] = new ItemComposant(autrescomposants);
+            tableaumenu[1] = new ItemComposant(autrescomposants, 1);
             tableaumenu[1].setLocation((int)(Panneausysteme.getWidth()*0.598), (int)(Panneausysteme.getHeight()/13.5)); //composant d'en haut
             estvertical[1]=false;
 
-            tableaumenu[2] = new ItemComposant(autrescomposants);
+            tableaumenu[2] = new ItemComposant(autrescomposants, 2);
             tableaumenu[2].setLocation((int)(Panneausysteme.getWidth()*0.85),(int)(Panneausysteme.getHeight()*0.435)); //composant de droite
             estvertical[2]=true;
 
-            tableaumenu[3] = new ItemComposant(autrescomposants);
+            tableaumenu[3] = new ItemComposant(autrescomposants, 3);
             tableaumenu[3].setLocation((int)(Panneausysteme.getWidth()*0.478),(int)(Panneausysteme.getHeight()*0.435)); // composant du milieu
             estvertical[3]=true;
         }

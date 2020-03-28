@@ -1,6 +1,6 @@
 public class Matrix {
-    private Impedance [][] matrix;
-    private Impedance [][] vecteur;
+    private Impedance [][] matrix = new Impedance[1][1];
+    private Impedance [][] vecteur = new Impedance[1][1];  // Solution finale du sys lin
     private int imax = 0;
 
     public Matrix(Impedance [][] comp, Impedance [][]res){
@@ -34,7 +34,7 @@ public class Matrix {
                for(int col = i+1; col<matrix.length; col++){
                    matrix[l][col] = matrix[l][col].sommeV2(matrix[i][col].multiplicationV2(facteur));
                }
-               vecteur[l][0] = vecteur[l][0].sommeV2(vecteur[i][0].multiplicationV2(facteur));
+               vecteur[l][0].sommeV1(vecteur[i][0].multiplicationV2(facteur));
            }
         }
 
@@ -76,5 +76,13 @@ public class Matrix {
                 }
             }
         }
+    }
+
+    public Impedance [] solutions(){
+        Impedance [] w = new Impedance[vecteur.length];
+        for(int i = 0; i< vecteur.length; i ++){
+            w[i] = vecteur[i][0];
+        }
+        return w;
     }
 }

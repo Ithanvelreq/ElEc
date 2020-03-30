@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
-import static java.awt.event.KeyEvent.*;
+
 
 public class FenetreA extends JFrame implements ActionListener{
 
@@ -12,6 +12,8 @@ public class FenetreA extends JFrame implements ActionListener{
     Dimension tailleEcran = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
     int hauteur = (int)tailleEcran.getHeight()-40; //ajout du -40 qui correspond à la taille de la barre des taches
     int largeur = (int)tailleEcran.getWidth();
+
+
 
     // obtention de 3/4 et de 1/4 de la longueur de l'écran
 
@@ -46,9 +48,10 @@ public class FenetreA extends JFrame implements ActionListener{
         this.setTitle("circuit A");     //titre
         this.setBackground(new Color(228,229,230));
 
+        //System.out.println(hauteur+"\n"+largeur);
         //this.pack();
         //this.setDefaultLookAndFeelDecorated(true);
-        this.setExtendedState(this.MAXIMIZED_BOTH);  //plein écran
+        //this.setExtendedState(this.MAXIMIZED_BOTH);  //plein écran
 
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);   // permet de fermer la fenêtre sans fermer tout le programme
 

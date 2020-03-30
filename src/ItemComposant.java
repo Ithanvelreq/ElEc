@@ -79,13 +79,13 @@ public class ItemComposant extends ItemElement implements MouseListener{
     //méthode interface
     public void mouseClicked(MouseEvent e){
         if(menuComposant.getSelectedItem().toString()=="Bobine"){
-            unite.setText("mH");
+            unite.setText("H");
         }
         if(menuComposant.getSelectedItem().toString()=="Résistance"){
             unite.setText("ohm");
         }
         if(menuComposant.getSelectedItem().toString()=="Condensateur"){
-            unite.setText("micro F");
+            unite.setText("F");
         }
         if(menuComposant.getSelectedItem().toString()=="source de tension"){
             unite.setText("V");
@@ -93,13 +93,13 @@ public class ItemComposant extends ItemElement implements MouseListener{
     }
     public void mouseExited(MouseEvent e){
         if(menuComposant.getSelectedItem().toString()=="Bobine"){
-            unite.setText("mH");
+            unite.setText("H");
         }
         if(menuComposant.getSelectedItem().toString()=="Résistance"){
             unite.setText("ohm");
         }
         if(menuComposant.getSelectedItem().toString()=="Condensateur"){
-            unite.setText("micro F");
+            unite.setText("F");
         }
         if(menuComposant.getSelectedItem().toString()=="source de tension"){
             unite.setText("V");

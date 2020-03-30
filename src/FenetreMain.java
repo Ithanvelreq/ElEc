@@ -112,6 +112,8 @@ public class FenetreMain extends JFrame implements ActionListener{
 
             Fenetrecircuit1 = new FenetreA();
             Fenetrecircuit1.setVisible(true);
+            FenetreA_Bis FenetrecircuitTEST= new FenetreA_Bis();
+            FenetrecircuitTEST.setVisible(true);
         }
         if (e.getSource()== tableaubouton[1]){
 

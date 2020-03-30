@@ -27,9 +27,8 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
     ItemElement[] tableaumenu; // tableau de menu déroulants
     boolean[] estvertical = new boolean[4]; // tableau pour savoir si les menus sont sur un segment vertical ou non
     String[] listeComposants = {"Resistance", "Bobine", "Condensateur"};  //tableau permettant la selection des elements des menus deroulants
-    JTextField[] tableauzonetexte;
-    boolean composantvalide = false;
-
+    JTextField[] tableauzonetexte;  //regroupe tous les chp de saisie
+    boolean composantvalide;        //savoir si le système a été validé
     //constructeur
     public FenetreA_Bis(){
 
@@ -89,21 +88,23 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
 
             //mise en place des ItemsElement (paramétrages des composants)
         // les ItemElement ont des tailles définies fixes.
-
         tableaumenu=SetUpItemElement();
         for (ItemElement i : tableaumenu){
             PanelCircuit.add(i); //on ajoute l'ItemComposant
         }
-
         tableauzonetexte = this.regrouperJTextField(tableaumenu.length+1);
 
             //on trace désormais le circuit
         dessinCircuit = new Trace_Circuit(1,PanelCircuit.getHeight(),PanelCircuit.getWidth());
         PanelCircuit.add(dessinCircuit);
-
     }
 
-    //méthode
+    //METHODE
+
+    /**
+     * @param taille : nb de JtextField à regrouper
+     * @return : un tableau contenant tous les JTextField
+     */
     public JTextField[] regrouperJTextField(int taille){
         JTextField[] r = new JTextField[taille];
 
@@ -118,6 +119,32 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
                 r[i+1]=x.saisie;
             }
         }
+        return r;
+    }
+
+    /**
+     * génère et postionne l'ensemble des ItemElements de chaque élément du circuit
+     * @return : un tableau regroupant les ItemElements
+     */
+    public ItemElement[] SetUpItemElement(){
+
+        ItemElement[] r = new ItemElement[4];
+        r[0] = new ItemGenerateur();  //générateur à gauche
+        r[0].setLocation((PanelCircuit.getWidth()/9)-80,(PanelCircuit.getHeight()/2)-60);
+        estvertical[0] = true;
+
+        r[1] = new ItemComposant(listeComposants, 1);
+        r[1].setLocation((PanelCircuit.getWidth()/2)-60,(PanelCircuit.getHeight()/10)-37); //composant d'en haut
+        estvertical[1] = false;
+
+        r[2] = new ItemComposant(listeComposants, 2);
+        r[2].setLocation((PanelCircuit.getWidth()*8/9)-60,(PanelCircuit.getHeight()/2)-37); //composant de droite
+        estvertical[2] = true;
+
+        r[3] = new ItemComposant(listeComposants, 3);
+        r[3].setLocation((PanelCircuit.getWidth()/2)-60, (PanelCircuit.getHeight()*9/10)-37); // composant d'en bas
+        estvertical[3] = false;
+
         return r;
     }
 
@@ -158,29 +185,5 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
             }
             composantvalide=false;
         }
-
-
-    }
-
-    public ItemElement[] SetUpItemElement(){
-
-        ItemElement[] r = new ItemElement[4];
-        r[0] = new ItemGenerateur();  //générateur à gauche
-        r[0].setLocation((PanelCircuit.getWidth()/9)-80,(PanelCircuit.getHeight()/2)-60);
-        estvertical[0] = true;
-
-        r[1] = new ItemComposant(listeComposants, 1);
-        r[1].setLocation((PanelCircuit.getWidth()/2)-60,(PanelCircuit.getHeight()/10)-37); //composant d'en haut
-        estvertical[1] = false;
-
-        r[2] = new ItemComposant(listeComposants, 2);
-        r[2].setLocation((PanelCircuit.getWidth()*8/9)-60,(PanelCircuit.getHeight()/2)-37); //composant de droite
-        estvertical[2] = true;
-
-        r[3] = new ItemComposant(listeComposants, 3);
-        r[3].setLocation((PanelCircuit.getWidth()/2)-60, (PanelCircuit.getHeight()*9/10)-37); // composant d'en bas
-        estvertical[3] = false;
-
-        return r;
     }
 }

@@ -58,6 +58,7 @@ public class ItemGenerateur extends ItemElement {
         this.add(saisieAmpl);
     }
 
+    //GETTER
     public double getFrequence (){
         return  Double.parseDouble(saisieFreq.getText());
     }
@@ -65,6 +66,12 @@ public class ItemGenerateur extends ItemElement {
         return  Double.parseDouble(saisieAmpl.getText());
     }
 
+    //METHODE
+    /**
+     * méthode qui permet de dessiner la composant choisi
+     * @param aDessiner : boolean s'il faut dessiner ou non l'élément
+     * @param vertical : boolean sur l'emplacement
+     */
     public void dessine(boolean aDessiner, boolean vertical){
 
         if(aDessiner) {

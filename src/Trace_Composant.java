@@ -23,14 +23,18 @@ public class Trace_Composant extends JPanel{
 
     }
 
+    /**
+     * on définit l'ensemble des tracés possibles
+     * @param g1 : graphics du JPanel
+     */
     public void paint(Graphics g1){
 
         Graphics2D g = (Graphics2D) g1;
         g.setColor(new Color(228,229,230));
-        g.fillRect(0,0,largeur,hauteur);
+        g.fillRect(0,0,largeur,hauteur);            //on unifie le fond
 
         g.setColor(Color.black);
-        g.setStroke(new BasicStroke(4.0f));
+        g.setStroke(new BasicStroke(4.0f)); //taille ligne
 
         if(aDessiner) {
             if (composant.equals("Resistance")) {
@@ -68,7 +72,6 @@ public class Trace_Composant extends JPanel{
                     g.fillRect(largeur/2,0,largeur/2,hauteur);
 
                 }
-
             }
             if (composant.equals("generateur")) {
                 g.drawLine(largeur / 2, 0, largeur / 2, hauteur);

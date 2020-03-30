@@ -51,8 +51,12 @@ public class ItemComposant extends ItemElement implements MouseListener{
     //méthode
     public String getComposant(){ return menuComposant.getSelectedItem().toString(); }
 
-
-    // permet de récupérer les caractéristiques du composant choisi
+    /**
+     * méthode qui renvoie le dipôle correspondant à la saisie de l'utilisateur
+     * @param item : nom (String) du composant
+     * @param f : fréquence générateur
+     * @return : le dipôle correspondant
+     */
     public Dipole RenvoiComposant(String item,double f){
         Impedance a= new Impedance(0,0);
         String w = "s";
@@ -77,6 +81,11 @@ public class ItemComposant extends ItemElement implements MouseListener{
         return r;
     }
 
+    /**
+     * méthode qui permet de dessiner la composant choisi
+     * @param aDessiner : boolean s'il faut dessiner ou non l'élément
+     * @param vertical : boolean sur l'emplacement
+     */
     public void dessine(boolean aDessiner, boolean vertical){
         if(aDessiner){
             dessin = new Trace_Composant(this.getComposant(),vertical,this.getHeight(),this.getWidth(),aDessiner);

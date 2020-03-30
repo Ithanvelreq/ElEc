@@ -16,10 +16,12 @@ public class Trace_Circuit extends JPanel{
 
         this.setLayout(null);
         this.setBounds(0,0,largeur,hauteur);
-
-
     }
 
+    /**
+     * on définit les 4 tracés de circuits différents
+     * @param g1 : graphics du JPanel
+     */
     public void paint(Graphics g1){
 
         Graphics2D g = (Graphics2D) g1;
@@ -42,5 +44,4 @@ public class Trace_Circuit extends JPanel{
 
         }
     }
-
 }

@@ -27,6 +27,7 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
     ItemElement[] tableaumenu = new ItemElement[4]; // tableau de menu déroulants
     boolean[] estvertical = new boolean[4]; // tableau pour savoir si les menus sont sur un segment vertical ou non
     String[] listeComposants = {"Résistance", "Bobine", "Condensateur"};  //tableau permettant la selection des elements des menus deroulants
+    JTextField[] tableauzonetexte;
 
     //constructeur
     public FenetreA_Bis(){
@@ -108,10 +109,30 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
             PanelCircuit.add(i); //on ajoute l'ItemComposant à la zone de dessin
         }
 
+        tableauzonetexte = this.regrouperJTextField(tableaumenu.length+1);
+
+
+
 
     }
 
     //méthode
+    public JTextField[] regrouperJTextField(int taille){
+        JTextField[] r = new JTextField[taille];
+
+        for (int i=0;i<tableaumenu.length;i++){
+            if(tableaumenu[i] instanceof ItemGenerateur){
+                ItemGenerateur x = (ItemGenerateur) tableaumenu[i];
+                r[i]=x.saisieAmpl;
+                r[i+1]=x.saisieFreq;
+            }
+            if(tableaumenu[i] instanceof ItemComposant){
+                ItemComposant x = (ItemComposant)tableaumenu[i];
+                r[i+1]=x.saisie;
+            }
+        }
+        return r;
+    }
 
     //méthode évènement
     public void actionPerformed (ActionEvent e){}

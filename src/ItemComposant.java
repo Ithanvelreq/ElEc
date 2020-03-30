@@ -56,8 +56,8 @@ public class ItemComposant extends ItemElement implements MouseListener{
         Impedance a= new Impedance(0,0);
         String w = "s";
         Dipole r= new Dipole(a,"r");
-        if (item.equals("Resistance")){
-            w = "Resistance"+n;
+        if (item.equals("Résistance")){
+            w = "Résistance"+n;
             a.setRe(Double.parseDouble(saisie.getText()));
             a.setIm(0);
         }

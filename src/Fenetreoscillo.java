@@ -76,7 +76,7 @@ public class Fenetreoscillo extends JFrame implements ActionListener {
 
     public void recupcomposant(JPanel panneau){
 
-        /*JTextArea[] tabzonetexte= new JTextArea[2]; //création d'un emplacement pour le texte
+        JTextArea[] tabzonetexte= new JTextArea[2]; //création d'un emplacement pour le texte
         for(int j=0;j<2;j++) {
             tabzonetexte[j] = new JTextArea();
             tabzonetexte[j].setEditable(false);
@@ -94,7 +94,7 @@ public class Fenetreoscillo extends JFrame implements ActionListener {
                 }
             }
         }
-        */
+
 
     }
 

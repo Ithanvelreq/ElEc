@@ -23,7 +23,7 @@ public class ItemComposant extends ItemElement implements MouseListener{
         this.setLayout(null);
 
         unite = new JLabel("unite");
-        unite.setBounds(60, 0, 50, 30);
+        unite.setBounds(60, 5, 50, 30);
 
         saisie = new JTextField();
         saisie.setBounds(3, 5, 50, 30);
@@ -77,10 +77,25 @@ public class ItemComposant extends ItemElement implements MouseListener{
         return r;
     }
 
-    public void dessine(boolean b, boolean vertical){
-        dessin = new Trace_Composant(this.getComposant(),vertical,this.getHeight(),this.getWidth());
-        this.add(dessin);
-        dessin.setVisible(b);
+    public void dessine(boolean aDessiner, boolean vertical){
+        if(aDessiner){
+            dessin = new Trace_Composant(this.getComposant(),vertical,this.getHeight(),this.getWidth(),aDessiner);
+            this.add(dessin);
+            //on cache les widgets
+            unite.setVisible(false);
+            saisie.setVisible(false);
+            menuComposant.setVisible(false);
+            repaint();
+        }
+        if(!aDessiner){
+            //on cache le dessin
+            dessin.setVisible(false);
+            //on remet les widgets
+            unite.setVisible(true);
+            saisie.setVisible(true);
+            menuComposant.setVisible(true);
+            repaint();
+        }
     }
 
     //méthode interface

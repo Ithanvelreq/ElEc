@@ -65,11 +65,28 @@ public class ItemGenerateur extends ItemElement {
         return  Double.parseDouble(saisieAmpl.getText());
     }
 
-    public void dessine(boolean b, boolean vertical){
-        dessin = new Trace_Composant("generateur",vertical,this.getHeight(),this.getWidth());
-        dessin.tracer(dessin.getGraphics());
-        this.add(dessin);
-        dessin.setVisible(b);
-        System.out.println("passage");
+    public void dessine(boolean aDessiner, boolean vertical){
+
+        if(aDessiner) {
+            System.out.println("dans item : "+aDessiner);
+            dessin = new Trace_Composant("generateur",vertical,this.getHeight(),this.getWidth(),aDessiner);
+            this.add(dessin);
+            //on cache tous les widgets
+            source.setVisible(false);
+            freq.setVisible(false);
+            ampl.setVisible(false);
+            saisieAmpl.setVisible(false);
+            saisieFreq.setVisible(false);
+            repaint();
+        }
+        if(!aDessiner){
+            dessin.setVisible(false);
+            source.setVisible(true);
+            freq.setVisible(true);
+            ampl.setVisible(true);
+            saisieFreq.setVisible(true);
+            saisieAmpl.setVisible(true);
+            repaint();
+        }
     }
 }

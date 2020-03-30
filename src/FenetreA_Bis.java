@@ -1,5 +1,3 @@
-import com.sun.xml.internal.messaging.saaj.soap.JpegDataContentHandler;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -14,20 +12,23 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
 
 
     //attributs_widgets
+        //Fenetre attribut
+    Fenetreoscillo oscillo;
         //JPanel principaux
     JPanel PanelMain;
     JPanel PanelCircuit;
     JPanel PanelGestion;
-    Trace_Circuit dessinCircuit = new Trace_Circuit();
+    Trace_Circuit dessinCircuit;
         //JButton
-    JButton boutonvalider;
-    JButton boutonaffichage1;
+    JButton boutonvalidation;
+    JButton boutonResultat;
     JButton boutonreinit;
         //variables de travail
     ItemElement[] tableaumenu = new ItemElement[4]; // tableau de menu déroulants
     boolean[] estvertical = new boolean[4]; // tableau pour savoir si les menus sont sur un segment vertical ou non
     String[] listeComposants = {"Résistance", "Bobine", "Condensateur"};  //tableau permettant la selection des elements des menus deroulants
     JTextField[] tableauzonetexte;
+    boolean composantvalide = false;
 
     //constructeur
     public FenetreA_Bis(){
@@ -54,30 +55,30 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
 
             //mise en place des boutons
 
-        boutonaffichage1 = new JButton("Valider les composants");
-        boutonaffichage1.setBounds(PanelGestion.getWidth()/4,(int)(PanelGestion.getHeight()*3.5/5),PanelGestion.getWidth()/2,PanelGestion.getHeight()/20);
-        boutonaffichage1.setBackground(Color.gray);
-        boutonaffichage1.setForeground(Color.white);
-        boutonaffichage1.setFont(new Font("Arial", Font.BOLD,18));
-        boutonaffichage1.addActionListener(this);
-        PanelGestion.add(boutonaffichage1);
+        boutonvalidation = new JButton("Valider les composants");
+        boutonvalidation.setBounds(PanelGestion.getWidth()/4,(int)(PanelGestion.getHeight()*3.5/5),PanelGestion.getWidth()/2,PanelGestion.getHeight()/20);
+        boutonvalidation.setBackground(Color.gray);
+        boutonvalidation.setForeground(Color.white);
+        boutonvalidation.setFont(new Font("Arial", Font.BOLD,18));
+        boutonvalidation.addActionListener(this);
+        PanelGestion.add(boutonvalidation);
 
         boutonreinit = new JButton("Réinitialiser");
-        boutonreinit.setBounds(PanelGestion.getWidth()/4,boutonaffichage1.getY()+boutonaffichage1.getHeight()+30,PanelGestion.getWidth()/2,PanelGestion.getHeight()/20);
+        boutonreinit.setBounds(PanelGestion.getWidth()/4,boutonvalidation.getY()+boutonvalidation.getHeight()+30,PanelGestion.getWidth()/2,PanelGestion.getHeight()/20);
         boutonreinit.setBackground(Color.gray);
         boutonreinit.setForeground(Color.white);
         boutonreinit.setFont(new Font("Arial", Font.BOLD,18));
         boutonreinit.addActionListener(this);
         PanelGestion.add(boutonreinit);
 
-        boutonvalider = new JButton("Afficher les résultats");
-        boutonvalider.setBounds(PanelGestion.getWidth()/4,boutonreinit.getY()+boutonreinit.getHeight()+30,PanelGestion.getWidth()/2,PanelGestion.getHeight()/20);
-        boutonvalider.setBackground(Color.gray);
-        boutonvalider.setForeground(Color.white);
-        boutonvalider.setFont(new Font("Arial", Font.BOLD,18));
-        boutonvalider.addActionListener(this);
-        PanelGestion.add(boutonvalider);
-        boutonvalider.setVisible(false);
+        boutonResultat = new JButton("Afficher les résultats");
+        boutonResultat.setBounds(PanelGestion.getWidth()/4,boutonreinit.getY()+boutonreinit.getHeight()+30,PanelGestion.getWidth()/2,PanelGestion.getHeight()/20);
+        boutonResultat.setBackground(Color.gray);
+        boutonResultat.setForeground(Color.white);
+        boutonResultat.setFont(new Font("Arial", Font.BOLD,18));
+        boutonResultat.addActionListener(this);
+        PanelGestion.add(boutonResultat);
+        boutonResultat.setVisible(false);
 
         //PanelCircuit : panel de gauche : visualisation du circuit
         PanelCircuit = new JPanel();
@@ -106,13 +107,14 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
         estvertical[3] = false;
 
         for (ItemElement i : tableaumenu){
-            PanelCircuit.add(i); //on ajoute l'ItemComposant à la zone de dessin
+            PanelCircuit.add(i); //on ajoute l'ItemComposant
         }
 
         tableauzonetexte = this.regrouperJTextField(tableaumenu.length+1);
 
-
-
+            //on trace désormais le circuit
+        dessinCircuit = new Trace_Circuit(1,PanelCircuit.getHeight(),PanelCircuit.getWidth());
+        PanelCircuit.add(dessinCircuit);
 
     }
 
@@ -135,5 +137,49 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
     }
 
     //méthode évènement
-    public void actionPerformed (ActionEvent e){}
+    public void actionPerformed (ActionEvent e){
+        if (e.getSource()==boutonvalidation){
+            for(int i=0; i<4;i++) {
+                while (tableauzonetexte[i].getText().equals("") ||Integer.parseInt(tableauzonetexte[i].getText()) > 10000 || Integer.parseInt(tableauzonetexte[i].getText()) < 1) {
+                    JOptionPane.showMessageDialog(this, "Veuillez rentrer une valeur de R, L ou C correcte (entre 1 et 10000 USI) !");
+                    tableauzonetexte[i].setText("Changer"); // le fait de faire apparaitre changer fait apparaitre des messages d'erreur dans la console mais ce n'est pas grave, c'est parce que le TextField n'est pas censé pouvoir contenir du texte
+                }
+            }
+            boutonResultat.setVisible(true);
+            composantvalide=true;
+
+            for(int j=0;j<4;j++){
+                tableaumenu[j].dessine(true,estvertical[j]);
+            }
+
+
+        }
+    /*
+        if (e.getSource()==boutonvalider) {
+
+            oscillo = new Fenetreoscillo(tableaumenu);
+            oscillo.setVisible(true);
+            CircuitA circuitCalcul = new CircuitA(tableaumenu);
+            String [] w = circuitCalcul.inconnues();
+            Impedance []z = circuitCalcul.solutions();
+            System.out.println("xx");
+
+        }
+
+        if (e.getSource()==boutonreinit) {
+
+            if (composantvalide==true){
+                boutonvalider.setVisible(false);
+                for (int k = 0; k < 4; k++) {
+
+                    tabjlab[k].setVisible(false);
+                    tableaumenu[k].setVisible(true);
+
+                }
+            }
+            composantvalide=false;
+        }
+
+     */
+    }
 }

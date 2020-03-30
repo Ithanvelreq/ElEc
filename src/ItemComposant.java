@@ -10,6 +10,7 @@ public class ItemComposant extends ItemElement implements MouseListener{
     JLabel unite;
     JTextField saisie;
     JComboBox menuComposant;
+    Trace_Composant dessin;
     int n;
 
 
@@ -25,7 +26,7 @@ public class ItemComposant extends ItemElement implements MouseListener{
         unite.setBounds(60, 0, 50, 30);
 
         saisie = new JTextField();
-        saisie.setBounds(0, 0, 50, 30);
+        saisie.setBounds(3, 5, 50, 30);
         saisie.addMouseListener(this);
         //blocage de la saisie de lettre dans les JTextField
         saisie.addKeyListener(new KeyAdapter(){
@@ -38,7 +39,7 @@ public class ItemComposant extends ItemElement implements MouseListener{
         });
 
         menuComposant = new JComboBox(listeCompo);
-        menuComposant.setBounds(0, 40, 115, 30);
+        menuComposant.setBounds(3, 40, 115, 30);
         menuComposant.addMouseListener(this);
 
 
@@ -74,6 +75,12 @@ public class ItemComposant extends ItemElement implements MouseListener{
         r.nom = w;
         r.z=a;
         return r;
+    }
+
+    public void dessine(boolean b, boolean vertical){
+        dessin = new Trace_Composant(this.getComposant(),vertical,this.getHeight(),this.getWidth());
+        this.add(dessin);
+        dessin.setVisible(b);
     }
 
     //méthode interface

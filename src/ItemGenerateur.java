@@ -12,6 +12,7 @@ public class ItemGenerateur extends ItemElement {
     JLabel ampl;
     JTextField saisieFreq;
     JTextField saisieAmpl;
+    Trace_Composant dessin;
 
 
     //constructeur
@@ -60,8 +61,15 @@ public class ItemGenerateur extends ItemElement {
     public double getFrequence (){
         return  Double.parseDouble(saisieFreq.getText());
     }
-
     public double getAmpl (){
         return  Double.parseDouble(saisieAmpl.getText());
+    }
+
+    public void dessine(boolean b, boolean vertical){
+        dessin = new Trace_Composant("generateur",vertical,this.getHeight(),this.getWidth());
+        dessin.tracer(dessin.getGraphics());
+        this.add(dessin);
+        dessin.setVisible(b);
+        System.out.println("passage");
     }
 }

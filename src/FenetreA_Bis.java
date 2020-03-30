@@ -132,12 +132,10 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
             }
             boutonResultat.setVisible(true);
             composantvalide=true;
-
+            //on dessine les composants correspondants
             for(int j=0;j<4;j++){
                 tableaumenu[j].dessine(true,estvertical[j]);
             }
-
-
         }
     /*
         if (e.getSource()==boutonvalider) {
@@ -152,7 +150,6 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
         }
         */
         if (e.getSource()==boutonreinit) {
-            System.out.println("appui");
             if (composantvalide){
                 boutonResultat.setVisible(false);
                 for (int k = 0; k < 4; k++) {

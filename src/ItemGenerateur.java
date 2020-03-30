@@ -68,7 +68,6 @@ public class ItemGenerateur extends ItemElement {
     public void dessine(boolean aDessiner, boolean vertical){
 
         if(aDessiner) {
-            System.out.println("dans item : "+aDessiner);
             dessin = new Trace_Composant("generateur",vertical,this.getHeight(),this.getWidth(),aDessiner);
             this.add(dessin);
             //on cache tous les widgets

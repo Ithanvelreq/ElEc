@@ -22,8 +22,15 @@ public abstract class Circuit extends JFrame {
     }
 
     public String [] inconnues (){
-        //a completer
-        return null;
+        String[] i = new String[7];
+        i[0]="U";
+        i[1]="I1";
+        i[2]="I2";
+        i[3]="I3";
+        i[4]="U1";
+        i[5]="U2";
+        i[6]="U3";
+        return i;
     }
 
     public Impedance [] solutions(){

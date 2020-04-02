@@ -16,10 +16,10 @@ public class FenetreMain extends JFrame implements ActionListener{
     JLabel titre;
     JLabel sousTitre;
     JButton credits;
-    FenetreA Fenetrecircuit1;
-    FenetreB Fenetrecircuit2;
-    FenetreC Fenetrecircuit3;
-    FenetreD Fenetrecircuit4;
+    FenetreA_Bis Fenetrecircuit1;
+    FenetreB_Bis Fenetrecircuit2;
+    FenetreC_Bis Fenetrecircuit3;
+    FenetreD_Bis Fenetrecircuit4;
     public ImageIcon imagebouton1;
     public ImageIcon imagebouton2;
     public ImageIcon imagebouton3;
@@ -110,24 +110,22 @@ public class FenetreMain extends JFrame implements ActionListener{
 
         if (e.getSource()== tableaubouton[0]){
 
-            Fenetrecircuit1 = new FenetreA();
+            Fenetrecircuit1 = new FenetreA_Bis();
             Fenetrecircuit1.setVisible(true);
-            FenetreA_Bis FenetrecircuitTEST= new FenetreA_Bis();
-            FenetrecircuitTEST.setVisible(true);
         }
         if (e.getSource()== tableaubouton[1]){
 
-            Fenetrecircuit2 = new FenetreB();
+            Fenetrecircuit2 = new FenetreB_Bis();
             Fenetrecircuit2.setVisible(true);
         }
         if (e.getSource()== tableaubouton[2]){
 
-            Fenetrecircuit3 = new FenetreC();
+            Fenetrecircuit3 = new FenetreC_Bis();
             Fenetrecircuit3.setVisible(true);
         }
         if (e.getSource()== tableaubouton[3]){
 
-            Fenetrecircuit4 = new FenetreD();
+            Fenetrecircuit4 = new FenetreD_Bis();
             Fenetrecircuit4.setVisible(true);
         }
         if (e.getSource()==credits){

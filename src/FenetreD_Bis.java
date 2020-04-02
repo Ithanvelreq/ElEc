@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class FenetreA_Bis extends JFrame implements ActionListener {
+public class FenetreD_Bis extends JFrame implements ActionListener {
 
     //caractéristiques écran
     Dimension tailleEcran = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
@@ -32,15 +32,13 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
     int taillePoliceCaractere;      //taille police caractère selon résolution
 
     //constructeur
-    public FenetreA_Bis(){
-
-
+    public FenetreD_Bis(){
 
         //caractéristiques fenêtre
         this.setSize(largeurEcran,hauteurEcran);			// taille de la fenêtre
         this.setLocation(0,0);		//position de la fenêtre
         this.setVisible(false);			//visibilité de la fenêtre
-        this.setTitle("circuit A");     //titre
+        this.setTitle("circuit D");     //titre
         this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 
         //PanelMain = pour travailler sur les dimensions exploitables de la fenêtre
@@ -101,7 +99,7 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
         tableauzonetexte = this.regrouperJTextField(tableaumenu.length+1);
 
         //on trace désormais le circuit
-        dessinCircuit = new Trace_Circuit(1,PanelCircuit.getHeight(),PanelCircuit.getWidth());
+        dessinCircuit = new Trace_Circuit(3,PanelCircuit.getHeight(),PanelCircuit.getWidth());
         PanelCircuit.add(dessinCircuit);
     }
 
@@ -140,16 +138,16 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
         estvertical[0] = true;
 
         r[1] = new ItemComposant(listeComposants, 1);
-        r[1].setLocation((PanelCircuit.getWidth()/2)-60,(PanelCircuit.getHeight()/10)-37); //composant d'en haut
-        estvertical[1] = false;
+        r[1].setLocation((PanelCircuit.getWidth()*10/27)-60,(PanelCircuit.getHeight()/2)-37); //composant gauche
+        estvertical[1] = true;
 
         r[2] = new ItemComposant(listeComposants, 2);
-        r[2].setLocation((PanelCircuit.getWidth()*8/9)-60,(PanelCircuit.getHeight()/2)-37); //composant de droite
+        r[2].setLocation((PanelCircuit.getWidth()*17/27)-60,(PanelCircuit.getHeight()/2)-37); //composant milieu
         estvertical[2] = true;
 
         r[3] = new ItemComposant(listeComposants, 3);
-        r[3].setLocation((PanelCircuit.getWidth()/2)-60, (PanelCircuit.getHeight()*9/10)-37); // composant d'en bas
-        estvertical[3] = false;
+        r[3].setLocation((PanelCircuit.getWidth()*8/9)-60, (PanelCircuit.getHeight()/2)-37); // composant droite
+        estvertical[3] = true;
 
         return r;
     }
@@ -169,6 +167,7 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
         return r;
     }
 
+
     //méthode évènement
     public void actionPerformed (ActionEvent e){
         if (e.getSource()==boutonvalidation){
@@ -185,8 +184,8 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
                 tableaumenu[j].dessine(true,estvertical[j]);
             }
         }
-        /*
-        if (e.getSource()==boutonResultat) {
+    /*
+        if (e.getSource()==boutonvalider) {
 
             oscillo = new Fenetreoscillo(tableaumenu);
             oscillo.setVisible(true);
@@ -194,10 +193,9 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
             String [] w = circuitCalcul.inconnues();
             Impedance []z = circuitCalcul.solutions();
             System.out.println("xx");
+
         }
-
-         */
-
+        */
         if (e.getSource()==boutonreinit) {
             if (composantvalide){
                 boutonResultat.setVisible(false);

@@ -12,11 +12,13 @@ public class ItemGenerateur extends ItemElement {
     JLabel ampl;
     JTextField saisieFreq;
     JTextField saisieAmpl;
+    Trace_Composant dessin;
+
 
     //constructeur
     public ItemGenerateur(){
 
-        this.setBackground(new Color(228,229,230));
+        this.setBackground(new Color(215,215,215));
         this.setSize(160, 120);
         this.setLayout(null);
 
@@ -41,7 +43,7 @@ public class ItemGenerateur extends ItemElement {
         for (JTextField t : chpSaisie){
             t.addKeyListener(new KeyAdapter(){
                 public void keyTyped(KeyEvent e) { //on n'autorise que l'ecriture des chiffres
-                    if (e.getKeyChar()==VK_0 || e.getKeyChar()==VK_1 || e.getKeyChar()==VK_2 || e.getKeyChar()==VK_3 || e.getKeyChar()==VK_4 || e.getKeyChar()==VK_5 || e.getKeyChar()==VK_6|| e.getKeyChar()==VK_7|| e.getKeyChar()==VK_8|| e.getKeyChar()==VK_9|| e.getKeyChar()==VK_COMMA || e.getKeyChar()==VK_PERIOD ) {
+                    if (e.getKeyChar()==VK_0 || e.getKeyChar()==VK_1 || e.getKeyChar()==VK_2 || e.getKeyChar()==VK_3 || e.getKeyChar()==VK_4 || e.getKeyChar()==VK_5 || e.getKeyChar()==VK_6|| e.getKeyChar()==VK_7|| e.getKeyChar()==VK_8|| e.getKeyChar()==VK_9 || e.getKeyChar()==VK_PERIOD ) {
                     }else{
                         e.consume();
                     }
@@ -56,11 +58,41 @@ public class ItemGenerateur extends ItemElement {
         this.add(saisieAmpl);
     }
 
+    //GETTER
     public double getFrequence (){
         return  Double.parseDouble(saisieFreq.getText());
     }
-
     public double getAmpl (){
         return  Double.parseDouble(saisieAmpl.getText());
+    }
+
+    //METHODE
+    /**
+     * méthode qui permet de dessiner la composant choisi
+     * @param aDessiner : boolean s'il faut dessiner ou non l'élément
+     * @param vertical : boolean sur l'emplacement
+     */
+    public void dessine(boolean aDessiner, boolean vertical){
+
+        if(aDessiner) {
+            dessin = new Trace_Composant("generateur",vertical,this.getHeight(),this.getWidth(),aDessiner);
+            this.add(dessin);
+            //on cache tous les widgets
+            source.setVisible(false);
+            freq.setVisible(false);
+            ampl.setVisible(false);
+            saisieAmpl.setVisible(false);
+            saisieFreq.setVisible(false);
+            repaint();
+        }
+        if(!aDessiner){
+            dessin.setVisible(false);
+            source.setVisible(true);
+            freq.setVisible(true);
+            ampl.setVisible(true);
+            saisieFreq.setVisible(true);
+            saisieAmpl.setVisible(true);
+            repaint();
+        }
     }
 }

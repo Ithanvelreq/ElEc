@@ -30,7 +30,7 @@ public class Trace_Composant extends JPanel{
     public void paint(Graphics g1){
 
         Graphics2D g = (Graphics2D) g1;
-        g.setColor(new Color(228,229,230));
+        g.setColor(new Color(238,238,238));
         g.fillRect(0,0,largeur,hauteur);            //on unifie le fond
 
         g.setColor(Color.black);
@@ -68,9 +68,8 @@ public class Trace_Composant extends JPanel{
                     g.drawOval(largeur/4,0,largeur/2,hauteur/3);
                     g.drawOval(largeur/4,hauteur/3,largeur/2,hauteur/3);
                     g.drawOval(largeur/4,hauteur*2/3,largeur/2,hauteur/3);
-                    g.setColor(new Color(228,229,230));
+                    g.setColor(new Color(238,238,238));
                     g.fillRect(largeur/2,0,largeur/2,hauteur);
-
                 }
             }
             if (composant.equals("generateur")) {

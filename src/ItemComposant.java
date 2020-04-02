@@ -31,7 +31,7 @@ public class ItemComposant extends ItemElement implements MouseListener{
         //blocage de la saisie de lettre dans les JTextField
         saisie.addKeyListener(new KeyAdapter(){
             public void keyTyped(KeyEvent e) { //on n'autorise que l'ecriture des chiffres
-                if (e.getKeyChar()==VK_0 || e.getKeyChar()==VK_1 || e.getKeyChar()==VK_2 || e.getKeyChar()==VK_3 || e.getKeyChar()==VK_4 || e.getKeyChar()==VK_5 || e.getKeyChar()==VK_6|| e.getKeyChar()==VK_7|| e.getKeyChar()==VK_8|| e.getKeyChar()==VK_9 ) {
+                if (e.getKeyChar()==VK_0 || e.getKeyChar()==VK_1 || e.getKeyChar()==VK_2 || e.getKeyChar()==VK_3 || e.getKeyChar()==VK_4 || e.getKeyChar()==VK_5 || e.getKeyChar()==VK_6|| e.getKeyChar()==VK_7|| e.getKeyChar()==VK_8|| e.getKeyChar()==VK_9|| e.getKeyChar()==VK_PERIOD ) {
                 }else{
                     e.consume();
                 }
@@ -61,8 +61,8 @@ public class ItemComposant extends ItemElement implements MouseListener{
         Impedance a= new Impedance(0,0);
         String w = "s";
         Dipole r= new Dipole(a,"r");
-        if (item.equals("Resistance")){
-            w = "Resistance"+n;
+        if (item.equals("Résistance")){
+            w = "Résistance"+n;
             a.setRe(Double.parseDouble(saisie.getText()));
             a.setIm(0);
         }

@@ -30,11 +30,11 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
     JTextField[] tableauzonetexte;  //regroupe tous les chp de saisie
     boolean composantvalide;        //savoir si le système a été validé
     int taillePoliceCaractere;      //taille police caractère selon résolution
+    String[] w;
+    Impedance[] z;
 
     //constructeur
     public FenetreA_Bis(){
-
-
 
         //caractéristiques fenêtre
         this.setSize(largeurEcran,hauteurEcran);			// taille de la fenêtre
@@ -164,7 +164,7 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
             r=18;
         }
         if(hauteurEcran==728 && largeurEcran==1366) {   //resolution HD+
-            return 15;
+            return 12;
         }
         return r;
     }
@@ -185,18 +185,17 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
                 tableaumenu[j].dessine(true,estvertical[j]);
             }
         }
-        /*
+
         if (e.getSource()==boutonResultat) {
 
-            oscillo = new Fenetreoscillo(tableaumenu);
-            oscillo.setVisible(true);
             CircuitA circuitCalcul = new CircuitA(tableaumenu);
-            String [] w = circuitCalcul.inconnues();
-            Impedance []z = circuitCalcul.solutions();
-            System.out.println("xx");
+            w = circuitCalcul.inconnues();
+            z = circuitCalcul.solutions();
+            oscillo = new Fenetreoscillo(w,z,tableaumenu);
+            oscillo.setVisible(true);
         }
 
-         */
+
 
         if (e.getSource()==boutonreinit) {
             if (composantvalide){

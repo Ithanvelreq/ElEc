@@ -95,6 +95,9 @@ public class Fenetreoscillo extends JFrame implements ActionListener {
             }
         }
         */
+        for (int i = 0; i < w.length; i++) {
+            System.out.println(w[i] + " : " + z[i] );
+        }
 
     }
 

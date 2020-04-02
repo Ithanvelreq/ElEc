@@ -162,7 +162,7 @@ public class FenetreD_Bis extends JFrame implements ActionListener {
             r=18;
         }
         if(hauteurEcran==728 && largeurEcran==1366) {   //resolution HD+
-            return 15;
+            return 12;
         }
         return r;
     }

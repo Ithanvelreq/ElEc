@@ -198,6 +198,10 @@ public class dessinoscillo extends JComponent {
         0.0025343134892699126 valeurs des modules avec les valeurs de test
         */
 
+        for(int i=0; i<z.length;i++) {  // for temporaire --> affiche les élements et leur valeur dans la console
+        System.out.println(z[i]);
+        }
+
         tabfct[0] = (x) -> tableaumodule[0]*Math.cos((double) (2*3.14159*frequence*x));
         tabfct[1] = (x) -> tableaumodule[1]*Math.cos((double) (2*3.14159*frequence*x));
         tabfct[2] = (x) -> tableaumodule[2]*Math.cos((double) (2*3.14159*frequence*x));

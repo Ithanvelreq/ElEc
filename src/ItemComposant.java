@@ -112,7 +112,7 @@ public class ItemComposant extends ItemElement implements MouseListener{
         if(menuComposant.getSelectedItem().toString()=="Bobine"){
             unite.setText("H");
         }
-        if(menuComposant.getSelectedItem().toString()=="Résistance"){
+        if(menuComposant.getSelectedItem().toString()=="Resistance"){
             unite.setText("ohm");
         }
         if(menuComposant.getSelectedItem().toString()=="Condensateur"){
@@ -126,7 +126,7 @@ public class ItemComposant extends ItemElement implements MouseListener{
         if(menuComposant.getSelectedItem().toString()=="Bobine"){
             unite.setText("H");
         }
-        if(menuComposant.getSelectedItem().toString()=="Résistance"){
+        if(menuComposant.getSelectedItem().toString()=="Resistance"){
             unite.setText("ohm");
         }
         if(menuComposant.getSelectedItem().toString()=="Condensateur"){

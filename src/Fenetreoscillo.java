@@ -35,7 +35,6 @@ public class Fenetreoscillo extends JFrame implements ActionListener {
         this.w=w;
         this.z=z;
         this.tableaumenu=tableaumenu;
-        dessinoscillo dessin = new dessinoscillo(tabcheckbox,z, tableaumenu); //creation de la courbe
 
         JPanel Panneaumain = (JPanel) this.getContentPane(); // creation panneaumain
 
@@ -45,6 +44,7 @@ public class Fenetreoscillo extends JFrame implements ActionListener {
         panneaudubas.setBounds(0, (int)h1, largeur, (int)h);
         panneaudubas.setBackground(new Color(195, 188, 181));
 
+        dessinoscillo dessin = new dessinoscillo(tabcheckbox,z, tableaumenu, panneaudubas); //creation de la courbe
         //ajout JCheckBox
 
         for(int i=0;i<tabcheckbox.length;i++) {
@@ -67,27 +67,6 @@ public class Fenetreoscillo extends JFrame implements ActionListener {
             }
 
         }
-
-        //création du Jslider pour sélectionner l'échelle de la courbe
-        JLabel affichevaleur = new JLabel("Echelle : 50");
-        affichevaleur.setBounds(0,(int) (h/2),120,(int) (h/2));
-        JSlider curseurechelle = new JSlider();
-
-        curseurechelle.setMaximum(100);
-        curseurechelle.setMinimum(0);
-        curseurechelle.setValue(50);
-        curseurechelle.setPaintTicks(true);
-        curseurechelle.setPaintLabels(true);
-        curseurechelle.setMinorTickSpacing(10);
-        curseurechelle.setMajorTickSpacing(20);
-        curseurechelle.setBounds(0,0,120,(int) (h/2));
-        curseurechelle.addChangeListener(new ChangeListener(){
-            public void stateChanged(ChangeEvent event){
-                affichevaleur.setText("Echelle : " + ((JSlider)event.getSource()).getValue());
-            }
-        });
-        panneaudubas.add(affichevaleur);
-        panneaudubas.add(curseurechelle);
 
         //on ajoute la courbe et le JPanel du bas
         Panneaumain.add( panneaudubas);

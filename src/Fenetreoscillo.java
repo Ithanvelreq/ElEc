@@ -1,7 +1,9 @@
 import java.awt.*;
-import java.awt.event.ActionEvent;
+import java.awt.event.*;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 public class Fenetreoscillo extends JFrame implements ActionListener {
 
@@ -43,8 +45,6 @@ public class Fenetreoscillo extends JFrame implements ActionListener {
         panneaudubas.setBounds(0, (int)h1, largeur, (int)h);
         panneaudubas.setBackground(new Color(195, 188, 181));
 
-        recupcomposant(panneaudubas); // méthode appellée pour récupérer les valeurs des composants et leur type --> pas utilisée pour linstant
-
         //ajout JCheckBox
 
         for(int i=0;i<tabcheckbox.length;i++) {
@@ -68,33 +68,30 @@ public class Fenetreoscillo extends JFrame implements ActionListener {
 
         }
 
+        //création du Jslider pour sélectionner l'échelle de la courbe
+        JLabel affichevaleur = new JLabel("Echelle : 50");
+        affichevaleur.setBounds(0,(int) (h/2),120,(int) (h/2));
+        JSlider curseurechelle = new JSlider();
+
+        curseurechelle.setMaximum(100);
+        curseurechelle.setMinimum(0);
+        curseurechelle.setValue(50);
+        curseurechelle.setPaintTicks(true);
+        curseurechelle.setPaintLabels(true);
+        curseurechelle.setMinorTickSpacing(10);
+        curseurechelle.setMajorTickSpacing(20);
+        curseurechelle.setBounds(0,0,120,(int) (h/2));
+        curseurechelle.addChangeListener(new ChangeListener(){
+            public void stateChanged(ChangeEvent event){
+                affichevaleur.setText("Echelle : " + ((JSlider)event.getSource()).getValue());
+            }
+        });
+        panneaudubas.add(affichevaleur);
+        panneaudubas.add(curseurechelle);
+
         //on ajoute la courbe et le JPanel du bas
         Panneaumain.add( panneaudubas);
         Panneaumain.add(dessin);
-
-    }
-
-    public void recupcomposant(JPanel panneau){
-
-        /*JTextArea[] tabzonetexte= new JTextArea[2]; //création d'un emplacement pour le texte
-        for(int j=0;j<2;j++) {
-            tabzonetexte[j] = new JTextArea();
-            tabzonetexte[j].setEditable(false);
-            tabzonetexte[j].setBounds(0+(largeur/4)*j, 0, largeur / 4, (int) h);
-            tabzonetexte[j].setVisible(true);
-            panneau.add(tabzonetexte[j]);
-
-            for (int i = 0; i < w.length; i++) {
-
-                if (i<4 && j==0 ) {
-                    tabzonetexte[j].setText(tabzonetexte[j].getText() + w[i] + " : " + z[i] + "\n" + "\n");
-                }
-                if(i>3 && j==1){
-                    tabzonetexte[j].setText(tabzonetexte[j].getText() + w[i] + " : " + z[i] + "\n" + "\n");
-                }
-            }
-        }
-        */
 
     }
 

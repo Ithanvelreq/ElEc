@@ -30,7 +30,7 @@ public class ItemComposant extends ItemElement implements MouseListener{
         saisie.addMouseListener(this);
         //blocage de la saisie de lettre dans les JTextField
         saisie.addKeyListener(new KeyAdapter(){
-            public void keyTyped(KeyEvent e) { //on n'autorise que l'ecriture des chiffres
+            public void keyTyped(KeyEvent e) { //on n'autorise que l'ecriture des chiffres et des points
                 if (e.getKeyChar()==VK_0 || e.getKeyChar()==VK_1 || e.getKeyChar()==VK_2 || e.getKeyChar()==VK_3 || e.getKeyChar()==VK_4 || e.getKeyChar()==VK_5 || e.getKeyChar()==VK_6|| e.getKeyChar()==VK_7|| e.getKeyChar()==VK_8|| e.getKeyChar()==VK_9|| e.getKeyChar()==VK_PERIOD ) {
                 }else{
                     e.consume();

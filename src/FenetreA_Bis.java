@@ -7,8 +7,8 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
 
     //caractéristiques écran
     Dimension tailleEcran = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-    int hauteurEcran = (int)tailleEcran.getHeight()-40; //ajout du -40 qui correspond à la taille de la barre des taches
-    int largeurEcran= (int)tailleEcran.getWidth();
+    int hauteurEcran = (int)tailleEcran.getHeight()-40; //on recupère la hauteur de l'écran --> l'ajout du -40 correspond à la taille de la barre des taches
+    int largeurEcran= (int)tailleEcran.getWidth(); //on récupère la largeur de l'écran
 
 
     //attributs_widgets
@@ -30,8 +30,8 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
     JTextField[] tableauzonetexte;  //regroupe tous les chp de saisie
     boolean composantvalide;        //savoir si le système a été validé
     int taillePoliceCaractere;      //taille police caractère selon résolution
-    String[] w;
-    Impedance[] z;
+    String[] w; //tableau rassemblant les inconnues du système d'équations
+    Impedance[] z; //tableau rassemblant les solutions du système d'équations
 
     //constructeur
     public FenetreA_Bis(){
@@ -171,6 +171,7 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
 
     //méthode évènement
     public void actionPerformed (ActionEvent e){
+        //vérifie si les valeurs rentrées dans les JTextfield sont correctes
         if (e.getSource()==boutonvalidation){
             for(int i=0; i<4;i++) {
                 while (tableauzonetexte[i].getText().equals("") ||Double.parseDouble(tableauzonetexte[i].getText()) > 30000 || Double.parseDouble(tableauzonetexte[i].getText()) <=0) {
@@ -187,7 +188,7 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
         }
 
         if (e.getSource()==boutonResultat) {
-
+            //fait apparaitre la fenetre de l'oscilloscope pour visualiser les courbes
             CircuitA circuitCalcul = new CircuitA(tableaumenu);
             w = circuitCalcul.inconnues();
             z = circuitCalcul.solutions();
@@ -195,8 +196,7 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
             oscillo.setVisible(true);
         }
 
-
-
+        //reinitialise les composants et les valeurs au besoin
         if (e.getSource()==boutonreinit) {
             if (composantvalide){
                 boutonResultat.setVisible(false);

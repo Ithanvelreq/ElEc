@@ -65,6 +65,7 @@ public class dessinoscillo extends JComponent {
 
         // dessin de la courbe
         double pas = 0.1;
+        verifevaleur();   // a supprimer plus tard
 
         for(int i=0;i<tabfct.length;i++) {
             g2.setColor(tabcouleur[i]);
@@ -140,22 +141,22 @@ public class dessinoscillo extends JComponent {
 
     double f(double x) {
         tableaumodule[0] = Math.sqrt(Math.pow(z[0].getRe(), 2) + Math.pow(z[0].getIm(), 2));
-        return (tableaumodule[0] * Math.cos(2 * 3.14159 * frequence * x)) *0.05*hauteur;
+        return (tableaumodule[0] * Math.cos(Math.toRadians(2 * (Math.PI) * frequence * x)) *0.05*hauteur;
     }
 
     double g(double x) {
         tableaumodule[1] = Math.sqrt(Math.pow(z[4].getRe(), 2) + Math.pow(z[4].getIm(), 2));
-        return (tableaumodule[1] * Math.cos(2 * 3.14159 * frequence * x)) *0.05*hauteur;
+        return (tableaumodule[1] * Math.cos(Math.toRadians(2 * (Math.PI) * frequence * x)) *0.05*hauteur;
     }
 
     double m(double x) {
         tableaumodule[2] = Math.sqrt(Math.pow(z[5].getRe(), 2) + Math.pow(z[5].getIm(), 2));
-        return (tableaumodule[2] * Math.cos(2 * 3.14159 * frequence * x)) *0.05*hauteur;
+        return (tableaumodule[2] * Math.cos(Math.toRadians(2 * (Math.PI) * frequence * x)) *0.05*hauteur;
     }
 
     double n(double x) {
         tableaumodule[3] = Math.sqrt(Math.pow(z[6].getRe(), 2) + Math.pow(z[6].getIm(), 2));
-        return (tableaumodule[3] * Math.cos(2 * 3.14159 * frequence * x)) *h;
+        return (tableaumodule[3] * Math.cos(Math.toRadians(2 * (Math.PI) * frequence * x)) *h;
     }*/
 
     public void setFunction(CurveFunction function) {
@@ -192,20 +193,34 @@ public class dessinoscillo extends JComponent {
         tableaumodule[2]=Math.sqrt(Math.pow(z[5].getRe(),2)+Math.pow(z[5].getIm(),2));
         tableaumodule[3]=Math.sqrt(Math.pow(z[6].getRe(),2)+Math.pow(z[6].getIm(),2));
 
-        /*5.0
-        0.0
-        5.00253431348927
-        0.0025343134892699126 valeurs des modules avec les valeurs de test
-        */
+        tabfct[0] = (x) -> tableaumodule[0]*Math.cos(Math.toRadians(2*(Math.PI)*frequence*x));
+        tabfct[1] = (x) -> tableaumodule[1]*Math.cos(Math.toRadians(2*(Math.PI)*frequence*x));
+        tabfct[2] = (x) -> tableaumodule[2]*Math.cos(Math.toRadians(2*(Math.PI)*frequence*x));
+        tabfct[3] = (x) -> tableaumodule[3]*Math.cos(Math.toRadians(2*(Math.PI)*frequence*x));
 
-        for(int i=0; i<z.length;i++) {  // for temporaire --> affiche les élements et leur valeur dans la console
-        System.out.println(z[i]);
-        }
+    }
 
-        tabfct[0] = (x) -> tableaumodule[0]*Math.cos((double) (2*3.14159*frequence*x));
-        tabfct[1] = (x) -> tableaumodule[1]*Math.cos((double) (2*3.14159*frequence*x));
-        tabfct[2] = (x) -> tableaumodule[2]*Math.cos((double) (2*3.14159*frequence*x));
-        tabfct[3] = (x) -> Math.sin(x);
+    public void verifevaleur(){
+
+            System.out.println("frequence : " + frequence);
+
+            for (int i = 0; i < z.length; i++) {  // for temporaire --> affiche les élements et leur valeur dans la console
+                System.out.println(z[i]);
+                System.out.println();
+            }
+
+            for (int j = 0; j < 4; j++) {
+                System.out.println("module : " + tableaumodule[j]);
+                System.out.println();
+            }
+
+            for (int x = 0; x < 10; x++) {
+                System.out.println("2*pi*f = " + (2 * (Math.PI) * frequence * x));
+                System.out.println("cos(2*pi*f) = " + Math.cos(Math.toRadians(2 * (Math.PI) * frequence * x)));
+                System.out.println("module * cos(2*pi*f) = " + tableaumodule[0] * Math.cos(Math.toRadians(2 * (Math.PI) * frequence * x)));
+
+            }
+
 
     }
 

@@ -32,6 +32,7 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
     int taillePoliceCaractere;      //taille police caractère selon résolution
     String[] w; //tableau rassemblant les inconnues du système d'équations
     Impedance[] z; //tableau rassemblant les solutions du système d'équations
+    ItemResultat[] LabelaffichageRes;
 
     //constructeur
     public FenetreA_Bis(){
@@ -95,6 +96,7 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
         //mise en place des ItemsElement (paramétrages des composants)
         // les ItemElement ont des tailles définies fixes.
         tableaumenu=SetUpItemElement();
+
         for (ItemElement i : tableaumenu){
             PanelCircuit.add(i); //on ajoute l'ItemComposant
         }
@@ -169,6 +171,28 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
         return r;
     }
 
+    /**
+     * permet d'afficher les résultats pour chaque composant
+     * @param resultats : résultats numériques
+     * @param tableaumenu : tab des composants
+     * @return : tab contenant les JPanel présentant les résultats
+     */
+    public ItemResultat[] afficheResultat(Impedance[] resultats, ItemElement[] tableaumenu){
+
+        ItemResultat[] tabRes = new ItemResultat[tableaumenu.length-1];
+        for (int i = 1; i<=tabRes.length; i++){
+            tabRes[i-1]= new ItemResultat(resultats[i+3].getRho(),resultats[i].getRho());
+            //tabRes[i-1].setLocation(tableaumenu[i].getX(),tableaumenu[i].getY()+tableaumenu[i].getHeight());
+            tabRes[i-1].setLocation(10,5*i);
+        }
+        for (ItemResultat i : tabRes){
+            PanelCircuit.add(i);
+            //i.setVisible(true);
+        }
+        return tabRes;
+    }
+
+
     //méthode évènement
     public void actionPerformed (ActionEvent e){
         //vérifie si les valeurs rentrées dans les JTextfield sont correctes
@@ -192,6 +216,7 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
             CircuitA circuitCalcul = new CircuitA(tableaumenu);
             w = circuitCalcul.inconnues();
             z = circuitCalcul.solutions();
+            LabelaffichageRes = afficheResultat(z,tableaumenu);
             oscillo = new Fenetreoscillo(w,z,tableaumenu);
             oscillo.setVisible(true);
         }

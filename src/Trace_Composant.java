@@ -62,7 +62,7 @@ public class Trace_Composant extends JPanel{
                     g.drawOval(0,3,(largeur/3)-2,hauteur);
                     g.drawOval(largeur/3,3,largeur/3,hauteur);
                     g.drawOval(largeur*2/3,3,(largeur/3)-2,hauteur);
-                    g.setColor(new Color(228,229,230));
+                    g.setColor(new Color(238,238,238));
                     g.fillRect(0,hauteur/2+2,largeur,hauteur);
                 }else {
                     g.drawOval(largeur/4,0,largeur/2,hauteur/3);

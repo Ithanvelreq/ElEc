@@ -151,72 +151,83 @@ public class dessinoscillo extends JComponent {
         //mise en place de compteurs
         int i=0;
         int j=0;
+        g2.drawString("0.0", (int) (0.48*largeur), (int) ((h1) * 0.48));
 
         //adaptation du nombre de valeur affichées sur l'axe suivant la valeur de xmax
         for ( double x=xmin; x<=xmax; x++) {
 
-            if(xmax<=4){
+            if(xmax<=14 && xmax>=1){ // affichage standard entre 1 et 4
                 int xaffiche = (int) (x*100);
-                if(xmax<1) {
-                    if (x > 0) {
-                        g2.drawString("0." + String.valueOf(xaffiche), (int) (i * ((largeur) / (2 * xmax))) + 10, (int) ((h1) * 0.54));
+                double position = i * ((largeur) / (2 * xmax));
+
+                if (x > 0 && (Math.abs(xaffiche % 100)) < 10) {
+                    if (position >= largeur && xmax<=10) {
+                        g2.drawString(String.valueOf(Math.abs(xaffiche / 100)) + ".0" + String.valueOf(Math.abs(xaffiche % 100)), (int) (0.98*largeur), (int) ((h1) * 0.54));
                     } else {
-                        g2.drawString("-0." + String.valueOf(Math.abs(xaffiche)), (int) (i * ((largeur) / (2 * xmax))) + 10, (int) ((h1) * 0.54));
+                        g2.drawString(String.valueOf(Math.abs(xaffiche / 100)) + ".0" + String.valueOf(Math.abs(xaffiche % 100)), (int) (position), (int) ((h1) * 0.54));
                     }
-                }else{
-                    g2.drawString(String.valueOf(xaffiche), (int) (i * ((largeur) / (2 * xmax))) + 10, (int) ((h1) * 0.54));
+                }
+
+                if (x > 0 && (Math.abs(xaffiche % 100)) >= 10) {
+                    if (position >= largeur && xmax<=10) {
+                        g2.drawString(String.valueOf(Math.abs(xaffiche / 100)) + "." + String.valueOf(Math.abs(xaffiche % 100)), (int) (0.98*largeur), (int) ((h1) * 0.54));
+                    } else{
+                        g2.drawString(String.valueOf(Math.abs(xaffiche / 100)) + "." + String.valueOf(Math.abs(xaffiche % 100)), (int) (position), (int) ((h1) * 0.54));
+                    }
+
+                }
+
+                if (x < 0 && (Math.abs(xaffiche % 100)) < 10) {
+                    if (position >= largeur && xmax<=10) {
+                        g2.drawString("-" + String.valueOf(Math.abs(xaffiche / 100)) + ".0" + String.valueOf(Math.abs(xaffiche % 100)), (int) (0.98*largeur), (int) ((h1) * 0.54));
+                    }else{
+                        g2.drawString("-" + String.valueOf(Math.abs(xaffiche / 100)) + ".0" + String.valueOf(Math.abs(xaffiche % 100)), (int) (position), (int) ((h1) * 0.54));
+                    }
+                }
+
+                if (x < 0 && (Math.abs(xaffiche % 100)) >= 10) {
+                    if (position >= largeur && xmax<=10) {
+                        g2.drawString("-" + String.valueOf(Math.abs(xaffiche / 100)) + "." + String.valueOf(Math.abs(xaffiche % 100)), (int) (0.98*largeur), (int) ((h1) * 0.54));
+                    }else{
+                        g2.drawString("-" + String.valueOf(Math.abs(xaffiche / 100)) + "." + String.valueOf(Math.abs(xaffiche % 100)), (int) (position), (int) ((h1) * 0.54));
+                    }
+                }
+
+                if(x==0){
+                    //ligne présente pour éviter que le zéro ne s'affiche 2 fois
                 }
                 i++;
             }
+            // affichage lorsque l'on passe en dessous de la valeur 1
+            if(xmax<1){
 
-           /*if(xmax<=25) {//si xmax est inférieur à 25
-               if (x < 0) {
-                   int xaffiche = (int) x;
-                   g2.drawString(String.valueOf(xaffiche), (int) (i * ((largeur) / (2 * xmax))) + 10, (int) ((h1) * 0.54));
-               }
-               if (x > 0) {
-                   int xaffiche = (int) x;
-                   g2.drawString(String.valueOf(xaffiche), (int) (i * ((largeur) / (2 * xmax))) - 20, (int) ((h1) * 0.54));
-               }
-               i++;
+                int xaffiche = (int) (x*100);
+                double position = i * ((largeur) / (2 * xmax));
 
-           }
-            if(xmax>25 && xmax<=50) {//si xmax est compris entre 25 et 50
-                if (x < 0 && x%2==0) {
-                    int xaffiche = (int) x;
-                    g2.drawString(String.valueOf(xaffiche), (int) (i * ((largeur) / (2 * xmax))) + 10, (int) ((h1) * 0.54));
+                if (x > 0 && (Math.abs(xaffiche % 100)) < 10) {
+                        g2.drawString(String.valueOf(Math.abs(xaffiche / 100)) + ".0" + String.valueOf(Math.abs(xaffiche % 100)), (int) (position), (int) ((h1) * 0.54));
                 }
-                if (x > 0 && x%2==0) {
-                    int xaffiche = (int) x;
-                    g2.drawString(String.valueOf(xaffiche), (int) (i * ((largeur) / (2 * xmax))) - 20, (int) ((h1) * 0.54));
+
+                if (x > 0 && (Math.abs(xaffiche % 100)) >= 10 && x!=0.49) {
+                        g2.drawString(String.valueOf(Math.abs(xaffiche / 100)) + "." + String.valueOf(Math.abs(xaffiche % 100)), (int) (position), (int) ((h1) * 0.54));
+                }
+
+                if (x < 0 && (Math.abs(xaffiche % 100)) < 10) {
+                        g2.drawString("-" + String.valueOf(Math.abs(xaffiche / 100)) + ".0" + String.valueOf(Math.abs(xaffiche % 100)), (int) (position), (int) ((h1) * 0.54));
+                        g2.drawString(String.valueOf(Math.abs(xaffiche / 100)) + ".0" + String.valueOf(Math.abs(xaffiche % 100)), (int) (0.98*largeur), (int) ((h1) * 0.54));
+                }
+
+                if (x < 0 && (Math.abs(xaffiche % 100)) >= 10) {
+                        g2.drawString("-" + String.valueOf(Math.abs(xaffiche / 100)) + "." + String.valueOf(Math.abs(xaffiche % 100)), (int) (position), (int) ((h1) * 0.54));
+                        g2.drawString(String.valueOf(Math.abs(xaffiche / 100)) + "." + String.valueOf(Math.abs(xaffiche % 100)), (int) (0.98*largeur), (int) ((h1) * 0.54));
+                }
+
+                if(x==0){
+                    //ligne présente pour éviter que le zéro ne s'affiche 2 fois
                 }
                 i++;
+
             }
-
-            if(xmax>50 && xmax<=75) {//si xmax est compris entre 50 et 75
-                if (x < 0 && x%3==0) {
-                    int xaffiche = (int) x;
-                    g2.drawString(String.valueOf(xaffiche), (int) (i * ((largeur) / (2 * xmax))) + 10, (int) ((h1) * 0.54));
-                }
-                if (x > 0 && x%3==0) {
-                    int xaffiche = (int) x;
-                    g2.drawString(String.valueOf(xaffiche), (int) (i * ((largeur) / (2 * xmax))) - 20, (int) ((h1) * 0.54));
-                }
-                i++;
-            }
-
-            if(xmax>75 && xmax<=100) {//si xmax est compris entre 75 et 100
-                if (x < 0 && x%4==0) {
-                    int xaffiche = (int) x;
-                    g2.drawString(String.valueOf(xaffiche), (int) (i * ((largeur) / (2 * xmax))) + 10, (int) ((h1) * 0.54));
-                }
-                if (x > 0 && x%4==0) {
-                    int xaffiche = (int) x;
-                    g2.drawString(String.valueOf(xaffiche), (int) (i * ((largeur) / (2 * xmax))) - 20, (int) ((h1) * 0.54));
-                }
-                i++;
-            }*/
-
 
         }
 
@@ -272,20 +283,20 @@ public class dessinoscillo extends JComponent {
         JLabel affichexmax = new JLabel("X max : 1");
         affichexmax.setBounds(0,(int) (h/2)-20,70,20);
         JLabel afficheymax = new JLabel("Y max : 12");
-        afficheymax.setBounds(70,(int) (h/2)-20,70,20);
+        afficheymax.setBounds(80,(int) (h/2)-20,70,20);
 
         JSlider curseurxmax = new JSlider();
-        curseurxmax.setMaximum(301);
+        curseurxmax.setMaximum(1400);
         curseurxmax.setMinimum(1);
         curseurxmax.setValue(100); // valeur initiale par défaut de xmax
         curseurxmax.setPaintTicks(true);
         curseurxmax.setPaintLabels(true);
-        curseurxmax.setMinorTickSpacing(100);
-        curseurxmax.setMajorTickSpacing(100);
+        curseurxmax.setMinorTickSpacing(300);
+        curseurxmax.setMajorTickSpacing(300);
         curseurxmax.setBounds(0,0,140,(int) (h/2)-20);
         curseurxmax.addChangeListener(new ChangeListener(){
             public void stateChanged(ChangeEvent event){
-                affichexmax.setText("X max : " + ((JSlider)event.getSource()).getValue());
+                affichexmax.setText("X max : " + ((JSlider)event.getSource()).getValue()/100.0);
                 xmax=(((JSlider)event.getSource()).getValue())/100.0;
                 xmin=(-((JSlider)event.getSource()).getValue())/100.0;
             }

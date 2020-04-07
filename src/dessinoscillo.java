@@ -125,21 +125,23 @@ public class dessinoscillo extends JComponent {
         ItemGenerateur k = (ItemGenerateur) tableaumenu[0];
         frequence=k.getFrequence();
 
-        //calcul des modules et arguments
-        tableaumodule[0]=z[0].module();
+        //calcul des modules
+        tableaumodule[0]=Math.sqrt(Math.pow(z[0].getRe(),2)+Math.pow(z[0].getIm(),2));
+        tableaumodule[1]=Math.sqrt(Math.pow(z[4].getRe(),2)+Math.pow(z[4].getIm(),2));
+        tableaumodule[2]=Math.sqrt(Math.pow(z[5].getRe(),2)+Math.pow(z[5].getIm(),2));
+        tableaumodule[3]=Math.sqrt(Math.pow(z[6].getRe(),2)+Math.pow(z[6].getIm(),2));
+        //calcul des arguments
         tableauargument[0] = z[0].argument();
-
-        for (int i = 1; i<tableaumodule.length; i++){
-            tableaumodule[i]=z[i+3].module();
-            tableauargument[i] = z[i+3].argument();
-        }
+        tableauargument[1] = z[4].argument();
+        tableauargument[2] = z[5].argument();
+        tableauargument[3] = z[6].argument();
 
         //rangement des fonctions dans le tableau
         //la notation ci-dessous est possible grâce à l'interface
-        tabfct[0] = (x) -> tableaumodule[0]*Math.cos(Math.toRadians(2*(Math.PI)*frequence*x + tableauargument[0]));
-        tabfct[1] = (x) -> tableaumodule[1]*Math.cos(Math.toRadians(2*(Math.PI)*frequence*x + tableauargument[1]));
-        tabfct[2] = (x) -> tableaumodule[2]*Math.cos(Math.toRadians(2*(Math.PI)*frequence*x + tableauargument[2]));
-        tabfct[3] = (x) -> tableaumodule[3]*Math.cos(Math.toRadians(2*(Math.PI)*frequence*x + tableauargument[3]));
+        tabfct[0] = (x) -> tableaumodule[0]*Math.cos(Math.toRadians(((2*(Math.PI)*frequence*x) + tableauargument[0])));
+        tabfct[1] = (x) -> tableaumodule[1]*Math.cos(Math.toRadians(((2*(Math.PI)*frequence*x) + tableauargument[1])));
+        tabfct[2] = (x) -> tableaumodule[2]*Math.cos(Math.toRadians(((2*(Math.PI)*frequence*x) + tableauargument[2])));
+        tabfct[3] = (x) -> tableaumodule[3]*Math.cos(Math.toRadians(((2*(Math.PI)*frequence*x) + tableauargument[3])));
 
     }
 

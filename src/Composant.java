@@ -18,12 +18,6 @@ public abstract class Composant implements Comparable<Composant>{
         this.nom = n;
     }
 
-    public void link(Composant o){
-        voisins.add(o);
-        if(!o.voisins.contains(this)){
-            o.link(this);
-        }
-    }
 
     public int compareTo(Composant c){
         if(nom.compareTo(c.nom) < 0){

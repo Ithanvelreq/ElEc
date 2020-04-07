@@ -133,5 +133,10 @@ public class Impedance {
 		Impedance w = new Impedance(r, t, "s");
 		return w;
 	}
+
+	public double argument(){
+
+		return Math.atan2(this.im, this.re);
+	}
 }
 

@@ -191,7 +191,7 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
                 tabRes[i - 1].setLocation(tableaumenu[i].getX(), tableaumenu[i].getY() + tableaumenu[i].getHeight());
             }
         }
-        //position particulière
+        //position particulière pour le composant du bas
         tabRes[2].setLocation(tableaumenu[3].getX(),tableaumenu[3].getY()-tabRes[2].getHeight());
         for (ItemResultat i : tabRes){
             PanelCircuit.add(i);
@@ -199,40 +199,51 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
         return tabRes;
     }
 
+    /**
+     * permet de cacher les résultats numériques pour chaque composant
+     */
     public void cacherResultat(){
-        Label_Affichage_Res = new ItemResultat[3];
         for (ItemResultat r : Label_Affichage_Res){
-            r.setVisible(false);
+           PanelCircuit.remove(r);
+           System.out.println("passage");
         }
+        repaint();
     }
 
 
     //méthode évènement
     public void actionPerformed (ActionEvent e){
-        //vérifie si les valeurs rentrées dans les JTextfield sont correctes
+
         if (e.getSource()==boutonvalidation){
+
+            //vérifie si les valeurs rentrées dans les JTextfield sont correctes
             for(int i=0; i<4;i++) {
                 while (tableauzonetexte[i].getText().equals("") ||Double.parseDouble(tableauzonetexte[i].getText()) > 30000 || Double.parseDouble(tableauzonetexte[i].getText()) <=0) {
                     JOptionPane.showMessageDialog(this, "Veuillez rentrer une valeur de R, L ou C correcte (entre 0 et 30000 USI) !");
                     tableauzonetexte[i].setText("Changer"); // le fait de faire apparaitre changer fait apparaitre des messages d'erreur dans la console mais ce n'est pas grave, c'est parce que le TextField n'est pas censé pouvoir contenir du texte
                 }
             }
+
             boutonResultat.setVisible(true);
             composantvalide=true;
+
             //on dessine les composants correspondants
             for(int j=0;j<4;j++){
                 tableaumenu[j].dessine(true,estvertical[j]);
             }
-
         }
 
         if (e.getSource()==boutonResultat) {
-            //fait apparaitre la fenetre de l'oscilloscope pour visualiser les courbes
+            //calcul numérique dans le circuit
             CircuitA circuitCalcul = new CircuitA(tableaumenu);
             w = circuitCalcul.inconnues();
             z = circuitCalcul.solutions();
+
+            //affichages résultats pour chaque composant
             Label_Affichage_Res = afficherResultat(z,tableaumenu,estvertical);
             repaint();
+
+            //ouverture du tracé à l'oscilloscope
             oscillo = new Fenetreoscillo(w,z,tableaumenu);
             oscillo.setVisible(true);
         }
@@ -247,7 +258,6 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
             }
             composantvalide=false;
             cacherResultat();
-            repaint();
         }
     }
 }

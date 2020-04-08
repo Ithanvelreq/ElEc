@@ -17,11 +17,12 @@ public class ItemResultat extends JPanel {
         this.setSize(175, 55);
         this.setLayout(null);
 
-        intensite = new JLabel("I_max (A) = ");
+        intensite = new JLabel("I max (A) = ");
+        //intensite.setFont(new Font("Consolas", Font.BOLD,13));
         intensite.setBounds(0,0,75,25);
         ValIntensite = new JLabel(String.valueOf(I));
         ValIntensite.setBounds(77,0,90,25);
-        tension = new JLabel("U_max (V) = ");
+        tension = new JLabel("U max (V) = ");
         tension.setBounds(0,27,75,25);
         ValTension = new JLabel(String.valueOf(U));
         ValTension.setBounds(77,27,90,25);

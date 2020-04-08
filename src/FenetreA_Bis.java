@@ -24,7 +24,7 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
     JButton boutonResultat;
     JButton boutonreinit;
     //variables de travail
-    ItemElement[] tableaumenu; // tableau de menu déroulants
+    ItemElement[] tableaumenu; // tableau des items éléments pour paramétrer les composants
     boolean[] estvertical = new boolean[4]; // tableau pour savoir si les menus sont sur un segment vertical ou non
     String[] listeComposants = {"Resistance", "Bobine", "Condensateur"};  //tableau permettant la selection des elements des menus deroulants
     JTextField[] tableauzonetexte;  //regroupe tous les chp de saisie
@@ -32,7 +32,8 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
     int taillePoliceCaractere;      //taille police caractère selon résolution
     String[] w; //tableau rassemblant les inconnues du système d'équations
     Impedance[] z; //tableau rassemblant les solutions du système d'équations
-    ItemResultat[] LabelaffichageRes;
+    ItemResultat[] Label_Affichage_Res;  //tableau des JPanel qui affichent les résultats numériques
+
 
     //constructeur
     public FenetreA_Bis(){
@@ -177,19 +178,32 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
      * @param tableaumenu : tab des composants
      * @return : tab contenant les JPanel présentant les résultats
      */
-    public ItemResultat[] afficheResultat(Impedance[] resultats, ItemElement[] tableaumenu){
+    public ItemResultat[] afficherResultat(Impedance[] resultats, ItemElement[] tableaumenu, boolean[] estvertical){
 
         ItemResultat[] tabRes = new ItemResultat[tableaumenu.length-1];
-        for (int i = 1; i<=tabRes.length; i++){
-            tabRes[i-1]= new ItemResultat(resultats[i+3].getRho(),resultats[i].getRho());
-            //tabRes[i-1].setLocation(tableaumenu[i].getX(),tableaumenu[i].getY()+tableaumenu[i].getHeight());
-            tabRes[i-1].setLocation(10,5*i);
+
+        for (int i = 1; i<=tabRes.length; i++) {
+            tabRes[i - 1] = new ItemResultat(resultats[i + 3].getRho(), resultats[i].getRho());
+            if (estvertical[i]) {
+                tabRes[i - 1].setLocation(tableaumenu[i].getX()-tabRes[i-1].getWidth(), tableaumenu[i].getY());
+            }
+            if (!estvertical[i]) {
+                tabRes[i - 1].setLocation(tableaumenu[i].getX(), tableaumenu[i].getY() + tableaumenu[i].getHeight());
+            }
         }
+        //position particulière
+        tabRes[2].setLocation(tableaumenu[3].getX(),tableaumenu[3].getY()-tabRes[2].getHeight());
         for (ItemResultat i : tabRes){
             PanelCircuit.add(i);
-            //i.setVisible(true);
         }
         return tabRes;
+    }
+
+    public void cacherResultat(){
+        Label_Affichage_Res = new ItemResultat[3];
+        for (ItemResultat r : Label_Affichage_Res){
+            r.setVisible(false);
+        }
     }
 
 
@@ -209,6 +223,7 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
             for(int j=0;j<4;j++){
                 tableaumenu[j].dessine(true,estvertical[j]);
             }
+
         }
 
         if (e.getSource()==boutonResultat) {
@@ -216,7 +231,8 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
             CircuitA circuitCalcul = new CircuitA(tableaumenu);
             w = circuitCalcul.inconnues();
             z = circuitCalcul.solutions();
-            LabelaffichageRes = afficheResultat(z,tableaumenu);
+            Label_Affichage_Res = afficherResultat(z,tableaumenu,estvertical);
+            repaint();
             oscillo = new Fenetreoscillo(w,z,tableaumenu);
             oscillo.setVisible(true);
         }
@@ -230,6 +246,8 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
                 }
             }
             composantvalide=false;
+            cacherResultat();
+            repaint();
         }
     }
 }

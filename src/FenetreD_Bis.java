@@ -32,6 +32,7 @@ public class FenetreD_Bis extends JFrame implements ActionListener {
     int taillePoliceCaractere;      //taille police caractère selon résolution
     String[] w; //tableau rassemblant les inconnues du système d'équations
     Impedance[] z; //tableau rassemblant les solutions du système d'équations
+    ItemResultat[] Label_Affichage_Res;  //tableau des JPanel qui affichent les résultats numériques
 
     //constructeur
     public FenetreD_Bis(){
@@ -169,6 +170,37 @@ public class FenetreD_Bis extends JFrame implements ActionListener {
         return r;
     }
 
+    /**
+     * permet d'afficher les résultats pour chaque composant
+     * @param resultats : résultats numériques
+     * @param tableaumenu : tab des composants
+     * @return : tab contenant les JPanel présentant les résultats
+     */
+    public ItemResultat[] afficherResultat(Impedance[] resultats, ItemElement[] tableaumenu, boolean[] estvertical){
+
+        ItemResultat[] tabRes = new ItemResultat[tableaumenu.length-1];
+
+        for (int i = 1; i<=tabRes.length; i++) {
+            tabRes[i - 1] = new ItemResultat(resultats[i + 3].getRho(), resultats[i].getRho());
+            tabRes[i - 1].setLocation(tableaumenu[i].getX()-tabRes[i-1].getWidth(), tableaumenu[i].getY());
+        }
+
+        for (ItemResultat i : tabRes){
+            PanelCircuit.add(i);
+        }
+        return tabRes;
+    }
+
+    /**
+     * permet de cacher les résultats numériques pour chaque composant
+     */
+    public void cacherResultat(){
+        for (ItemResultat r : Label_Affichage_Res){
+            PanelCircuit.remove(r);
+        }
+        repaint();
+    }
+
     //méthode évènement
     public void actionPerformed (ActionEvent e){
         //vérifie si les valeurs rentrées dans les JTextfield sont correctes
@@ -192,6 +224,11 @@ public class FenetreD_Bis extends JFrame implements ActionListener {
             CircuitA circuitCalcul = new CircuitA(tableaumenu);
             w = circuitCalcul.inconnues();
             z = circuitCalcul.solutions();
+
+            //affichages résultats pour chaque composant
+            Label_Affichage_Res = afficherResultat(z,tableaumenu,estvertical);
+            repaint();
+
             oscillo = new Fenetreoscillo(w,z,tableaumenu);
             oscillo.setVisible(true);
         }
@@ -205,6 +242,7 @@ public class FenetreD_Bis extends JFrame implements ActionListener {
                 }
             }
             composantvalide=false;
+            cacherResultat();
         }
     }
 }

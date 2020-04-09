@@ -74,7 +74,7 @@ public class Trace_Composant extends JPanel{
             }
             if (composant.equals("generateur")) {
                 g.drawLine(largeur / 2, 0, largeur / 2, hauteur);
-                g.drawOval(largeur / 2 - 50, hauteur / 2 - 50, 100, 100);
+                g.drawOval(largeur / 2 - 40, hauteur / 2 - 40, 80, 80);
             }
         }
     }

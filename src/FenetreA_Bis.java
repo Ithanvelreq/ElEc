@@ -205,7 +205,6 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
     public void cacherResultat(){
         for (ItemResultat r : Label_Affichage_Res){
            PanelCircuit.remove(r);
-           System.out.println("passage");
         }
         repaint();
     }

@@ -138,10 +138,10 @@ public class dessinoscillo extends JComponent {
 
         //rangement des fonctions dans le tableau
         //la notation ci-dessous est possible grâce à l'interface
-        tabfct[0] = (x) -> tableaumodule[0]*Math.cos(Math.toRadians(((2*(Math.PI)*frequence*x) + tableauargument[0])));
-        tabfct[1] = (x) -> tableaumodule[1]*Math.cos(Math.toRadians(((2*(Math.PI)*frequence*x) + tableauargument[1])));
-        tabfct[2] = (x) -> tableaumodule[2]*Math.cos(Math.toRadians(((2*(Math.PI)*frequence*x) + tableauargument[2])));
-        tabfct[3] = (x) -> tableaumodule[3]*Math.cos(Math.toRadians(((2*(Math.PI)*frequence*x) + tableauargument[3])));
+        tabfct[0] = (x) -> tableaumodule[0]*Math.cos(Math.toRadians(2*(Math.PI)*frequence*x) + tableauargument[0]);
+        tabfct[1] = (x) -> tableaumodule[1]*Math.cos(Math.toRadians(2*(Math.PI)*frequence*x) + tableauargument[1]);
+        tabfct[2] = (x) -> tableaumodule[2]*Math.cos(Math.toRadians(2*(Math.PI)*frequence*x) + tableauargument[2]);
+        tabfct[3] = (x) -> tableaumodule[3]*Math.cos(Math.toRadians(2*(Math.PI)*frequence*x) + tableauargument[3]);
 
     }
 

@@ -126,10 +126,10 @@ public class dessinoscillo extends JComponent {
         frequence=k.getFrequence();
 
         //calcul des modules
-        tableaumodule[0]=Math.sqrt(Math.pow(z[0].getRe(),2)+Math.pow(z[0].getIm(),2));
-        tableaumodule[1]=Math.sqrt(Math.pow(z[4].getRe(),2)+Math.pow(z[4].getIm(),2));
-        tableaumodule[2]=Math.sqrt(Math.pow(z[5].getRe(),2)+Math.pow(z[5].getIm(),2));
-        tableaumodule[3]=Math.sqrt(Math.pow(z[6].getRe(),2)+Math.pow(z[6].getIm(),2));
+        tableaumodule[0]=z[0].module();
+        tableaumodule[1]= z[4].module();
+        tableaumodule[2]= z[5].module();
+        tableaumodule[3]= z[6].module();
         //calcul des arguments
         tableauargument[0] = z[0].argument();
         tableauargument[1] = z[4].argument();

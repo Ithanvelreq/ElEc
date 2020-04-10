@@ -3,17 +3,28 @@ public class Matrix {
     private Impedance [][] vecteur = new Impedance[1][1];  // Solution finale du sys lin
     private int imax = 0;
 
+    /**
+     * Constructeur
+     * @param  comp matrice nxn du systeme lineaire, partie de "gauche"
+     * @param res vecteur nx1, partie de "droite"
+     */
     public Matrix(Impedance [][] comp, Impedance [][]res){
         this.matrix = comp;
         this.vecteur = res;
     }
 
+    /**
+     * Declenche la resolution du systeme lineaire
+     */
     public void resolSys(){
         this.triangulation();
         this.diagonalisation();
         this.simplification();
     }
 
+    /**
+     * Transforme la matrice de nxn dans une matrice triangulaire superieure
+     */
     public void triangulation(){
         for(int i = 0; i<(matrix.length-1); i++){
            imax = imaxFinder(i);
@@ -40,6 +51,11 @@ public class Matrix {
 
     }
 
+    /**
+     *Cherche le maximum de la partie pas encore "diagonalise" de la matrcie
+     * @param i indice de la ligne a partir de laquelle on cherche a diagonaliser
+     * @return indice de la ligne du maximum de la matrice (en dehors de la partie deja diagonale)
+     */
     public int imaxFinder(int i){
         int j = 0;
         double m = 0;
@@ -52,6 +68,9 @@ public class Matrix {
         return j;
     }
 
+    /**
+     * Transforme la matrcie nxn dans une matrice diagonale, faits les changements necessaires au vecteur associe
+     */
     public void diagonalisation(){
         int j = matrix[0].length-1;
         for(int i = (matrix.length-1); i>0; i--) {
@@ -65,6 +84,9 @@ public class Matrix {
         }
     }
 
+    /**
+     * Simplifie le systeme matriciel afin de renvoyer les resultats
+     */
     public void simplification(){
         for(int i =0; i<matrix.length; i++) {
             for (int j = 0; j < matrix.length; j++) {
@@ -78,6 +100,10 @@ public class Matrix {
         }
     }
 
+    /**
+     *
+     * @return solutions finales du systeme matriciel
+     */
     public Impedance [] solutions(){
         Impedance [] w = new Impedance[vecteur.length];
         for(int i = 0; i< vecteur.length; i ++){

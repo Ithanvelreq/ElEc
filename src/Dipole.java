@@ -1,17 +1,22 @@
 import java.util.LinkedList;
 
-public class Dipole extends Composant {
+public class Dipole{
+    /**
+     * Impedance du Dipole
+     */
     public Impedance z;
-    private double tension;
-    private double courant;
+    /**
+     * Nom du Dipole
+     */
+    public String nom;
 
-    public Dipole(){
-
-    }
-
-
+    /**
+     * Constructeur
+     * @param a Impedance du dipole
+     * @param s Nom du dipole
+     */
     public Dipole(Impedance a, String s){
-        super(s);
+        nom = s;
         this.z = a;
     }
 

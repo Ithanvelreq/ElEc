@@ -1,6 +1,15 @@
 public class Matrix {
+    /**
+     * Matrice nxn, partie de "gauche" du systeme linneaire
+     */
     private Impedance [][] matrix = new Impedance[1][1];
+    /**
+     * Vecteur nx1, partie de "droite" du systeme linneaire
+     */
     private Impedance [][] vecteur = new Impedance[1][1];  // Solution finale du sys lin
+    /**
+     * Ligne du maximum de la partie de la matrice pas encore "triangularise"
+     */
     private int imax = 0;
 
     /**
@@ -101,7 +110,7 @@ public class Matrix {
     }
 
     /**
-     *
+     *Renvoie les solutions finales du systeme linaire
      * @return solutions finales du systeme matriciel
      */
     public Impedance [] solutions(){

@@ -1,9 +1,14 @@
 import java.util.LinkedList;
-import java.util.Set;
 public class Maille {
-
+    /**
+     * Liste des elements inclus dans la maille
+     */
     public LinkedList<ItemElement> Icomposants = new LinkedList<>();
 
+    /**
+     * Constructeur
+     * @param comp Liste des elements inclus dans la maille
+     */
     public Maille(ItemElement[] comp) {
         for (ItemElement c : comp) {
             Icomposants.add(c);

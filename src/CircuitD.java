@@ -34,7 +34,7 @@ public class CircuitD extends Circuit {
         }
 
         //remplissage de chaque ligne de m1 avec les coefficients gauches de chaque équation
-        Dipole a = new Dipole();
+        Dipole a;
         m1[0][0]= new Impedance(1,0);
         m1[1][0]= new Impedance(1,0);
 

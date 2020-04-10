@@ -15,6 +15,10 @@ public abstract class Circuit extends JFrame {
 
     }
 
+    /**
+     *
+     * @param Icomp
+     */
     public Circuit(ItemElement[] Icomp){
 
         //a modifier

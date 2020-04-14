@@ -180,13 +180,13 @@ public class FenetreB_Bis extends JFrame implements ActionListener {
 
         ItemResultat[] tabRes = new ItemResultat[tableaumenu.length-1];
         //composant haut
-        tabRes[0] = new ItemResultat(resultats[4].getRho() , resultats[1].getRho());
+        tabRes[0] = new ItemResultat(resultats[4] , resultats[1]);
         tabRes[0].setLocation(tableaumenu[1].getX(), tableaumenu[1].getY() + tableaumenu[1].getHeight());
         //composant milieu
-        tabRes[1] = new ItemResultat(resultats[5].getRho(),resultats[2].getRho());
+        tabRes[1] = new ItemResultat(resultats[5],resultats[2]);
         tabRes[1].setLocation(tableaumenu[3].getX()-tabRes[1].getWidth(), tableaumenu[3].getY());
         //composant droite
-        tabRes[2]=new ItemResultat(resultats[6].getRho(),resultats[3].getRho());
+        tabRes[2]=new ItemResultat(resultats[6],resultats[3]);
         tabRes[2].setLocation(tableaumenu[2].getX()-tabRes[2].getWidth(), tableaumenu[2].getY());
 
         for (ItemResultat i : tabRes){
@@ -226,7 +226,7 @@ public class FenetreB_Bis extends JFrame implements ActionListener {
 
         if (e.getSource()==boutonResultat) {
             //fait apparaitre la fenetre de l'oscilloscope pour visualiser les courbes
-            CircuitA circuitCalcul = new CircuitA(tableaumenu);
+            CircuitB circuitCalcul = new CircuitB(tableaumenu);
             w = circuitCalcul.inconnues();
             z = circuitCalcul.solutions();
 

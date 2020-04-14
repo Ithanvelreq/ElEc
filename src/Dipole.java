@@ -1,5 +1,3 @@
-import java.util.LinkedList;
-
 public class Dipole{
     /**
      * Impedance du Dipole
@@ -19,6 +17,4 @@ public class Dipole{
         nom = s;
         this.z = a;
     }
-
-
 }

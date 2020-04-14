@@ -183,7 +183,7 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
         ItemResultat[] tabRes = new ItemResultat[tableaumenu.length-1];
 
         for (int i = 1; i<=tabRes.length; i++) {
-            tabRes[i - 1] = new ItemResultat(resultats[i + 3].getRho(), resultats[i].getRho());
+            tabRes[i - 1] = new ItemResultat(resultats[i + 3], resultats[i]);
             if (estvertical[i]) {
                 tabRes[i - 1].setLocation(tableaumenu[i].getX()-tabRes[i-1].getWidth(), tableaumenu[i].getY());
             }

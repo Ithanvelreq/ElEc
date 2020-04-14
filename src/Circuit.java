@@ -1,8 +1,7 @@
-import javax.swing.*;
+import java.util.Arrays;
 import java.util.LinkedList;
-import java.util.Set;
 
-public abstract class Circuit extends JFrame {
+public abstract class Circuit{
     LinkedList<Maille> mailles = new LinkedList<>();
     LinkedList<Noeud> noeuds = new LinkedList<>();
     LinkedList<ItemElement> composants = new LinkedList<>();
@@ -11,20 +10,12 @@ public abstract class Circuit extends JFrame {
     public Impedance[][] m1 = new Impedance[7][7];
     public Impedance[][] m2 = new Impedance[7][1];
 
-    public Circuit(){
-
-    }
-
     /**
-     *
-     * @param Icomp
+     *Constructeur
+     * @param Icomp Composants presents dans le circuit
      */
     public Circuit(ItemElement[] Icomp){
-
-        //a modifier
-        /*for (ItemElement c : Icomp){
-            composants.add(c);
-        }*/
+        composants.addAll(Arrays.asList(Icomp));
     }
 
     public String [] inconnues (){

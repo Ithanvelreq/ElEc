@@ -14,13 +14,14 @@ public class ItemGenerateur extends ItemElement {
     JTextField saisieAmpl;
     Trace_Composant dessin;
     JLabel rappelAmplitude;
+    JLabel rappelFrequence;
 
 
     //constructeur
     public ItemGenerateur(){
 
         this.setBackground(new Color(215,215,215));
-        this.setSize(160, 120);
+        this.setSize(160, 150);
         this.setLayout(null);
 
         source = new JLabel("Source de tension");
@@ -43,6 +44,10 @@ public class ItemGenerateur extends ItemElement {
         rappelAmplitude.setBounds(0,90,100,30);
         rappelAmplitude.setFont(new Font("Arial", Font.BOLD,13));
 
+        rappelFrequence = new JLabel();
+        rappelFrequence.setBounds(0,120,100,30);
+        rappelFrequence.setFont(new Font("Arial", Font.BOLD,13));
+
 
         //blocage de la saisie de lettre dans les JTextField
         JTextField[] chpSaisie = {saisieFreq,saisieAmpl};
@@ -63,6 +68,8 @@ public class ItemGenerateur extends ItemElement {
         this.add(saisieFreq);
         this.add(saisieAmpl);
         this.add(rappelAmplitude);
+        this.add(rappelFrequence);
+
 
     }
 
@@ -88,6 +95,7 @@ public class ItemGenerateur extends ItemElement {
             this.add(dessin);
             //on rappel la valeur de générateur
             rappelAmplitude.setText("U = "+saisieAmpl.getText()+" V");
+            rappelFrequence.setText("f = "+saisieFreq.getText()+" Hz");
             //on cache tous les widgets
             source.setVisible(false);
             freq.setVisible(false);
@@ -100,6 +108,7 @@ public class ItemGenerateur extends ItemElement {
             //on fait disparaitre le dessin
             dessin.setVisible(false);
             rappelAmplitude.setText(null);
+            rappelFrequence.setText(null);
             //on remet les widgets
             source.setVisible(true);
             freq.setVisible(true);

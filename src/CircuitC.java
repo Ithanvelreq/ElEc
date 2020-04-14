@@ -25,7 +25,7 @@ public class CircuitC extends Circuit {
         //remplissage de la matrice m2 qu'avec des 0
         for (int i2 = 0; i2 < m2.length; i2++) {
             for (int j2 = 0; j2 < m2[0].length; j2++) {
-                m1[i2][j2] = new Impedance(0, 0);
+                m2[i2][j2] = new Impedance(0, 0);
             }
 
         }

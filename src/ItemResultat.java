@@ -6,7 +6,7 @@ import java.text.NumberFormat;
 public class ItemResultat extends JPanel {
 
     /**
-     * Affiche le I(A)
+     * Affiche la partie de gauche de l'egalite
      */
     JLabel intensite;
     /**
@@ -14,7 +14,7 @@ public class ItemResultat extends JPanel {
      */
     JLabel ValIntensite;
     /**
-     * Affiche le U(V)
+     * Affiche la partie de gauche de l'egalite
      */
     JLabel tension;
     /**

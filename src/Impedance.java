@@ -1,3 +1,6 @@
+/**
+ *La classe Impedance sert a manipuler des nombres complexes et fourni les methodes numeriques afin de pouvoir resoudre les systemes d'equations
+ */
 public class Impedance {
 	/**
 	 * Partie réele du complexe

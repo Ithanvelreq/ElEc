@@ -8,9 +8,9 @@ public class CircuitB extends Circuit{
     public CircuitB(ItemElement[] compB) {
         //création du circuit
         super(compB);
-        ItemElement[]maille1 = {compB[0],compB[1],compB[2]};
+        ItemElement[]maille1 = {compB[0],compB[1],compB[3]};
         mailles.add(new Maille(maille1));
-        ItemElement[]maille2 = {compB[2],compB[3]};
+        ItemElement[]maille2 = {compB[3],compB[2]};
         mailles.add(new Maille(maille2));
 
 
@@ -54,13 +54,20 @@ public class CircuitB extends Circuit{
             m1[2][j+2] = a.z;
             m1[j+5][j+2]=a.z.multiplicationV2(new Impedance(-1,0));
         }
-        m1[2][3]=m1[0][3].multiplicationV2(new Impedance(-1,0));
+        m1[2][3]=m1[2][3].multiplicationV2(new Impedance(-1,0));
         for(int k=0;k<3;k++){
             m1[k+4][k+4]=new Impedance(1,0);
         }
 
         //remplissage de m2 avec les coefficients droits de chaque équation
         m2[0][0]= new Impedance(amplitude,0);
+
+        for(int y=0;y<7;y++){
+            for(int w=0;w<7;w++){
+                System.out.print(m1[y][w].getRe()+" "+m1[y][w].getIm()+" /");
+            }
+            System.out.println();
+        }
 
     }
 }

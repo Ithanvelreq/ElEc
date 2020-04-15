@@ -51,7 +51,7 @@ public class CircuitD extends Circuit {
         for(int l2=0;l2<mailles.get(1).Icomposants.size();l2++){
             ItemComposant y = (ItemComposant) mailles.get(1).Icomposants.get(l2);
             a=y.RenvoiComposant(y.getComposant(),frequence);
-            m1[l2+1][2] = a.z;
+            m1[2][l2+1] = a.z;
             m1[l2+4][l2+1] = a.z.multiplicationV2(new Impedance(-1,0));
         }
         m1[2][2]=m1[2][2].multiplicationV2(new Impedance(-1,0));
@@ -59,7 +59,7 @@ public class CircuitD extends Circuit {
         for(int l3=0;l3<mailles.get(2).Icomposants.size();l3++){
             ItemComposant y = (ItemComposant) mailles.get(2).Icomposants.get(l3);
             a=y.RenvoiComposant(y.getComposant(),frequence);
-            m1[l3+2][3] = a.z;
+            m1[3][l3+2] = a.z;
             m1[l3+5][l3+2] = a.z.multiplicationV2(new Impedance(-1,0));
         }
         m1[3][3]=m1[3][3].multiplicationV2(new Impedance(-1,0));
@@ -70,6 +70,13 @@ public class CircuitD extends Circuit {
 
         //remplissage de m2 avec les coefficients droits de chaque équation
         m2[0][0]= new Impedance(amplitude,0);
+
+        for(int y=0;y<7;y++){
+            for(int w=0;w<7;w++){
+                System.out.print(m1[y][w].getRe()+" "+m1[y][w].getIm()+" /");
+            }
+            System.out.println();
+        }
 
     }
 }

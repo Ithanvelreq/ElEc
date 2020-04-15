@@ -39,12 +39,12 @@ public class ItemResultat extends JPanel {
 
         intensite = new JLabel("I (A) = ");
         intensite.setBounds(0,0,50,25);
-        s = formatterm.format(I.module()) + "cos(wt "+signe(I.argument()) + formattera.format(Math.abs(I.argument())) + ")";
+        s = formatterm.format(I.module()) + " . cos(wt "+signe(I.argument()) + formattera.format(Math.abs(I.argument())) + ")";
         ValIntensite = new JLabel(s);
         ValIntensite.setBounds(37,0,2000,25);
         tension = new JLabel("U (V) = ");
         tension.setBounds(0,27,50,25);
-        s = formatterm.format(U.module()) + "cos(wt "+signe(U.argument()) + formattera.format(Math.abs(U.argument())) + ")";
+        s = formatterm.format(U.module()) + " . cos(wt "+signe(U.argument()) + formattera.format(Math.abs(U.argument())) + ")";
         ValTension = new JLabel(s);
         ValTension.setBounds(37,27,2000,25);
 

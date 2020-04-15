@@ -21,7 +21,7 @@ public class ItemGenerateur extends ItemElement {
     public ItemGenerateur(){
 
         this.setBackground(new Color(215,215,215));
-        this.setSize(160, 150);
+        this.setSize(160, 120);
         this.setLayout(null);
 
         source = new JLabel("Source de tension");
@@ -41,11 +41,11 @@ public class ItemGenerateur extends ItemElement {
         saisieFreq.setBounds(100,35,50,30);
 
         rappelAmplitude = new JLabel();
-        rappelAmplitude.setBounds(0,90,100,30);
+        rappelAmplitude.setBounds(0,5,100,10);
         rappelAmplitude.setFont(new Font("Arial", Font.BOLD,13));
 
         rappelFrequence = new JLabel();
-        rappelFrequence.setBounds(0,120,100,30);
+        rappelFrequence.setBounds(0,105,100,10);
         rappelFrequence.setFont(new Font("Arial", Font.BOLD,13));
 
 

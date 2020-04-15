@@ -8,55 +8,63 @@ import java.awt.RenderingHints;
 import java.awt.geom.RoundRectangle2D;
 import javax.swing.*;
 
-
 public class Boutonmodif extends JButton {
 
     private static final long serialVersionUID = 1671314658637614873L;
-    private int inset = 5;
-    private Color buttonColor = new Color(36, 47, 68).darker().darker().darker();
+    private int inset = 5; // entier qui influe sur la taille du bouton à sa création
+    private Color buttonColor = new Color(36, 47, 68).darker().darker().darker(); //couleur par défaut du bouton
 
+    /**
+     * @param aNameString : nom du bouton
+     * @param icon : image à insérer dans le bouton
+     */
     public Boutonmodif (String aNameString, Icon icon){
         super(aNameString, icon);
         setContentAreaFilled(false);
-        setForeground((new Color(36, 47, 68)));
+        setForeground((new Color(36, 47, 68))); // on fixe la couleur de la première couche du bouton
     }
 
+    /**
+     * @param g : élément que l'on va dessiner
+     */
     protected void paintComponent(Graphics g) {
 
+        //on converti le graphics en graphics2D pour pouvoir créer des "couches" aux boutons
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
+        //on récupère les infos de la fenêtre (hauteur et largeur)
         int vWidth = getWidth();
         int vHeight = getHeight();
 
-        // Calculate the size of the button
+        // calcule la taille du bouton
         int vButtonHeight = vHeight - (inset * 4);
         int vButtonWidth = vWidth - (inset * 4);
         int vArcSize = vButtonHeight;
 
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-        // Create the gradient paint for the first layer of the button
+        // créé la première nuance de couleur pour la première couche du bouton
         Color vGradientStartColor =  buttonColor.darker().darker().darker();
         Color vGradientEndColor = buttonColor.brighter().brighter().brighter();
         Paint vPaint = new GradientPaint(0, inset, vGradientStartColor, 0, vButtonHeight, vGradientEndColor, false);
         g2d.setPaint(vPaint);
 
-        // Paint the first layer of the button
+        // créé la première couche du bouton
         g2d.fillRoundRect(inset, inset, vButtonWidth, vButtonHeight, vArcSize/2, vArcSize/2);
 
-        // Calulate the size of the second layer of the button
+        // créé la deuxième couche du bouton et fixe sa taille
         int vHighlightInset = 4;
         int vButtonHighlightHeight = vButtonHeight - (vHighlightInset );
         int vButtonHighlightWidth = vButtonWidth - (vHighlightInset );
         int vHighlightArcSize = vButtonHighlightHeight/2+150;
 
-        // Create the paint for the second layer of the button
+        // créé la première nuance de couleur pour la deuxième couche du bouton
         vGradientStartColor = new Color(70, 143, 232);
         vGradientEndColor = buttonColor.brighter().brighter();
         vPaint = new GradientPaint(0,inset+vHighlightInset/2,vGradientStartColor,0,inset+vHighlightInset+(vButtonHighlightHeight/2), buttonColor.brighter(), false);
 
-        // Paint the second layer of the button
+        // créé la deuxième couche du bouton
         g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,.8f));
         g2d.setPaint(vPaint);
 

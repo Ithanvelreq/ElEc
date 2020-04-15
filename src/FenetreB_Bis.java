@@ -23,12 +23,14 @@ public class FenetreB_Bis extends JFrame implements ActionListener {
     JButton boutonvalidation;
     JButton boutonResultat;
     JButton boutonreinit;
+    JCheckBox[] choixResultat;
     //variables de travail
     ItemElement[] tableaumenu; // tableau de menu déroulants
     boolean[] estvertical = new boolean[4]; // tableau pour savoir si les menus sont sur un segment vertical ou non
     String[] listeComposants = {"Resistance", "Bobine", "Condensateur"};  //tableau permettant la selection des elements des menus deroulants
     JTextField[] tableauzonetexte;  //regroupe tous les chp de saisie
     boolean composantvalide;        //savoir si le système a été validé
+    boolean ResultatAffiche;        //savoir si les résultats sont affichés
     int taillePoliceCaractere;      //taille police caractère selon résolution
     String[] w; //tableau rassemblant les inconnues du système d'équations
     Impedance[] z; //tableau rassemblant les solutions du système d'équations
@@ -85,6 +87,9 @@ public class FenetreB_Bis extends JFrame implements ActionListener {
         boutonResultat.addActionListener(this);
         PanelGestion.add(boutonResultat);
         boutonResultat.setVisible(false);
+
+        // mise en place des CheckBox pour le choix des résultats
+        choixResultat = SetUpCheckBoxResultats();
 
         //PanelCircuit : panel de gauche : visualisation du circuit
         PanelCircuit = new JPanel();
@@ -156,6 +161,35 @@ public class FenetreB_Bis extends JFrame implements ActionListener {
     }
 
     /**
+     * méthode qui génère les CheckBox pour le choix des résultats à afficher pour l'utilisateur
+     * @return : tab contenant les 2 box
+     */
+    public JCheckBox[] SetUpCheckBoxResultats(){
+
+        JCheckBox box1 = new JCheckBox("Courant & tension des composants");
+        box1.setFont(new Font("Arial", Font.BOLD,taillePoliceCaractere));
+        box1.setForeground(Color.white);
+        box1.setBackground(new Color(72, 79, 81));
+        box1.setBounds(PanelGestion.getWidth()/9,PanelGestion.getHeight()/5,PanelGestion.getWidth()*7/9,PanelGestion.getHeight()/30);
+        box1.addActionListener(this);
+        PanelGestion.add(box1);
+        box1.setVisible(false);
+
+        JCheckBox box2 = new JCheckBox("Oscilloscope");
+        box2.setFont(new Font("Arial", Font.BOLD,taillePoliceCaractere));
+        box2.setForeground(Color.white);
+        box2.setBackground(new Color(72, 79, 81));
+        box2.setBounds(PanelGestion.getWidth()/9,PanelGestion.getHeight()/5+box1.getHeight(),PanelGestion.getWidth()*7/9,PanelGestion.getHeight()/30);
+        box2.addActionListener(this);
+        PanelGestion.add(box2);
+        box2.setVisible(false);
+
+        JCheckBox[] r = {box1,box2};
+
+        return r;
+    }
+
+    /**
      * permet de définir la taille de police de caractère adéquat à l'écran
      * @return : la bonne taille
      */
@@ -184,10 +218,10 @@ public class FenetreB_Bis extends JFrame implements ActionListener {
         tabRes[0].setLocation(tableaumenu[1].getX(), tableaumenu[1].getY() + tableaumenu[1].getHeight());
         //composant milieu
         tabRes[1] = new ItemResultat(resultats[5],resultats[2]);
-        tabRes[1].setLocation(tableaumenu[3].getX()-tabRes[1].getWidth(), tableaumenu[3].getY());
+        tabRes[1].setLocation(tableaumenu[3].getX()-(tabRes[1].getWidth()), tableaumenu[3].getY());
         //composant droite
         tabRes[2]=new ItemResultat(resultats[6],resultats[3]);
-        tabRes[2].setLocation(tableaumenu[2].getX()-tabRes[2].getWidth(), tableaumenu[2].getY());
+        tabRes[2].setLocation(tableaumenu[2].getX()-(tabRes[2].getWidth()), tableaumenu[2].getY());
 
         for (ItemResultat i : tabRes){
             PanelCircuit.add(i);
@@ -222,32 +256,67 @@ public class FenetreB_Bis extends JFrame implements ActionListener {
             for(int j=0;j<4;j++){
                 tableaumenu[j].dessine(true,estvertical[j]);
             }
-        }
 
-        if (e.getSource()==boutonResultat) {
-            //fait apparaitre la fenetre de l'oscilloscope pour visualiser les courbes
+            ResultatAffiche = false;
+            //calcul numérique dans le circuit
             CircuitB circuitCalcul = new CircuitB(tableaumenu);
             w = circuitCalcul.inconnues();
             z = circuitCalcul.solutions();
 
+            Label_Affichage_Res = afficherResultat(z,tableaumenu,estvertical);
+            cacherResultat();
+        }
+
+        if (e.getSource()==boutonResultat) {
+            ResultatAffiche = true;
+            //on affiche le choix des résultats à afficher
+            choixResultat[0].setVisible(true);
+            choixResultat[1].setVisible(true);
+        }
+
+        //affichage résultats numériques
+        if(choixResultat[0].isSelected()){
             //affichages résultats pour chaque composant
             Label_Affichage_Res = afficherResultat(z,tableaumenu,estvertical);
             repaint();
-
+        }
+        //affichage de l'oscilloscope
+        if(choixResultat[1].isSelected()){
+            //ouverture du tracé à l'oscilloscope
             oscillo = new Fenetreoscillo(w,z,tableaumenu);
             oscillo.setVisible(true);
+            choixResultat[1].setSelected(false);
+        }
+        //on cache les résultats numériques
+        if(!choixResultat[0].isSelected()){
+            cacherResultat();
+        }
+        //on cache l'oscilloscope
+        if(!choixResultat[1].isSelected()){
+            //oscillo.getDefaultCloseOperation();
         }
 
         //reinitialise les composants et les valeurs au besoin
         if (e.getSource()==boutonreinit) {
-            if (composantvalide){
+
+            if (composantvalide) {
                 boutonResultat.setVisible(false);
                 for (int k = 0; k < 4; k++) {
-                    tableaumenu[k].dessine(false ,estvertical[k]);
+                    tableaumenu[k].dessine(false, estvertical[k]);
                 }
             }
-            composantvalide=false;
-            cacherResultat();
+            composantvalide = false;
+
+            if (ResultatAffiche) {
+                //on cache toutes les formes de résultats
+                cacherResultat();
+                oscillo.setVisible(false);
+                for (JCheckBox t : choixResultat) {
+                    t.setVisible(false);
+                    t.setSelected(false);
+                }
+                ResultatAffiche=false;
+            }
         }
     }
 }

@@ -1,5 +1,8 @@
 public class CircuitC extends Circuit {
-
+    /**
+     * Constructeur
+     * @param compC tableau des différents ItemElement choisi par l'utilisateur, stocké dans FenêtreC_bis
+     */
     public CircuitC(ItemElement[] compC) {
         //création du circuit
         super(compC);

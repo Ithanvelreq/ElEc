@@ -1,7 +1,10 @@
 import java.util.LinkedList;
 
 public class CircuitB extends Circuit{
-
+    /**
+     * Constructeur
+     * @param compB tableau des différents ItemElement choisi par l'utilisateur, stocké dans FenêtreB_bis
+     */
     public CircuitB(ItemElement[] compB) {
         //création du circuit
         super(compB);

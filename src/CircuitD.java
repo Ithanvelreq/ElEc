@@ -1,4 +1,8 @@
 public class CircuitD extends Circuit {
+    /**
+     * Constructeur
+     * @param compD tableau des différents ItemElement choisi par l'utilisateur, stocké dans FenêtreD_bis
+     */
 
     public CircuitD(ItemElement[] compD) {
         //création du circuit

@@ -3,38 +3,100 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Fenetre d'affichage pour le circuit A, celui d'en haut a droite dans la fenetre principale
+ */
 public class FenetreB_Bis extends JFrame implements ActionListener {
 
-    //caractéristiques écran
+    /**
+     * Caractéristiques écran
+     */
     Dimension tailleEcran = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+    /**
+     * On recupere la hauteur de l'ecran
+     */
     int hauteurEcran = (int)tailleEcran.getHeight()-40; //ajout du -40 qui correspond à la taille de la barre des taches
+    /**
+     * On recupere la largeru de l'ecran
+     */
     int largeurEcran= (int)tailleEcran.getWidth();
 
 
     //attributs_widgets
-    //Fenetre attribut
+    /**
+     * Fenetre attribut
+     */
     Fenetreoscillo oscillo;
-    //JPanel principaux
+    /**
+     * JPanel principaux
+     */
     JPanel PanelMain;
+    /**
+     * JPanel principaux
+     */
     JPanel PanelCircuit;
+    /**
+     * JPanel principaux
+     */
     JPanel PanelGestion;
+    /**
+     * JPanel principaux
+     */
     Trace_Circuit dessinCircuit;
-    //JButton
+    /**
+     * JButton pour l'interface
+     */
     JButton boutonvalidation;
+    /**
+     * JButton pour l'interface
+     */
     JButton boutonResultat;
+    /**
+     * JButton pour l'interface
+     */
     JButton boutonreinit;
-    //variables de travail
-    ItemElement[] tableaumenu; // tableau de menu déroulants
-    boolean[] estvertical = new boolean[4]; // tableau pour savoir si les menus sont sur un segment vertical ou non
-    String[] listeComposants = {"Resistance", "Bobine", "Condensateur"};  //tableau permettant la selection des elements des menus deroulants
-    JTextField[] tableauzonetexte;  //regroupe tous les chp de saisie
-    boolean composantvalide;        //savoir si le système a été validé
-    int taillePoliceCaractere;      //taille police caractère selon résolution
-    String[] w; //tableau rassemblant les inconnues du système d'équations
-    Impedance[] z; //tableau rassemblant les solutions du système d'équations
-    ItemResultat[] Label_Affichage_Res;  //tableau des JPanel qui affichent les résultats numériques
 
-    //constructeur
+    //variables de travail
+    /**
+     * Tableau de menu deroulants
+     */
+    ItemElement[] tableaumenu;
+    /**
+     * Tableau pour savoir si les menus sont sur un segment vertical ou non
+     */
+    boolean[] estvertical = new boolean[4];
+    /**
+     * Tableau permettant la selection des elements des menus deroulants
+     */
+    String[] listeComposants = {"Resistance", "Bobine", "Condensateur"};
+    /**
+     * Regroupe tous les champs de saisie
+     */
+    JTextField[] tableauzonetexte;
+    /**
+     * Savoir si le systeme a ete valide
+     */
+    boolean composantvalide;
+    /**
+     * Taille police caractere selon resolution
+     */
+    int taillePoliceCaractere;
+    /**
+     * Tableau rassemblant les inconnues du systeme d'equations
+     */
+    String[] w; //t
+    /**
+     * Tableau rassemblant les solutions du systeme d'equations
+     */
+    Impedance[] z; //
+    /**
+     * Tableau des JPanel qui affichent les resultats numeriques
+     */
+    ItemResultat[] Label_Affichage_Res;
+
+    /**
+     * Constructeur
+     */
     public FenetreB_Bis(){
 
         //caractéristiques fenêtre
@@ -107,10 +169,10 @@ public class FenetreB_Bis extends JFrame implements ActionListener {
     }
 
     //METHODE
-
     /**
-     * @param taille : nb de JtextField à regrouper
-     * @return : un tableau contenant tous les JTextField
+     * Methode qui regroupe tous les JtextField sous un meme tableau
+     * @param taille Nombre de JtextField a regrouper
+     * @return Un tableau contenant tous les JTextField
      */
     public JTextField[] regrouperJTextField(int taille){
         JTextField[] r = new JTextField[taille];
@@ -130,8 +192,8 @@ public class FenetreB_Bis extends JFrame implements ActionListener {
     }
 
     /**
-     * génère et postionne l'ensemble des ItemElements de chaque élément du circuit
-     * @return : un tableau regroupant les ItemElements
+     * Genere et positionne l'ensemble des ItemElements de chaque element du circuit
+     * @return Un tableau regroupant les ItemElements
      */
     public ItemElement[] SetUpItemElement(){
 
@@ -156,8 +218,8 @@ public class FenetreB_Bis extends JFrame implements ActionListener {
     }
 
     /**
-     * permet de définir la taille de police de caractère adéquat à l'écran
-     * @return : la bonne taille
+     * Permet de definir la taille de police de caractere adequat a l'ecran
+     * @return la bonne taille
      */
     public int setTaillePolice(){
         int r=11; //défaut
@@ -171,12 +233,12 @@ public class FenetreB_Bis extends JFrame implements ActionListener {
     }
 
     /**
-     * permet d'afficher les résultats pour chaque composant
-     * @param resultats : résultats numériques
-     * @param tableaumenu : tab des composants
-     * @return : tab contenant les JPanel présentant les résultats
+     * Permet d'afficher les resultats pour chaque composant
+     * @param resultats Resultats numeriques
+     * @param tableaumenu Tableau des composants
+     * @return Tableau contenant les JPanel presentant les resultats
      */
-    public ItemResultat[] afficherResultat(Impedance[] resultats, ItemElement[] tableaumenu, boolean[] estvertical){
+    public ItemResultat[] afficherResultat(Impedance[] resultats, ItemElement[] tableaumenu){
 
         ItemResultat[] tabRes = new ItemResultat[tableaumenu.length-1];
         //composant haut
@@ -194,9 +256,8 @@ public class FenetreB_Bis extends JFrame implements ActionListener {
         }
         return tabRes;
     }
-
     /**
-     * permet de cacher les résultats numériques pour chaque composant
+     * Permet de cacher les resultats numeriques pour chaque comosant
      */
     public void cacherResultat(){
         for (ItemResultat r : Label_Affichage_Res){
@@ -231,7 +292,7 @@ public class FenetreB_Bis extends JFrame implements ActionListener {
             z = circuitCalcul.solutions();
 
             //affichages résultats pour chaque composant
-            Label_Affichage_Res = afficherResultat(z,tableaumenu,estvertical);
+            Label_Affichage_Res = afficherResultat(z,tableaumenu);
             repaint();
 
             oscillo = new Fenetreoscillo(w,z,tableaumenu);

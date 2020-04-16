@@ -41,11 +41,11 @@ public class ItemGenerateur extends ItemElement {
         saisieFreq.setBounds(100,35,50,30);
 
         rappelAmplitude = new JLabel();
-        rappelAmplitude.setBounds(0,5,100,10);
+        rappelAmplitude.setBounds(0,105,100,10);
         rappelAmplitude.setFont(new Font("Arial", Font.BOLD,13));
 
         rappelFrequence = new JLabel();
-        rappelFrequence.setBounds(0,105,100,10);
+        rappelFrequence.setBounds(0,5,100,10);
         rappelFrequence.setFont(new Font("Arial", Font.BOLD,13));
 
 

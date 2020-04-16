@@ -35,6 +35,8 @@ public class FenetreD_Bis extends JFrame implements ActionListener {
     String[] w; //tableau rassemblant les inconnues du système d'équations
     Impedance[] z; //tableau rassemblant les solutions du système d'équations
     ItemResultat[] Label_Affichage_Res;  //tableau des JPanel qui affichent les résultats numériques
+    boolean oscilloDisplayed; //savoir si la fenêtre de l'oscillo est ouverte
+
 
     //constructeur
     public FenetreD_Bis(){
@@ -237,81 +239,99 @@ public class FenetreD_Bis extends JFrame implements ActionListener {
 
     //méthode évènement
     public void actionPerformed (ActionEvent e){
-        //vérifie si les valeurs rentrées dans les JTextfield sont correctes
-        if (e.getSource()==boutonvalidation){
+
+        if (e.getSource()==boutonvalidation){  //bouton "Valider les composants" <> étape 1
+
+            //vérifie si les valeurs rentrées dans les JTextfield sont correctes
             for(int i=0; i<4;i++) {
                 while (tableauzonetexte[i].getText().equals("") ||Double.parseDouble(tableauzonetexte[i].getText()) > 30000 || Double.parseDouble(tableauzonetexte[i].getText()) <=0) {
-                    JOptionPane.showMessageDialog(this, "Veuillez rentrer une valeur de R, L ou C correcte (entre 1 et 10000 USI) !");
+                    JOptionPane.showMessageDialog(this, "Veuillez rentrer une valeur de R, L ou C correcte (entre 0 et 30000 USI) !");
                     tableauzonetexte[i].setText("Changer"); // le fait de faire apparaitre changer fait apparaitre des messages d'erreur dans la console mais ce n'est pas grave, c'est parce que le TextField n'est pas censé pouvoir contenir du texte
                 }
             }
+
+            //on affiche le bouton suivant
             boutonResultat.setVisible(true);
+            //on enregistre le fait que les composants soient validés
             composantvalide=true;
-            //on dessine les composants correspondants
+
+            //on dessine les composants correspondants aux choix de l'utilisateur
             for(int j=0;j<4;j++){
                 tableaumenu[j].dessine(true,estvertical[j]);
             }
 
-            ResultatAffiche = false;
-            //calcul numérique dans le circuit
+            //on calcule numériquement les solutions du circuit
             CircuitD circuitCalcul = new CircuitD(tableaumenu);
             w = circuitCalcul.inconnues();
             z = circuitCalcul.solutions();
 
-            Label_Affichage_Res = afficherResultat(z,tableaumenu,estvertical);
+            //on génère les résultats sans les afficher
+            ResultatAffiche = false;
+            Label_Affichage_Res=afficherResultat(z,tableaumenu,estvertical);
             cacherResultat();
+            oscillo = new Fenetreoscillo(w,z,tableaumenu);
+            oscillo.setVisible(false);
+            oscilloDisplayed=false;
         }
 
-        if (e.getSource()==boutonResultat) {
+        if (e.getSource()==boutonResultat) {  //bouton "Afficher les résultats" > permet de proposer les différents résultats que l'utilisateur souhaite voir
+            //on enregistre que l'on présente les résultats
             ResultatAffiche = true;
             //on affiche le choix des résultats à afficher
             choixResultat[0].setVisible(true);
             choixResultat[1].setVisible(true);
         }
 
-        //affichage résultats numériques
-        if(choixResultat[0].isSelected()){
-            //affichages résultats pour chaque composant
-            Label_Affichage_Res = afficherResultat(z,tableaumenu,estvertical);
-            repaint();
-        }
-        //affichage de l'oscilloscope
-        if(choixResultat[1].isSelected()){
-            //ouverture du tracé à l'oscilloscope
-            oscillo = new Fenetreoscillo(w,z,tableaumenu);
-            oscillo.setVisible(true);
-            choixResultat[1].setSelected(false);
-        }
-        //on cache les résultats numériques
-        if(!choixResultat[0].isSelected()){
-            cacherResultat();
-        }
-        //on cache l'oscilloscope
-        if(!choixResultat[1].isSelected()){
-            //oscillo.getDefaultCloseOperation();
-        }
-
-        //reinitialise les composants et les valeurs au besoin
+        //Réinitialisation
         if (e.getSource()==boutonreinit) {
 
+            //on vérifie si les composants ont été validé
             if (composantvalide) {
                 boutonResultat.setVisible(false);
+                //on retire les dessins de chaque composant
                 for (int k = 0; k < 4; k++) {
                     tableaumenu[k].dessine(false, estvertical[k]);
                 }
             }
+            //on déclare les composants comme plus valide
             composantvalide = false;
 
+            //on regarde si des résultats sont affichés
             if (ResultatAffiche) {
                 //on cache toutes les formes de résultats
-                cacherResultat();
                 oscillo.setVisible(false);
+                ResultatAffiche=false;
+                cacherResultat();
                 for (JCheckBox t : choixResultat) {
                     t.setVisible(false);
                     t.setSelected(false);
                 }
-                ResultatAffiche=false;
+                repaint();
             }
+        }
+
+        //Action des JCheckBox:
+        //affichage résultats numériques
+        if(choixResultat[0].isSelected()){
+            //affichages des résultats pour chaque composant
+            Label_Affichage_Res = afficherResultat(z,tableaumenu,estvertical);
+            repaint();
+        }
+        //affichage de l'oscilloscope
+        if(choixResultat[1].isSelected() && !oscilloDisplayed){
+            //ouverture du tracé à l'oscilloscope
+            oscillo.setVisible(true);
+            oscilloDisplayed = true;
+        }
+        //cacher les résultats numériques
+        if(!choixResultat[0].isSelected()){
+            cacherResultat();
+            repaint();
+        }
+        //on cache l'oscilloscope
+        if(!choixResultat[1].isSelected()){
+            oscilloDisplayed=false;
+            oscillo.setVisible(false);
         }
     }
 }

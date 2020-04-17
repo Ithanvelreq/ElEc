@@ -3,7 +3,6 @@ import java.util.LinkedList;
 
 public abstract class Circuit{
     LinkedList<Maille> mailles = new LinkedList<>();
-    LinkedList<Noeud> noeuds = new LinkedList<>();
     LinkedList<ItemElement> composants = new LinkedList<>();
     public double frequence;
     public double amplitude;

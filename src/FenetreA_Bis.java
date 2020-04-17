@@ -20,7 +20,7 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
     /**
      * On recupere la largeur de l'ecran
      */
-    int largeurEcran= (int)tailleEcran.getWidth(); //
+    int largeurEcran= (int)tailleEcran.getWidth();
 
 
     //attributs_widgets
@@ -171,7 +171,7 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
     }
 
     /**
-     * Regroupe toue les JTextField dans un tableau
+     * Methode qui regroupe tous les JtextField sous un meme tableau
      * @param taille Nombre de JtextField a regrouper
      * @return un tableau tableau contenant tous les JTextField
      */

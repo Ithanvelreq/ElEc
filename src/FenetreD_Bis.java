@@ -36,7 +36,9 @@ public class FenetreD_Bis extends JFrame implements ActionListener {
     Impedance[] z; //tableau rassemblant les solutions du système d'équations
     ItemResultat[] Label_Affichage_Res;  //tableau des JPanel qui affichent les résultats numériques
     boolean oscilloDisplayed; //savoir si la fenêtre de l'oscillo est ouverte
+    //paramètres régulants l'usage des boutons et des JCheckbox dans le programme (empêche certains bug)
     public int j=0;
+    public int k=0;
 
 
     //constructeur
@@ -246,10 +248,10 @@ public class FenetreD_Bis extends JFrame implements ActionListener {
     //méthode évènement
     public void actionPerformed (ActionEvent e){
 
-        if (e.getSource()==boutonvalidation){  //bouton "Valider les composants" <> étape 1
+        if (e.getSource()==boutonvalidation && k==0){  //bouton "Valider les composants" <> étape 1
 
             //vérifie si les valeurs rentrées dans les JTextfield sont correctes
-            for(int i=0; i<4;i++) {
+            for(int i=0; i<tableauzonetexte.length;i++) {
                 while (tableauzonetexte[i].getText().equals("") ||Double.parseDouble(tableauzonetexte[i].getText()) > 30000 || Double.parseDouble(tableauzonetexte[i].getText()) <=0) {
                     JOptionPane.showMessageDialog(this, "Veuillez rentrer une valeur de R, L ou C correcte (entre 0 et 30000 USI) !");
                     tableauzonetexte[i].setText("Changer"); // le fait de faire apparaitre changer fait apparaitre des messages d'erreur dans la console mais ce n'est pas grave, c'est parce que le TextField n'est pas censé pouvoir contenir du texte
@@ -265,6 +267,8 @@ public class FenetreD_Bis extends JFrame implements ActionListener {
             for(int j=0;j<4;j++){
                 tableaumenu[j].dessine(true,estvertical[j]);
             }
+            //on passe le k à 1
+            k++;
 
             //on calcule numériquement les solutions du circuit
             CircuitD circuitCalcul = new CircuitD(tableaumenu);
@@ -289,8 +293,10 @@ public class FenetreD_Bis extends JFrame implements ActionListener {
         }
 
         //Réinitialisation
-        if (e.getSource()==boutonreinit) {
+        if (e.getSource()==boutonreinit && k==1) {
 
+            //on passe le k à 0
+            k--;
             //on vérifie si les composants ont été validé
             if (composantvalide) {
                 boutonResultat.setVisible(false);

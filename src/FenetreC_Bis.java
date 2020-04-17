@@ -150,17 +150,17 @@ public class FenetreC_Bis extends JFrame implements ActionListener {
         r[0].setLocation((PanelCircuit.getWidth()/9)-80,(PanelCircuit.getHeight()/2)-60);
         estvertical[0] = true;
 
-        r[1] = new ItemComposant(listeComposants, 1);
-        r[1].setLocation((PanelCircuit.getWidth()*25/36)-60,(PanelCircuit.getHeight()/10)-37); //composant d'en haut
-        estvertical[1] = false;
+        r[2] = new ItemComposant(listeComposants, 1);
+        r[2].setLocation((PanelCircuit.getWidth()*25/36)-60,(PanelCircuit.getHeight()/10)-37); //composant d'en haut
+        estvertical[2] = false;
 
-        r[2] = new ItemComposant(listeComposants, 2);
-        r[2].setLocation((PanelCircuit.getWidth()*8/9)-60,(PanelCircuit.getHeight()/2)-37); //composant de droite
-        estvertical[2] = true;
-
-        r[3] = new ItemComposant(listeComposants, 3);
-        r[3].setLocation((PanelCircuit.getWidth()/2)-60, (PanelCircuit.getHeight()/2)-37); // composant milieu
+        r[3] = new ItemComposant(listeComposants, 2);
+        r[3].setLocation((PanelCircuit.getWidth()*8/9)-60,(PanelCircuit.getHeight()/2)-37); //composant de droite
         estvertical[3] = true;
+
+        r[1] = new ItemComposant(listeComposants, 3);
+        r[1].setLocation((PanelCircuit.getWidth()/2)-60, (PanelCircuit.getHeight()/2)-37); // composant milieu
+        estvertical[1] = true;
 
         return r;
     }

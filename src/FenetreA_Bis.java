@@ -36,6 +36,7 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
     Impedance[] z; //tableau rassemblant les solutions du système d'équations
     ItemResultat[] Label_Affichage_Res;  //tableau des JPanel qui affichent les résultats numériques
     boolean oscilloDisplayed; //savoir si la fenêtre de l'oscillo est ouverte
+    public int j=0;
 
 
     //constructeur
@@ -238,8 +239,13 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
      * permet de cacher les résultats numériques pour chaque composant
      */
     public void cacherResultat(){
-        for (ItemResultat r : Label_Affichage_Res){
-           PanelCircuit.remove(r);
+        for (int i=0;i<Label_Affichage_Res.length;i++){
+
+            Label_Affichage_Res[i].intensite.setText("");
+            Label_Affichage_Res[i].tension.setText("");
+            Label_Affichage_Res[i].ValIntensite.setText("");
+            Label_Affichage_Res[i].ValTension.setText("");
+            PanelCircuit.remove(Label_Affichage_Res[i]);
         }
         repaint();
     }
@@ -320,10 +326,11 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
 
         //Action des JCheckBox:
         //affichage résultats numériques
-        if(choixResultat[0].isSelected()){
+        if(choixResultat[0].isSelected() && j==0){
             //affichages des résultats pour chaque composant
             Label_Affichage_Res = afficherResultat(z,tableaumenu,estvertical);
             repaint();
+            j++;
         }
         //affichage de l'oscilloscope
         if(choixResultat[1].isSelected() && !oscilloDisplayed){
@@ -332,8 +339,9 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
             oscilloDisplayed = true;
         }
         //cacher les résultats numériques
-        if(!choixResultat[0].isSelected()){
+        if(!choixResultat[0].isSelected() && j==1){
             cacherResultat();
+            j--;
             repaint();
         }
         //on cache l'oscilloscope

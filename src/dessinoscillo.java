@@ -282,7 +282,6 @@ public class dessinoscillo extends JComponent {
         }
     }
 
-    //méthode qui permet d'ajouter les Jslider dans la Fenetreoscillo
     public void remplipanneau(){
 
         //création des Jslider pour sélectionner l'échelle de la courbe
@@ -291,39 +290,42 @@ public class dessinoscillo extends JComponent {
         JLabel afficheymax = new JLabel("Y max : 12");
         afficheymax.setBounds(80,(int) (h/2)-20,70,20);
 
-        JSlider curseurxmax = new JSlider();
-        curseurxmax.setMaximum(1400);
-        curseurxmax.setMinimum(1);
+        JSlider curseurxmax = new JSlider();  // on créé un curseur pour choisir xmax sur la courbe
+        curseurxmax.setMaximum(1400); // on fixe son maximum
+        curseurxmax.setMinimum(1); // on fixe son minimum
         curseurxmax.setValue(100); // valeur initiale par défaut de xmax
         curseurxmax.setPaintTicks(true);
         curseurxmax.setPaintLabels(true);
-        curseurxmax.setMinorTickSpacing(300);
-        curseurxmax.setMajorTickSpacing(300);
+        curseurxmax.setMinorTickSpacing(300); //espace minimal entre 2 "bornes affichées" sous le curseur
+        curseurxmax.setMajorTickSpacing(300); //espace maximal entre 2 "bornes affichées" sous le curseur
         curseurxmax.setBounds(0,0,140,(int) (h/2)-20);
         curseurxmax.addChangeListener(new ChangeListener(){
             public void stateChanged(ChangeEvent event){
+                // Listener qui detecte le changement de valeur du curseur et qui attribue la valeur qui en découle a xmax et xmin
                 affichexmax.setText("X max : " + ((JSlider)event.getSource()).getValue()/100.0);
                 xmax=(((JSlider)event.getSource()).getValue())/100.0;
                 xmin=(-((JSlider)event.getSource()).getValue())/100.0;
             }
         });
-        JSlider curseurymax = new JSlider();
-        curseurymax.setMaximum(24);
-        curseurymax.setMinimum(1);
+        JSlider curseurymax = new JSlider(); // on créé un curseur pour choisir ymax sur la courbe
+        curseurymax.setMaximum(24); // on fixe son maximum
+        curseurymax.setMinimum(1); // on fixe son minimum
         curseurymax.setValue(12); // valeur initiale par défaut de ymax
         curseurymax.setPaintTicks(true);
         curseurymax.setPaintLabels(true);
-        curseurymax.setMinorTickSpacing(3);
-        curseurymax.setMajorTickSpacing(3);
+        curseurymax.setMinorTickSpacing(3); //espace minimal entre 2 "bornes affichées" sous le curseur
+        curseurymax.setMajorTickSpacing(3); //espace maximal entre 2 "bornes affichées" sous le curseur
         curseurymax.setBounds(0,(int) (h/2),140,(int) (h/2)-20);
         curseurymax.addChangeListener(new ChangeListener(){
             public void stateChanged(ChangeEvent event){
+                // Listener qui detecte le changement de valeur du curseur et qui attribue la valeur qui en découle a ymax et ymin
                 afficheymax.setText("Y max : " + ((JSlider)event.getSource()).getValue());
                 ymax=((JSlider)event.getSource()).getValue();
                 ymin=-((JSlider)event.getSource()).getValue();
             }
         });
 
+        //ajout des sliders au panneaudubas de l'oscilloscope
         panneaudubas.add(affichexmax);
         panneaudubas.add(afficheymax);
         panneaudubas.add(curseurxmax);

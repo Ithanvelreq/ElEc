@@ -1,8 +1,6 @@
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.event.ActionListener;
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import javax.swing.*;
 
 public class Fenetreoscillo extends JFrame implements ActionListener {
@@ -56,7 +54,7 @@ public class Fenetreoscillo extends JFrame implements ActionListener {
         for(int i=0;i<tabcheckbox.length;i++) {
 
             if(tableaumenu[i] instanceof ItemComposant) {
-                tabcheckbox[i] = new JCheckBox("Afficher la tension  " + nomdescomposants[i]);
+                tabcheckbox[i] = new JCheckBox("Afficher la tension de la / du " + nomdescomposants[i]);
                 tabcheckbox[i].setBounds((int) (largeur * (1 + (i * 2)) / 8.8 - tabcheckbox[i].getWidth() / 2)-50, 0, 330, (int) h);
                 tabcheckbox[i].addActionListener(this);
                 tabcheckbox[i].setBackground(new Color(195, 188, 181));
@@ -85,23 +83,19 @@ public class Fenetreoscillo extends JFrame implements ActionListener {
 
     //méthode qui différencie les composants en les nommant dans les cas où des circuits ont 2 composants identiques
     public void nommecomposant(){
-        NumberFormat format = new DecimalFormat("0.###E0");
-        double x;
 
         for(int i=0; i<tableaumenu.length;i++){
             if(tableaumenu[i] instanceof ItemComposant){
                 ItemComposant y = (ItemComposant) tableaumenu[i];
-                x = Double.parseDouble(y.saisie.getText());
-                x = Double.parseDouble(format.format(x));
                 if(y.getComposant()=="Resistance"){
                     //nomdescomposants[i] ="Résistance "+String.valueOf(nbR);
-                    nomdescomposants[i] ="de la Résistance de "+x+ " ohms";
+                    nomdescomposants[i] ="Résistance de "+y.saisie.getText()+ " ohms";
                 }
-                if(y.getComposant()=="du Condensateur"){
-                    nomdescomposants[i] ="Condensateur de "+x+ " F";
+                if(y.getComposant()=="Condensateur"){
+                    nomdescomposants[i] ="Condensateur de "+y.saisie.getText()+ " F";
                 }
-                if(y.getComposant()=="de la Bobine"){
-                    nomdescomposants[i] ="Bobine de "+x+ " H";
+                if(y.getComposant()=="Bobine"){
+                    nomdescomposants[i] ="Bobine de "+y.saisie.getText()+ " H";
                 }
             }
         }

@@ -36,6 +36,9 @@ public class FenetreB_Bis extends JFrame implements ActionListener {
     Impedance[] z; //tableau rassemblant les solutions du système d'équations
     ItemResultat[] Label_Affichage_Res;  //tableau des JPanel qui affichent les résultats numériques
     boolean oscilloDisplayed; //savoir si la fenêtre de l'oscillo est ouverte
+    //paramètres régulants l'usage des boutons et des JCheckbox dans le programme (empêche certains bug)
+    public int j=0;
+    public int k=0;
 
     //constructeur
     public FenetreB_Bis(){
@@ -234,8 +237,13 @@ public class FenetreB_Bis extends JFrame implements ActionListener {
      * permet de cacher les résultats numériques pour chaque composant
      */
     public void cacherResultat(){
-        for (ItemResultat r : Label_Affichage_Res){
-            PanelCircuit.remove(r);
+        for (int i=0;i<Label_Affichage_Res.length;i++){
+
+            Label_Affichage_Res[i].intensite.setText("");
+            Label_Affichage_Res[i].tension.setText("");
+            Label_Affichage_Res[i].ValIntensite.setText("");
+            Label_Affichage_Res[i].ValTension.setText("");
+            PanelCircuit.remove(Label_Affichage_Res[i]);
         }
         repaint();
     }
@@ -244,10 +252,10 @@ public class FenetreB_Bis extends JFrame implements ActionListener {
     //méthode évènement
     public void actionPerformed (ActionEvent e){
 
-        if (e.getSource()==boutonvalidation){  //bouton "Valider les composants" <> étape 1
+        if (e.getSource()==boutonvalidation && k==0){  //bouton "Valider les composants" <> étape 1
 
             //vérifie si les valeurs rentrées dans les JTextfield sont correctes
-            for(int i=0; i<4;i++) {
+            for(int i=0; i<tableauzonetexte.length;i++) {
                 while (tableauzonetexte[i].getText().equals("") ||Double.parseDouble(tableauzonetexte[i].getText()) > 30000 || Double.parseDouble(tableauzonetexte[i].getText()) <=0) {
                     JOptionPane.showMessageDialog(this, "Veuillez rentrer une valeur de R, L ou C correcte (entre 0 et 30000 USI) !");
                     tableauzonetexte[i].setText("Changer"); // le fait de faire apparaitre changer fait apparaitre des messages d'erreur dans la console mais ce n'est pas grave, c'est parce que le TextField n'est pas censé pouvoir contenir du texte
@@ -263,6 +271,7 @@ public class FenetreB_Bis extends JFrame implements ActionListener {
             for(int j=0;j<4;j++){
                 tableaumenu[j].dessine(true,estvertical[j]);
             }
+            k++;
 
             //on calcule numériquement les solutions du circuit
             CircuitB circuitCalcul = new CircuitB(tableaumenu);
@@ -287,7 +296,9 @@ public class FenetreB_Bis extends JFrame implements ActionListener {
         }
 
         //Réinitialisation
-        if (e.getSource()==boutonreinit) {
+        if (e.getSource()==boutonreinit && k==1) {
+
+            k--;
 
             //on vérifie si les composants ont été validé
             if (composantvalide) {
@@ -316,10 +327,11 @@ public class FenetreB_Bis extends JFrame implements ActionListener {
 
         //Action des JCheckBox:
         //affichage résultats numériques
-        if(choixResultat[0].isSelected()){
+        if(choixResultat[0].isSelected() && j==0){
             //affichages des résultats pour chaque composant
             Label_Affichage_Res = afficherResultat(z,tableaumenu,estvertical);
             repaint();
+            j++;
         }
         //affichage de l'oscilloscope
         if(choixResultat[1].isSelected() && !oscilloDisplayed){
@@ -328,8 +340,9 @@ public class FenetreB_Bis extends JFrame implements ActionListener {
             oscilloDisplayed = true;
         }
         //cacher les résultats numériques
-        if(!choixResultat[0].isSelected()){
+        if(!choixResultat[0].isSelected() && j==1){
             cacherResultat();
+            j--;
             repaint();
         }
         //on cache l'oscilloscope

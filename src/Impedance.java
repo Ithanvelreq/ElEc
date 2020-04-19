@@ -3,7 +3,7 @@
  */
 public class Impedance {
 	/**
-	 * Partie réele du complexe
+	 * Partie reele du complexe
 	 */
 	private double re;
 	/**
@@ -20,8 +20,8 @@ public class Impedance {
 	private double Theta;
 
 	/**
-	 * Constructeur du nombre complexe à partir de la forme algebrique
-	 * @param a Partie réele du complexe
+	 * Constructeur du nombre complexe a partir de la forme algebrique
+	 * @param a Partie reele du complexe
 	 * @param b Partie imaginaire du complexe
 	 */
 	public Impedance (double a, double b){
@@ -31,7 +31,7 @@ public class Impedance {
 	}
 
 	/**
-	 * Constructeur du nombre complexe à partir de la forme exponentielle
+	 * Constructeur du nombre complexe a partir de la forme exponentielle
 	 * @param module Module du complexe
 	 * @param argument Argument du complexe
 	 * @param s Il s'agit d'un String quelconque, rentrer s aussi
@@ -44,8 +44,8 @@ public class Impedance {
 	}
 
 	/**
-	 * Getter de partie réele du complexe
-	 * @return Partie réele du complexe
+	 * Getter de partie reele du complexe
+	 * @return Partie reele du complexe
 	 */
 	public double getRe(){
 		return this.re;
@@ -86,7 +86,7 @@ public class Impedance {
 
 	/**
 	 * Setter de l'argument du complexe
-	 * @param x Nouveau argument pour le complexe et mise à jour
+	 * @param x Nouveau argument pour le complexe et mise a jour
 	 */
 	public void setTheta(double x){
 		this.Theta = x;
@@ -94,8 +94,8 @@ public class Impedance {
 	}
 
 	/**
-	 *Setter pour la partie réele du complexe
-	 * @param x Nouvelle partie reele pour le complexe et mise à jour
+	 *Setter pour la partie reele du complexe
+	 * @param x Nouvelle partie reele pour le complexe et mise a jour
 	 */
 	public void setRe (double x){
 		this.re = x;
@@ -104,7 +104,7 @@ public class Impedance {
 
 	/**
 	 * Setter de la partie imaginaire du complexe
-	 * @param x Nouvelle partie reele pour le complexe et mise à jour
+	 * @param x Nouvelle partie reele pour le complexe et mise a jour
 	 */
 	public void setIm (double x){
 		this.im = x;
@@ -112,7 +112,7 @@ public class Impedance {
 	}
 
 	/**
-	 * Mise a jour des coordonnées polaires à partir des la forme algebrique
+	 * Mise a jour des coordonnees polaires a partir des la forme algebrique
 	 */
 	private void majPolaire (){
 		this.Rho = Math.sqrt(Math.pow(this.re, 2) + Math.pow(this.im, 2));
@@ -120,7 +120,7 @@ public class Impedance {
 	}
 
 	/**
-	 * Mise a jour des coordonnées cartesiennes a partir des la forme exponentielle
+	 * Mise a jour des coordonnees cartesiennes a partir des la forme exponentielle
 	 */
 	private void majCart(){
 		this.re = this.Rho*Math.cos(this.Theta);
@@ -142,7 +142,7 @@ public class Impedance {
 
 	/**
 	 * Methode toString()
-	 * @return Chaine de caractères decrivant le complexe
+	 * @return Chaine de caracteres decrivant le complexe
 	 */
 	public String toString(){
 		return this.re+" "+signe(this.im)+" i*"+Math.abs(this.im);
@@ -150,7 +150,7 @@ public class Impedance {
 
 	/**
 	 * Affecte a this la somme avec x
-	 * @param x Complexe ajouté a this
+	 * @param x Complexe ajoute a this
 	 */
 	public void sommeV1(Impedance x){
 		double p = this.re + x.getRe();

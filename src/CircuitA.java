@@ -1,15 +1,16 @@
 import java.util.LinkedList;
 
 public class CircuitA extends Circuit {
-
-    //ajout de tableaux pour stocker les équations
-
+    /**
+     * Constructeur
+     * @param compA tableau des différents ItemElement choisi par l'utilisateur qui sont stockés dans FenêtreA_bis
+     */
     public CircuitA(ItemElement[] compA) {
         //création du circuit
         super(compA);
         mailles.add(new Maille(compA));
 
-        //récupération de la fréquence et de la tension du générareur
+        //récupération de la fréquence et de la tension du générateur
         ItemGenerateur x =(ItemGenerateur) compA[0];
         frequence = x.getFrequence();
         amplitude = x.getAmpl();

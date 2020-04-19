@@ -1,22 +1,37 @@
 import java.util.Arrays;
 import java.util.LinkedList;
 
+/**
+ * Classe mere des classes Circuit qui correspondent a chaque circuit affiche sur la fenetre principale
+ */
 public abstract class Circuit{
+    /**
+     * Liste de mailles presentes dans le circuit
+     */
     LinkedList<Maille> mailles = new LinkedList<>();
+    /**
+     * Liste de composants presents dans le circuit
+     */
     LinkedList<ItemElement> composants = new LinkedList<>();
+    /**
+     * Frequence imposee par le generateur du circuit
+     */
     public double frequence;
+    /**
+     * Amplitude imposee par le generateur du circuit
+     */
     public double amplitude;
     /**
-     * matrice comportant les coefficients du membres gauche des différentes équations
+     * Matrice comportant les coefficients du membres gauche des differentes equations
      */
     public Impedance[][] m1 = new Impedance[7][7];
     /**
-     * matrice comportant les coefficients du membre droit des différentes éuqations
+     * Matrice comportant les coefficients du membre droit des différentes equations
      */
     public Impedance[][] m2 = new Impedance[7][1];
 
     /**
-     *Constructeur
+     * Constructeur
      * @param Icomp Composants presents dans le circuit
      */
     public Circuit(ItemElement[] Icomp){
@@ -24,8 +39,8 @@ public abstract class Circuit{
     }
 
     /**
-     * méthode qui renvoie le tableau de correspondance des solutions
-     * @return tableau de correspondance
+     * Methode qui renvoie le tableau de correspondance des solutions
+     * @return Tableau de correspondance
      */
     public String [] inconnues (){
         String[] i = new String[7];
@@ -40,8 +55,8 @@ public abstract class Circuit{
     }
 
     /**
-     * méthode qui permet de résoudre toutes les inconnues
-     * @return tableau de solutions
+     * Methode qui permet de resoudre toutes les inconnues
+     * @return Tableau de solutions
      */
     public Impedance [] solutions(){
         Matrix m = new Matrix(m1, m2);

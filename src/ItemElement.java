@@ -1,7 +1,9 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-
+/**
+ * Classe mere des elements utilises pour l'affichage et le traitement de donnes dans l'IHM
+ */
 public abstract class ItemElement extends JPanel {
 
     /**

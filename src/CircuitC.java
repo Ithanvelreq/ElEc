@@ -1,7 +1,10 @@
+/**
+ * Classe permettant de realiser les calculs du circuit A, en bas a gauche
+ */
 public class CircuitC extends Circuit {
     /**
      * Constructeur
-     * @param compC tableau des différents ItemElement choisi par l'utilisateur, stocké dans FenêtreC_bis
+     * @param compC tableau des differents ItemElement choisis par l'utilisateur, stockes dans FenetreC_bis
      */
     public CircuitC(ItemElement[] compC) {
         //création du circuit

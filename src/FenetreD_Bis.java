@@ -2,46 +2,99 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+/**
+ * Fenetre d'affichage pour le circuit C, celui d'en bas a droite dans la fenetre principale
+ */
 public class FenetreD_Bis extends JFrame implements ActionListener {
 
-    //caractéristiques écran
+    /**
+     * Caracteristiques de l'ecran
+     */
     Dimension tailleEcran = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-    int hauteurEcran = (int)tailleEcran.getHeight()-40; //ajout du -40 qui correspond à la taille de la barre des taches
+    /**
+     * On recupere la hauteur de l'ecran
+     */
+    int hauteurEcran = (int)tailleEcran.getHeight()-40; //l'ajout du -40 correspond à la taille de la barre des taches
+    /**
+     * On recupere la largeur de l'ecran
+     */
     int largeurEcran= (int)tailleEcran.getWidth();
 
 
     //attributs_widgets
-    //Fenetre attribut
+    /**
+     * Fenetre attribut
+     */
     Fenetreoscillo oscillo;
-    //JPanel principaux
+    /**
+     * JPanel principaux
+     */
     JPanel PanelMain;
+    /**
+     * JPanel principaux
+     */
     JPanel PanelCircuit;
+    /**
+     * JPanel principaux
+     */
     JPanel PanelGestion;
+    /**
+     * JPanel principaux
+     */
     Trace_Circuit dessinCircuit;
-    //JButton
+    /**
+     * JButton pour l'interface
+     */
     JButton boutonvalidation;
+    /**
+     * JButton pour l'interface
+     */
     JButton boutonResultat;
+    /**
+     * JButton pour l'interface
+     */
     JButton boutonreinit;
-    JCheckBox[] choixResultat;
     //variables de travail
-    ItemElement[] tableaumenu; // tableau de menu déroulants
-    boolean[] estvertical = new boolean[4]; // tableau pour savoir si les menus sont sur un segment vertical ou non
-    String[] listeComposants = {"Resistance", "Bobine", "Condensateur"};  //tableau permettant la selection des elements des menus deroulants
-    JTextField[] tableauzonetexte;  //regroupe tous les chp de saisie
-    boolean composantvalide;        //savoir si le système a été validé
-    boolean ResultatAffiche;        //savoir si les résultats sont affichés
-    int taillePoliceCaractere;      //taille police caractère selon résolution
-    String[] w; //tableau rassemblant les inconnues du système d'équations
-    Impedance[] z; //tableau rassemblant les solutions du système d'équations
-    ItemResultat[] Label_Affichage_Res;  //tableau des JPanel qui affichent les résultats numériques
-    boolean oscilloDisplayed; //savoir si la fenêtre de l'oscillo est ouverte
-    //paramètres régulants l'usage des boutons et des JCheckbox dans le programme (empêche certains bug)
-    public int j=0;
-    public int k=0;
+    /**
+     * Tableau de menu deroulants
+     */
+    ItemElement[] tableaumenu;
+    /**
+     * Tableau pour savoir si les menus sont sur un segment vertical ou non
+     */
+    boolean[] estvertical = new boolean[4];
+    /**
+     * Tableau permettant la selection des elements des menus deroulants
+     */
+    String[] listeComposants = {"Resistance", "Bobine", "Condensateur"};
+    /**
+     * Regroupe tous les champs de saisie
+     */
+    JTextField[] tableauzonetexte;
+    /**
+     * Savoir si le systeme a ete valide
+     */
+    boolean composantvalide;
+    /**
+     * Taille police caractere selon resolution
+     */
+    int taillePoliceCaractere;
+    /**
+     * Tableau rassemblant les inconnues du systeme d'equations
+     */
+    String[] w;
+    /**
+     * Tableau rassemblant les solutions du systeme d'equations
+     */
+    Impedance[] z;
+    /**
+     * Tableau des JPanel qui affichent les resultats numeriques
+     */
+    ItemResultat[] Label_Affichage_Res;
 
-
-    //constructeur
+    /**
+     * Constructeur
+     */
     public FenetreD_Bis(){
 
         //caractéristiques fenêtre
@@ -119,8 +172,9 @@ public class FenetreD_Bis extends JFrame implements ActionListener {
     //METHODE
 
     /**
-     * @param taille : nb de JtextField à regrouper
-     * @return : un tableau contenant tous les JTextField
+     * Methode qui regroupe tous les JtextField sous un meme tableau
+     * @param taille Nombre de JTextField a regrouper
+     * @return Un tableau contenant tous les JTextField
      */
     public JTextField[] regrouperJTextField(int taille){
         JTextField[] r = new JTextField[taille];
@@ -140,8 +194,8 @@ public class FenetreD_Bis extends JFrame implements ActionListener {
     }
 
     /**
-     * génère et postionne l'ensemble des ItemElements de chaque élément du circuit
-     * @return : un tableau regroupant les ItemElements
+     * Genere et positionne l'ensemble des ItemElements de chaque element du circuit
+     * @return Un tableau regroupant les ItemElements
      */
     public ItemElement[] SetUpItemElement(){
 
@@ -166,8 +220,8 @@ public class FenetreD_Bis extends JFrame implements ActionListener {
     }
 
     /**
-     * méthode qui génère les CheckBox pour le choix des résultats à afficher pour l'utilisateur
-     * @return : tab contenant les 2 box
+     * Genere et positionne l'ensemble des ItemElements de chaque element du circuit
+     * @return Un tableau regroupant les ItemElements
      */
     public JCheckBox[] SetUpCheckBoxResultats(){
 
@@ -195,8 +249,8 @@ public class FenetreD_Bis extends JFrame implements ActionListener {
     }
 
     /**
-     * permet de définir la taille de police de caractère adéquat à l'écran
-     * @return : la bonne taille
+     * Permet de definir la taille de police de caractere adequiat a l'ecran
+     * @return La bonne taille
      */
     public int setTaillePolice(){
         int r=11; //défaut
@@ -208,12 +262,12 @@ public class FenetreD_Bis extends JFrame implements ActionListener {
         }
         return r;
     }
-
     /**
-     * permet d'afficher les résultats pour chaque composant
-     * @param resultats : résultats numériques
-     * @param tableaumenu : tab des composants
-     * @return : tab contenant les JPanel présentant les résultats
+     * Permet d'afficher les resultats pour chaque composant
+     * @param resultats Resultats numeriques
+     * @param tableaumenu Tableau des composants
+     * @param estvertical Tableau qui verifie si le composant est vertical ou pas
+     * @return Tableau contenant les JPanel
      */
     public ItemResultat[] afficherResultat(Impedance[] resultats, ItemElement[] tableaumenu, boolean[] estvertical){
 
@@ -231,7 +285,7 @@ public class FenetreD_Bis extends JFrame implements ActionListener {
     }
 
     /**
-     * permet de cacher les résultats numériques pour chaque composant
+     * Permet de cacher les resultats numeriques pour chaque composant
      */
     public void cacherResultat(){
         for (int i=0;i<Label_Affichage_Res.length;i++){

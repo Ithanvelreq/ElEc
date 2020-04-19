@@ -1,3 +1,6 @@
+/**
+ * Classe utilisee pour resoudre le systeme d'equations
+ */
 public class Matrix {
     /**
      * Matrice nxn, partie de "gauche" du systeme linneaire

@@ -1,9 +1,11 @@
+/**
+ * Classe permettant de realiser les calculs du circuit A, en haut a gauche
+ */
 public class CircuitD extends Circuit {
     /**
      * Constructeur
-     * @param compD tableau des différents ItemElement choisi par l'utilisateur, stocké dans FenêtreD_bis
+     * @param compD tableau des differents ItemElement choisis par l'utilisateur, stockes dans FenetreD_bis
      */
-
     public CircuitD(ItemElement[] compD) {
         //création du circuit
         super(compD);

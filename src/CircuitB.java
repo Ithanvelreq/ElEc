@@ -1,9 +1,10 @@
-import java.util.LinkedList;
-
+/**
+ * Classe permettant de realiser les calculs du circuit B, en haut a droite
+ */
 public class CircuitB extends Circuit{
     /**
      * Constructeur
-     * @param compB tableau des différents ItemElement choisi par l'utilisateur, stocké dans FenêtreB_bis
+     * @param compB tableau des differents ItemElement choisis par l'utilisateur, stocke dans FenetreB_bis
      */
     public CircuitB(ItemElement[] compB) {
         //création du circuit

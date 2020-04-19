@@ -219,15 +219,15 @@ public class FenetreC_Bis extends JFrame implements ActionListener {
 
         ItemResultat[] tabRes = new ItemResultat[tableaumenu.length-1];
 
-        //composant milieu
+        //composant 1 / milieu
         tabRes[0] = new ItemResultat(resultats[4] , resultats[1]);
-        tabRes[0].setLocation(tableaumenu[3].getX()-(tabRes[0].getWidth()), tableaumenu[3].getY());
-        //composant haut
+        tabRes[0].setLocation(tableaumenu[1].getX()-(tabRes[0].getWidth()), tableaumenu[1].getY());
+        //composant 2 / haut
         tabRes[1] = new ItemResultat(resultats[5],resultats[2]);
-        tabRes[1].setLocation(tableaumenu[1].getX(), tableaumenu[1].getY()+tableaumenu[1].getHeight());
-        //composant droite
+        tabRes[1].setLocation(tableaumenu[2].getX(), tableaumenu[2].getY()+tableaumenu[2].getHeight());
+        //composant 3/ droite
         tabRes[2]=new ItemResultat(resultats[6],resultats[3]);
-        tabRes[2].setLocation(tableaumenu[2].getX()-(tabRes[2].getWidth()), tableaumenu[2].getY());
+        tabRes[2].setLocation(tableaumenu[3].getX()-(tabRes[2].getWidth()), tableaumenu[3].getY());
 
         for (ItemResultat i : tabRes){
             PanelCircuit.add(i);

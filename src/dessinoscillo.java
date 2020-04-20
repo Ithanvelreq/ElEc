@@ -3,38 +3,100 @@ import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+/**
+ * A COMMENTER
+ */
 public class dessinoscillo extends JComponent {
-
+    /**
+     * serialVersionUID
+     */
     private static final long serialVersionUID = 7800853645256601960L;
-
+    /**
+     * Creation d'un tableau qui contiendra nos fonctions a tracer
+     */
     public CurveFunction[] tabfct= new CurveFunction[4]; // création d'un tableau qui contiendra nos fonctions à tracer
 
     //récupération des dimensions de l'écran et calculs de variables qui nous seront utiles pour le dimensionnement des widgets
+    /**
+     * Caracteristiques de l'ecran
+     */
     Dimension tailleEcran = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+    /**
+     * Hauteur utile de l'ecran
+     */
     int hauteur = (int)tailleEcran.getHeight()-40;
+    /**
+     * largeur utile de l'ecran
+     */
     int largeur = (int)tailleEcran.getWidth();
-    double l= (double) 0.75*largeur;
-    double l1= (double) 0.25*largeur;
+    /**
+     * A COMMENTER
+     */
     double h1= (double) 0.75*hauteur;
+    /**
+     * A COMMENTER
+     */
     double h=(double) 0.25*hauteur;
 
     //variables de travail
-    public JCheckBox[] tabcheckbox; //récupération du tableau de Jcheckbox de la Fenetreoscillo pour en connaitre leur état(coché ou décoché)
-    public Color[] tabcouleur = new Color[4]; // tableau qui contiendra les couleurs des courbes
-    public Impedance[] z; // récupération du tableau de solution du système d'équation
-    public double[] tableaumodule = new double[4]; // création d'un tableau qui nous permettra de stocker les modules des composants
+    /**
+     * Recuperation du tableau de Jcheckbox de la Fenetreoscillo pour en connaitre leur etat (coche ou decoche)
+     */
+    public JCheckBox[] tabcheckbox;
+    /**
+     * Tableau qui contiendra les couleurs des courbes
+     */
+    public Color[] tabcouleur = new Color[4];
+    /**
+     * Recuperation du tableau de solution du systeme d'equation
+     */
+    public Impedance[] z;
+    /**
+     * Creation d'un tableau qui nous permettra de stocker les modules des composants
+     */
+    public double[] tableaumodule = new double[4]; // c
+    /**
+     * Creation d'un tableau qui nous permettra de stocker les arguments des composants
+     */
     public double [] tableauargument = new double[4];
-    public ItemElement[] tableaumenu; // récupération du tableau contenant les ItemElement, qui nous permettra de récupérer les données entrées dans les JtextField
-    public double frequence; //initialisation de la frequence
-    public JPanel panneaudubas; // récupération du panneau contenant les curseurs et les JCheckbox
+    /**
+     * Recuperation du tableau contenant les ItemElement, qui nous permettra de recuperer les donnees entrees dans les JtextField
+     */
+    public ItemElement[] tableaumenu;
+    /**
+     * Initialisation de la frequence
+     */
+    public double frequence;
+    /**
+     * Recuperation du panneau contenant les curseurs et les JCheckbox
+     */
+    public JPanel panneaudubas;
 
     //initialisation des paramètres de visualisation
+    /**
+     * Parametre de visuialisation
+     */
     public double xmax=1;
+    /**
+     * Parametre de visuialisation
+     */
     public double xmin=-1;
+    /**
+     * Parametre de visuialisation
+     */
     public double ymax=12;
+    /**
+     * Parametre de visuialisation
+     */
     public double ymin=-12;
 
-    //constructeur
+    /**
+     * A COMMENTER
+     * @param tabcheckbox
+     * @param z
+     * @param tableaumenu
+     * @param panneaudubas
+     */
     public dessinoscillo(JCheckBox[] tabcheckbox, Impedance[] z, ItemElement[] tableaumenu, JPanel panneaudubas){
         this.tabcheckbox=tabcheckbox;
         this.z=z;
@@ -51,9 +113,7 @@ public class dessinoscillo extends JComponent {
         tabcouleur[3]= new Color(0, 0, 0);
     }
 
-    /**
-     * @param graphics : élément à dessiner
-     */
+    @Override
     protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
 
@@ -100,25 +160,31 @@ public class dessinoscillo extends JComponent {
         }
     }
     /**
-     * @param x : valeur horizontale à convertir en pixel
-     * @return : valeur en pixel
+     * A COMMENTER
+     * @param x Valeur horizontale à convertir en pixel
+     * @return Valeur en pixel
      */
     private int xToPixel( double x ) {    // accepte un double entre la borne min et max sur les x
         return (int)( largeur * (x + xmax)/(2*xmax) );
     }
 
     /**
-     * @param y : valeur verticale à convertir en pixel
-     * @return : valeur en pixel
+     * A COMMENTER
+     * @param y Valeur verticale à convertir en pixel
+     * @return Valeur en pixel
      */
     private int yToPixel( double y ) {   // accepte un double entre la borne min et max sur les y
         return (int)( ((int) h1) * (1 - (y+ymax)/(2*ymax)));
     }
 
-    //création d'une interface qui nous permet de créer une fonction simplement et qui dépendra d'un paramètre x
-    public static interface CurveFunction { public double compute( double x );}
+    /**
+     * Creation d'une interface qui nous permet de creer une fonction simplement et qui dependra d'un parametre x
+     */
+    public interface CurveFunction { public double compute( double x );}
 
-    // méthode qui créé les fonctions qui seront tracées
+    /**
+     * Methode qui cree les fonctions qui seront tracees
+     */
     public void creerfonction(){
 
         //récupération de la fréquence
@@ -146,11 +212,12 @@ public class dessinoscillo extends JComponent {
     }
 
     /**
-     * @param g2 : élément à dessiner
-     * @param xmin : valeur minimale sur l'axe des x
-     * @param xmax : valeur maximale sur l'axe des x
-     * @param ymin : valeur minimale sur l'axe des y
-     * @param ymax : valeur maximale sur l'axe des y
+     * A COMMENTER
+     * @param g2 Element a dessiner
+     * @param xmin Valeur minimale sur l'axe des x
+     * @param xmax Valeur maximale sur l'axe des x
+     * @param ymin Valeur minimale sur l'axe des y
+     * @param ymax Valeur maximale sur l'axe des y
      */
     public void placeechelle(Graphics2D g2, double xmin, double xmax, double ymin, double ymax) {
 
@@ -282,6 +349,9 @@ public class dessinoscillo extends JComponent {
         }
     }
 
+    /**
+     * A COMMENTER
+     */
     public void remplipanneau(){
 
         //création des Jslider pour sélectionner l'échelle de la courbe

@@ -4,11 +4,25 @@ import java.awt.*;
 public class Trace_Circuit extends JPanel{
 
     //attributs
+    /**
+     * A COMMENTER
+     */
     int numCircuit;
+    /**
+     * A COMMENTER
+     */
     int hauteur;
+    /**
+     * A COMMENTER
+     */
     int largeur;
 
-    //constructeur
+    /**
+     * A COMMENTER
+     * @param i
+     * @param h
+     * @param l
+     */
     public Trace_Circuit(int i, int h,int l){
         numCircuit=i;
         hauteur=h;
@@ -18,10 +32,7 @@ public class Trace_Circuit extends JPanel{
         this.setBounds(0,0,largeur,hauteur);
     }
 
-    /**
-     * on définit les 3 tracés de circuits différents
-     * @param g1 : graphics du JPanel
-     */
+    @Override
     public void paint(Graphics g1){
 
         Graphics2D g = (Graphics2D) g1;

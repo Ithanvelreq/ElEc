@@ -3,23 +3,56 @@ import java.awt.event.*;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
+/**
+ * Fenetre qui contient l'oscilloscope
+ */
 public class Fenetreoscillo extends JFrame implements ActionListener {
-
+    /**
+     * serialVersionUID
+     */
     private static final long serialVersionUID = -3914578220391097071L;
-    public JCheckBox[] tabcheckbox = new JCheckBox[4]; // tableau de Jcheckbox
-    public String[] w; // tableau rassemblant les inconnues du système d'équations du système
+    /**
+     * Tableau de Jcheckbox
+     */
+    public JCheckBox[] tabcheckbox = new JCheckBox[4]; // t
+    /**
+     * Tableau rassemblant les inconnues du systeme d'equations du systeme
+     */
+    public String[] w; // t
+    /**
+     * Tableau rassemblant les solutions du systeme d'equations
+     */
     public Impedance[] z; // tableau rassemblant les solutions du système d'équations du système
+    /**
+     * Recuperation du tableau contenant les ItemElement, qui nous permettra de recuperer les donnees entrees dans les JtextField
+     */
     public ItemElement[] tableaumenu; // récupération du tableau contenant les ItemElement, qui nous permettra de récupérer les données entrées dans les JtextField
+    /**
+     * Creation d'un tableau de String qui contiendra les noms des composants du circuit
+     */
     public String[] nomdescomposants = new String[4]; // création d'un tableau de String qui contiendra les noms des composants du circuit.
 
     //récupération des dimensions de l'écran et calculs de variables qui nous seront utiles pour le dimensionnement des widgets
+    /**
+     * Caracteristiques de l'ecran
+     */
     Dimension tailleEcran = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+    /**
+     * Hauteur utile de l'ecran
+     */
     int hauteur = (int)tailleEcran.getHeight()-40;
+    /**
+     * largeur utile de l'ecran
+     */
     int largeur = (int)tailleEcran.getWidth();
-    double l= (double) 0.75*largeur;
-    double l1= (double) 0.25*largeur;
-    double h= (double) 0.25*hauteur;
+    /**
+     * A COMMENTER
+     */
     double h1= (double) 0.75*hauteur;
+    /**
+     * A COMMENTER
+     */
+    double h=(double) 0.25*hauteur;
 
     //constructeur
     public Fenetreoscillo(String[] w, Impedance[] z, ItemElement[] tableaumenu) {

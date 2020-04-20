@@ -9,24 +9,31 @@ import java.awt.geom.RoundRectangle2D;
 import javax.swing.*;
 
 public class Boutonmodif extends JButton {
-
+    /**
+     * serialVersionUID
+     */
     private static final long serialVersionUID = 1671314658637614873L;
-    private int inset = 5; // entier qui influe sur la taille du bouton à sa création
-    private Color buttonColor = new Color(36, 47, 68).darker().darker().darker(); //couleur par défaut du bouton
+    /**
+     * Entier qui influe sur la taille du bouton à sa création
+     */
+    private int inset = 5;
+    /**
+     * Couleur par defaut du bouton
+     */
+    private Color buttonColor = new Color(36, 47, 68).darker().darker().darker();
 
     /**
-     * @param aNameString : nom du bouton
-     * @param icon : image à insérer dans le bouton
+     * A COMMENTER
+     * @param name nom du bouton
+     * @param icon image a inserer dans le bouton
      */
-    public Boutonmodif (String aNameString, Icon icon){
-        super(aNameString, icon);
+    public Boutonmodif (String name, Icon icon){
+        super(name, icon);
         setContentAreaFilled(false);
         setForeground((new Color(36, 47, 68))); // on fixe la couleur de la première couche du bouton
     }
 
-    /**
-     * @param g : élément que l'on va dessiner
-     */
+    @Override
     protected void paintComponent(Graphics g) {
 
         //on converti le graphics en graphics2D pour pouvoir créer des "couches" aux boutons

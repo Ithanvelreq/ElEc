@@ -2,32 +2,79 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+/**
+ * Fenetre principale de l'application
+ */
 public class FenetreMain extends JFrame implements ActionListener{
 
     //obtient les caractéristiques de l'écran pour que la fenetre occupe tout l'espace
-
+    /**
+     * Caracteristiques de l'ecran
+     */
     Dimension tailleEcran = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+    /**
+     * Hauteur de l'ecran
+     */
     int hauteur = (int)tailleEcran.getHeight()-40;
+    /**
+     * Largeur de l'ecran
+     */
     int largeur = (int)tailleEcran.getWidth();
 
     //declaration de tous les widgets et des 4 fenêtres
-
+    /**
+     * Tableau qui contient les bouttons de la fenetre principale
+     */
     public JButton[] tableaubouton;
+    /**
+     * JLabel contenant le titre de la fenetre principale
+     */
     JLabel titre;
+    /**
+     * JLabel contenant le sous-titre de la fenetre principale
+     */
     JLabel sousTitre;
+    /**
+     * JBoutton pour afficher les credits
+     */
     JButton credits;
+    /**
+     * Fenetre contenant le circuit A
+     */
     FenetreA_Bis Fenetrecircuit1;
+    /**
+     * Fenetre contenant le circuit B
+     */
     FenetreB_Bis Fenetrecircuit2;
+    /**
+     * Fenetre contenant le circuit C
+     */
     FenetreC_Bis Fenetrecircuit3;
+    /**
+     * Fenetre contenant le circuit D
+     */
     FenetreD_Bis Fenetrecircuit4;
+    /**
+     * Image du circuitA pour acceder a la fenetreA
+     */
     public ImageIcon imagebouton1;
+    /**
+     * Image du circuitB pour acceder a la fenetreB
+     */
     public ImageIcon imagebouton2;
+    /**
+     * Image du circuitC pour acceder a la fenetreC
+     */
     public ImageIcon imagebouton3;
+    /**
+     * Image du circuitD pour acceder a la fenetreD
+     */
     public ImageIcon imagebouton4;
 
 
-    //constructeur
-
+    /**
+     * Constructeur
+     */
     public FenetreMain(){
 
         setTitle("SIMULATEUR DE CIRCUIT ELECTRIQUE");
@@ -106,6 +153,7 @@ public class FenetreMain extends JFrame implements ActionListener{
 
     }
 
+    @Override
     public void actionPerformed (ActionEvent e) {
 
         if (e.getSource()== tableaubouton[0]){

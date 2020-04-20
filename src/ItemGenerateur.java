@@ -4,20 +4,48 @@ import java.awt.event.*;
 
 import static java.awt.event.KeyEvent.*;
 
+/**
+ * Generateur de tension du circuit
+ */
 public class ItemGenerateur extends ItemElement {
 
-    //attributs
+    /**
+     * A COMMENTER
+     */
     JLabel source;
+    /**
+     * A COMMENTER
+     */
     JLabel freq;
+    /**
+     * A COMMENTER
+     */
     JLabel ampl;
+    /**
+     * A COMMENTER
+     */
     JTextField saisieFreq;
+    /**
+     * A COMMENTER
+     */
     JTextField saisieAmpl;
+    /**
+     * A COMMENTER
+     */
     Trace_Composant dessin;
+    /**
+     * A COMMENTER
+     */
     JLabel rappelAmplitude;
+    /**
+     * A COMMENTER
+     */
     JLabel rappelFrequence;
 
 
-    //constructeur
+    /**
+     *Constructeur
+     */
     public ItemGenerateur(){
 
         this.setBackground(new Color(215,215,215));
@@ -73,19 +101,27 @@ public class ItemGenerateur extends ItemElement {
 
     }
 
-    //GETTER
+    /**
+     * Getter de la frequence du generateur
+     * @return frequence du generateur
+     */
     public double getFrequence (){
         return  Double.parseDouble(saisieFreq.getText());
     }
+
+    /**
+     * Getter de l'amplitude du generateur
+     * @return Amplitude du generateur
+     */
     public double getAmpl (){
         return  Double.parseDouble(saisieAmpl.getText());
     }
 
     //METHODE
     /**
-     * méthode qui permet de dessiner la composant choisi
-     * @param aDessiner : boolean s'il faut dessiner ou non l'élément
-     * @param vertical : boolean sur l'emplacement
+     * Methode qui permet de dessiner la composant choisi
+     * @param aDessiner True s'il faut dessiner ou non l'élément False sinon
+     * @param vertical True si le dessin est vertical False sinon
      */
     public void dessine(boolean aDessiner, boolean vertical){
 

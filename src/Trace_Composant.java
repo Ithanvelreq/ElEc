@@ -4,13 +4,35 @@ import java.awt.*;
 public class Trace_Composant extends JPanel{
 
     //attributs
-    String composant; //nom du composant
-    boolean estVertical;    // doit être tracé à la verticale ou non
-    boolean aDessiner;      // doit être dessiné ou non
+    /**
+     * Nom du composant
+     */
+    String composant;
+    /**
+     * True si le composant doit etre place a la verticale false sinon
+     */
+    boolean estVertical;
+    /**
+     * True si le composant doit etre dessine false sinon
+     */
+    boolean aDessiner;
+    /**
+     * A COMMENTER
+     */
     int hauteur;
+    /**
+     * A COMMENTER
+     */
     int largeur;
 
-    //constructeur
+    /**
+     * Constructeur A COMMENTER
+     * @param s
+     * @param b
+     * @param h
+     * @param l
+     * @param a
+     */
     public Trace_Composant(String s,boolean b,int h,int l,boolean a){
         composant=s;
         hauteur=h;
@@ -23,10 +45,7 @@ public class Trace_Composant extends JPanel{
 
     }
 
-    /**
-     * on définit l'ensemble des tracés possibles
-     * @param g1 : graphics du JPanel
-     */
+    @Override
     public void paint(Graphics g1){
 
         Graphics2D g = (Graphics2D) g1;

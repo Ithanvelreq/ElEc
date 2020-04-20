@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 public class FenetreB_Bis extends JFrame implements ActionListener {
 
     /**
-     * Caractéristiques écran
+     * Caracteristiques de l'ecran
      */
     Dimension tailleEcran = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
     /**
@@ -17,7 +17,7 @@ public class FenetreB_Bis extends JFrame implements ActionListener {
      */
     int hauteurEcran = (int)tailleEcran.getHeight()-40; //ajout du -40 qui correspond à la taille de la barre des taches
     /**
-     * On recupere la largeru de l'ecran
+     * On recupere la largeur de l'ecran
      */
     int largeurEcran= (int)tailleEcran.getWidth();
 

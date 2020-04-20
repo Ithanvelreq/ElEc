@@ -54,6 +54,10 @@ public class FenetreD_Bis extends JFrame implements ActionListener {
      * JButton pour l'interface
      */
     JButton boutonreinit;
+    /**
+     * A COMMENTER
+     */
+    JCheckBox [] choixResultat;
     //variables de travail
     /**
      * Tableau de menu deroulants
@@ -76,6 +80,10 @@ public class FenetreD_Bis extends JFrame implements ActionListener {
      */
     boolean composantvalide;
     /**
+     * Savoir si les resultats sont affiches
+     */
+    boolean ResultatAffiche;
+    /**
      * Taille police caractere selon resolution
      */
     int taillePoliceCaractere;
@@ -91,6 +99,19 @@ public class FenetreD_Bis extends JFrame implements ActionListener {
      * Tableau des JPanel qui affichent les resultats numeriques
      */
     ItemResultat[] Label_Affichage_Res;
+    /**
+     * Savoir di la fenetre de l'oscillo est ouverte
+     */
+    boolean oscilloDisplayed;
+    /**
+     * Parametre regulant l'usage des boutons et des JCheckbox dans le programme (empeche certains bugs)
+     */
+    public int j = 0;
+    /**
+     * Parametre regulant l'usage des boutons et des JCheckbox dans le programme (empeche certains bugs)
+     */
+    public int k = 0;
+
 
     /**
      * Constructeur
@@ -220,8 +241,7 @@ public class FenetreD_Bis extends JFrame implements ActionListener {
     }
 
     /**
-     * Genere et positionne l'ensemble des ItemElements de chaque element du circuit
-     * @return Un tableau regroupant les ItemElements
+     * METHODE A COMMENTER
      */
     public JCheckBox[] SetUpCheckBoxResultats(){
 
@@ -266,10 +286,9 @@ public class FenetreD_Bis extends JFrame implements ActionListener {
      * Permet d'afficher les resultats pour chaque composant
      * @param resultats Resultats numeriques
      * @param tableaumenu Tableau des composants
-     * @param estvertical Tableau qui verifie si le composant est vertical ou pas
      * @return Tableau contenant les JPanel
      */
-    public ItemResultat[] afficherResultat(Impedance[] resultats, ItemElement[] tableaumenu, boolean[] estvertical){
+    public ItemResultat[] afficherResultat(Impedance[] resultats, ItemElement[] tableaumenu){
 
         ItemResultat[] tabRes = new ItemResultat[tableaumenu.length-1];
 
@@ -331,7 +350,7 @@ public class FenetreD_Bis extends JFrame implements ActionListener {
 
             //on génère les résultats sans les afficher
             ResultatAffiche = false;
-            Label_Affichage_Res=afficherResultat(z,tableaumenu,estvertical);
+            Label_Affichage_Res=afficherResultat(z,tableaumenu);
             cacherResultat();
             oscillo = new Fenetreoscillo(w,z,tableaumenu);
             oscillo.setVisible(false);
@@ -380,7 +399,7 @@ public class FenetreD_Bis extends JFrame implements ActionListener {
         //affichage résultats numériques
         if(choixResultat[0].isSelected() && j==0){
             //affichages des résultats pour chaque composant
-            Label_Affichage_Res = afficherResultat(z,tableaumenu,estvertical);
+            Label_Affichage_Res = afficherResultat(z,tableaumenu);
             repaint();
             j++;
         }

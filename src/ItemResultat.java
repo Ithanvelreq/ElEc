@@ -3,6 +3,9 @@ import java.awt.*;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
+/**
+ * Outil utilise pour afficher la tension et le courrant a travers chaque dipole
+ */
 public class ItemResultat extends JPanel {
 
     /**

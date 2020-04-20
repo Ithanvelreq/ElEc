@@ -237,6 +237,7 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
      * Permet d'afficher les resultats pour chaque composant
      * @param resultats Resultats numeriques
      * @param tableaumenu Tableau des composants
+     * @param estvertical Tableau pour savoir si les menus sont sur un segment vertical ou non
      * @return : Tableau contenant les JPanel presentant les resultats
      */
     public ItemResultat[] afficherResultat(Impedance[] resultats, ItemElement[] tableaumenu, boolean[] estvertical){

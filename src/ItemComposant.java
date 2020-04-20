@@ -3,18 +3,38 @@ import java.awt.*;
 import java.awt.event.*;
 
 import static java.awt.event.KeyEvent.*;
-
+/**
+ * Modelisation d'un dipole pour l'interface
+ */
 public class ItemComposant extends ItemElement implements MouseListener{
 
-    //attributs
+    /**
+     * A COMMENTER
+     */
     JLabel unite;
+    /**
+     * A COMMENTER
+     */
     JTextField saisie;
+    /**
+     * A COMMENTER
+     */
     JComboBox menuComposant;
+    /**
+     * A COMMENTER
+     */
     Trace_Composant dessin;
+    /**
+     * Numero du composant
+     */
     int n;
 
 
-    //constructeur
+    /**
+     * A COMMENTER
+     * @param listeCompo
+     * @param x
+     */
     public ItemComposant(String[] listeCompo, int x) {
         n = x;
 
@@ -48,14 +68,17 @@ public class ItemComposant extends ItemElement implements MouseListener{
         this.add(menuComposant);
     }
 
-    //méthode
+    /**
+     * A COMMENTER
+     * @return
+     */
     public String getComposant(){ return menuComposant.getSelectedItem().toString(); }
 
     /**
-     * méthode qui renvoie le dipôle correspondant à la saisie de l'utilisateur
-     * @param item : nom (String) du composant
-     * @param f : fréquence générateur
-     * @return : le dipôle correspondant
+     * Methode qui renvoie le dipole correspondant a la saisie de l'utilisateur
+     * @param item Nom du composant
+     * @param f Frequence générateur
+     * @return Le dipôle correspondant
      */
     public Dipole RenvoiComposant(String item,double f){
         Impedance a= new Impedance(0,0);
@@ -82,9 +105,9 @@ public class ItemComposant extends ItemElement implements MouseListener{
     }
 
     /**
-     * méthode qui permet de dessiner la composant choisi
-     * @param aDessiner : boolean s'il faut dessiner ou non l'élément
-     * @param vertical : boolean sur l'emplacement
+     * Methode qui permet de dessiner la composant choisi
+     * @param aDessiner True s'il faut dessiner ou non l'élément False sinon
+     * @param vertical True si le dessin est vertical False sinon
      */
     public void dessine(boolean aDessiner, boolean vertical){
         if(aDessiner){
@@ -107,7 +130,6 @@ public class ItemComposant extends ItemElement implements MouseListener{
         }
     }
 
-    //méthode interface
     public void mouseClicked(MouseEvent e){
         if(menuComposant.getSelectedItem().toString()=="Bobine"){
             unite.setText("H");

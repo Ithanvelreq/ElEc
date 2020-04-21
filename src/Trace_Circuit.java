@@ -5,23 +5,23 @@ public class Trace_Circuit extends JPanel{
 
     //attributs
     /**
-     * A COMMENTER
+     * Indique le numero du circuit a dessiner
      */
     int numCircuit;
     /**
-     * A COMMENTER
+     * Hauteur du JPanel ou dessiner
      */
     int hauteur;
     /**
-     * A COMMENTER
+     * Largeur du JPanel ou dessiner
      */
     int largeur;
 
     /**
-     * A COMMENTER
-     * @param i
-     * @param h
-     * @param l
+     * Constructeur du JPanel contenant le dessin du circiut
+     * @param i Numero du circuit
+     * @param h Hauteur JPanel
+     * @param l Larguer JPanel
      */
     public Trace_Circuit(int i, int h,int l){
         numCircuit=i;

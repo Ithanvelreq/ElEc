@@ -17,21 +17,21 @@ public class Trace_Composant extends JPanel{
      */
     boolean aDessiner;
     /**
-     * A COMMENTER
+     * Hauteur du JPanel
      */
     int hauteur;
     /**
-     * A COMMENTER
+     * Largeur du JPanel
      */
     int largeur;
 
     /**
-     * Constructeur A COMMENTER
-     * @param s
-     * @param b
-     * @param h
-     * @param l
-     * @param a
+     * Constructeur
+     * @param s Nom du composant
+     * @param b Position verticale ou non
+     * @param h Hauteur JPanel
+     * @param l Largeur JPanel
+     * @param a A dessiner ou pas
      */
     public Trace_Composant(String s,boolean b,int h,int l,boolean a){
         composant=s;

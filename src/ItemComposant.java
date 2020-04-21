@@ -9,19 +9,19 @@ import static java.awt.event.KeyEvent.*;
 public class ItemComposant extends ItemElement implements MouseListener{
 
     /**
-     * A COMMENTER
+     * indique l'unite de la valeur a saisir
      */
     JLabel unite;
     /**
-     * A COMMENTER
+     * champ de saisie de la valeur
      */
     JTextField saisie;
     /**
-     * A COMMENTER
+     * menu deroulant contenant les composants
      */
     JComboBox menuComposant;
     /**
-     * A COMMENTER
+     * JPanel contenant le dessin du composant
      */
     Trace_Composant dessin;
     /**
@@ -31,7 +31,7 @@ public class ItemComposant extends ItemElement implements MouseListener{
 
 
     /**
-     * A COMMENTER
+     * constructeur de l'item complet
      * @param listeCompo
      * @param x
      */
@@ -69,8 +69,8 @@ public class ItemComposant extends ItemElement implements MouseListener{
     }
 
     /**
-     * A COMMENTER
-     * @return
+     * Renvoie le nom du composant choisi
+     * @return Le nom en String
      */
     public String getComposant(){ return menuComposant.getSelectedItem().toString(); }
 

@@ -10,35 +10,35 @@ import static java.awt.event.KeyEvent.*;
 public class ItemGenerateur extends ItemElement {
 
     /**
-     * A COMMENTER
+     * Titre de l'item
      */
     JLabel source;
     /**
-     * A COMMENTER
+     * Label indiquant la frequence a saisir
      */
     JLabel freq;
     /**
-     * A COMMENTER
+     * Label indiquant l'amplutide a saisir
      */
     JLabel ampl;
     /**
-     * A COMMENTER
+     * Champ de saisie de la frequence
      */
     JTextField saisieFreq;
     /**
-     * A COMMENTER
+     * Champ de saisie de l'amplitude
      */
     JTextField saisieAmpl;
     /**
-     * A COMMENTER
+     * Panel contenant le dessin de generateur
      */
     Trace_Composant dessin;
     /**
-     * A COMMENTER
+     * Rappel l'amplitude saisie par l'utilisateur
      */
     JLabel rappelAmplitude;
     /**
-     * A COMMENTER
+     * Rappel la frequence saisie par l'utilisateur
      */
     JLabel rappelFrequence;
 

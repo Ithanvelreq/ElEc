@@ -4,7 +4,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 /**
- * A COMMENTER
+ * classe qui va dessiner les courbes et les tracer à l'ecran
  */
 public class dessinoscillo extends JComponent {
     /**
@@ -30,11 +30,11 @@ public class dessinoscillo extends JComponent {
      */
     int largeur = (int)tailleEcran.getWidth();
     /**
-     * A COMMENTER
+     * variable qui vaut 75% de la hauteur pour dimensionner les panneaux
      */
     double h1= (double) 0.75*hauteur;
     /**
-     * A COMMENTER
+     * variable qui vaut 25% de la hauteur pour dimensionner les panneaux
      */
     double h=(double) 0.25*hauteur;
 
@@ -82,16 +82,16 @@ public class dessinoscillo extends JComponent {
      */
     public double xmin=-1;
     /**
-     * Parametre de visuialisation
+     * Parametre de visualisation
      */
     public double ymax=12;
     /**
-     * Parametre de visuialisation
+     * Parametre de visualisation
      */
     public double ymin=-12;
 
     /**
-     * A COMMENTER
+     * methode qui recupere les valeurs chiffrees des autres classes afin de tracer les courbes
      * @param tabcheckbox
      * @param z
      * @param tableaumenu
@@ -160,7 +160,7 @@ public class dessinoscillo extends JComponent {
         }
     }
     /**
-     * A COMMENTER
+     * converti la valeur x de la fonction en pixel afin d'avoir une courbe lisible a l'ecran
      * @param x Valeur horizontale à convertir en pixel
      * @return Valeur en pixel
      */
@@ -169,7 +169,7 @@ public class dessinoscillo extends JComponent {
     }
 
     /**
-     * A COMMENTER
+     * converti la valeur y de la fonction en pixel afin d'avoir une courbe lisible a l'ecran
      * @param y Valeur verticale à convertir en pixel
      * @return Valeur en pixel
      */
@@ -212,7 +212,7 @@ public class dessinoscillo extends JComponent {
     }
 
     /**
-     * A COMMENTER
+     * methode qui fixe l'echelle des courbes qui seront affichees. On fixe ainsi que l'axe des x est affiche entre xmin et xmax et que celui des y est affiche entre ymin et ymax
      * @param g2 Element a dessiner
      * @param xmin Valeur minimale sur l'axe des x
      * @param xmax Valeur maximale sur l'axe des x
@@ -350,7 +350,7 @@ public class dessinoscillo extends JComponent {
     }
 
     /**
-     * A COMMENTER
+     * methode qui place les Jslider dans la fenetre de loscilloscope afin dadapter l'echelle de la courbe
      */
     public void remplipanneau(){
 

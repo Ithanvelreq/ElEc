@@ -23,7 +23,7 @@ public class Boutonmodif extends JButton {
     private Color buttonColor = new Color(36, 47, 68).darker().darker().darker();
 
     /**
-     * A COMMENTER
+     * constructeur qui definit la premiere couche du bouton,sa couleur et son image
      * @param name nom du bouton
      * @param icon image a inserer dans le bouton
      */

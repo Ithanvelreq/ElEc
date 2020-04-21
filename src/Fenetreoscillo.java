@@ -46,15 +46,18 @@ public class Fenetreoscillo extends JFrame implements ActionListener {
      */
     int largeur = (int)tailleEcran.getWidth();
     /**
-     * A COMMENTER
+     * variable qui vaut 75% de la hauteur pour dimensionner les panneaux
      */
     double h1= (double) 0.75*hauteur;
     /**
-     * A COMMENTER
+     * variable qui vaut 25% de la hauteur pour dimensionner les panneaux
      */
     double h=(double) 0.25*hauteur;
 
     //constructeur
+    /**
+     * constructeur qui cree la fenetre de l'oscilloscope et qui place les differents widgets dans la fenetre
+     */
     public Fenetreoscillo(String[] w, Impedance[] z, ItemElement[] tableaumenu) {
 
         super( "Oscilloscope" );

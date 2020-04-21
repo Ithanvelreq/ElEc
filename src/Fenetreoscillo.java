@@ -57,7 +57,10 @@ public class Fenetreoscillo extends JFrame implements ActionListener {
 
     //constructeur
     /**
-     * Constructeur qui cree la fenetre de l'oscilloscope et qui place les differents widgets dans la fenetre
+     * Constructeur
+     * @param w Inconnues du problemme
+     * @param z Solutions du problemme
+     * @param tableaumenu Tableau des composants
      */
     public Fenetreoscillo(String[] w, Impedance[] z, ItemElement[] tableaumenu) {
 

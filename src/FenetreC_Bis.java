@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * Fenetre d'affichage pour le circuit C, celui d'en haut a gauche dans la fenetre principale
+ * Fenetre d'affichage pour le circuit C, celui d'en bas a gauche dans la fenetre principale
  */
 public class FenetreC_Bis extends JFrame implements ActionListener {
 
@@ -287,6 +287,7 @@ public class FenetreC_Bis extends JFrame implements ActionListener {
      * Permet d'afficher les resultats pour chaque composant
      * @param resultats  Resultats numériques
      * @param tableaumenu  Tableau des composants
+     * @param estvertical Tableau pour verifier si le composant est verticale ou pas
      * @return  Tableau contenant les JPanel presentant les resultats
      */
     public ItemResultat[] afficherResultat(Impedance[] resultats, ItemElement[] tableaumenu, boolean[] estvertical){

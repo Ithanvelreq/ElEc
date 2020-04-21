@@ -1,11 +1,12 @@
-package ElEc;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 /**
- * Fenetre d'affichage pour le circuit D, celui d'en bas a droite dans la fenetre principale
+ * Fenetre d'affichage pour le circuit D, celui d'en haut a gauche dans la fenetre principale
  */
+
 public class FenetreD_Bis extends JFrame implements ActionListener {
 
     /**
@@ -20,8 +21,6 @@ public class FenetreD_Bis extends JFrame implements ActionListener {
      * On recupere la largeur de l'ecran
      */
     int largeurEcran= (int)tailleEcran.getWidth();
-
-
     //attributs_widgets
     /**
      * Fenetre attribut
@@ -55,13 +54,14 @@ public class FenetreD_Bis extends JFrame implements ActionListener {
      * JButton pour l'interface
      */
     JButton boutonreinit;
-    /**
-     * Attribut pour choisir ce qui va etre affiche
-     */
-    JCheckBox [] choixResultat;
     //variables de travail
     /**
-     * Tableau de menu deroulants
+     * JCheckBox qui permet de selectionner l'affichage de l'oscillo ou des valeurs des composants
+     */
+    JCheckBox[] choixResultat;
+    //variables de travail
+    /**
+     * Tableau des items elements pour parametrer les composants
      */
     ItemElement[] tableaumenu;
     /**
@@ -81,11 +81,11 @@ public class FenetreD_Bis extends JFrame implements ActionListener {
      */
     boolean composantvalide;
     /**
-     * Savoir si les resultats sont affiches
+     * savoir si les resultats sont affiches
      */
     boolean ResultatAffiche;
     /**
-     * Taille police caractere selon resolution
+     * Taille police caractère selon resolution
      */
     int taillePoliceCaractere;
     /**
@@ -101,21 +101,20 @@ public class FenetreD_Bis extends JFrame implements ActionListener {
      */
     ItemResultat[] Label_Affichage_Res;
     /**
-     * Savoir di la fenetre de l'oscillo est ouverte
+     * savoir si la fenetre de l'oscillo est ouverte
      */
     boolean oscilloDisplayed;
     /**
-     * Parametre regulant l'usage des boutons et des JCheckbox dans le programme (empeche certains bugs)
+     * parametres regulants l'usage des boutons et des JCheckbox dans le programme (empeche certains bug)
      */
-    public int j = 0;
+    public int j=0;
     /**
-     * Parametre regulant l'usage des boutons et des JCheckbox dans le programme (empeche certains bugs)
+     * parametres regulants l'usage des boutons et des JCheckbox dans le programme (empeche certains bug)
      */
-    public int k = 0;
-
+    public int k=0;
 
     /**
-     * Constructeur
+     * constructeur de la fenetre
      */
     public FenetreD_Bis(){
 
@@ -194,9 +193,8 @@ public class FenetreD_Bis extends JFrame implements ActionListener {
     //METHODE
 
     /**
-     * Methode qui regroupe tous les JtextField sous un meme tableau
-     * @param taille Nombre de JTextField a regrouper
-     * @return Un tableau contenant tous les JTextField
+     * @param taille  nb de JtextField a regrouper
+     * @return  un tableau contenant tous les JTextField
      */
     public JTextField[] regrouperJTextField(int taille){
         JTextField[] r = new JTextField[taille];
@@ -216,8 +214,8 @@ public class FenetreD_Bis extends JFrame implements ActionListener {
     }
 
     /**
-     * Genere et positionne l'ensemble des ItemElements de chaque element du circuit
-     * @return Un tableau regroupant les ItemElements
+     * genere et postionne l'ensemble des ItemElements de chaque element du circuit
+     * @return  un tableau regroupant les ItemElements
      */
     public ItemElement[] SetUpItemElement(){
 
@@ -242,8 +240,8 @@ public class FenetreD_Bis extends JFrame implements ActionListener {
     }
 
     /**
-     * Mise en place des CheckBox pour les resultats
-     * @return Tableau contenant les CheckBox
+     * methode qui genere les CheckBox pour le choix des resultats a afficher pour l'utilisateur
+     * @return : tab contenant les 2 box
      */
     public JCheckBox[] SetUpCheckBoxResultats(){
 
@@ -271,8 +269,8 @@ public class FenetreD_Bis extends JFrame implements ActionListener {
     }
 
     /**
-     * Permet de definir la taille de police de caractere adequiat a l'ecran
-     * @return La bonne taille
+     * permet de definir la taille de police de caractere adequat à l'ecran
+     * @return  la bonne taille
      */
     public int setTaillePolice(){
         int r=11; //défaut
@@ -284,13 +282,14 @@ public class FenetreD_Bis extends JFrame implements ActionListener {
         }
         return r;
     }
+
     /**
-     * Permet d'afficher les resultats pour chaque composant
-     * @param resultats Resultats numeriques
-     * @param tableaumenu Tableau des composants
-     * @return Tableau contenant les JPanel
+     * permet d'afficher les résultats pour chaque composant
+     * @param resultats  resultats numeriques
+     * @param tableaumenu  tab des composants
+     * @return  tab contenant les JPanel presentant les resultats
      */
-    public ItemResultat[] afficherResultat(Impedance[] resultats, ItemElement[] tableaumenu){
+    public ItemResultat[] afficherResultat(Impedance[] resultats, ItemElement[] tableaumenu, boolean[] estvertical){
 
         ItemResultat[] tabRes = new ItemResultat[tableaumenu.length-1];
 
@@ -306,7 +305,7 @@ public class FenetreD_Bis extends JFrame implements ActionListener {
     }
 
     /**
-     * Permet de cacher les resultats numeriques pour chaque composant
+     * permet de cacher les resultats numeriques pour chaque composant
      */
     public void cacherResultat(){
         for (int i=0;i<Label_Affichage_Res.length;i++){
@@ -352,7 +351,7 @@ public class FenetreD_Bis extends JFrame implements ActionListener {
 
             //on génère les résultats sans les afficher
             ResultatAffiche = false;
-            Label_Affichage_Res=afficherResultat(z,tableaumenu);
+            Label_Affichage_Res=afficherResultat(z,tableaumenu,estvertical);
             cacherResultat();
             oscillo = new Fenetreoscillo(w,z,tableaumenu);
             oscillo.setVisible(false);
@@ -401,7 +400,7 @@ public class FenetreD_Bis extends JFrame implements ActionListener {
         //affichage résultats numériques
         if(choixResultat[0].isSelected() && j==0){
             //affichages des résultats pour chaque composant
-            Label_Affichage_Res = afficherResultat(z,tableaumenu);
+            Label_Affichage_Res = afficherResultat(z,tableaumenu,estvertical);
             repaint();
             j++;
         }

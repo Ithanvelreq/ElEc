@@ -1,4 +1,3 @@
-package ElEc;
 /**
  * Classe utilisee pour resoudre le systeme d'equations
  */
@@ -18,8 +17,8 @@ public class Matrix {
 
     /**
      * Constructeur
-     * @param  comp Matrice nxn du systeme lineaire, partie de "gauche"
-     * @param res Vecteur nx1, partie de "droite"
+     * @param  comp matrice nxn du systeme lineaire, partie de "gauche"
+     * @param res vecteur nx1, partie de "droite"
      */
     public Matrix(Impedance [][] comp, Impedance [][]res){
         this.matrix = comp;
@@ -66,8 +65,8 @@ public class Matrix {
 
     /**
      *Cherche le maximum de la partie pas encore "diagonalise" de la matrcie
-     * @param i Indice de la ligne a partir de laquelle on cherche a diagonaliser
-     * @return Indice de la ligne du maximum de la matrice (en dehors de la partie deja diagonale)
+     * @param i indice de la ligne a partir de laquelle on cherche a diagonaliser
+     * @return indice de la ligne du maximum de la matrice (en dehors de la partie deja diagonale)
      */
     public int imaxFinder(int i){
         int j = 0;
@@ -114,7 +113,7 @@ public class Matrix {
     }
 
     /**
-     * Renvoie les solutions finales du systeme linaire
+     *Renvoie les solutions finales du systeme linaire
      * @return solutions finales du systeme matriciel
      */
     public Impedance [] solutions(){

@@ -1,4 +1,3 @@
-package ElEc;
 import javax.swing.*;
 import java.awt.*;
 import java.text.DecimalFormat;

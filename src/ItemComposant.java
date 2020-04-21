@@ -1,4 +1,3 @@
-package ElEc;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -10,7 +9,7 @@ import static java.awt.event.KeyEvent.*;
 public class ItemComposant extends ItemElement implements MouseListener{
 
     /**
-     * Indique l'unite de la valeur a saisir
+     * indique l'unite de la valeur a saisir
      */
     JLabel unite;
     /**
@@ -32,9 +31,9 @@ public class ItemComposant extends ItemElement implements MouseListener{
 
 
     /**
-     * Constructeur
-     * @param listeCompo Nom des composants proposes
-     * @param x Numero du composant
+     * constructeur de l'item complet
+     * @param listeCompo
+     * @param x
      */
     public ItemComposant(String[] listeCompo, int x) {
         n = x;
@@ -78,7 +77,7 @@ public class ItemComposant extends ItemElement implements MouseListener{
     /**
      * Methode qui renvoie le dipole correspondant a la saisie de l'utilisateur
      * @param item Nom du composant
-     * @param f Frequence generateur
+     * @param f Frequence générateur
      * @return Le dipôle correspondant
      */
     public Dipole RenvoiComposant(String item,double f){
@@ -107,7 +106,7 @@ public class ItemComposant extends ItemElement implements MouseListener{
 
     /**
      * Methode qui permet de dessiner la composant choisi
-     * @param aDessiner True s'il faut dessiner ou non l'element False sinon
+     * @param aDessiner True s'il faut dessiner ou non l'élément False sinon
      * @param vertical True si le dessin est vertical False sinon
      */
     public void dessine(boolean aDessiner, boolean vertical){

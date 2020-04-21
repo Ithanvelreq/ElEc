@@ -1,4 +1,3 @@
-package ElEc;
 import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.GradientPaint;
@@ -9,16 +8,13 @@ import java.awt.RenderingHints;
 import java.awt.geom.RoundRectangle2D;
 import javax.swing.*;
 
-/**
- * Classe qui represente les bouttons de selection de circuit
- */
 public class Boutonmodif extends JButton {
     /**
      * SerialVersionUID
      */
     private static final long serialVersionUID = 1671314658637614873L;
     /**
-     * Entier qui influe sur la taille du bouton a sa creation
+     * Entier qui influe sur la taille du bouton a sa création
      */
     private int inset = 5;
     /**

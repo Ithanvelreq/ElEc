@@ -1,11 +1,10 @@
-package ElEc;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 /**
- * Classe qui va dessiner les courbes et les tracer a l'ecran
+ * Classe qui va dessiner les courbes et les tracer à l'ecran
  */
 public class dessinoscillo extends JComponent {
     /**
@@ -93,8 +92,8 @@ public class dessinoscillo extends JComponent {
 
     /**
      * Methode qui recupere les valeurs chiffrees des autres classes afin de tracer les courbes
-     * @param tabcheckbox Tableau de checkbox qui contient les checkbox a afficher dans la fenetreoscillo
-     * @param z Tableau contenant les impedances du circuit et calculees dans une des 4 fenetres (A B C ou D)
+     * @param tabcheckbox tableau de checkbox qui contient les checkbox a afficher dans la fenetreoscillo
+     * @param z tableau contenant les impedances du circuit et calculees dans une des 4 fenetres (A B C ou D)
      * @param tableaumenu tableau d'ItemElement contenant tous les widgets et nous permettant de recuperer les informations qu'ils contiennent
      * @param panneaudubas JPanel que l'on recupere de la fenetreoscillo afin d'y ajouter des Jcheckbox
      */
@@ -162,7 +161,7 @@ public class dessinoscillo extends JComponent {
     }
     /**
      * Converti la valeur x de la fonction en pixel afin d'avoir une courbe lisible a l'ecran
-     * @param x Valeur horizontale a convertir en pixel
+     * @param x Valeur horizontale à convertir en pixel
      * @return Valeur en pixel
      */
     private int xToPixel( double x ) {    // accepte un double entre la borne min et max sur les x
@@ -171,7 +170,7 @@ public class dessinoscillo extends JComponent {
 
     /**
      * Converti la valeur y de la fonction en pixel afin d'avoir une courbe lisible a l'ecran
-     * @param y Valeur verticale a convertir en pixel
+     * @param y Valeur verticale à convertir en pixel
      * @return Valeur en pixel
      */
     private int yToPixel( double y ) {   // accepte un double entre la borne min et max sur les y

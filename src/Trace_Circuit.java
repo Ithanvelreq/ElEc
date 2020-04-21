@@ -1,10 +1,6 @@
-package ElEc;
 import javax.swing.*;
 import java.awt.*;
 
-/**
- * Classe qui trace le circuit
- */
 public class Trace_Circuit extends JPanel{
 
     //attributs

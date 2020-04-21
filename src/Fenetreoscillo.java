@@ -1,4 +1,3 @@
-package ElEc;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.event.ActionListener;
@@ -9,7 +8,7 @@ import javax.swing.*;
  */
 public class Fenetreoscillo extends JFrame implements ActionListener {
     /**
-     * SerialVersionUID
+     * serialVersionUID
      */
     private static final long serialVersionUID = -3914578220391097071L;
     /**
@@ -43,27 +42,21 @@ public class Fenetreoscillo extends JFrame implements ActionListener {
      */
     int hauteur = (int)tailleEcran.getHeight()-40;
     /**
-     * Largeur utile de l'ecran
+     * largeur utile de l'ecran
      */
     int largeur = (int)tailleEcran.getWidth();
     /**
-     * Variable qui vaut 75% de la hauteur pour dimensionner les panneaux
+     * variable qui vaut 75% de la hauteur pour dimensionner les panneaux
      */
     double h1= (double) 0.75*hauteur;
     /**
-     * Variable qui vaut 25% de la hauteur pour dimensionner les panneaux
+     * variable qui vaut 25% de la hauteur pour dimensionner les panneaux
      */
     double h=(double) 0.25*hauteur;
 
     //constructeur
     /**
-     * Constructeur qui cree la fenetre de l'oscilloscope et qui place les differents widgets dans la fenetre
-     */
-    /**
-     * Constructeur qui cree la fenetre de l'oscilloscope et qui place les differents widgets dans la fenetre
-     * @param w Tableau qui contient le nom des composants et des inconnus du systeme
-     * @param z Solutions du systeme d'equations
-     * @param tableaumenu Tableau d'ItemElemen contenant tous les widgets et nous permettant de recuperer les informations qu'ils contiennent
+     * constructeur qui cree la fenetre de l'oscilloscope et qui place les differents widgets dans la fenetre
      */
     public Fenetreoscillo(String[] w, Impedance[] z, ItemElement[] tableaumenu) {
 

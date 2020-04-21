@@ -1,4 +1,3 @@
-package ElEc;
 /**
  * Classe permettant de realiser les calculs du circuit A, en bas a gauche
  */
@@ -16,7 +15,6 @@ public class CircuitC extends Circuit {
         mailles.add(new Maille(maille2));
         ItemElement[] maille3 = {compC[0], compC[2], compC[3]};
         mailles.add(new Maille(maille3));
-
 
         //récupération de la fréquence et de la tension du générareur
         ItemGenerateur x = (ItemGenerateur) compC[0];
@@ -39,7 +37,6 @@ public class CircuitC extends Circuit {
 
         }
 
-
         //remplissage de chaque ligne de m1 avec les coefficients gauches de chaque équation
         Dipole a;
         m1[0][0]= new Impedance(1,0);
@@ -47,14 +44,6 @@ public class CircuitC extends Circuit {
         m1[1][0]= new Impedance(1,0);
         m1[3][3]= new Impedance(1,0);
         m1[3][2]= new Impedance(1,0);
-
-        /*for(int l=1;l<mailles.get(0).Icomposants.size();l++){
-            ItemComposant y = (ItemComposant) mailles.get(0).Icomposants.get(l);
-            a=y.RenvoiComposant(y.getComposant(),frequence);
-            m1[l][l]= a.z.multiplicationV2(new Impedance(-1,0));
-        }*/
-
-
 
         for(int j=0;j<mailles.get(1).Icomposants.size();j++){
             ItemComposant y = (ItemComposant) mailles.get(1).Icomposants.get(j);

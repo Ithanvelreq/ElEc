@@ -1,10 +1,6 @@
-package elec;
 import javax.swing.*;
 import java.awt.*;
 
-/**
- * Clase utilisee pour tracer chaque comosant
- */
 public class Trace_Composant extends JPanel{
 
     //attributs

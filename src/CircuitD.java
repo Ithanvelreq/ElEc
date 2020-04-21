@@ -1,6 +1,6 @@
 package ElEc;
  /**
- * Classe permettant de realiser les calculs du circuit A, en haut a gauche
+ * Classe permettant de realiser les calculs du circuit D, en bas a droite
  */
 public class CircuitD extends Circuit {
     /**

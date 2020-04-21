@@ -1,3 +1,4 @@
+package elec;
 /**
  * Classe utilisee pour resoudre le systeme d'equations
  */

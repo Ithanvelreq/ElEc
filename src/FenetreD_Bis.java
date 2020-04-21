@@ -1,3 +1,4 @@
+package elec;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -241,7 +242,8 @@ public class FenetreD_Bis extends JFrame implements ActionListener {
     }
 
     /**
-     * Mise en place des ChexBox pour les resultats
+     * Mise en place des CheckBox pour les resultats
+     * @return Tableau contenant les CheckBox
      */
     public JCheckBox[] SetUpCheckBoxResultats(){
 

@@ -1,4 +1,5 @@
-/**
+package ElEc;
+ /**
  * Classe utilisee pour resoudre le systeme d'equations
  */
 public class Matrix {

@@ -1,4 +1,5 @@
-/**
+package ElEc;
+ /**
  * Classe permettant de realiser les calculs du circuit A, en haut a gauche
  */
 public class CircuitA extends Circuit {

@@ -4,7 +4,7 @@
 public class CircuitA extends Circuit {
     /**
      * Constructeur
-     * @param compA tableau des differents ItemElement choisi par l'utilisateur qui sont stockes dans FenetreA_bis
+     * @param compA Tableau des differents ItemElement choisi par l'utilisateur qui sont stockes dans FenetreA_bis
      */
     public CircuitA(ItemElement[] compA) {
         //création du circuit

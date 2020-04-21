@@ -10,11 +10,11 @@ import javax.swing.*;
 
 public class Boutonmodif extends JButton {
     /**
-     * serialVersionUID
+     * SerialVersionUID
      */
     private static final long serialVersionUID = 1671314658637614873L;
     /**
-     * Entier qui influe sur la taille du bouton à sa création
+     * Entier qui influe sur la taille du bouton a sa création
      */
     private int inset = 5;
     /**
@@ -23,9 +23,9 @@ public class Boutonmodif extends JButton {
     private Color buttonColor = new Color(36, 47, 68).darker().darker().darker();
 
     /**
-     * constructeur qui definit la premiere couche du bouton,sa couleur et son image
-     * @param name nom du bouton
-     * @param icon image a inserer dans le bouton
+     * Constructeur qui definit la premiere couche du bouton,sa couleur et son image
+     * @param name Nom du bouton
+     * @param icon Image a inserer dans le bouton
      */
     public Boutonmodif (String name, Icon icon){
         super(name, icon);

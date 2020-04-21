@@ -4,7 +4,7 @@
 public class CircuitC extends Circuit {
     /**
      * Constructeur
-     * @param compC tableau des differents ItemElement choisis par l'utilisateur, stockes dans FenetreC_bis
+     * @param compC Tableau des differents ItemElement choisis par l'utilisateur, stockes dans FenetreC_bis
      */
     public CircuitC(ItemElement[] compC) {
         //création du circuit

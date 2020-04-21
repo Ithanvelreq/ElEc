@@ -1,4 +1,4 @@
-package elec;
+package ElEc;
 import javax.swing.*;
 import java.awt.*;
 

@@ -1,4 +1,4 @@
-package elec;
+package ElEc;
 /**
  * Classe utilisee pour resoudre le systeme d'equations
  */

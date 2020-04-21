@@ -1,4 +1,4 @@
-package elec;
+package ElEc;
 /**
  * Classe responsable de l'execution du programme
  */

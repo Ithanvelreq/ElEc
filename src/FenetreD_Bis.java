@@ -1,10 +1,10 @@
-package elec;
+package ElEc;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 /**
- * Fenetre d'affichage pour le circuit C, celui d'en bas a droite dans la fenetre principale
+ * Fenetre d'affichage pour le circuit D, celui d'en bas a droite dans la fenetre principale
  */
 public class FenetreD_Bis extends JFrame implements ActionListener {
 

@@ -1,4 +1,4 @@
-package elec;
+package ElEc;
 /**
  * Classe permettant de realiser les calculs du circuit A, en bas a gauche
  */

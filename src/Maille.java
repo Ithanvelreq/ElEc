@@ -1,4 +1,4 @@
-package elec;
+package ElEc;
 import java.util.LinkedList;
 
 /**

@@ -8,7 +8,7 @@ import javax.swing.*;
  */
 public class Fenetreoscillo extends JFrame implements ActionListener {
     /**
-     * serialVersionUID
+     * SerialVersionUID
      */
     private static final long serialVersionUID = -3914578220391097071L;
     /**
@@ -42,21 +42,21 @@ public class Fenetreoscillo extends JFrame implements ActionListener {
      */
     int hauteur = (int)tailleEcran.getHeight()-40;
     /**
-     * largeur utile de l'ecran
+     * Largeur utile de l'ecran
      */
     int largeur = (int)tailleEcran.getWidth();
     /**
-     * variable qui vaut 75% de la hauteur pour dimensionner les panneaux
+     * Variable qui vaut 75% de la hauteur pour dimensionner les panneaux
      */
     double h1= (double) 0.75*hauteur;
     /**
-     * variable qui vaut 25% de la hauteur pour dimensionner les panneaux
+     * Variable qui vaut 25% de la hauteur pour dimensionner les panneaux
      */
     double h=(double) 0.25*hauteur;
 
     //constructeur
     /**
-     * constructeur qui cree la fenetre de l'oscilloscope et qui place les differents widgets dans la fenetre
+     * Constructeur qui cree la fenetre de l'oscilloscope et qui place les differents widgets dans la fenetre
      */
     public Fenetreoscillo(String[] w, Impedance[] z, ItemElement[] tableaumenu) {
 

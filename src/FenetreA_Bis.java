@@ -78,7 +78,7 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
      */
     boolean composantvalide;
     /**
-     * Taille police caractère selon resolution
+     * Taille police caractere selon resolution
      */
     int taillePoliceCaractere;
     /**

@@ -81,11 +81,11 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
      */
     boolean composantvalide;
     /**
-     * savoir si les resultats sont affiches
+     * Savoir si les resultats sont affiches
      */
     boolean ResultatAffiche;
     /**
-     * Taille police caractère selon resolution
+     * Taille police caractere selon resolution
      */
     int taillePoliceCaractere;
     /**
@@ -101,20 +101,20 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
      */
     ItemResultat[] Label_Affichage_Res;
     /**
-     * savoir si la fenetre de l'oscillo est ouverte
+     * Savoir si la fenetre de l'oscillo est ouverte
      */
     boolean oscilloDisplayed;
     /**
-     * paramètres regulants l'usage des boutons et des JCheckbox dans le programme (empêche certains bug)
+     * parametre regulant l'usage des boutons et des JCheckbox dans le programme (empeche certains bug)
      */
     public int j=0;
     /**
-     * paramètres regulants l'usage des boutons et des JCheckbox dans le programme (empêche certains bug)
+     * Parametre regulant l'usage des boutons et des JCheckbox dans le programme (empeche certains bug)
      */
     public int k=0;
 
     /**
-     * constructeur de la fenetre
+     * Constructeur de la fenetre
      */
     public FenetreA_Bis(){
 
@@ -194,8 +194,8 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
     //METHODE
 
     /**
-     * @param taille  nb de JtextField a regrouper
-     * @return  un tableau contenant tous les JTextField
+     * @param taille  Nombre de JtextField a regrouper
+     * @return  Un tableau contenant tous les JTextField
      */
     public JTextField[] regrouperJTextField(int taille){
         JTextField[] r = new JTextField[taille];
@@ -215,8 +215,8 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
     }
 
     /**
-     * genere et postionne l'ensemble des ItemElements de chaque element du circuit
-     * @return  un tableau regroupant les ItemElements
+     * Genere et postionne l'ensemble des ItemElements de chaque element du circuit
+     * @return  Un tableau regroupant les ItemElements
      */
     public ItemElement[] SetUpItemElement(){
 
@@ -241,8 +241,8 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
     }
 
     /**
-     * methode qui genere les CheckBox pour le choix des resultats a afficher pour l'utilisateur
-     * @return  tab contenant les 2 box
+     * Methode qui genere les CheckBox pour le choix des resultats a afficher pour l'utilisateur
+     * @return  Tableau contenant les 2 box
      */
     public JCheckBox[] SetUpCheckBoxResultats(){
 
@@ -270,8 +270,8 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
     }
 
     /**
-     * permet de definir la taille de police de caractere adequat à l'ecran
-     * @return  la bonne taille
+     * Permet de definir la taille de police de caractere adequat a l'ecran
+     * @return  La bonne taille
      */
     public int setTaillePolice(){
         int r=11; //défaut
@@ -285,10 +285,10 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
     }
 
     /**
-     * permet d'afficher les resultats pour chaque composant
-     * @param resultats  resultats numériques
-     * @param tableaumenu  tab des composants
-     * @return  tab contenant les JPanel presentant les resultats
+     * Permet d'afficher les resultats pour chaque composant
+     * @param resultats  Resultats numeriques
+     * @param tableaumenu  Tableau des composants
+     * @return  Tableau contenant les JPanel presentant les resultats
      */
     public ItemResultat[] afficherResultat(Impedance[] resultats, ItemElement[] tableaumenu, boolean[] estvertical){
 

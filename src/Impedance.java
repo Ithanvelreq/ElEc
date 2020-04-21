@@ -130,8 +130,8 @@ public class Impedance {
 
 	/**
 	 * Renvoie le signe de x
-	 * @param x reel qu'il faut analyser
-	 * @return signe de x
+	 * @param x Reel qu'il faut analyser
+	 * @return Signe de x
 	 */
 	private char signe(double x){
 		char sgn = '+';
@@ -162,7 +162,7 @@ public class Impedance {
 
 	/**
 	 * Renvoie un complexe issu de la somme entre this et x
-	 * @param x Deuxièmme therme de la somme
+	 * @param x Deuxiemme therme de la somme
 	 * @return Somme entre this et x
 	 */
 	public Impedance sommeV2(Impedance x){
@@ -173,7 +173,7 @@ public class Impedance {
 
 	/**
 	 * Affecte a this la multiplication avec x
-	 * @param x facteur qui multiplie this
+	 * @param x Facteur qui multiplie this
 	 */
 	public void multiplicationV1(Impedance x){
 		double p = this.Rho*x.getRho();
@@ -184,8 +184,8 @@ public class Impedance {
 
 	/**
 	 * Renvoie un complexe issu du produit entre this et x
-	 * @param x facteur qui multiplie this
-	 * @return Résultat du produit
+	 * @param x Facteur qui multiplie this
+	 * @return Resultat du produit
 	 */
 	public Impedance multiplicationV2 (Impedance x){
 		double p = this.Rho*x.getRho();
@@ -196,7 +196,7 @@ public class Impedance {
 	/**
 	 * Test d'egalite
 	 * @param x Complexe avec lequel on compare this
-	 * @return true si ils sont egaux et false sinon
+	 * @return True si ils sont egaux et false sinon
 	 */
 	public boolean equals (Impedance x){
 		boolean w = false;
@@ -226,7 +226,6 @@ public class Impedance {
 	/**
 	 * Compose par la fontion inverse et affecte le resultat a lui meme
 	 */
-
 	public void inverseV1(){
 		this.Rho = 1 / this.Rho;
 		this.Theta = -this.Theta;

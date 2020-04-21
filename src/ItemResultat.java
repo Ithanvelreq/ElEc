@@ -60,8 +60,8 @@ public class ItemResultat extends JPanel {
 
     /**
      * Renvoie le signe de x
-     * @param x reel qu'il faut analyser
-     * @return signe de x
+     * @param x Reel qu'il faut analyser
+     * @return Signe de x
      */
     private char signe(double x){
         char sgn = '+';

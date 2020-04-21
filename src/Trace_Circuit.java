@@ -2,6 +2,9 @@ package ElEc;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Classe utilisee pour tracer le circuit sur la fenetre d'affichage
+ */
 public class Trace_Circuit extends JPanel{
 
     //attributs

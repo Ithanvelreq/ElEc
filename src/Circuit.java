@@ -27,7 +27,7 @@ public abstract class Circuit{
      */
     public Impedance[][] m1 = new Impedance[7][7];
     /**
-     * Matrice comportant les coefficients du membre droit des différentes equations
+     * Matrice comportant les coefficients du membre droit des differentes equations
      */
     public Impedance[][] m2 = new Impedance[7][1];
 

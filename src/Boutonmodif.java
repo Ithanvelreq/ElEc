@@ -15,7 +15,7 @@ public class Boutonmodif extends JButton {
      */
     private static final long serialVersionUID = 1671314658637614873L;
     /**
-     * Entier qui influe sur la taille du bouton a sa création
+     * Entier qui influe sur la taille du bouton a sa creation
      */
     private int inset = 5;
     /**

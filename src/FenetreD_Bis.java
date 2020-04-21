@@ -55,7 +55,7 @@ public class FenetreD_Bis extends JFrame implements ActionListener {
      */
     JButton boutonreinit;
     /**
-     * A COMMENTER
+     * Attribut pour choisir ce qui va etre affiche
      */
     JCheckBox [] choixResultat;
     //variables de travail
@@ -241,7 +241,7 @@ public class FenetreD_Bis extends JFrame implements ActionListener {
     }
 
     /**
-     * METHODE A COMMENTER
+     * Mise en place des ChexBox pour les resultats
      */
     public JCheckBox[] SetUpCheckBoxResultats(){
 

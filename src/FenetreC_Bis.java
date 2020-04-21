@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 /**
- * Fenetre d'affichage pour le circuit C, celui d'en bas a gauche dans la fenetre principale
+ * Fenetre d'affichage pour le circuit C, celui d'en bas a gauche dans la fenetre principale.
  */
 public class FenetreC_Bis extends JFrame implements ActionListener {
 

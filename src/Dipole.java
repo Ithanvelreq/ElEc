@@ -1,3 +1,4 @@
+package elec;
 /**
  * Composant passif du circuit
  */

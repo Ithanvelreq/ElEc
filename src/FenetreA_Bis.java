@@ -1,3 +1,4 @@
+package elec;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -78,7 +79,7 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
      */
     boolean composantvalide;
     /**
-     * Taille police caractère selon resolution
+     * Taille police caractere selon resolution
      */
     int taillePoliceCaractere;
     /**
@@ -238,7 +239,7 @@ public class FenetreA_Bis extends JFrame implements ActionListener {
      * @param resultats Resultats numeriques
      * @param tableaumenu Tableau des composants
      * @param estvertical Tableau pour savoir si les menus sont sur un segment vertical ou non
-     * @return : Tableau contenant les JPanel presentant les resultats
+     * @return Tableau contenant les JPanel presentant les resultats
      */
     public ItemResultat[] afficherResultat(Impedance[] resultats, ItemElement[] tableaumenu, boolean[] estvertical){
 

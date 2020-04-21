@@ -1,10 +1,11 @@
+package elec;
 /**
  * Classe permettant de realiser les calculs du circuit B, en haut a droite
  */
 public class CircuitB extends Circuit{
     /**
      * Constructeur
-     * @param compB tableau des differents ItemElement choisis par l'utilisateur, stocke dans FenetreB_bis
+     * @param compB Tableau des differents ItemElement choisis par l'utilisateur, stocke dans FenetreB_bis
      */
     public CircuitB(ItemElement[] compB) {
         //création du circuit

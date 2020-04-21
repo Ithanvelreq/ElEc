@@ -1,3 +1,4 @@
+package elec;
 /**
  *La classe Impedance sert a manipuler des nombres complexes et fourni les methodes numeriques afin de pouvoir resoudre les systemes d'equations
  */
@@ -94,7 +95,7 @@ public class Impedance {
 	}
 
 	/**
-	 *Setter pour la partie reele du complexe
+	 * Setter pour la partie reele du complexe
 	 * @param x Nouvelle partie reele pour le complexe et mise a jour
 	 */
 	public void setRe (double x){
@@ -161,7 +162,7 @@ public class Impedance {
 
 	/**
 	 * Renvoie un complexe issu de la somme entre this et x
-	 * @param x Deuxièmme therme de la somme
+	 * @param x Deuxiemme therme de la somme
 	 * @return Somme entre this et x
 	 */
 	public Impedance sommeV2(Impedance x){
@@ -184,7 +185,7 @@ public class Impedance {
 	/**
 	 * Renvoie un complexe issu du produit entre this et x
 	 * @param x facteur qui multiplie this
-	 * @return Résultat du produit
+	 * @return Resultat du produit
 	 */
 	public Impedance multiplicationV2 (Impedance x){
 		double p = this.Rho*x.getRho();
@@ -206,7 +207,7 @@ public class Impedance {
 	}
 
 	/**
-	 *Renvoie le module du complexe
+	 * Renvoie le module du complexe
 	 * @return Module du complexe
 	 */
 	public double module(){
@@ -244,7 +245,7 @@ public class Impedance {
 	}
 
 	/**
-	 *Renvoie l'argument du complexe
+	 * Renvoie l'argument du complexe
 	 * @return Argument du complexe
 	 */
 	public double argument(){

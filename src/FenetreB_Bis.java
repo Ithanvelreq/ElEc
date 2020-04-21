@@ -1,3 +1,4 @@
+package elec;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -219,7 +220,7 @@ public class FenetreB_Bis extends JFrame implements ActionListener {
 
     /**
      * Permet de definir la taille de police de caractere adequat a l'ecran
-     * @return la bonne taille
+     * @return La bonne taille
      */
     public int setTaillePolice(){
         int r=11; //défaut

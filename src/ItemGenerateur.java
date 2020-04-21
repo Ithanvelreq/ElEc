@@ -1,3 +1,4 @@
+package elec;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -120,7 +121,7 @@ public class ItemGenerateur extends ItemElement {
     //METHODE
     /**
      * Methode qui permet de dessiner la composant choisi
-     * @param aDessiner True s'il faut dessiner ou non l'élément False sinon
+     * @param aDessiner True s'il faut dessiner ou non l'element False sinon
      * @param vertical True si le dessin est vertical False sinon
      */
     public void dessine(boolean aDessiner, boolean vertical){

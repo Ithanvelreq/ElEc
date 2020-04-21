@@ -92,10 +92,10 @@ public class dessinoscillo extends JComponent {
 
     /**
      * Methode qui recupere les valeurs chiffrees des autres classes afin de tracer les courbes
-     * @param tabcheckbox
-     * @param z
-     * @param tableaumenu
-     * @param panneaudubas
+     * @param tabcheckbox tableau de checkbox qui contient les checkbox a afficher dans la fenetreoscillo
+     * @param z tableau contenant les impedances du circuit et calculees dans une des 4 fenetres (A B C ou D)
+     * @param tableaumenu tableau d'ItemElement contenant tous les widgets et nous permettant de recuperer les informations qu'ils contiennent
+     * @param panneaudubas JPanel que l'on recupere de la fenetreoscillo afin d'y ajouter des Jcheckbox
      */
     public dessinoscillo(JCheckBox[] tabcheckbox, Impedance[] z, ItemElement[] tableaumenu, JPanel panneaudubas){
         this.tabcheckbox=tabcheckbox;

@@ -1,4 +1,3 @@
-package ElEc;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.event.ActionListener;
@@ -9,29 +8,29 @@ import javax.swing.*;
  */
 public class Fenetreoscillo extends JFrame implements ActionListener {
     /**
-     * SerialVersionUID
+     * serialVersionUID
      */
     private static final long serialVersionUID = -3914578220391097071L;
     /**
      * Tableau de Jcheckbox
      */
-    public JCheckBox[] tabcheckbox = new JCheckBox[4];
+    public JCheckBox[] tabcheckbox = new JCheckBox[4]; // t
     /**
      * Tableau rassemblant les inconnues du systeme d'equations du systeme
      */
-    public String[] w;
+    public String[] w; // t
     /**
      * Tableau rassemblant les solutions du systeme d'equations
      */
-    public Impedance[] z;
+    public Impedance[] z; // tableau rassemblant les solutions du système d'équations du système
     /**
      * Recuperation du tableau contenant les ItemElement, qui nous permettra de recuperer les donnees entrees dans les JtextField
      */
-    public ItemElement[] tableaumenu;
+    public ItemElement[] tableaumenu; // récupération du tableau contenant les ItemElement, qui nous permettra de récupérer les données entrées dans les JtextField
     /**
      * Creation d'un tableau de String qui contiendra les noms des composants du circuit
      */
-    public String[] nomdescomposants = new String[4];
+    public String[] nomdescomposants = new String[4]; // création d'un tableau de String qui contiendra les noms des composants du circuit.
 
     //récupération des dimensions de l'écran et calculs de variables qui nous seront utiles pour le dimensionnement des widgets
     /**
@@ -43,23 +42,23 @@ public class Fenetreoscillo extends JFrame implements ActionListener {
      */
     int hauteur = (int)tailleEcran.getHeight()-40;
     /**
-     * Largeur utile de l'ecran
+     * largeur utile de l'ecran
      */
     int largeur = (int)tailleEcran.getWidth();
     /**
-     * Variable qui vaut 75% de la hauteur pour dimensionner les panneaux
+     * variable qui vaut 75% de la hauteur pour dimensionner les panneaux
      */
     double h1= (double) 0.75*hauteur;
     /**
-     * Variable qui vaut 25% de la hauteur pour dimensionner les panneaux
+     * variable qui vaut 25% de la hauteur pour dimensionner les panneaux
      */
     double h=(double) 0.25*hauteur;
 
     //constructeur
     /**
-     * Constructeur
-     * @param w Inconnues du problemme
-     * @param z Solutions du problemme
+     * constructeur qui cree la fenetre de l'oscilloscope et qui place les differents widgets dans la fenetre
+     * @param w Inconnues du probleme
+     * @param z Solutions du probleme
      * @param tableaumenu Tableau des composants
      */
     public Fenetreoscillo(String[] w, Impedance[] z, ItemElement[] tableaumenu) {
@@ -117,7 +116,6 @@ public class Fenetreoscillo extends JFrame implements ActionListener {
     }
 
     //méthode évènement
-    @Override
     public void actionPerformed (ActionEvent e) {
 
     }

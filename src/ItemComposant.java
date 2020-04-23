@@ -1,4 +1,3 @@
-package ElEc;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -10,15 +9,15 @@ import static java.awt.event.KeyEvent.*;
 public class ItemComposant extends ItemElement implements MouseListener{
 
     /**
-     * Indique l'unite de la valeur a saisir
+     * indique l'unite de la valeur a saisir
      */
     JLabel unite;
     /**
-     * Champ de saisie de la valeur
+     * champ de saisie de la valeur
      */
     JTextField saisie;
     /**
-     * Menu deroulant contenant les composants
+     * menu deroulant contenant les composants
      */
     JComboBox menuComposant;
     /**
@@ -32,7 +31,7 @@ public class ItemComposant extends ItemElement implements MouseListener{
 
 
     /**
-     * Constructeur de l'item complet
+     * constructeur de l'item complet
      * @param listeCompo Liste des composants disponibles
      * @param x Numero de composant
      */
@@ -79,7 +78,7 @@ public class ItemComposant extends ItemElement implements MouseListener{
      * Methode qui renvoie le dipole correspondant a la saisie de l'utilisateur
      * @param item Nom du composant
      * @param f Frequence generateur
-     * @return Le dipôle correspondant
+     * @return Le dipole correspondant
      */
     public Dipole RenvoiComposant(String item,double f){
         Impedance a= new Impedance(0,0);
@@ -130,7 +129,7 @@ public class ItemComposant extends ItemElement implements MouseListener{
             repaint();
         }
     }
-    @Override
+
     public void mouseClicked(MouseEvent e){
         if(menuComposant.getSelectedItem().toString()=="Bobine"){
             unite.setText("H");
@@ -145,7 +144,6 @@ public class ItemComposant extends ItemElement implements MouseListener{
             unite.setText("V");
         }
     }
-    @Override
     public void mouseExited(MouseEvent e){
         if(menuComposant.getSelectedItem().toString()=="Bobine"){
             unite.setText("H");
@@ -160,10 +158,7 @@ public class ItemComposant extends ItemElement implements MouseListener{
             unite.setText("V");
         }
     }
-    @Override
     public void mouseReleased(MouseEvent e){}
-    @Override
     public void mouseEntered(MouseEvent e){}
-    @Override
     public void mousePressed(MouseEvent e){}
 }

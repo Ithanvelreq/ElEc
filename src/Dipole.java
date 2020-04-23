@@ -1,5 +1,4 @@
-package ElEc;
- /**
+/**
  * Composant passif du circuit
  */
 public class Dipole{

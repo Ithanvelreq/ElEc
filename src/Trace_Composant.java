@@ -1,10 +1,6 @@
-package ElEc;
 import javax.swing.*;
 import java.awt.*;
 
-/**
- * Classe utilisee pour tracer les composants sur le circuit
- */
 public class Trace_Composant extends JPanel{
 
     //attributs

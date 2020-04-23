@@ -1,25 +1,24 @@
-package ElEc;
- /**
+/**
  * Classe utilisee pour resoudre le systeme d'equations
  */
 public class Matrix {
     /**
-     * Matrice nxn, partie de "gauche" du systeme linneaire
+     * Matrice nxn, partie de "gauche" du systeme lineaire
      */
     private Impedance [][] matrix = new Impedance[1][1];
     /**
-     * Vecteur nx1, partie de "droite" du systeme linneaire
+     * Vecteur nx1, partie de "droite" du systeme lineaire
      */
     private Impedance [][] vecteur = new Impedance[1][1];  // Solution finale du sys lin
     /**
-     * Ligne du maximum de la partie de la matrice pas encore "triangularise"
+     * Ligne du maximum de la partie de la matrice pas encore "triangularisee"
      */
     private int imax = 0;
 
     /**
      * Constructeur
-     * @param  comp Matrice nxn du systeme lineaire, partie de "gauche"
-     * @param res Vecteur nx1, partie de "droite"
+     * @param  comp matrice nxn du systeme lineaire, partie de "gauche"
+     * @param res vecteur nx1, partie de "droite"
      */
     public Matrix(Impedance [][] comp, Impedance [][]res){
         this.matrix = comp;
@@ -65,9 +64,9 @@ public class Matrix {
     }
 
     /**
-     *Cherche le maximum de la partie pas encore "diagonalise" de la matrcie
-     * @param i Indice de la ligne a partir de laquelle on cherche a diagonaliser
-     * @return Indice de la ligne du maximum de la matrice (en dehors de la partie deja diagonale)
+     *Cherche le maximum de la partie pas encore "diagonalisee" de la matrice
+     * @param i indice de la ligne a partir de laquelle on cherche a diagonaliser
+     * @return indice de la ligne du maximum de la matrice (en dehors de la partie deja diagonale)
      */
     public int imaxFinder(int i){
         int j = 0;
@@ -82,7 +81,7 @@ public class Matrix {
     }
 
     /**
-     * Transforme la matrcie nxn dans une matrice diagonale, faits les changements necessaires au vecteur associe
+     * Transforme la matrice nxn dans une matrice diagonale, fait les changements necessaires au vecteur associe
      */
     public void diagonalisation(){
         int j = matrix[0].length-1;
@@ -114,8 +113,8 @@ public class Matrix {
     }
 
     /**
-     *Renvoie les solutions finales du systeme linaire
-     * @return Solutions finales du systeme matriciel
+     *Renvoie les solutions finales du systeme lineaire
+     * @return solutions finales du systeme matriciel
      */
     public Impedance [] solutions(){
         Impedance [] w = new Impedance[vecteur.length];

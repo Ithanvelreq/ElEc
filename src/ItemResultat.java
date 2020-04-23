@@ -1,24 +1,23 @@
-package ElEc;
 import javax.swing.*;
 import java.awt.*;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
 /**
- * Outil utilise pour afficher la tension et le courrant a travers chaque dipole
+ * Outil utilise pour afficher la tension et le courant a travers chaque dipole
  */
 public class ItemResultat extends JPanel {
 
     /**
-     * Affiche la partie de gauche de l'egalite
+     * Affiche la partie gauche de l'egalite
      */
     JLabel intensite;
     /**
-     * Valeur reele du courrant
+     * Valeur reele du courant
      */
     JLabel ValIntensite;
     /**
-     * Affiche la partie de gauche de l'egalite
+     * Affiche la partie gauche de l'egalite
      */
     JLabel tension;
     /**
@@ -60,8 +59,8 @@ public class ItemResultat extends JPanel {
 
     /**
      * Renvoie le signe de x
-     * @param x Reel qu'il faut analyser
-     * @return Signe de x
+     * @param x reel qu'il faut analyser
+     * @return signe de x
      */
     private char signe(double x){
         char sgn = '+';

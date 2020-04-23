@@ -1,4 +1,3 @@
-package ElEc;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -19,7 +18,7 @@ public class ItemGenerateur extends ItemElement {
      */
     JLabel freq;
     /**
-     * Label indiquant l'amplutide a saisir
+     * Label indiquant l'amplitude a saisir
      */
     JLabel ampl;
     /**
@@ -104,7 +103,7 @@ public class ItemGenerateur extends ItemElement {
 
     /**
      * Getter de la frequence du generateur
-     * @return Frequence du generateur
+     * @return frequence du generateur
      */
     public double getFrequence (){
         return  Double.parseDouble(saisieFreq.getText());
@@ -120,7 +119,7 @@ public class ItemGenerateur extends ItemElement {
 
     //METHODE
     /**
-     * Methode qui permet de dessiner la composant choisi
+     * Methode qui permet de dessiner le composant choisi
      * @param aDessiner True s'il faut dessiner ou non l'element False sinon
      * @param vertical True si le dessin est vertical False sinon
      */

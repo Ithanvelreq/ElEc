@@ -1,4 +1,3 @@
-package ElEc;
 import java.util.Arrays;
 import java.util.LinkedList;
 
@@ -23,7 +22,7 @@ public abstract class Circuit{
      */
     public double amplitude;
     /**
-     * Matrice comportant les coefficients du membres gauche des differentes equations
+     * Matrice comportant les coefficients du membre gauche des differentes equations
      */
     public Impedance[][] m1 = new Impedance[7][7];
     /**

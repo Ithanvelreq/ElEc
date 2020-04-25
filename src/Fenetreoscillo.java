@@ -2,13 +2,15 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 
 /**
  * Fenetre qui contient l'oscilloscope
  */
 public class Fenetreoscillo extends JFrame implements ActionListener {
     /**
-     * serialVersionUID
+     * SerialVersionUID
      */
     private static final long serialVersionUID = -3914578220391097071L;
     /**
@@ -42,21 +44,21 @@ public class Fenetreoscillo extends JFrame implements ActionListener {
      */
     int hauteur = (int)tailleEcran.getHeight()-40;
     /**
-     * largeur utile de l'ecran
+     * Largeur utile de l'ecran
      */
     int largeur = (int)tailleEcran.getWidth();
     /**
-     * variable qui vaut 75% de la hauteur pour dimensionner les panneaux
+     * Variable qui vaut 75% de la hauteur pour dimensionner les panneaux
      */
     double h1= (double) 0.75*hauteur;
     /**
-     * variable qui vaut 25% de la hauteur pour dimensionner les panneaux
+     * Variable qui vaut 25% de la hauteur pour dimensionner les panneaux
      */
     double h=(double) 0.25*hauteur;
 
     //constructeur
     /**
-     * constructeur qui cree la fenetre de l'oscilloscope et qui place les differents widgets dans la fenetre
+     * Constructeur qui cree la fenetre de l'oscilloscope et qui place les differents widgets dans la fenetre
      * @param w Inconnues du probleme
      * @param z Solutions du probleme
      * @param tableaumenu Tableau des composants
@@ -93,7 +95,7 @@ public class Fenetreoscillo extends JFrame implements ActionListener {
         for(int i=0;i<tabcheckbox.length;i++) {
 
             if(tableaumenu[i] instanceof ItemComposant) {
-                tabcheckbox[i] = new JCheckBox("Afficher la tension de la / du " + nomdescomposants[i]);
+                tabcheckbox[i] = new JCheckBox("Afficher la tension" + nomdescomposants[i]);
                 tabcheckbox[i].setBounds((int) (largeur * (1 + (i * 2)) / 8.8 - tabcheckbox[i].getWidth() / 2)-50, 0, 330, (int) h);
                 tabcheckbox[i].addActionListener(this);
                 tabcheckbox[i].setBackground(new Color(195, 188, 181));
@@ -116,6 +118,7 @@ public class Fenetreoscillo extends JFrame implements ActionListener {
     }
 
     //méthode évènement
+    @Override
     public void actionPerformed (ActionEvent e) {
 
     }
@@ -124,19 +127,21 @@ public class Fenetreoscillo extends JFrame implements ActionListener {
      * Methode qui differencie les composants en les nommant dans les cas ou des circuits ont 2 composants identiques
      */
     public void nommecomposant(){
+        NumberFormat format = new DecimalFormat("0.##E0");
+        double s;
 
         for(int i=0; i<tableaumenu.length;i++){
             if(tableaumenu[i] instanceof ItemComposant){
                 ItemComposant y = (ItemComposant) tableaumenu[i];
+                s = Double.parseDouble(y.saisie.getText());
                 if(y.getComposant()=="Resistance"){
-                    //nomdescomposants[i] ="Résistance "+String.valueOf(nbR);
-                    nomdescomposants[i] ="Résistance de "+y.saisie.getText()+ " ohms";
+                    nomdescomposants[i] =" de la Résistance de "+ format.format(s) + " ohms";
                 }
                 if(y.getComposant()=="Condensateur"){
-                    nomdescomposants[i] ="Condensateur de "+y.saisie.getText()+ " F";
+                    nomdescomposants[i] =" du Condensateur de "+ format.format(s) + " F";
                 }
                 if(y.getComposant()=="Bobine"){
-                    nomdescomposants[i] ="Bobine de "+y.saisie.getText()+ " H";
+                    nomdescomposants[i] =" de la Bobine de "+ format.format(s) + " H";
                 }
             }
         }

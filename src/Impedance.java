@@ -206,7 +206,7 @@ public class Impedance {
 	}
 
 	/**
-	 *Renvoie le module du complexe
+	 * Renvoie le module du complexe
 	 * @return Module du complexe
 	 */
 	public double module(){
@@ -244,7 +244,7 @@ public class Impedance {
 	}
 
 	/**
-	 *Renvoie l'argument du complexe
+	 * Renvoie l'argument du complexe
 	 * @return Argument du complexe
 	 */
 	public double argument(){

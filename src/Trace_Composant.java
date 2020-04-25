@@ -1,6 +1,9 @@
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Classe responsable de tracer les composants au sein de chaque circuit
+ */
 public class Trace_Composant extends JPanel{
 
     //attributs

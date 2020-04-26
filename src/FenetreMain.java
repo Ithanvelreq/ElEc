@@ -131,7 +131,7 @@ public class FenetreMain extends JFrame implements ActionListener{
             Panneauprincipal.add(b);
         }
 
-        titre = new JLabel("Simulateur de circuits électriques");
+        titre = new JLabel("Simulateur de circuits electriques");
         titre.setFont(new Font("Arial", Font.BOLD,60));
         titre.setBounds(largeur/2-500,20,1000,70);
 
@@ -139,7 +139,7 @@ public class FenetreMain extends JFrame implements ActionListener{
         sousTitre.setFont(new Font("Arial", Font.ITALIC,30));
         sousTitre.setBounds(largeur/2-675,titre.getY()+titre.getHeight()+20,1350,40);
 
-        credits = new JButton("Crédits");
+        credits = new JButton("Credits");
         credits.setBounds(10,tableaubouton[3].getY()+tableaubouton[3].getHeight(),90,25);
         credits.addActionListener(this);
 
@@ -177,7 +177,7 @@ public class FenetreMain extends JFrame implements ActionListener{
             Fenetrecircuit4.setVisible(true);
         }
         if (e.getSource()==credits){
-            JOptionPane.showMessageDialog(this,  "Projet Algo S4\n'Simulateur de circuits électriques'\nIthan VELARDE - Florian VELOSO - Sacha BAILLY - Florian REYNAUD\nINSA LYON FIMI 2A - 2019/2020");
+            JOptionPane.showMessageDialog(this,  "Projet Algo S4\n'Simulateur de circuits electriques'\nIthan VELARDE - Florian VELOSO - Sacha BAILLY - Florian REYNAUD\nINSA LYON FIMI 2A - 2019/2020");
         }
 
     }

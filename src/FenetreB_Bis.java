@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * Fenetre d'affichage pour le circuit B, celui d'en haut a gauche dans la fenetre principale
+ * Fenetre d'affichage pour le circuit B, celui d'en haut a droite dans la fenetre principale
  */
 public class FenetreB_Bis extends JFrame implements ActionListener {
 
@@ -84,7 +84,7 @@ public class FenetreB_Bis extends JFrame implements ActionListener {
      */
     boolean ResultatAffiche;
     /**
-     * Taille police caractère selon resolution
+     * Taille police caractere selon la resolution
      */
     int taillePoliceCaractere;
     /**
@@ -100,20 +100,20 @@ public class FenetreB_Bis extends JFrame implements ActionListener {
      */
     ItemResultat[] Label_Affichage_Res;
     /**
-     * savoir si la fenetre de l'oscillo est ouverte
+     * Savoir si la fenetre de l'oscillo est ouverte
      */
     boolean oscilloDisplayed;
     /**
-     * parametres regulants l'usage des boutons et des JCheckbox dans le programme (empeche certains bug)
+     * Parametres regulants l'usage des boutons et des JCheckbox dans le programme (empeche certains bug)
      */
     public int j=0;
     /**
-     * parametres regulants l'usage des boutons et des JCheckbox dans le programme (empeche certains bug)
+     * Parametres regulants l'usage des boutons et des JCheckbox dans le programme (empeche certains bug)
      */
     public int k=0;
 
     /**
-     * constructeur de la fenetre
+     * Constructeur de la fenetre
      */
     public FenetreB_Bis(){
 
@@ -192,8 +192,9 @@ public class FenetreB_Bis extends JFrame implements ActionListener {
     //METHODE
 
     /**
-     * @param taille  nb de JtextField à regrouper
-     * @return  un tableau contenant tous les JTextField
+     * Regroupe tous les JTextField sous forme d'un tableau
+     * @param taille  Nombre de JtextField à regrouper
+     * @return  Un tableau contenant tous les JTextField
      */
     public JTextField[] regrouperJTextField(int taille){
         JTextField[] r = new JTextField[taille];
@@ -213,8 +214,8 @@ public class FenetreB_Bis extends JFrame implements ActionListener {
     }
 
     /**
-     * genere et postionne l'ensemble des ItemElements de chaque element du circuit
-     * @return  un tableau regroupant les ItemElements
+     * Genere et postionne l'ensemble des ItemElements de chaque element du circuit
+     * @return  Un tableau regroupant les ItemElements
      */
     public ItemElement[] SetUpItemElement(){
 
@@ -239,8 +240,8 @@ public class FenetreB_Bis extends JFrame implements ActionListener {
     }
 
     /**
-     * methode qui genere les CheckBox pour le choix des resultats a afficher pour l'utilisateur
-     * @return  tab contenant les 2 box
+     * Methode qui genere les CheckBox pour le choix des resultats a afficher pour l'utilisateur
+     * @return  Tableau contenant les 2 box
      */
     public JCheckBox[] SetUpCheckBoxResultats(){
 
@@ -268,8 +269,8 @@ public class FenetreB_Bis extends JFrame implements ActionListener {
     }
 
     /**
-     * permet de definir la taille de police de caractere adequat a l'ecran
-     * @return  la bonne taille
+     * Permet de definir la taille de police de caractere adequat a l'ecran
+     * @return  La bonne taille
      */
     public int setTaillePolice(){
         int r=11; //défaut
@@ -283,12 +284,12 @@ public class FenetreB_Bis extends JFrame implements ActionListener {
     }
 
     /**
-     * permet d'afficher les resultats pour chaque composant
-     * @param resultats  resultats numeriques
-     * @param tableaumenu  tab des composants
-     * @return  tab contenant les JPanel presentant les resultats
+     * Permet d'afficher les resultats pour chaque composant
+     * @param resultats  Resultats numeriques
+     * @param tableaumenu  Tableau des composants
+     * @return  Tableau contenant les JPanel presentant les resultats
      */
-    public ItemResultat[] afficherResultat(Impedance[] resultats, ItemElement[] tableaumenu, boolean[] estvertical){
+    public ItemResultat[] afficherResultat(Impedance[] resultats, ItemElement[] tableaumenu){
 
         ItemResultat[] tabRes = new ItemResultat[tableaumenu.length-1];
         //composant haut
@@ -308,7 +309,7 @@ public class FenetreB_Bis extends JFrame implements ActionListener {
     }
 
     /**
-     * permet de cacher les resultats numeriques pour chaque composant
+     * Permet de cacher les resultats numeriques pour chaque composant
      */
     public void cacherResultat(){
         for (int i=0;i<Label_Affichage_Res.length;i++){
@@ -324,6 +325,7 @@ public class FenetreB_Bis extends JFrame implements ActionListener {
 
 
     //méthode évènement
+    @Override
     public void actionPerformed (ActionEvent e){
 
         if (e.getSource()==boutonvalidation && k==0){  //bouton "Valider les composants" <> étape 1
@@ -354,7 +356,7 @@ public class FenetreB_Bis extends JFrame implements ActionListener {
 
             //on génère les résultats sans les afficher
             ResultatAffiche = false;
-            Label_Affichage_Res=afficherResultat(z,tableaumenu,estvertical);
+            Label_Affichage_Res=afficherResultat(z,tableaumenu);
             cacherResultat();
             oscillo = new Fenetreoscillo(w,z,tableaumenu);
             oscillo.setVisible(false);
@@ -403,7 +405,7 @@ public class FenetreB_Bis extends JFrame implements ActionListener {
         //affichage résultats numériques
         if(choixResultat[0].isSelected() && j==0){
             //affichages des résultats pour chaque composant
-            Label_Affichage_Res = afficherResultat(z,tableaumenu,estvertical);
+            Label_Affichage_Res = afficherResultat(z,tableaumenu);
             repaint();
             j++;
         }

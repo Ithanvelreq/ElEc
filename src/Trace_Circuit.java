@@ -1,6 +1,9 @@
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Classe responsable de tracer les circuits
+ */
 public class Trace_Circuit extends JPanel{
 
     //attributs
@@ -18,7 +21,7 @@ public class Trace_Circuit extends JPanel{
     int largeur;
 
     /**
-     * Constructeur du JPanel contenant le dessin du circiut
+     * Constructeur du JPanel contenant le dessin du circuit
      * @param i Numero du circuit
      * @param h Hauteur JPanel
      * @param l Larguer JPanel

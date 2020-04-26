@@ -4,7 +4,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 /**
- * Classe qui va dessiner les courbes et les tracer à l'ecran
+ * Classe qui va dessiner les courbes et les tracer a l'ecran
  */
 public class dessinoscillo extends JComponent {
     /**
@@ -54,7 +54,7 @@ public class dessinoscillo extends JComponent {
     /**
      * Creation d'un tableau qui nous permettra de stocker les modules des composants
      */
-    public double[] tableaumodule = new double[4]; // c
+    public double[] tableaumodule = new double[4];
     /**
      * Creation d'un tableau qui nous permettra de stocker les arguments des composants
      */
@@ -74,11 +74,11 @@ public class dessinoscillo extends JComponent {
 
     //initialisation des paramètres de visualisation
     /**
-     * Parametre de visuialisation
+     * Parametre de visualisation
      */
     public double xmax=1;
     /**
-     * Parametre de visuialisation
+     * Parametre de visualisation
      */
     public double xmin=-1;
     /**
@@ -92,9 +92,9 @@ public class dessinoscillo extends JComponent {
 
     /**
      * Methode qui recupere les valeurs chiffrees des autres classes afin de tracer les courbes
-     * @param tabcheckbox tableau de checkbox qui contient les checkbox a afficher dans la fenetreoscillo
-     * @param z tableau contenant les impedances du circuit et calculees dans une des 4 fenetres (A B C ou D)
-     * @param tableaumenu tableau d'ItemElement contenant tous les widgets et nous permettant de recuperer les informations qu'ils contiennent
+     * @param tabcheckbox Tableau de checkbox qui contient les checkbox a afficher dans la fenetreoscillo
+     * @param z Tableau contenant les impedances du circuit et calculees dans une des 4 fenetres (A B C ou D)
+     * @param tableaumenu Tableau d'ItemElement contenant tous les widgets et nous permettant de recuperer les informations qu'ils contiennent
      * @param panneaudubas JPanel que l'on recupere de la fenetreoscillo afin d'y ajouter des Jcheckbox
      */
     public dessinoscillo(JCheckBox[] tabcheckbox, Impedance[] z, ItemElement[] tableaumenu, JPanel panneaudubas){
@@ -213,11 +213,11 @@ public class dessinoscillo extends JComponent {
 
     /**
      * Methode qui fixe l'echelle des courbes qui seront affichees. On fixe ainsi que l'axe des x est affiche entre xmin et xmax et que celui des y est affiche entre ymin et ymax
-     * @param g2 Element a dessiner
-     * @param xmin Valeur minimale sur l'axe des x
-     * @param xmax Valeur maximale sur l'axe des x
-     * @param ymin Valeur minimale sur l'axe des y
-     * @param ymax Valeur maximale sur l'axe des y
+     * @param g2  Element a dessiner
+     * @param xmin  Valeur minimale sur l'axe des x
+     * @param xmax  Valeur maximale sur l'axe des x
+     * @param ymin  Valeur minimale sur l'axe des y
+     * @param ymax  Valeur maximale sur l'axe des y
      */
     public void placeechelle(Graphics2D g2, double xmin, double xmax, double ymin, double ymax) {
 
@@ -350,7 +350,7 @@ public class dessinoscillo extends JComponent {
     }
 
     /**
-     * Methode qui place les Jslider dans la fenetre de loscilloscope afin dadapter l'echelle de la courbe
+     * Methode qui place les Jslider dans la fenetre de loscilloscope afin d'adapter l'echelle de la courbe
      */
     public void remplipanneau(){
 

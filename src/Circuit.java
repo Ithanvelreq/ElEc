@@ -22,11 +22,11 @@ public abstract class Circuit{
      */
     public double amplitude;
     /**
-     * Matrice comportant les coefficients du membres gauche des differentes equations
+     * Matrice comportant les coefficients du membre gauche des differentes equations
      */
     public Impedance[][] m1 = new Impedance[7][7];
     /**
-     * Matrice comportant les coefficients du membre droit des différentes equations
+     * Matrice comportant les coefficients du membre droit des differentes equations
      */
     public Impedance[][] m2 = new Impedance[7][1];
 

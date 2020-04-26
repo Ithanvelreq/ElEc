@@ -18,7 +18,7 @@ public class ItemGenerateur extends ItemElement {
      */
     JLabel freq;
     /**
-     * Label indiquant l'amplutide a saisir
+     * Label indiquant l'amplitude a saisir
      */
     JLabel ampl;
     /**
@@ -69,11 +69,11 @@ public class ItemGenerateur extends ItemElement {
         saisieFreq.setBounds(100,35,50,30);
 
         rappelAmplitude = new JLabel();
-        rappelAmplitude.setBounds(0,105,100,10);
+        rappelAmplitude.setBounds(0,105,100,15);
         rappelAmplitude.setFont(new Font("Arial", Font.BOLD,13));
 
         rappelFrequence = new JLabel();
-        rappelFrequence.setBounds(0,5,100,10);
+        rappelFrequence.setBounds(0,5,100,15);
         rappelFrequence.setFont(new Font("Arial", Font.BOLD,13));
 
 
@@ -119,8 +119,8 @@ public class ItemGenerateur extends ItemElement {
 
     //METHODE
     /**
-     * Methode qui permet de dessiner la composant choisi
-     * @param aDessiner True s'il faut dessiner ou non l'élément False sinon
+     * Methode qui permet de dessiner le composant choisi
+     * @param aDessiner True s'il faut dessiner ou non l'element False sinon
      * @param vertical True si le dessin est vertical False sinon
      */
     public void dessine(boolean aDessiner, boolean vertical){

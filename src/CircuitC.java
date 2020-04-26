@@ -1,5 +1,5 @@
 /**
- * Classe permettant de realiser les calculs du circuit A, en bas a gauche
+ * Classe permettant de realiser les calculs du circuit C, en bas a gauche
  */
 public class CircuitC extends Circuit {
     /**
@@ -58,12 +58,5 @@ public class CircuitC extends Circuit {
 
         //remplissage de m2 avec les coefficients droits de chaque équation
         m2[0][0]= new Impedance(amplitude,0);
-
-        for(int y=0;y<7;y++){
-            for(int w=0;w<7;w++){
-                System.out.print(m1[y][w].getRe()+" "+m1[y][w].getIm()+" /");
-            }
-            System.out.println();
-        }
     }
 }

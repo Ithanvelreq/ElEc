@@ -86,7 +86,7 @@ public class Impedance {
 
 	/**
 	 * Setter de l'argument du complexe
-	 * @param x Nouveau argument pour le complexe et mise a jour
+	 * @param x Nouvel argument pour le complexe et mise a jour
 	 */
 	public void setTheta(double x){
 		this.Theta = x;
@@ -161,7 +161,7 @@ public class Impedance {
 
 	/**
 	 * Renvoie un complexe issu de la somme entre this et x
-	 * @param x Deuxièmme therme de la somme
+	 * @param x Deuxième terme de la somme
 	 * @return Somme entre this et x
 	 */
 	public Impedance sommeV2(Impedance x){
@@ -184,7 +184,7 @@ public class Impedance {
 	/**
 	 * Renvoie un complexe issu du produit entre this et x
 	 * @param x facteur qui multiplie this
-	 * @return Résultat du produit
+	 * @return Resultat du produit
 	 */
 	public Impedance multiplicationV2 (Impedance x){
 		double p = this.Rho*x.getRho();
@@ -206,7 +206,7 @@ public class Impedance {
 	}
 
 	/**
-	 *Renvoie le module du complexe
+	 * Renvoie le module du complexe
 	 * @return Module du complexe
 	 */
 	public double module(){
@@ -223,7 +223,7 @@ public class Impedance {
 	}
 
 	/**
-	 * Compose par la fontion inverse et affecte le resultat a lui meme
+	 * Compose par la fonction inverse et affecte le resultat a lui meme
 	 */
 
 	public void inverseV1(){
@@ -244,7 +244,7 @@ public class Impedance {
 	}
 
 	/**
-	 *Renvoie l'argument du complexe
+	 * Renvoie l'argument du complexe
 	 * @return Argument du complexe
 	 */
 	public double argument(){

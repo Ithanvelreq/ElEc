@@ -23,7 +23,7 @@ public class FenetreMain extends JFrame implements ActionListener{
 
     //declaration de tous les widgets et des 4 fenêtres
     /**
-     * Tableau qui contient les bouttons de la fenetre principale
+     * Tableau qui contient les boutons de la fenetre principale
      */
     public JButton[] tableaubouton;
     /**

@@ -8,6 +8,9 @@ import java.awt.RenderingHints;
 import java.awt.geom.RoundRectangle2D;
 import javax.swing.*;
 
+/**
+ * Bouttons pour choisir un circuit dans la fenetre principale
+ */
 public class Boutonmodif extends JButton {
     /**
      * SerialVersionUID

@@ -1,7 +1,7 @@
 import java.util.LinkedList;
 
 /**
- * Classe qui stocke les differents dipoles presents dans une maille. Cette classe est utile pour resoudre le systeme linneaire d'equations
+ * Classe qui stocke les differents dipoles presents dans une maille. Cette classe est utile pour resoudre le systeme lineaire d'equations
  */
 public class Maille {
     /**
